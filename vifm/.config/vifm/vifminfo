@@ -1,0 +1,1290 @@
+# You can edit this file by hand, but it's recommended not to do that.
+
+# Marks:
+'H
+	/home/carlb/
+	..
+1513588458
+'b
+	/home/carlb/bin/
+	..
+1513588458
+'h
+	/home/carlb/
+	..
+1513588942
+
+# Bookmarks:
+
+# TUI:
+al
+q0
+v2
+ov
+m-1
+l2
+r2
+
+# Left window history (oldest to newest):
+d/home/carlb/.oh-my-zsh/plugins
+	command-not-found
+4
+d/home/carlb/.oh-my-zsh/plugins/command-not-found
+	command-not-found.plugin.zsh
+1
+d/home/carlb/.oh-my-zsh/plugins
+	command-not-found
+4
+d/home/carlb/.oh-my-zsh/plugins/command-not-found
+	command-not-found.plugin.zsh
+1
+d/home/carlb/.oh-my-zsh/plugins
+	command-not-found
+4
+d/home/carlb/.oh-my-zsh/plugins/command-not-found
+	command-not-found.plugin.zsh
+1
+d/home/carlb/.oh-my-zsh/plugins
+	colorize
+5
+d/home/carlb/.oh-my-zsh/plugins/colorize
+	colorize.plugin.zsh
+1
+d/home/carlb/.oh-my-zsh/plugins
+	colored-man-pages
+4
+d/home/carlb/.oh-my-zsh/plugins/colored-man-pages
+	colored-man-pages.plugin.zsh
+1
+d/home/carlb/.oh-my-zsh/plugins
+	coffee
+4
+d/home/carlb/.oh-my-zsh/plugins/coffee
+	README.md
+1
+d/home/carlb/.oh-my-zsh/plugins
+	codeclimate
+4
+d/home/carlb/.oh-my-zsh/plugins/codeclimate
+	_codeclimate
+1
+d/home/carlb/.oh-my-zsh/plugins
+	chucknorris
+4
+d/home/carlb/.oh-my-zsh/plugins/chucknorris
+	chucknorris.plugin.zsh
+4
+d/home/carlb/.oh-my-zsh/plugins
+	celery
+4
+d/home/carlb/.oh-my-zsh/plugins/celery
+	..
+0
+d/home/carlb/.oh-my-zsh/plugins
+	catimg
+4
+d/home/carlb/.oh-my-zsh/plugins/catimg
+	catimg.sh
+2
+d/home/carlb/.oh-my-zsh/plugins
+	archlinux
+4
+d/home/carlb/.oh-my-zsh/plugins/archlinux
+	README.md
+1
+d/home/carlb/.oh-my-zsh/plugins
+	arcanist
+4
+d/home/carlb/.oh-my-zsh/plugins/arcanist
+	arcanist.plugin.zsh
+2
+d/home/carlb/.oh-my-zsh/plugins
+	adb
+1
+d/home/carlb/.oh-my-zsh/plugins/adb
+	README.md
+1
+d/home/carlb/.oh-my-zsh/plugins
+	common-aliases
+37
+d/home/carlb/.oh-my-zsh/plugins/common-aliases
+	common-aliases.plugin.zsh
+1
+d/home/carlb/.oh-my-zsh/plugins
+	coffee
+32
+d/home/carlb/.oh-my-zsh
+	plugins
+6
+d/home/carlb
+	.config
+4
+d/home/carlb/.config
+	konsolerc
+29
+d/home/carlb
+	.config
+4
+d/home/carlb/.config
+	.Xauthority
+25
+d/home/carlb
+	dev
+20
+d/home/carlb/dev
+	java
+4
+d/home/carlb/dev/java
+	dat043
+1
+d/home/carlb/dev/java/dat043
+	laboration1
+2
+d/home/carlb/dev/java/dat043/laboration1
+	Makefile
+4
+d/home/carlb/dev/java/dat043
+	laboration3
+4
+d/home/carlb/dev/java/dat043/laboration3
+	..
+0
+d/home/carlb/dev/java/dat043
+	laboration3
+4
+d/home/carlb/dev/java/dat043/laboration3
+	dfoto
+1
+d/home/carlb/dev/java/dat043/laboration3/dfoto
+	face_7dd7a1aa-d430-47f5-8d9e-21298a8d63b5.jpg
+5
+d/home/carlb/dev/java/dat043/laboration3
+	dfoto
+1
+d/home/carlb/dev/java/dat043/laboration3/dfoto
+	face_7e0ef771-bce9-4703-9ccf-9fa82acf695c.jpg
+5
+d/home/carlb/dev/java/dat043/laboration3
+	dfoto
+1
+d/home/carlb/dev/java/dat043/laboration3/dfoto
+	face_03406b83-ad39-47bb-8d8e-0161df4cc3ae.jpg
+3
+d/home/carlb/dev/java/dat043/laboration3
+	dfoto
+1
+d/home/carlb/dev/java/dat043/laboration3/dfoto
+	..
+0
+d/home/carlb/dev/java/dat043/laboration3
+	dfoto
+1
+d/home/carlb/dev/java/dat043/laboration3/dfoto
+	face_0b59f2c8-90e9-40fc-9cf1-ed0e05d92e21.jpg
+4
+d/home/carlb/dev/java/dat043/laboration3
+	dfoto
+1
+d/home/carlb/dev/java/dat043/laboration3/dfoto
+	face_0b59f2c8-90e9-40fc-9cf1-ed0e05d92e21.jpg
+4
+d/home/carlb/dev/java/dat043/laboration3
+	dfoto
+1
+d/home/carlb/dev/java/dat043/laboration3/dfoto
+	recognize.py
+39
+d/home/carlb/dev/java/dat043/laboration3
+	dfoto
+1
+d/home/carlb/dev/java/dat043/laboration3/dfoto
+	face_fe00130b-2b11-4487-ad23-f90a93c88640.jpg
+35
+d/home/carlb/dev/java/dat043/laboration3
+	dfoto
+1
+d/home/carlb/dev/java/dat043/laboration3/dfoto
+	face_ff460a59-2d0e-4eaa-b65f-13c6fa9008e8.jpg
+37
+d/home/carlb/dev/java/dat043/laboration3
+	Card.java
+3
+d/home/carlb/dev/java/dat043
+	laboration3
+4
+d/home/carlb/dev/java
+	dat043
+1
+d/home/carlb/dev
+	java
+4
+d/home/carlb
+	dev
+20
+d/home
+	carlb
+2
+d/home/carlb
+	dev
+20
+d/home
+	carlb
+2
+d/
+	etc
+3
+d/etc
+	ImageMagick-7
+1
+d/
+	usr
+17
+d/usr
+	include
+3
+d/usr/include
+	..
+0
+d/usr
+	lib
+4
+d/usr/lib
+	initcpio
+37
+d/usr/lib/initcpio
+	hooks
+1
+d/usr/lib/initcpio/hooks
+	..
+0
+d/usr/lib/initcpio
+	hooks
+1
+d/usr/lib/initcpio/hooks
+	zfs
+15
+d/usr/lib/initcpio
+	hooks
+1
+d/usr/lib
+	initcpio
+32
+d/usr
+	lib
+4
+d/
+	home
+4
+d/home
+	carlb
+2
+d/home/carlb
+	dev
+20
+d/home
+	carlb
+2
+d/home/carlb
+	webstuffz
+48
+d/home
+	carlb
+2
+d/home/carlb
+	pictures
+8
+d/home/carlb/pictures
+	screenshots
+1
+d/home/carlb/pictures/screenshots
+	2018-02-10-13:58:59.jpg
+10
+d/home/carlb/pictures
+	screenshots
+1
+d/home/carlb
+	pictures
+8
+d/home/carlb/pictures
+	screenshots
+1
+d/home/carlb
+	.bash_profile
+28
+d/home
+	carlb
+2
+d/home/carlb
+	zfs-linux
+20
+d/home/carlb/zfs-linux
+	PKGBUILD
+3
+d/home/carlb
+	yaourt
+19
+d/home/carlb/yaourt
+	pkg
+2
+d
+
+# Right window history (oldest to newest):
+D/home/carlb
+	pictures
+5
+D/home/carlb/pictures
+	screenshots
+1
+D/home/carlb/pictures/screenshots
+	..
+0
+D/home/carlb/pictures
+	screenshots
+1
+D/home/carlb
+	Downloads
+1
+D/home/carlb/Downloads
+	laboration1.java
+16
+D/home/carlb
+	dotfiles
+25
+D/home/carlb/dotfiles
+	x
+1
+D/home/carlb/dotfiles/x
+	.Xauthority
+1
+D/home/carlb/dotfiles
+	zsh
+2
+D/home/carlb/dotfiles/zsh
+	.zshrc
+4
+D/home/carlb/dotfiles
+	bash
+1
+D/home/carlb/dotfiles/bash
+	..
+0
+D
+
+# Command line history (oldest to newest):
+:nmap
+:shell
+:filextype *.jpg / {View in feh} / feh %f
+:feh
+:set nu
+:set relativenumber
+:mkdir dotfiles
+:help
+:mkdir
+:mkdir x
+:mkdir zsh
+:mkdir bash
+:q
+
+# Search history (oldest to newest):
+/pix
+/D
+/common
+/newgame
+/hh
+/us
+/init
+
+# Prompt history (oldest to newest):
+pMt_Fuji_Blurred.jpg
+ptest.icoBAK
+ptest.png
+ptest.ico
+pnewgame.png
+pexitgame.png
+
+# Local filter history (oldest to newest):
+
+# Registers:
+
+# Directory stack (oldest to newest):
+
+# Trash content:
+t/home/carlb/.local/share/vifm/Trash/000_0_2300.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2300.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2301.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2301.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2302.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2302.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2303.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2303.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2304.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2304.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2305.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2305.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2306.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2306.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2307.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2307.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2308.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2308.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2309.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2309.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2310.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2310.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2311.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2311.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2312.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2312.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2313.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2313.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2314.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2314.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2315.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2315.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2316.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2316.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2317.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2317.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2318.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2318.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2319.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2319.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2320.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2320.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2321.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2321.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2322.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2322.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2323.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2323.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2324.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2324.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2325.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2325.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2326.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2326.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2327.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2327.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2328.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2328.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2329.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2329.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2330.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2330.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2331.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2331.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2332.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2332.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2333.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2333.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2334.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2334.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2335.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2335.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2336.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2336.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2337.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2337.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2338.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2338.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2339.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2339.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2340.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2340.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2341.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2341.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2342.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2342.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2276.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2276.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2277.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2277.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2278.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2278.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2279.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2279.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2280.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2280.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2281.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2281.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2282.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2282.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2283.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2283.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2284.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2284.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2285.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2285.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2286.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2286.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2287.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2287.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2288.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2288.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2289.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2289.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2290.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2290.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2291.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2291.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2292.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2292.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2293.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2293.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2294.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2294.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2295.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2295.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2296.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2296.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2297.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2297.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2298.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2298.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2299.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2299.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2300.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2300.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2301.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2301.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2302.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2302.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2303.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2303.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2304.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2304.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2305.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2305.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2306.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2306.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2307.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2307.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2308.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2308.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2309.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2309.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2310.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2310.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2311.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2311.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2312.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2312.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2313.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2313.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2314.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2314.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2315.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2315.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2316.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2316.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2317.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2317.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2318.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2318.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2319.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2319.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2320.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2320.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2321.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2321.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2322.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2322.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2323.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2323.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2324.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2324.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2325.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2325.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2326.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2326.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2327.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2327.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2328.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2328.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2329.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2329.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2330.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2330.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2331.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2331.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2332.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2332.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2333.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2333.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2334.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2334.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2335.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2335.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2336.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2336.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2337.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2337.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2338.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2338.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2339.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2339.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2340.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2340.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2341.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2341.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_2342.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_2342.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_0.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_0.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_918.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_918.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_919.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_919.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_920.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_920.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_921.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_921.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_922.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_922.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_923.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_923.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_924.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_924.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_925.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_925.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_926.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_926.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_927.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_927.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_928.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_928.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_929.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_929.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_930.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_930.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_931.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_931.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_932.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_932.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_933.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_933.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_934.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_934.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_935.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_935.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_936.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_936.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_937.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_937.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_938.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_938.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_939.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_939.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_940.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_940.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_941.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_941.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_942.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_942.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_943.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_943.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_944.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_944.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_945.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_945.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_946.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_946.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_947.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_947.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_948.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_948.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_949.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_949.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_950.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_950.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_951.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_951.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_952.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_952.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_953.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_953.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_954.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_954.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_955.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_955.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_956.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_956.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_957.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_957.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_958.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_958.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_959.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_959.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_960.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_960.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_961.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_961.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_962.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_962.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_963.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_963.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_964.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_964.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_965.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_965.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_966.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_966.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_967.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_967.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_968.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_968.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_969.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_969.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_970.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_970.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_971.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_971.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_972.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_972.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_973.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_973.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_974.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_974.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_975.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_975.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_976.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_976.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_977.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_977.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_978.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_978.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_979.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_979.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_980.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_980.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_981.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_981.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_982.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_982.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_983.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_983.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_984.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_984.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_985.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_985.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_986.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_986.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_987.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_987.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_988.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_988.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_989.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_989.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_990.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_990.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_991.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_991.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_992.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_992.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_993.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_993.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_994.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_994.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_995.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_995.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_996.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_996.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_997.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_997.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_998.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_998.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_999.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_999.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2276.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2276.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2277.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2277.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2278.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2278.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2279.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2279.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2280.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2280.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2281.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2281.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2282.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2282.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2283.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2283.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2284.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2284.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2285.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2285.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2286.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2286.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2287.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2287.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2288.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2288.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2289.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2289.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2290.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2290.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2291.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2291.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2292.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2292.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2293.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2293.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2294.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2294.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2295.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2295.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2296.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2296.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2297.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2297.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2298.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2298.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2299.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2299.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2300.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2300.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2301.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2301.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2302.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2302.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2303.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2303.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2304.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2304.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2305.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2305.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2306.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2306.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2307.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2307.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2308.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2308.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2309.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2309.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2310.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2310.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2311.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2311.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2312.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2312.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2313.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2313.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2314.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2314.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2315.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2315.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2316.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2316.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2317.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2317.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2318.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2318.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2319.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2319.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2320.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2320.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2321.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2321.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2322.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2322.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2323.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2323.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2324.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2324.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2325.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2325.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2326.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2326.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2327.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2327.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2328.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2328.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2329.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2329.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2330.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2330.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2331.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2331.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2332.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2332.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2333.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2333.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2334.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2334.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2335.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2335.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2336.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2336.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2337.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2337.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2338.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2338.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2339.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2339.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2340.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2340.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2341.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2341.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2342.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2342.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2276.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2276.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2277.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2277.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2278.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2278.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2279.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2279.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2280.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2280.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2281.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2281.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2282.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2282.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2283.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2283.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2284.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2284.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2285.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2285.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2286.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2286.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2287.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2287.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2288.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2288.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2289.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2289.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2290.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2290.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2291.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2291.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2292.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2292.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2293.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2293.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2294.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2294.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2295.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2295.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2296.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2296.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2297.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2297.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2298.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2298.jpg
+t/home/carlb/.local/share/vifm/Trash/000_0_2299.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/0_2299.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_400.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_400.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_401.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_401.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_402.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_402.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_403.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_403.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_404.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_404.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_405.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_405.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_406.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_406.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_407.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_407.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_408.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_408.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_409.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_409.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_410.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_410.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_411.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_411.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_412.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_412.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_413.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_413.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_414.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_414.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_415.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_415.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_416.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_416.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_417.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_417.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_418.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_418.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_419.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_419.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_420.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_420.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_421.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_421.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_422.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_422.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_423.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_423.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_424.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_424.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_425.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_425.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_426.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_426.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_427.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_427.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_428.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_428.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_429.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_429.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_430.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_430.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_431.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_431.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_432.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_432.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_433.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_433.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_434.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_434.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_435.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_435.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_436.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_436.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_437.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_437.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_438.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_438.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_439.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_439.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_440.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_440.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_441.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_441.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_442.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_442.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_443.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_443.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_444.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_444.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_445.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_445.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_446.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_446.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_447.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_447.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_448.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_448.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_449.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_449.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_450.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_450.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_451.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_451.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_452.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_452.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_453.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_453.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_454.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_454.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_455.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_455.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_456.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_456.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_457.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_457.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_458.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_458.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_459.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_459.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_460.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_460.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_461.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_461.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_462.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_462.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_463.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_463.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_464.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_464.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_465.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_465.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_466.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_466.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_467.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_467.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_468.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_468.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_469.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_469.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_470.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_470.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_471.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_471.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_472.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_472.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_473.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_473.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_474.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_474.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_475.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_475.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_476.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_476.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_477.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_477.jpg
+t/home/carlb/.local/share/vifm/Trash/000_1_478.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/1_478.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_418.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_418.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_419.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_419.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_420.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_420.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_421.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_421.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_422.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_422.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_423.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_423.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_424.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_424.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_425.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_425.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_426.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_426.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_427.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_427.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_428.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_428.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_429.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_429.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_430.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_430.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_431.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_431.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_432.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_432.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_433.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_433.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_434.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_434.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_435.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_435.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_436.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_436.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_437.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_437.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_438.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_438.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_439.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_439.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_440.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_440.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_441.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_441.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_442.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_442.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_443.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_443.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_444.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_444.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_445.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_445.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_446.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_446.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_447.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_447.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_448.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_448.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_449.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_449.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_450.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_450.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_451.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_451.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_452.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_452.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_453.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_453.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_454.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_454.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_455.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_455.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_456.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_456.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_457.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_457.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_458.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_458.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_459.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_459.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_460.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_460.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_461.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_461.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_462.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_462.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_463.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_463.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_464.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_464.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_465.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_465.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_466.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_466.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_467.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_467.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_468.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_468.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2_469.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/2_469.jpg
+t/home/carlb/.local/share/vifm/Trash/000_face.jpg
+	/home/carlb/dev/java/dat043/laboration3/dfoto/face.jpg
+t/home/carlb/.local/share/vifm/Trash/000_nohup.out
+	/home/carlb/nohup.out
+t/home/carlb/.local/share/vifm/Trash/000_2018-02-10 12:53:09.jpg
+	/home/carlb/pictures/screenshots/2018-02-10 12:53:09.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2018-02-10 13:00:32.jpg
+	/home/carlb/pictures/screenshots/2018-02-10 13:00:32.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2018-02-10 13:05:46.jpg
+	/home/carlb/pictures/screenshots/2018-02-10 13:05:46.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2018-02-10 13:06:51.jpg
+	/home/carlb/pictures/screenshots/2018-02-10 13:06:51.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2018-02-10 13:16:18.jpg
+	/home/carlb/pictures/screenshots/2018-02-10 13:16:18.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2018-02-10-13:17:31.jpg
+	/home/carlb/pictures/screenshots/2018-02-10-13:17:31.jpg
+t/home/carlb/.local/share/vifm/Trash/000_2018-02-10-13:19:57.jpg
+	/home/carlb/pictures/screenshots/2018-02-10-13:19:57.jpg
+t/home/carlb/.local/share/vifm/Trash/000_DATE.jpg
+	/home/carlb/pictures/screenshots/DATE.jpg
+t/home/carlb/.local/share/vifm/Trash/000_.xinitrc
+	/home/carlb/.xinitrc
+t/home/carlb/.local/share/vifm/Trash/000_.Xauthority
+	/home/carlb/.Xauthority
+t/home/carlb/.local/share/vifm/Trash/000_.Xkbmap
+	/home/carlb/.Xkbmap
+t/home/carlb/.local/share/vifm/Trash/000_.Xresources
+	/home/carlb/.Xresources
+t/home/carlb/.local/share/vifm/Trash/000_.zsh_history
+	/home/carlb/dotfiles/zsh/.zsh_history
+t/home/carlb/.local/share/vifm/Trash/000_colors-konsole2.colorscheme
+	/home/carlb/colors-konsole2.colorscheme
+t/home/carlb/.local/share/vifm/Trash/000_config.bak
+	/home/carlb/config.bak
+t/home/carlb/.local/share/vifm/Trash/000_test.jpg
+	/home/carlb/test.jpg
+
+# State:
+f
+i1
+[.0
+[F
+F
+I1
+].0
+]F
+s0
