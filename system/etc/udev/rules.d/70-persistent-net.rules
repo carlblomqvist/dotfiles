@@ -1,0 +1,1 @@
+SUBSYSTEM=="net", ACTION=="add", DRIVERS=="mwifiex_pcie", KERNEL=="wlp1s0", RUN="/sbin/iw dev wlp1s0 set power_save off"

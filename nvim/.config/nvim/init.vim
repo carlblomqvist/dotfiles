@@ -1,3 +1,14 @@
+" Auto install plug if not found
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+    silent !curl -fLo ~/.config//nvim/autoload/plug.vim --create-dirs
+           \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+    augroup PLUG
+        au!
+        autocmd VimEnter * PlugInstall
+    augroup END
+endif
+
 " Specify a directory for plugins
 call plug#begin('~/.local/share/nvim/plugged')
 
@@ -138,3 +149,9 @@ map <F9> :make<Return> :sleep 1<Return> :copen<Return>
 map <F10> :cprevious<Return>
 map <F11> :cnext<Return>
 map <F12> :!javac %:p<Return> :!java %:r<Return>
+
+" Save files with root privliges.
+cmap w!! w !sudo tee % >/dev/null
+
+" Show invisible characters.
+set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:_

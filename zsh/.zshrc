@@ -6,6 +6,18 @@
  export VISUAL=nvim
  export EDITOR=nvim
 
+PS1+='${VIMODE}'
+#   '$' for normal insert mode
+#   a big red 'I' for command mode - to me this is 'NOT insert' because red
+function zle-line-init zle-keymap-select {
+    DOLLAR='%B%F{green}$%f%b '
+    GIANT_I='%B%F{red}I%f%b '
+    VIMODE="${${KEYMAP/vicmd/$GIANT_I}/(main|viins)/$DOLLAR}"
+    zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
+
 # Add thefuck alias
 eval $(thefuck --alias)
 # Set name of the theme to load. Optionally, if you set this to "random"
@@ -14,6 +26,8 @@ eval $(thefuck --alias)
 ZSH_THEME="robbyrussell"
 
 autoload zmv
+
+bindkey -v
 
 # Fix ZSH vi mode backspace
 bindkey "^?" backward-delete-char

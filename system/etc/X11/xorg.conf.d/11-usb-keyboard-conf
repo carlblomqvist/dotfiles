@@ -1,0 +1,7 @@
+Section "InputClass"
+    Identifier         "keyboard catchall"
+    MatchIsKeyboard	   "yes"
+    MatchVendor		"Microsoft"
+    MatchProduct       "Surface Type Cover"
+    Option  "XkbLayout"  "se"
+EndSection

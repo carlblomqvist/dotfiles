@@ -200,9 +200,9 @@ bindsym $mod+r mode "resize"
 #}
 
 # -- EXEC -- 
+exec --no-startup-id wal -R
 exec --no-startup-id exec compton -bc --xrender-sync-fence --config ~/.config/compton/config
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec --no-startup-id wal -R
 #exec --no-startup-id exec feh --bg-scale ~/pictures/Mt_Fuji.jpg 
 exec konsole
 exec --no-startup-id redshift-gtk
