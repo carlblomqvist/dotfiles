@@ -6,6 +6,7 @@
  export VISUAL=nvim
  export EDITOR=nvim
 
+bindkey -v
 PS1+='${VIMODE}'
 #   '$' for normal insert mode
 #   a big red 'I' for command mode - to me this is 'NOT insert' because red
@@ -26,8 +27,6 @@ eval $(thefuck --alias)
 ZSH_THEME="robbyrussell"
 
 autoload zmv
-
-bindkey -v
 
 # Fix ZSH vi mode backspace
 bindkey "^?" backward-delete-char
@@ -89,6 +88,7 @@ plugins=(
   fancy-ctrl-z
   common-aliases
   command-not-found
+  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh

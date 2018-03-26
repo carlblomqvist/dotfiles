@@ -1,5 +1,5 @@
 [Appearance]
-ColorScheme=colors-konsole2
+ColorScheme=fox2
 Font=Fira Code,10,-1,5,53,0,0,0,0,0
 
 [Cursor Options]

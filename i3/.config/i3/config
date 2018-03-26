@@ -20,7 +20,7 @@ font pango:Monaco 8
 #font pango:DejaVu Sans Mono 8
 
 # Float JavaFX
-for_window [title="JavaFX"] floating enable resize set 800 600
+#for_window [title="JavaFX"] floating enable resize set 800 600
 
 # Resize File Upload in Firefox
 for_window [window_role="GtkFileChooserDialog"] floating enable resize set 1000 1000 move absolute position 100 px 100 px
@@ -62,6 +62,9 @@ bindsym --release $mod+Shift+p exec /home/carlb/.config/i3/screenshot.sh
 bindsym --release Print exec ./screenshot.sh
 # take a screenshot of a whole window and copy it to a clipboard
 bindsym --release $mod+Print exec "scregcp /home/carlb/pictures/screenshots/"
+
+# Lock screen
+bindsym $mod+Control+L exec /home/carlb/.config/i3/lockscreen.sh
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -200,8 +203,9 @@ bindsym $mod+r mode "resize"
 #}
 
 # -- EXEC -- 
-exec --no-startup-id wal -R
-exec --no-startup-id exec compton -bc --xrender-sync-fence --config ~/.config/compton/config
+#exec --no-startup-id wal -R
+#exec --no-startup-id exec compton -bc --unredir-if-possible --xrender-sync-fence --xrender-sync --config ~/.config/compton/config
+exec --no-startup-id exec compton -bc --config ~/.config/compton/config
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #exec --no-startup-id exec feh --bg-scale ~/pictures/Mt_Fuji.jpg 
 exec konsole
@@ -210,4 +214,4 @@ exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec_always setxkbmap `cat .Xkbmap`
 exec --no-startup-id touchegg
-exec --no-startup-id synergyc --daemon --no-restart 192.168.1.2
+#exec --no-startup-id synergyc --daemon --no-restart 192.168.1.2

@@ -17,300 +17,15 @@
 # Bookmarks:
 
 # TUI:
-al
+ar
 q0
 v2
 ov
 m-1
-l2
+l16,2
 r2
 
 # Left window history (oldest to newest):
-d/home/carlb/.config
-	autostart
-2
-d/home/carlb/.config/autostart
-	redshift-gtk.desktop
-1
-d/home/carlb/.config
-	chromium
-3
-d/home/carlb/.config/chromium
-	..
-0
-d/home/carlb/.config
-	compton
-4
-d/home/carlb/.config/compton
-	config
-1
-d/home/carlb/.config
-	configstore
-5
-d/home/carlb/.config/configstore
-	..
-0
-d/home/carlb/.config
-	dconf
-6
-d/home/carlb/.config/dconf
-	user
-1
-d/home/carlb/.config
-	deluge
-7
-d/home/carlb/.config/deluge
-	ui.conf~
-2
-d/home/carlb/.config
-	dunst
-8
-d/home/carlb/.config/dunst
-	..
-0
-d/home/carlb/.config
-	gconf
-9
-d/home/carlb/.config/gconf
-	desktop
-1
-d/home/carlb/.config/gconf/desktop
-	gnome
-1
-d/home/carlb/.config/gconf/desktop/gnome
-	url-handlers
-1
-d/home/carlb/.config/gconf/desktop/gnome/url-handlers
-	chrome
-1
-d/home/carlb/.config/gconf/desktop/gnome/url-handlers/chrome
-	..
-0
-d/home/carlb/.config/gconf/desktop/gnome/url-handlers
-	chrome
-1
-d/home/carlb/.config/gconf/desktop/gnome
-	url-handlers
-1
-d/home/carlb/.config/gconf/desktop
-	gnome
-1
-d/home/carlb/.config/gconf
-	desktop
-1
-d/home/carlb/.config
-	gconf
-9
-d/home/carlb
-	.config
-4
-d/home/carlb/.config
-	gtk-3.0
-10
-d/home/carlb/.config/gtk-3.0
-	..
-0
-d/home/carlb/.config
-	i3
-11
-d/home/carlb/.config/i3
-	..
-0
-d/home/carlb/.config
-	i3
-11
-d/home/carlb/.config/i3
-	config
-1
-d/home/carlb/.config
-	kitty
-12
-d/home/carlb/.config/kitty
-	..
-0
-d/home/carlb/.config
-	kitty
-12
-d/home/carlb/.config/kitty
-	kitty.conf
-2
-d/home/carlb/.config
-	pulse
-16
-d/home/carlb/.config/pulse
-	..
-0
-d/home/carlb/.config
-	pulse
-17
-d/home/carlb/.config/pulse
-	ecd78d58039c4230954419d8756ce644-card-database.tdb
-3
-d/home/carlb/.config
-	qterminal.org
-18
-d/home/carlb/.config/qterminal.org
-	..
-0
-d/home/carlb/.config
-	spotify
-19
-d/home/carlb/.config/spotify
-	User Data
-1
-d/home/carlb/.config/spotify/User Data
-	Dictionaries
-1
-d/home/carlb/.config/spotify/User Data/Dictionaries
-	..
-0
-d/home/carlb/.config/spotify/User Data
-	WidevineCDM
-2
-d/home/carlb/.config/spotify
-	Users
-2
-d/home/carlb/.config/spotify/Users
-	veggietech-user
-1
-d/home/carlb/.config/spotify/Users/veggietech-user
-	social_manager.bnk
-8
-d/home/carlb/.config/spotify/Users
-	veggietech-user
-1
-d/home/carlb/.config/spotify
-	prefs
-3
-d/home/carlb/.config
-	termite
-20
-d/home/carlb/.config/termite
-	config
-1
-d/home/carlb/.config
-	thefuck
-20
-d/home/carlb/.config/thefuck
-	settings.py
-3
-d/home/carlb/.config
-	touchegg
-21
-d/home/carlb/.config/touchegg
-	..
-0
-d/home/carlb/.config
-	vifm
-22
-d/home/carlb/.config/vifm
-	..
-0
-d/home/carlb/.config
-	wal
-23
-d/home/carlb/.config/wal
-	templates
-1
-d/home/carlb/.config/wal/templates
-	..
-0
-d/home/carlb/.config/wal
-	templates
-1
-d/home/carlb/.config
-	yarn
-24
-d/home/carlb/.config/yarn
-	global
-1
-d/home/carlb/.config/yarn/global
-	..
-0
-d/home/carlb/.config/yarn
-	link
-2
-d/home/carlb/.config/yarn/link
-	..
-0
-d/home/carlb/.config/yarn
-	link
-2
-d/home/carlb/.config
-	pulse
-17
-d/home/carlb/.config/pulse
-	ecd78d58039c4230954419d8756ce644-card-database.tdb
-3
-d/home/carlb/.config
-	neofetch
-14
-d/home/carlb/.config/neofetch
-	config.conf
-1
-d/home/carlb/.config
-	qterminal.org
-17
-d/home/carlb/.config/qterminal.org
-	..
-0
-d/home/carlb/.config
-	neofetch
-14
-d/home/carlb/.config/neofetch
-	config.conf
-1
-d/home/carlb/.config
-	menus
-13
-d/home/carlb/.config/menus
-	applications-merged
-1
-d/home/carlb/.config/menus/applications-merged
-	..
-0
-d/home/carlb/.config/menus
-	applications-merged
-1
-d/home/carlb/.config
-	polybar
-16
-d/home/carlb
-	.synergy
-16
-d/home/carlb/.synergy
-	SSL
-1
-d/home/carlb/.synergy/SSL
-	Fingerprints
-1
-d/home/carlb/.synergy/SSL/Fingerprints
-	..
-0
-d/home/carlb/.synergy/SSL
-	Fingerprints
-1
-d/home/carlb/.synergy/SSL/Fingerprints
-	TrustedServers.txt
-2
-d/home/carlb/.synergy/SSL
-	Fingerprints
-1
-d/home/carlb/.synergy
-	SSL
-1
-d/home/carlb
-	git
-25
-d/home/carlb/git
-	..
-0
-d/home/carlb
-	Downloads
-12
-d/home
-	carlb
-2
 d/home/carlb
 	.local
 4
@@ -324,312 +39,595 @@ d/home/carlb/.local/share/nvim
 	..
 0
 d/home/carlb/.local/share
-	vifm
-9
-d
+	nvim
+8
+d/home/carlb/.local
+	share
+1
+d/home/carlb
+	dotfiles
+19
+d/home/carlb/dotfiles
+	system
+12
+d/home/carlb/dotfiles/system
+	etc
+1
+d/home/carlb/dotfiles/system/etc
+	lightdm
+3
+d/home/carlb/dotfiles/system/etc/lightdm
+	..
+0
+d/home/carlb/dotfiles/system/etc
+	lightdm
+3
+d/home/carlb/dotfiles/system/etc/lightdm
+	..
+0
+d/home/carlb/dotfiles/system/etc
+	lightdm
+3
+d/home/carlb/dotfiles/system
+	etc
+1
+d/home/carlb/dotfiles
+	system
+12
+d/home/carlb
+	dotfiles
+19
+d/home
+	carlb
+2
+d/home/carlb
+	dev
+18
+d/home/carlb/dev
+	java
+6
+d/home/carlb/dev/java
+	dat043
+1
+d/home/carlb/dev/java/dat043
+	laboration3
+4
+d/home/carlb/dev/java/dat043/laboration3
+	dfoto
+1
+d/home/carlb/dev/java/dat043/laboration3/dfoto
+	..
+0
+d/home/carlb/dev/java/dat043/laboration3
+	exitgame.png
+34
+d/home/carlb/dev/java/dat043
+	laboration3
+4
+d/home/carlb/dev/java
+	dat043
+1
+d/home/carlb/dev
+	java
+6
+d/home/carlb
+	dev
+18
+d/home
+	carlb
+2
+d/
+	etc
+4
+d/etc
+	..
+0
+d/
+	bin
+1
+d/bin
+	scenic-view
+45
+d/
+	home
+5
+d/home
+	carlb
+2
+d/home/carlb
+	Downloads
+16
+d/home/carlb/Downloads
+	Lab1.class
+6
+d/home/carlb
+	Downloads
+16
+d/home
+	carlb
+2
+d/
+	home
+5
+d/home
+	carlb
+2
+d/home/carlb
+	dev
+18
+d/home/carlb/dev
+	hashcode
+6
+d/home/carlb/dev/hashcode
+	exempel
+1
+d/home/carlb/dev/hashcode/exempel
+	..
+0
+d/home/carlb/dev/hashcode
+	2018
+1
+d/home/carlb/dev/hashcode/2018
+	2018.java
+12
+d/home/carlb/dev/hashcode
+	2018
+1
+d/home/carlb/dev/hashcode/2018
+	online_qualification_round_2018.pdf
+23
+d/home/carlb/dev/hashcode
+	2018
+1
+d/home/carlb/dev
+	java
+7
+d/home/carlb/dev/java
+	dat043
+2
+d/home/carlb/dev/java/dat043
+	laboration1
+2
+d/home/carlb/dev/java/dat043/laboration1
+	laboration1.java
+6
+d/home/carlb/dev/java/dat043
+	laboration1
+2
+d/home/carlb/dev/java
+	dat043
+2
+d/home/carlb/dev/java/dat043
+	tenta
+6
+d/home/carlb/dev/java/dat043/tenta
+	..
+0
+d/home/carlb/dev/java/dat043
+	tenta
+6
+d/home/carlb/dev/java
+	dat043
+2
+d/home/carlb/dev
+	java
+7
+d/home/carlb
+	git
+20
+d/home/carlb/git
+	mm_sony_tetra_3.14
+4
+d/home/carlb/git/mm_sony_tetra_3.14
+	..
+0
+d/home/carlb/git
+	..
+0
+d/home/carlb
+	pictures
+36
+d/home/carlb/pictures
+	fox.jpg
+11
+d/home/carlb
+	Downloads
+29
+d/home/carlb/Downloads
+	JavaFX Special Effects_ Taking Java RIA to the Extreme with Animation, Multimedia, and Game Elements [Jordan 2009-12-16].pdf
+14
+d/home/carlb
+	pictures
+36
+d/home/carlb/pictures
+	fox2.jpg
+12
+d/home/carlb
+	.config
+7
+d/home/carlb/.config
+	wal
+23
+d/home/carlb/.config/wal
+	templates
+1
+d/home/carlb/.config/wal/templates
+	..
+0
+d/home/carlb/.config/wal
+	templates
+1
+d/home/carlb/.config
+	i3
+12
+d/home/carlb/.config/i3
+	config
+3
+d/home/carlb/.config
+	i3
+12
+d/home/carlb
+	.config
+7
+d/home/carlb/.config
+	wal
+23
+d/home/carlb/.config/wal
+	templates
+1
+d/home/carlb/.config/wal/templates
+	..
+0
+d/home/carlb/.config/wal
+	templates
+1
+d/home/carlb/.config
+	wal
+23
+d/home/carlb/.config/wal
+	setwal.sh
+2
+d/home/carlb/.config
+	wal
+23
+d/home/carlb
+	.cache
+5
+d/home/carlb/.cache
+	wal
+18
+d/home/carlb/.cache/wal
+	colors.css
+3
+d/home/carlb/git/mm_sony_tetra_3.14/NFC
+	kernel_config.tar.gz
+3
+d/home/carlb/git/mm_sony_tetra_3.14
+	NFC
+3
+d/home/carlb/git/mm_sony_tetra_3.14/NFC
+	kernel_config.tar.gz
+3
+d/home/carlb/git/mm_sony_tetra_3.14
+	..
+0
+d/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc
+	..
+0
+d/home/carlb
+	..
+0
+d/home/carlb/dev/exercism/java
+	..
+0
+d/home/carlb
+	..
+0
+d/home/carlb/dev/exercism/java
+	..
+0
 
 # Right window history (oldest to newest):
-D/home/carlb/pictures
-	screenshots
+D/home/carlb/Android/Sdk/extras/android
+	m2repository
 1
-D/home/carlb/pictures/screenshots
+D/home/carlb/Android/Sdk/extras/android/m2repository
 	..
 0
-D/home/carlb/pictures
-	screenshots
+D/home/carlb/Android/Sdk/extras/android
+	m2repository
 1
+D/home/carlb/Android/Sdk/extras
+	android
+1
+D/home/carlb/Android/Sdk
+	extras
+1
+D/home/carlb/Android
+	Sdk
+1
+D/home/carlb
+	Android
+23
+D/home/carlb/Android
+	..
+0
 D/home/carlb
 	Downloads
-1
+29
+D/home/carlb/Downloads
+	JavaFX Special Effects_ Taking Java RIA to the Extreme with Animation, Multimedia, and Game Elements [Jordan 2009-12-16].pdf
+25
+D/home/carlb/git
+	..
+0
+D/home/carlb
+	Downloads
+37
 D/home/carlb/Downloads
 	laboration1.java
-16
+15
 D/home/carlb
-	dotfiles
-25
-D/home/carlb/dotfiles
-	x
-1
-D/home/carlb/dotfiles/x
-	.Xauthority
-1
-D/home/carlb/dotfiles
-	zsh
-2
-D/home/carlb/dotfiles/zsh
-	.zshrc
-4
-D/home/carlb/dotfiles
-	bash
-1
-D/home/carlb/dotfiles/bash
-	..
-0
-D/home/carlb/dotfiles
-	touchegg
-2
-D/home/carlb/dotfiles/touchegg
-	.touchegg
-1
-D/home/carlb/dotfiles/touchegg/.touchegg
-	..
-0
-D/home/carlb/dotfiles/touchegg
-	.touchegg
-1
-D/home/carlb/dotfiles
-	nvim
-2
-D/home/carlb/dotfiles/nvim
-	.local
-1
-D/home/carlb/dotfiles/nvim/.local
-	nvim
-1
-D/home/carlb/dotfiles/nvim/.local/nvim
-	..
-0
-D/home/carlb/dotfiles/nvim/.local
-	share
-1
-D/home/carlb/dotfiles/nvim/.local/share
-	nvim
-1
-D/home/carlb/dotfiles/nvim/.local/share/nvim
-	..
-0
-D/home/carlb/dotfiles/nvim/.local/share
-	..
-0
-D/home/carlb/dotfiles/nvim/.local
-	share
-1
-D/home/carlb/dotfiles/nvim
-	.local
-1
-D/home/carlb/dotfiles
-	nvim
-2
-D/home/carlb/dotfiles/nvim
 	.config
-1
-D/home/carlb/dotfiles/nvim/.config
-	..
-0
-D/home/carlb/dotfiles/nvim
-	.config
-1
-D/home/carlb/dotfiles
-	konsole
-2
-D/home/carlb/dotfiles/konsole
-	.local
-1
-D/home/carlb/dotfiles/konsole/.local
-	share
-1
-D/home/carlb/dotfiles/konsole/.local/share
-	..
-0
-D/home/carlb/dotfiles/konsole/.local
-	share
-1
-D/home/carlb/dotfiles/konsole
-	.local
-1
-D/home/carlb/dotfiles
-	konsole
-2
-D/home/carlb/dotfiles/konsole
-	.config
-1
-D/home/carlb/dotfiles/konsole/.config
-	..
-0
-D/home/carlb/dotfiles/konsole
-	.config
-1
-D/home/carlb/dotfiles
-	compton
-2
-D/home/carlb/dotfiles/compton
-	.config
-1
-D/home/carlb/dotfiles/compton/.config
-	..
-0
-D/home/carlb/dotfiles/compton
-	.config
-1
-D/home/carlb/dotfiles
-	dunst
-3
-D/home/carlb/dotfiles/dunst
-	.config
-1
-D/home/carlb/dotfiles/dunst/.config
-	..
-0
-D/home/carlb/dotfiles/dunst
-	.config
-1
-D/home/carlb/dotfiles
-	i3
-4
-D/home/carlb/dotfiles/i3
-	.config
-1
-D/home/carlb/dotfiles/i3/.config
-	..
-0
-D/home/carlb/dotfiles/i3
-	.config
-1
-D/home/carlb/dotfiles
-	kitty
-5
-D/home/carlb/dotfiles/kitty
-	.config
-1
-D/home/carlb/dotfiles/kitty/.config
-	..
-0
-D/home/carlb/dotfiles/kitty
-	.config
-1
-D/home/carlb/dotfiles
-	polybar
-8
-D/home/carlb/dotfiles/polybar
-	.config
-1
-D/home/carlb/dotfiles/polybar/.config
-	..
-0
-D/home/carlb/dotfiles/polybar
-	.config
-1
-D/home/carlb/dotfiles
-	termite
-9
-D/home/carlb/dotfiles/termite
-	.config
-1
-D/home/carlb/dotfiles/termite/.config
-	..
-0
-D/home/carlb/dotfiles/termite
-	.config
-1
-D/home/carlb/dotfiles/termite/.config
-	..
-0
-D/home/carlb/dotfiles/termite
-	.config
-1
-D/home/carlb/dotfiles
-	touchegg
-10
-D/home/carlb/dotfiles/touchegg
-	.config
-1
-D/home/carlb/dotfiles/touchegg/.config
-	..
-0
-D/home/carlb/dotfiles/touchegg
-	.config
-1
-D/home/carlb/dotfiles
-	vifm
-11
-D/home/carlb/dotfiles/vifm
-	.config
-1
-D/home/carlb/dotfiles/vifm/.config
-	..
-0
-D/home/carlb/dotfiles/vifm
-	.config
-1
-D/home/carlb/dotfiles
-	neofetch
 7
-D/home/carlb/dotfiles/neofetch
-	.config
+D/home/carlb/.config
+	wal
+23
+D/home/carlb/.config/wal
+	templates
 1
-D/home/carlb/dotfiles/neofetch/.config
+D/home/carlb/.config/wal/templates
 	..
 0
-D/home/carlb/dotfiles/neofetch
-	.config
-1
-D/home/carlb/dotfiles
-	synaptics
-10
-D/home/carlb/dotfiles/synaptics
-	.config
-1
-D/home/carlb/dotfiles/synaptics/.config
-	70-synaptics.conf
-1
-D/home/carlb/dotfiles/synaptics
-	.config
-1
-D/home/carlb/dotfiles
-	termite
-11
-D/home/carlb
-	dotfiles
-24
-D/home/carlb/dotfiles
-	termite
-11
-D/home/carlb
-	dotfiles
-24
-D/home/carlb/dotfiles
-	polybar
-9
-D/home/carlb/dotfiles/polybar
-	.config
-1
-D/home/carlb/dotfiles/polybar/.config
-	polybar
-1
-D/home/carlb/dotfiles/polybar/.config/polybar
-	config
-1
-D/home/carlb/dotfiles/polybar/.config
-	polybar
-1
-D/home/carlb/dotfiles/polybar
-	.config
-1
-D/home/carlb/dotfiles
-	nvim
-9
-D/home/carlb/dotfiles/nvim
-	.local
+D/home/carlb/.config/wal
+	setwal.sh
 2
-D/home/carlb/dotfiles/nvim/.local
+D/home/carlb/.config
+	wal
+23
+D/home/carlb
+	.local
+13
+D/home/carlb/.local
 	share
 1
-D/home/carlb/dotfiles/nvim/.local/share
-	nvim
-1
-D/home/carlb/dotfiles/nvim/.local/share/nvim
+D/home/carlb/.local/share
+	konsole
+6
+D/home/carlb/.local/share/konsole
+	colors-konsole.colorscheme
+3
+D/home/carlb/git/mm_sony_tetra_3.14/NFC
 	..
 0
-D/home/carlb/dotfiles/nvim/.local/share
+D/home/carlb/git/mm_sony_tetra_3.14
+	NFC
+3
+D/home/carlb/git
+	mm_sony_tetra_3.14
+4
+D/home/carlb
+	Downloads
+29
+D/home/carlb/Downloads
+	zfs-snap-manager-0.2.0.zip
+25
+D/home/carlb/git/mm_sony_tetra_3.14/NFC
+	tetra_nfc
+3
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc
 	..
 0
-D/home/carlb/dotfiles/nvim/.local
-	share
+D/home/carlb/git/mm_sony_tetra_3.14/NFC
+	tetra_nfc
 1
-D/home/carlb/dotfiles/nvim
-	.config
+D/home/carlb/git/mm_sony_tetra_3.14
+	Documentation
+2
+D/home/carlb/git/mm_sony_tetra_3.14/Documentation
+	..
+0
+D/home/carlb/git/mm_sony_tetra_3.14
+	android
+4
+D/home/carlb/git/mm_sony_tetra_3.14/android
+	..
+0
+D/home/carlb/git/mm_sony_tetra_3.14
+	android
+4
+D/home/carlb/git/mm_sony_tetra_3.14/android
+	configs
 1
-D
+D/home/carlb/git/mm_sony_tetra_3.14/android/configs
+	..
+0
+D/home/carlb/git/mm_sony_tetra_3.14/android
+	configs
+1
+D/home/carlb/git/mm_sony_tetra_3.14
+	kernel
+14
+D/home/carlb/git/mm_sony_tetra_3.14/kernel
+	..
+0
+D/home/carlb/git/mm_sony_tetra_3.14
+	arch
+5
+D/home/carlb/git/mm_sony_tetra_3.14/arch
+	arm64
+4
+D/home/carlb/git/mm_sony_tetra_3.14/arch/arm64
+	configs
+2
+D/home/carlb/git/mm_sony_tetra_3.14/arch/arm64/configs
+	defconfig
+1
+D/home/carlb/git/mm_sony_tetra_3.14
+	NFC
+3
+D/home/carlb/git/mm_sony_tetra_3.14/NFC
+	tetra_stock_defconfig
+5
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc
+	system
+2
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system
+	app
+1
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/app
+	NfcNci
+1
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/app/NfcNci
+	lib
+1
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/app/NfcNci/lib
+	arm
+1
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/app/NfcNci/lib/arm
+	..
+0
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/app/NfcNci/lib
+	arm
+1
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/app/NfcNci
+	lib
+1
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/app
+	NfcNci
+1
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system
+	etc
+2
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/etc
+	permissions
+1
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/etc/permissions
+	com.android.nfc_extras.xml
+3
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/etc
+	permissions
+1
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system
+	framework
+3
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/framework
+	..
+0
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system
+	lib
+4
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/lib
+	hw
+1
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/lib/hw
+	nfc_nci.bcm2079x.default.so
+1
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/lib
+	hw
+1
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system
+	priv-app
+5
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/priv-app
+	NfcEnabler
+1
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/priv-app/NfcEnabler
+	..
+0
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/priv-app
+	NfcWatchface
+2
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/priv-app/NfcWatchface
+	..
+0
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/priv-app
+	NfcWatchface
+2
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system
+	priv-app
+5
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc
+	system
+2
+D/home/carlb/git/mm_sony_tetra_3.14/NFC
+	tetra_nfc
+1
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc
+	META-INF
+1
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/META-INF
+	com
+1
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/META-INF/com
+	google
+1
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/META-INF/com/google
+	android
+1
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/META-INF/com/google/android
+	updater-script
+2
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/META-INF/com/google
+	android
+1
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/META-INF/com
+	google
+1
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/META-INF
+	com
+1
+D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc
+	META-INF
+1
+D/home/carlb
+	.oh-my-zsh
+17
+D/home/carlb/.oh-my-zsh
+	plugins
+6
+D/home/carlb/.oh-my-zsh/plugins
+	zeus
+47
+D/home/carlb/dev/exercism/java
+	armstrong-numbers
+1
+D/home/carlb/dev/exercism/java/armstrong-numbers
+	src
+1
+D/home/carlb/dev/exercism/java/armstrong-numbers/src
+	test
+2
+D/home/carlb/dev/exercism/java/armstrong-numbers/src/test
+	java
+1
+D/home/carlb/dev/exercism/java/armstrong-numbers/src/test/java
+	ArmstrongNumbersTest.java
+1
+D/home/carlb
+	..
+0
+D/home/carlb/dev/exercism/java
+	armstrong-numbers
+1
+D/home/carlb/dev/exercism/java/armstrong-numbers
+	build
+2
+D/home/carlb/dev/exercism/java/armstrong-numbers/build
+	..
+0
+D/home/carlb/dev/exercism/java/armstrong-numbers
+	src
+3
+D/home/carlb/dev/exercism/java/armstrong-numbers/src
+	test
+2
+D/home/carlb/dev/exercism/java/armstrong-numbers/src/test
+	java
+1
+D/home/carlb/dev/exercism/java/armstrong-numbers/src/test/java
+	ArmstrongNumbersTest.java
+1
 
 # Command line history (oldest to newest):
 :mkdir system
@@ -643,7 +641,6 @@ D
 :set nu
 :set relativenumber
 :mkdir dotfiles
-:help
 :mkdir
 :mkdir x
 :mkdir zsh
@@ -664,9 +661,23 @@ D
 :mkdir neofetch
 :mkdir synaptics
 :mkdir .config
+:wq
+:w
+:mkdir tenta
+:sort
+:vifmrc
+:mkdir tetra_nfc
+:nvim
+:e nvim
+:help
+:find defconfig
+:q:q
+:find services.jar
+:find system
 :q
 
 # Search history (oldest to newest):
+/tetra
 /pix
 /D
 /common
@@ -674,6 +685,11 @@ D
 /hh
 /us
 /init
+/lightdm
+/sceni
+/scen
+/scenic
+/defcon
 
 # Prompt history (oldest to newest):
 pMt_Fuji_Blurred.jpg
@@ -682,11 +698,12 @@ ptest.png
 ptest.ico
 pnewgame.png
 pexitgame.png
+pfox2.jpg
+pfox2.colorscheme
 
 # Local filter history (oldest to newest):
 
 # Registers:
-""/home/carlb/.local/share/vifm/Trash/000_.local
 
 # Directory stack (oldest to newest):
 
@@ -1577,6 +1594,56 @@ t/home/carlb/.local/share/vifm/Trash/002_nvim
 	/home/carlb/.local/share/nvim
 t/home/carlb/.local/share/vifm/Trash/000_.local
 	/home/carlb/dotfiles/nvim/.local
+t/home/carlb/.local/share/vifm/Trash/000_a_example.out
+	/home/carlb/dev/hashcode/2018/a_example.out
+t/home/carlb/.local/share/vifm/Trash/000_b_should_be_easy.out
+	/home/carlb/dev/hashcode/2018/b_should_be_easy.out
+t/home/carlb/.local/share/vifm/Trash/000_c_no_hurry.out
+	/home/carlb/dev/hashcode/2018/c_no_hurry.out
+t/home/carlb/.local/share/vifm/Trash/000_d_metropolis.out
+	/home/carlb/dev/hashcode/2018/d_metropolis.out
+t/home/carlb/.local/share/vifm/Trash/000_e_high_bonus.out
+	/home/carlb/dev/hashcode/2018/e_high_bonus.out
+t/home/carlb/.local/share/vifm/Trash/000_a-out-output
+	/home/carlb/dev/hashcode/2018/a-out-output
+t/home/carlb/.local/share/vifm/Trash/000_a_exa-output
+	/home/carlb/dev/hashcode/2018/a_exa-output
+t/home/carlb/.local/share/vifm/Trash/000_a_example-output
+	/home/carlb/dev/hashcode/2018/a_example-output
+t/home/carlb/.local/share/vifm/Trash/000_b-output
+	/home/carlb/dev/hashcode/2018/b-output
+t/home/carlb/.local/share/vifm/Trash/000_test-output
+	/home/carlb/dev/hashcode/2018/test-output
+t/home/carlb/.local/share/vifm/Trash/000_gustaf
+	/home/carlb/dev/hashcode/2018/gustaf
+t/home/carlb/.local/share/vifm/Trash/000_a_example.in-output
+	/home/carlb/dev/hashcode/2018/a_example.in-output
+t/home/carlb/.local/share/vifm/Trash/000_UltiSnips
+	/home/carlb/.config/nvim/UltiSnips/UltiSnips
+t/home/carlb/.local/share/vifm/Trash/000_Sdk
+	/home/carlb/Android/Sdk
+t/home/carlb/.local/share/vifm/Trash/000_Find.class
+	/home/carlb/Find.class
+t/home/carlb/.local/share/vifm/Trash/000_Generics.class
+	/home/carlb/Generics.class
+t/home/carlb/.local/share/vifm/Trash/000_test.class
+	/home/carlb/test.class
+t/home/carlb/.local/share/vifm/Trash/000_SW3_6.0.1_M1D64T_v1.zip
+	/home/carlb/Downloads/SW3_6.0.1_M1D64T_v1.zip
+t/home/carlb/.local/share/vifm/Trash/000_SW3_6.0.1_M1D64T_v1.zip.part
+	/home/carlb/Downloads/SW3_6.0.1_M1D64T_v1.zip.part
+t/home/carlb/.local/share/vifm/Trash/000_linux-headers-4.14.0-jakeday-surface_4.14.0-jakeday-surface-10.00.Custom_amd64.deb
+	/home/carlb/Downloads/linux-headers-4.14.0-jakeday-surface_4.14.0-jakeday-surface-10.00.Custom_amd64.deb
+t/home/carlb/.local/share/vifm/Trash/000_linux-image-4.14.0-jakeday-surface_4.14.0-jakeday-surface-10.00.Custom_amd64 (1).deb
+	/home/carlb/Downloads/linux-image-4.14.0-jakeday-surface_4.14.0-jakeday-surface-10.00.Custom_amd64 (1).deb
+t/home/carlb/.local/share/vifm/Trash/000_firefox-58.0.2 (1).tar.bz2
+	/home/carlb/Downloads/firefox-58.0.2 (1).tar.bz2
+t/home/carlb/.local/share/vifm/Trash/000_firefox-58.0.2.tar.bz2
+	/home/carlb/Downloads/firefox-58.0.2.tar.bz2
+t/home/carlb/.local/share/vifm/Trash/000_upterm-0.4.3-x86_64-linux.AppImage
+	/home/carlb/Downloads/upterm-0.4.3-x86_64-linux.AppImage
+t/home/carlb/.local/share/vifm/Trash/000_datagrip-2017.3.4.tar.gz
+	/home/carlb/Downloads/datagrip-2017.3.4.tar.gz
 
 # State:
 f

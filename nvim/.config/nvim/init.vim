@@ -15,9 +15,14 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Auto completion for neovim
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
+" UltiSnips snippets
+Plug 'SirVer/ultisnips'
+
 " A collection of language packs for vim
 Plug 'sheerun/vim-polyglot'
 
+" CameCase-motion
+Plug 'bkad/CamelCaseMotion'
 " Javascript
 Plug 'ternjs/tern_for_vim'
 
@@ -47,11 +52,36 @@ Plug 'joshdick/onedark.vim'
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'mhartington/oceanic-next'
 Plug 'tomasiser/vim-code-dark'
+"
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<leader><Tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-l>"
+let g:UltiSnipsJumpBackwardTrigger="<c-h>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
 " Initialize plugin system
 call plug#end()
 
 let mapleader = "\<Space>"
+
+" Deoplete Settings
+call deoplete#enable()
+call deoplete#custom#set('ultisnips', 'matchers', ['matcher_fuzzy'])
+let g:deoplete#enable_at_startup = 1
+
+" Deoplete Tab Completion
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+"inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<TAB>"
+
+" UltiSnips
+"inoremap  <c-cr> <C-R>=UltiSnips#ExpandSnippetOrJump()<CR>
+"xnoremap  <c-cr> :call UltiSnips#SaveLastVisualSelection()<CR>gvs
+"snoremap  <c-cr> <Esc>:call UltiSnips#ExpandSnippetOrJump()<CR>
+
+" Set default CamelCaseMotion bidnings
+call camelcasemotion#CreateMotionMappings('<leader>')
 
 " Use system clipboard
 "set clipboard=unnamedplus
@@ -80,11 +110,6 @@ set shiftwidth=4
 " On pressing tab, insert 2 spaces
 set expandtab
 
-" Deoplete Settings
-call deoplete#enable()
-
-" Deoplete Tab Completion
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 " Tern
 autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
@@ -93,6 +118,7 @@ autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_haskell_enabled_makers = ['hlint']
 let g:neomake_java_enable_makers = ['javac']
+let g:neomake_c_enable_makers = ['gcc']
 " Lint on save
 autocmd! BufWritePost,BufEnter * Neomake
 
