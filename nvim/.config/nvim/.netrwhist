@@ -1,3 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_cnt =4
 let g:netrw_dirhist_1='/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/META-INF/com/google/android'
+let g:netrw_dirhist_2='/home/carlb/.oh-my-zsh/plugins/web-search'
+let g:netrw_dirhist_3='/dev/usb'
+let g:netrw_dirhist_4='/etc/acpi/events'

@@ -1,0 +1,4 @@
+
+    mount -t zfs vault/ROOT/default /new_root
+    mount -t zfs vault/usr /new_root/usr
+    mount -t zfs vault/var /new_root/var

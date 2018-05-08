@@ -13,6 +13,10 @@
 	/home/carlb/
 	..
 1513588942
+'k
+	/home/carlb/dev/c
+	..
+1522093893
 
 # Bookmarks:
 
@@ -22,614 +26,615 @@ q0
 v2
 ov
 m-1
-l16,2
-r2
+l11,2
+r11,2
 
 # Left window history (oldest to newest):
-d/home/carlb
-	.local
+d/home/carlb/eterm8
+	md407-templates-linux.zip
 4
-d/home/carlb/.local
+d/home/carlb
+	dev
+33
+d/home
+	carlb
+2
+d/
+	lib
+6
+d/lib
+	..
+0
+d/
+	usr
+18
+d/usr
 	share
-1
-d/home/carlb/.local/share
-	nvim
-8
-d/home/carlb/.local/share/nvim
-	..
-0
-d/home/carlb/.local/share
-	nvim
-8
-d/home/carlb/.local
-	share
-1
-d/home/carlb
-	dotfiles
-19
-d/home/carlb/dotfiles
-	system
-12
-d/home/carlb/dotfiles/system
-	etc
-1
-d/home/carlb/dotfiles/system/etc
-	lightdm
-3
-d/home/carlb/dotfiles/system/etc/lightdm
-	..
-0
-d/home/carlb/dotfiles/system/etc
-	lightdm
-3
-d/home/carlb/dotfiles/system/etc/lightdm
-	..
-0
-d/home/carlb/dotfiles/system/etc
-	lightdm
-3
-d/home/carlb/dotfiles/system
-	etc
-1
-d/home/carlb/dotfiles
-	system
-12
-d/home/carlb
-	dotfiles
-19
-d/home
-	carlb
-2
-d/home/carlb
-	dev
-18
-d/home/carlb/dev
-	java
-6
-d/home/carlb/dev/java
-	dat043
-1
-d/home/carlb/dev/java/dat043
-	laboration3
-4
-d/home/carlb/dev/java/dat043/laboration3
-	dfoto
-1
-d/home/carlb/dev/java/dat043/laboration3/dfoto
-	..
-0
-d/home/carlb/dev/java/dat043/laboration3
-	exitgame.png
-34
-d/home/carlb/dev/java/dat043
-	laboration3
-4
-d/home/carlb/dev/java
-	dat043
-1
-d/home/carlb/dev
-	java
-6
-d/home/carlb
-	dev
-18
-d/home
-	carlb
-2
-d/
-	etc
-4
-d/etc
-	..
-0
-d/
-	bin
-1
-d/bin
-	scenic-view
-45
-d/
-	home
-5
-d/home
-	carlb
-2
-d/home/carlb
-	Downloads
-16
-d/home/carlb/Downloads
-	Lab1.class
-6
-d/home/carlb
-	Downloads
-16
-d/home
-	carlb
-2
-d/
-	home
-5
-d/home
-	carlb
-2
-d/home/carlb
-	dev
-18
-d/home/carlb/dev
-	hashcode
-6
-d/home/carlb/dev/hashcode
-	exempel
-1
-d/home/carlb/dev/hashcode/exempel
-	..
-0
-d/home/carlb/dev/hashcode
-	2018
-1
-d/home/carlb/dev/hashcode/2018
-	2018.java
-12
-d/home/carlb/dev/hashcode
-	2018
-1
-d/home/carlb/dev/hashcode/2018
-	online_qualification_round_2018.pdf
-23
-d/home/carlb/dev/hashcode
-	2018
-1
-d/home/carlb/dev
-	java
-7
-d/home/carlb/dev/java
-	dat043
-2
-d/home/carlb/dev/java/dat043
-	laboration1
-2
-d/home/carlb/dev/java/dat043/laboration1
-	laboration1.java
-6
-d/home/carlb/dev/java/dat043
-	laboration1
-2
-d/home/carlb/dev/java
-	dat043
-2
-d/home/carlb/dev/java/dat043
-	tenta
-6
-d/home/carlb/dev/java/dat043/tenta
-	..
-0
-d/home/carlb/dev/java/dat043
-	tenta
-6
-d/home/carlb/dev/java
-	dat043
-2
-d/home/carlb/dev
-	java
-7
-d/home/carlb
-	git
-20
-d/home/carlb/git
-	mm_sony_tetra_3.14
-4
-d/home/carlb/git/mm_sony_tetra_3.14
-	..
-0
-d/home/carlb/git
-	..
-0
-d/home/carlb
-	pictures
-36
-d/home/carlb/pictures
-	fox.jpg
 11
+d/usr/share
+	classes
+23
+d/home/carlb/Downloads
+	..
+0
+d/home/carlb
+	Downloads
+29
+d/home
+	carlb
+2
 d/home/carlb
 	Downloads
 29
 d/home/carlb/Downloads
-	JavaFX Special Effects_ Taking Java RIA to the Extreme with Animation, Multimedia, and Game Elements [Jordan 2009-12-16].pdf
-14
-d/home/carlb
-	pictures
-36
-d/home/carlb/pictures
-	fox2.jpg
-12
-d/home/carlb
-	.config
-7
-d/home/carlb/.config
-	wal
-23
-d/home/carlb/.config/wal
-	templates
-1
-d/home/carlb/.config/wal/templates
+	workspacer
+28
+d/home/carlb/eterm8/kap1
 	..
 0
-d/home/carlb/.config/wal
-	templates
-1
-d/home/carlb/.config
-	i3
-12
-d/home/carlb/.config/i3
-	config
-3
-d/home/carlb/.config
-	i3
-12
 d/home/carlb
-	.config
-7
-d/home/carlb/.config
-	wal
-23
-d/home/carlb/.config/wal
-	templates
-1
-d/home/carlb/.config/wal/templates
 	..
 0
-d/home/carlb/.config/wal
-	templates
-1
-d/home/carlb/.config
-	wal
-23
-d/home/carlb/.config/wal
-	setwal.sh
+d/home/carlb/Downloads
+	..
+0
+d/home/carlb
+	dev
+34
+d/home/carlb/dev
+	build
 2
-d/home/carlb/.config
-	wal
+d/home/carlb/dev/build
+	..
+0
+d/home/carlb/dev
+	c
+4
+d/home/carlb/dev/c
+	..
+0
+d/home/carlb/dev
+	packettracer
+9
+d/home/carlb/dev/packettracer
+	packettracer.tar.gz
+1
+d/home/carlb/eda482
+	graphicsdisplay
+5
+d/home/carlb/eda482/graphicsdisplay
+	..
+0
+d/home/carlb/eda482
+	graphicsdisplay
+5
+d/home/carlb/eda482/graphicsdisplay
+	..
+0
+d/home/carlb
+	dotfiles
+36
+d/home/carlb/dotfiles
+	system
+12
+d/home/carlb/dotfiles/system
+	etc
+1
+d/home/carlb/dotfiles/system/etc
+	..
+0
+d/home/carlb/dotfiles/system
+	etc
+1
+d/home/carlb/dotfiles
+	system
+12
+d/home/carlb
+	dotfiles
+36
+d/home/carlb/dotfiles
+	system
+12
+d/home/carlb/dotfiles/system
+	etc
+1
+d/home/carlb/dotfiles
+	system
+12
+d/home/carlb/dotfiles/system
+	usr
+2
+d/home/carlb/dotfiles/system/usr
+	lib
+1
+d/home/carlb/dotfiles/system/usr/lib
+	initcpio
+1
+d/home/carlb/dotfiles/system/usr/lib/initcpio
+	hooks
+1
+d/home/carlb/dotfiles/system/usr/lib/initcpio/hooks
+	zfs
+1
+d/home/carlb
+	eda482
+38
+d/home/carlb/eda482
+	graphicsdisplay
+5
+d/home/carlb/eda482/graphicsdisplay
+	ascii.c
+2
+d/home/carlb/eda482
+	irqhandler
+6
+d/home/carlb/eda482/irqhandler
+	..
+0
+d/home/carlb/eda482
+	irqhandler
+6
+d/home/carlb/eda482/irqhandler
+	..
+0
+d/home/carlb/eda482
+	irqhandler
+6
+d/home/carlb/eda482/irqhandler
+	..
+0
+d/home/carlb/eda482
+	irqhandler
+6
+d/home/carlb/eda482/irqhandler
+	..
+0
+d/home/carlb/eda482
+	irqhandler
+6
+d/home/carlb/eda482/irqhandler
+	..
+0
+d/home/carlb/eda482
+	irqhandler
+6
+d/home/carlb/eda482/irqhandler
+	..
+0
+d/home/carlb/eda482
+	irqhandler
+6
+d/home/carlb/eda482/irqhandler
+	..
+0
+d/home/carlb
+	Downloads
+32
+d/home/carlb/Downloads
+	JavaFX Special Effects_ Taking Java RIA to the Extreme with Animation, Multimedia, and Game Elements [Jordan 2009-12-16].pdf
+16
+d/home/carlb/eda482
+	irqhandler
+6
+d/home/carlb/eda482/irqhandler
+	ascii.c
+2
+d/home/carlb/eda482/lab5
+	..
+0
+d/home/carlb
+	..
+0
+d/home/carlb/eda482/lab5
+	..
+0
+d/home/carlb
+	Downloads
+34
+d/home/carlb/Downloads
+	Top_Down_Survivor.zip
 23
 d/home/carlb
-	.cache
-5
-d/home/carlb/.cache
-	wal
+	eda482
+16
+d/home/carlb/eda482
+	lab5
+8
+d/home/carlb/eda482/lab5
+	survivor-shoot_rifle_0.xbm
 18
-d/home/carlb/.cache/wal
-	colors.css
-3
-d/home/carlb/git/mm_sony_tetra_3.14/NFC
-	kernel_config.tar.gz
-3
-d/home/carlb/git/mm_sony_tetra_3.14
-	NFC
-3
-d/home/carlb/git/mm_sony_tetra_3.14/NFC
-	kernel_config.tar.gz
-3
-d/home/carlb/git/mm_sony_tetra_3.14
+d/home/carlb/Downloads/Top_Down_Survivor/rifle/reload
 	..
 0
-d/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc
+d/home/carlb/Downloads/Top_Down_Survivor/rifle
+	shoot
+5
+d/home/carlb/Downloads/Top_Down_Survivor/rifle/shoot
 	..
 0
+d/home/carlb/Downloads/Top_Down_Survivor/rifle
+	shoot
+5
+d/home/carlb/Downloads/Top_Down_Survivor
+	rifle
+5
+d/home/carlb/Downloads/Top_Down_Survivor/rifle
+	shoot
+5
+d/home/carlb/Downloads/Top_Down_Survivor/rifle/shoot
+	..
+0
+d/home/carlb/Downloads/Top_Down_Survivor/rifle
+	shoot
+5
+d/home/carlb/Downloads/Top_Down_Survivor
+	rifle
+5
+d/home/carlb/Downloads/Top_Down_Survivor/rifle
+	shoot
+5
+d/home/carlb/Downloads/Top_Down_Survivor/rifle/shoot
+	survivor-shoot_rifle_0_45.xbm
+5
 d/home/carlb
 	..
 0
-d/home/carlb/dev/exercism/java
+d/home/carlb/Downloads
 	..
 0
 d/home/carlb
+	Downloads
+35
+d/home
+	carlb
+2
+d/
+	usr
+18
+d/usr
+	share
+12
+d/usr/share
+	fonts
+39
+d/usr/share/fonts
+	OTF
+3
+d/usr/share/fonts/OTF
 	..
 0
-d/home/carlb/dev/exercism/java
+d/home/carlb
+	Downloads
+36
+d/home/carlb/Downloads
+	36024679836_624aa418db_o.jpg
+37
+d/home/carlb
+	..
+0
+d/home
+	carlb
+3
+d/
+	sdcard
+1
+d/sdcard
+	DCIM
+2
+d/sdcard/DCIM
+	101CANON
+2
+d/sdcard/DCIM/101CANON
+	IMG_9817.CR2
+36
+d/home/carlb/.config/darktable
 	..
 0
 
 # Right window history (oldest to newest):
-D/home/carlb/Android/Sdk/extras/android
-	m2repository
-1
-D/home/carlb/Android/Sdk/extras/android/m2repository
+D/home/carlb
 	..
 0
-D/home/carlb/Android/Sdk/extras/android
-	m2repository
-1
-D/home/carlb/Android/Sdk/extras
-	android
-1
-D/home/carlb/Android/Sdk
-	extras
-1
-D/home/carlb/Android
-	Sdk
-1
-D/home/carlb
-	Android
-23
-D/home/carlb/Android
-	..
-0
-D/home/carlb
-	Downloads
-29
 D/home/carlb/Downloads
-	JavaFX Special Effects_ Taking Java RIA to the Extreme with Animation, Multimedia, and Game Elements [Jordan 2009-12-16].pdf
-25
-D/home/carlb/git
 	..
 0
 D/home/carlb
-	Downloads
-37
-D/home/carlb/Downloads
-	laboration1.java
-15
-D/home/carlb
-	.config
-7
-D/home/carlb/.config
-	wal
-23
-D/home/carlb/.config/wal
-	templates
+	wireshark
+45
+D/home/carlb/wireshark
+	lab1
 1
-D/home/carlb/.config/wal/templates
+D/home/carlb/wireshark/lab1
 	..
 0
-D/home/carlb/.config/wal
-	setwal.sh
-2
-D/home/carlb/.config
-	wal
-23
+D/home/carlb/eda482
+	lab5
+8
+D/home/carlb/eda482/lab5
+	startup.c
+10
 D/home/carlb
 	.local
-13
+3
 D/home/carlb/.local
 	share
 1
 D/home/carlb/.local/share
-	konsole
-6
-D/home/carlb/.local/share/konsole
-	colors-konsole.colorscheme
+	icons
+1
+D/home/carlb/.local
+	share
+1
+D/home/carlb
+	.local
 3
-D/home/carlb/git/mm_sony_tetra_3.14/NFC
+D/home/carlb/.local
+	share
+1
+D/home/carlb/.local/share
+	applications
+2
+D/home/carlb/.local/share/applications
 	..
 0
-D/home/carlb/git/mm_sony_tetra_3.14
-	NFC
+D/home/carlb/.local/share
+	konsole
+7
+D/home/carlb/.local/share/konsole
+	..
+0
+D/home/carlb/.local/share
+	RecentDocuments
+11
+D/home/carlb/.local/share/RecentDocuments
+	..
+0
+D/home/carlb/.local/share
+	RecentDocuments
+11
+D/home/carlb/.local
+	share
+1
+D/home/carlb
+	.org.scenicview.ScenicView
+21
+D/home/carlb/eda482/lab5
+	ball.h
+1
+D/home/carlb/eda482
+	lab5
+8
+D/home/carlb
+	.local
 3
-D/home/carlb/git
-	mm_sony_tetra_3.14
+D/home/carlb/.local
+	share
+1
+D/home/carlb/.local/share
+	nvim
+10
+D/home/carlb/.local/share/nvim
+	swap
 4
+D/home/carlb/.local/share/nvim/swap
+	..
+0
+D/home/carlb/.local/share/nvim
+	plugged
+2
+D/home/carlb/.local/share/nvim/plugged
+	wal.vim
+19
+D/home/carlb/.local/share/nvim/plugged/wal.vim
+	colors
+3
+D/home/carlb/.local/share/nvim/plugged/wal.vim/colors
+	wal.vim
+1
 D/home/carlb
 	Downloads
-29
+16
 D/home/carlb/Downloads
-	zfs-snap-manager-0.2.0.zip
-25
-D/home/carlb/git/mm_sony_tetra_3.14/NFC
-	tetra_nfc
+	Top_Down_Survivor
+1
+D/home/carlb/Downloads/Top_Down_Survivor
+	rifle
 3
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc
-	..
-0
-D/home/carlb/git/mm_sony_tetra_3.14/NFC
-	tetra_nfc
-1
-D/home/carlb/git/mm_sony_tetra_3.14
-	Documentation
-2
-D/home/carlb/git/mm_sony_tetra_3.14/Documentation
-	..
-0
-D/home/carlb/git/mm_sony_tetra_3.14
-	android
+D/home/carlb/Downloads/Top_Down_Survivor/rifle
+	shoot
+5
+D/home/carlb/Downloads/Top_Down_Survivor/rifle/shoot
+	survivor-shoot_rifle_0.xbm
 4
-D/home/carlb/git/mm_sony_tetra_3.14/android
+D/home/carlb/Downloads/Top_Down_Survivor/rifle/reload
 	..
 0
-D/home/carlb/git/mm_sony_tetra_3.14
-	android
-4
-D/home/carlb/git/mm_sony_tetra_3.14/android
-	configs
+D/home/carlb/Downloads/Top_Down_Survivor/rifle
+	reload
+3
+D/home/carlb/Downloads/Top_Down_Survivor
+	rifle
+3
+D/home/carlb/Downloads
+	Top_Down_Survivor
 1
-D/home/carlb/git/mm_sony_tetra_3.14/android/configs
-	..
-0
-D/home/carlb/git/mm_sony_tetra_3.14/android
-	configs
-1
-D/home/carlb/git/mm_sony_tetra_3.14
-	kernel
+D/home/carlb
+	eda482
 14
-D/home/carlb/git/mm_sony_tetra_3.14/kernel
-	..
-0
-D/home/carlb/git/mm_sony_tetra_3.14
-	arch
-5
-D/home/carlb/git/mm_sony_tetra_3.14/arch
-	arm64
-4
-D/home/carlb/git/mm_sony_tetra_3.14/arch/arm64
-	configs
+D/home/carlb/eda482
+	lab5
+8
+D/home/carlb/eda482/lab5
+	ball.h
 2
-D/home/carlb/git/mm_sony_tetra_3.14/arch/arm64/configs
-	defconfig
-1
-D/home/carlb/git/mm_sony_tetra_3.14
-	NFC
-3
-D/home/carlb/git/mm_sony_tetra_3.14/NFC
-	tetra_stock_defconfig
-5
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc
-	system
-2
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system
-	app
-1
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/app
-	NfcNci
-1
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/app/NfcNci
-	lib
-1
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/app/NfcNci/lib
-	arm
-1
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/app/NfcNci/lib/arm
-	..
-0
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/app/NfcNci/lib
-	arm
-1
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/app/NfcNci
-	lib
-1
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/app
-	NfcNci
-1
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system
-	etc
-2
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/etc
-	permissions
-1
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/etc/permissions
-	com.android.nfc_extras.xml
-3
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/etc
-	permissions
-1
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system
-	framework
-3
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/framework
-	..
-0
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system
-	lib
-4
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/lib
-	hw
-1
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/lib/hw
-	nfc_nci.bcm2079x.default.so
-1
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/lib
-	hw
-1
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system
-	priv-app
-5
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/priv-app
-	NfcEnabler
-1
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/priv-app/NfcEnabler
-	..
-0
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/priv-app
-	NfcWatchface
-2
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/priv-app/NfcWatchface
-	..
-0
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system/priv-app
-	NfcWatchface
-2
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/system
-	priv-app
-5
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc
-	system
-2
-D/home/carlb/git/mm_sony_tetra_3.14/NFC
-	tetra_nfc
-1
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc
-	META-INF
-1
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/META-INF
-	com
-1
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/META-INF/com
-	google
-1
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/META-INF/com/google
-	android
-1
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/META-INF/com/google/android
-	updater-script
-2
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/META-INF/com/google
-	android
-1
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/META-INF/com
-	google
-1
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/META-INF
-	com
-1
-D/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc
-	META-INF
-1
 D/home/carlb
-	.oh-my-zsh
-17
-D/home/carlb/.oh-my-zsh
-	plugins
-6
-D/home/carlb/.oh-my-zsh/plugins
-	zeus
-47
-D/home/carlb/dev/exercism/java
-	armstrong-numbers
+	.config
+42
+D/home/carlb/.config
+	systemd
+28
+D/home/carlb/.config/systemd
+	user
 1
-D/home/carlb/dev/exercism/java/armstrong-numbers
-	src
-1
-D/home/carlb/dev/exercism/java/armstrong-numbers/src
-	test
-2
-D/home/carlb/dev/exercism/java/armstrong-numbers/src/test
-	java
-1
-D/home/carlb/dev/exercism/java/armstrong-numbers/src/test/java
-	ArmstrongNumbersTest.java
-1
+D/home/carlb/.config/systemd/user
+	..
+0
 D/home/carlb
-	..
-0
-D/home/carlb/dev/exercism/java
-	armstrong-numbers
-1
-D/home/carlb/dev/exercism/java/armstrong-numbers
-	build
+	.config
+42
+D/home/carlb/.config
+	pavucontrol.ini
+30
+D/home/carlb
+	.emacs.d
+4
+D/home/carlb/.emacs.d
+	assets
 2
-D/home/carlb/dev/exercism/java/armstrong-numbers/build
+D/home/carlb/.emacs.d/assets
 	..
 0
-D/home/carlb/dev/exercism/java/armstrong-numbers
-	src
+D/home/carlb/.emacs.d
+	core
 3
-D/home/carlb/dev/exercism/java/armstrong-numbers/src
-	test
+D/home/carlb/.emacs.d/core
+	..
+0
+D/home/carlb/.emacs.d
+	layers
+5
+D/home/carlb/.emacs.d/layers
+	+themes
+13
+D/home/carlb/.emacs.d/layers/+themes
+	colors
+1
+D/home/carlb/.emacs.d/layers/+themes/colors
+	img
+1
+D/home/carlb/.emacs.d/layers/+themes/colors/img
+	..
+0
+D/home/carlb/.emacs.d/layers/+themes/colors
+	local
 2
-D/home/carlb/dev/exercism/java/armstrong-numbers/src/test
-	java
+D/home/carlb/.emacs.d/layers/+themes/colors/local
+	..
+0
+D/home/carlb/.emacs.d/layers/+themes/colors
+	local
+2
+D/home/carlb/.emacs.d/layers/+themes
+	theming
+3
+D/home/carlb/.emacs.d/layers/+themes/theming
+	..
+0
+D/home/carlb/.emacs.d/layers/+themes
+	themes-megapack
+2
+D/home/carlb/.emacs.d/layers/+themes/themes-megapack
+	..
+0
+D/home/carlb/.emacs.d/layers/+themes
+	themes-megapack
+2
+D/home/carlb/.emacs.d/layers
+	+themes
+13
+D/home/carlb/.emacs.d/layers/+themes
+	themes-megapack
+2
+D/home/carlb/.emacs.d/layers
+	+themes
+13
+D/home/carlb/.emacs.d
+	themes
+12
+D/home/carlb/.emacs.d/themes
+	xresources-theme.el
 1
-D/home/carlb/dev/exercism/java/armstrong-numbers/src/test/java
-	ArmstrongNumbersTest.java
+D/home/carlb/.emacs.d
+	themes
+11
+D/home/carlb/.emacs.d/themes
+	xresources-theme.el
 1
+D/home/carlb/.emacs.d
+	core
+3
+D/home/carlb/.emacs.d/core
+	aprilfool
+1
+D/home/carlb/.emacs.d/core/aprilfool
+	..
+0
+D/home/carlb/.emacs.d/core
+	libs
+4
+D/home/carlb/.emacs.d/core/libs
+	spacemacs-theme
+1
+D/home/carlb/.emacs.d/core/libs/spacemacs-theme
+	..
+0
+D/home/carlb
+	Downloads
+39
+D/home/carlb/Downloads
+	FiraCode-Regular-Symbol.otf
+7
+D/home/carlb
+	pictures
+39
+D/home/carlb/pictures
+	wallpapers
+2
+D/home/carlb/pictures/wallpapers
+	trees.jpg
+3
+D/home/carlb
+	DFoto
+53
+D/home/carlb/DFoto
+	2017-05-06_spheldag
+1
+D/home/carlb/DFoto/2017-05-06_spheldag
+	..
+0
+D/home/carlb/DFoto
+	2017-05-06_spheldag
+1
+D/home/carlb/DFoto/2017-05-06_spheldag
+	..
+0
+D/home/carlb/DFoto
+	2017-05-06_spheldag
+1
+D/home/carlb/DFoto/2017-05-06_spheldag
+	IMG_9817.CR2
+1
+D/home/carlb/.config/darktable
+	..
+0
+D/home/carlb/.config
+	darktable
+29
+D/home/carlb
+	DFoto
+34
+D/home/carlb/DFoto
+	2017-05-06_spheldag
+1
+D/home/carlb/DFoto/2017-05-06_spheldag
+	darktable_exported
+1
+D/home/carlb/DFoto/2017-05-06_spheldag/darktable_exported
+	IMG_9832.jpg
+11
 
 # Command line history (oldest to newest):
+:Q
 :mkdir system
 :mkdir etc
 :mkdir X11
@@ -656,15 +661,12 @@ D/home/carlb/dev/exercism/java/armstrong-numbers/src/test/java
 :mkdir kitty
 :mkdir polybar
 :mkdir termite
-:vifm
 :mkdir vifm
 :mkdir neofetch
 :mkdir synaptics
 :mkdir .config
-:wq
 :w
 :mkdir tenta
-:sort
 :vifmrc
 :mkdir tetra_nfc
 :nvim
@@ -674,9 +676,46 @@ D/home/carlb/dev/exercism/java/armstrong-numbers/src/test/java
 :q:q
 :find services.jar
 :find system
+:mkdir 
+:mkdir eda482
+:mkdir övningar
+:wq
+:mkdir eterm8
+:vifm
+:settings
+:ln
+:mkdir kap1
+:touch windowinfo
+:chmod +x
+:mkdir codelite
+:sudo
+:mkdir packettracer
+:mkdir usr
+:mkdir lib
+:mkdir initcpio
+:mkdir hooks
+:nvim zfs
+:touch zfs
+:mkdir wireshark
+:mkdir lab1
+:mkdir systemd
+:mkdir user
+:mkdir themes
+:touch xresources-theme.el
+:vimrc
+:config
+:unzip
+:unzip %f
+:!unzip
+:sort
+:mkdir wallpapers
+:rename
+:mkdir DFoto
+:mkdir 2017-05-06 Spheldag
 :q
 
 # Search history (oldest to newest):
+/pic
 /tetra
 /pix
 /D
@@ -684,12 +723,27 @@ D/home/carlb/dev/exercism/java/armstrong-numbers/src/test/java
 /newgame
 /hh
 /us
-/init
 /lightdm
 /sceni
 /scen
 /scenic
 /defcon
+/initc
+/init
+/Drive
+/drive
+/ed
+/eda
+/config
+/spacema
+/emacs
+/downl
+/Fira
+/usr
+/font
+/down
+/pictu
+/dfoto
 
 # Prompt history (oldest to newest):
 pMt_Fuji_Blurred.jpg
@@ -700,10 +754,15 @@ pnewgame.png
 pexitgame.png
 pfox2.jpg
 pfox2.colorscheme
+pgreen.jpg
+pdenmark.jpg
+ptrees.jpg
+p2017-05-06_spheldag
 
 # Local filter history (oldest to newest):
 
 # Registers:
+""/home/carlb/.local/share/vifm/Trash/001_IMG_9817_01.jpg
 
 # Directory stack (oldest to newest):
 
@@ -1644,6 +1703,30 @@ t/home/carlb/.local/share/vifm/Trash/000_upterm-0.4.3-x86_64-linux.AppImage
 	/home/carlb/Downloads/upterm-0.4.3-x86_64-linux.AppImage
 t/home/carlb/.local/share/vifm/Trash/000_datagrip-2017.3.4.tar.gz
 	/home/carlb/Downloads/datagrip-2017.3.4.tar.gz
+t/home/carlb/.local/share/vifm/Trash/000_kap1
+	/home/carlb/Downloads/eterm8/kap1
+t/home/carlb/.local/share/vifm/Trash/000_graphics.zip
+	/home/carlb/eda482/graphics.zip
+t/home/carlb/.local/share/vifm/Trash/000_graphics3.zip
+	/home/carlb/eda482/graphics3.zip
+t/home/carlb/.local/share/vifm/Trash/000_graphicss.zip
+	/home/carlb/eda482/graphicss.zip
+t/home/carlb/.local/share/vifm/Trash/000_lib
+	/home/carlb/dotfiles/system/lib
+t/home/carlb/.local/share/vifm/Trash/000_irqhandler.project
+	/home/carlb/eda482/lab5/irqhandler.project
+t/home/carlb/.local/share/vifm/Trash/000_irqhandler.mk
+	/home/carlb/eda482/lab5/irqhandler.mk
+t/home/carlb/.local/share/vifm/Trash/000_irqhandler.txt
+	/home/carlb/eda482/lab5/irqhandler.txt
+t/home/carlb/.local/share/vifm/Trash/000_test.s
+	/home/carlb/eda482/lab5/test.s
+t/home/carlb/.local/share/vifm/Trash/000_2017-05-06
+	/home/carlb/DFoto/2017-05-06
+t/home/carlb/.local/share/vifm/Trash/000_IMG_9844.jpg
+	/home/carlb/DFoto/2017-05-06_spheldag/darktable_exported/IMG_9844.jpg
+t/home/carlb/.local/share/vifm/Trash/000_IMG_9817_01.jpg
+	/home/carlb/DFoto/2017-05-06_spheldag/darktable_exported/IMG_9817_01.jpg
 
 # State:
 f

@@ -6,8 +6,20 @@ case "$1" in
         case "$2" in
             MUTE)
                 logger 'MuteButton pressed'
-                /usr/bin/amixer set Speaker on
-                /usr/bin/amixer set Headphone on
+                #/usr/bin/amixer set Speaker on
+                #/usr/bin/amixer set Headphone on
+                /usr/bin/amixer set Master on
+                ;;
+            *)
+                logger "ACPI action undefined: $2"
+                ;;
+        esac
+        ;;
+    button/volumeup)
+        case "$2" in
+            VOLUP)
+                logger 'VolumeUp pressed'
+                /usr/bin/pulsemixer --change-volume +5
                 ;;
             *)
                 logger "ACPI action undefined: $2"

@@ -11,7 +11,7 @@
 " If you would like to use another vi clone such as Elvis or Vile
 " you will need to change this setting.
 
-set vicmd=nvim
+set vicmd=emacsclient\ -t
 " set vicmd=elvis\ -G\ termcap
 " set vicmd=vile
 
@@ -143,6 +143,7 @@ command! mkcd :mkdir %a | cd %a
 command! vgrep vim "+grep %a"
 command! reload :write | restart
 command! feh feh
+command! ln sudo ln -s %d/%f %D
 
 " ------------------------------------------------------------------------------
 

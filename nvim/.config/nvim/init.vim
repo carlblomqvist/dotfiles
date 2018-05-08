@@ -68,7 +68,8 @@ let mapleader = "\<Space>"
 
 " Deoplete Settings
 call deoplete#enable()
-call deoplete#custom#set('ultisnips', 'matchers', ['matcher_fuzzy'])
+"call deoplete#custom#set('ultisnips', 'matchers', ['matcher_fuzzy'])
+call deoplete#custom#source('ultisnips', 'matchers', ['matcher_fuzzy'])
 let g:deoplete#enable_at_startup = 1
 
 " Deoplete Tab Completion
@@ -84,7 +85,7 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 call camelcasemotion#CreateMotionMappings('<leader>')
 
 " Use system clipboard
-"set clipboard=unnamedplus
+set clipboard=unnamedplus
 
 " Enable highlight search and smartcase
 set hlsearch
@@ -168,13 +169,15 @@ nmap gb <Plug>(place-insert-multiple)
 
 let g:python3_host_prog = '/usr/bin/python3'
 
+set termguicolors
+
 " Compile Java in vim
 autocmd Filetype java set makeprg=javac\ %
 set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
 map <F9> :make<Return> :sleep 1<Return> :copen<Return>
 map <F10> :cprevious<Return>
 map <F11> :cnext<Return>
-map <F12> :!javac %:p<Return> :!java %:r<Return>
+map <F12> :!gcc -o %:r %:p<Return> :!./%:r<Return>
 
 " Save files with root privliges.
 cmap w!! w !sudo tee % >/dev/null

@@ -22,8 +22,30 @@ font pango:Monaco 8
 # Float JavaFX
 #for_window [title="JavaFX"] floating enable resize set 800 600
 
-# Resize File Upload in Firefox
+# Float rules
 for_window [window_role="GtkFileChooserDialog"] floating enable resize set 1000 1000 move absolute position 100 px 100 px
+for_window [class="Blueman-manager"] floating enable
+for_window [class="XTerm"] floating enable resize set 1 1 move absolute position 100 px 100 px
+for_window [class="Simserver"] floating enable resize set 120 120 move absolute position 100 px 100 px
+
+# Workspace rules
+for_window [class="TelegramDesktop"] move container to workspace telegram
+for_window [class="Codelite"] move container to workspace codelite
+for_window [class="Simserver"] move container to workspace codelite
+
+# Scratchpad Settings
+for_window [class="scratchpad"] floating enable
+for_window [class="scratchpad"] resize set 1800 1200 
+for_window [class="scratchpad"] move scratchpad
+for_window [class="scratchpad"] border pixel 5
+exec --no-startup-id kitty --class=scratchpad
+
+# Yttrerymdden SSH Settings
+for_window [class="yttressh"] floating enable
+for_window [class="yttressh"] resize set 1800 1200 
+for_window [class="yttressh"] move scratchpad
+for_window [class="yttressh"] border pixel 5
+exec --no-startup-id kitty --class=yttressh ssh -p 50000 frihetskampen.ddns.net
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -41,7 +63,7 @@ set_from_resource $fg i3wm.color7 #f0f0f0
 set_from_resource $bg i3wm.color2 #f0f0f0
 
 # class                 border  backgr. text indicator child_border
-client.focused          $bg     $bg     $fg  $bg       $bg
+client.focused          $fg     $bg     $fg  $bg       $fg
 client.focused_inactive $bg     $bg     $fg  $bg       $bg
 client.unfocused        $bg     $bg     $fg  $bg       $bg
 client.urgent           $bg     $bg     $fg  $bg       $bg
@@ -55,7 +77,7 @@ gaps outer 7
 
 # Window borders
 new_window pixel 0
-hide_edge_borders both
+#hide_edge_borders both
 
 # take a screenshot of a screen region and copy it to a clipboard
 bindsym --release $mod+Shift+p exec /home/carlb/.config/i3/screenshot.sh
@@ -66,30 +88,57 @@ bindsym --release $mod+Print exec "scregcp /home/carlb/pictures/screenshots/"
 # Lock screen
 bindsym $mod+Control+L exec /home/carlb/.config/i3/lockscreen.sh
 
+# Get windowinfo
+bindsym $mod+i exec /home/carlb/.config/i3/windowinfo
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
 #bindsym $mod+Return exec st -f "Monaco:size=12"
-bindsym $mod+Return exec konsole
+#bindsym $mod+Return exec konsole
+bindsym $mod+Return exec kitty
+
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
+# get rid of shit
+#bindsym $mod+m shit show;
+
+# scratchpad keybinds
+bindsym $mod+u [class="scratchpad"] scratchpad show; [class="scratchpad"] move position center
+
+# yttressh keybinds
+bindsym $mod+y [class="yttressh"] scratchpad show; [class="yttressh"] move position center
 # start dmenu (a program launcher)
 # bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 #bindsym $mod+d exec --no-startup-id i3-dmenu-desktop 
-bindsym $mod+d exec dmenu_run -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg"
+#bindsym $mod+d exec dmenu_run -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg"
+bindsym $mod+d exec rofi -show run
+
+# switch to workspace
+bindsym $mod+section exec workspacer set
+bindsym $mod+Control+section exec workspacer swap
+bindsym $mod+Shift+section exec workspacer move
+
+# show focus
+bindsym $mod+minus exec i3-msg border pixel 2
+bindsym --release $mod+minus exec i3-msg border pixel 0
 
 # change focus
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+bindsym $mod+h exec i3-msg border pixel 2; focus left
+bindsym $mod+j exec i3-msg border pixel 2; focus down
+bindsym $mod+k exec i3-msg border pixel 2; focus up
+bindsym $mod+l exec i3-msg border pixel 2; focus right
+bindsym --release $mod+h exec i3-msg border pixel 0
+bindsym --release $mod+j exec i3-msg border pixel 0
+bindsym --release $mod+k exec i3-msg border pixel 0
+bindsym --release $mod+l exec i3-msg border pixel 0
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -98,10 +147,14 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $mod+Shift+h exec i3-msg border pixel 2; move left
+bindsym $mod+Shift+j exec i3-msg border pixel 2; move down
+bindsym $mod+Shift+k exec i3-msg border pixel 2; move up
+bindsym $mod+Shift+l exec i3-msg border pixel 2; move right
+bindsym --release $mod+Shift+h exec i3-msg border pixel 0
+bindsym --release $mod+Shift+j exec i3-msg border pixel 0
+bindsym --release $mod+Shift+k exec i3-msg border pixel 0
+bindsym --release $mod+Shift+l exec i3-msg border pixel 0
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -203,9 +256,10 @@ bindsym $mod+r mode "resize"
 #}
 
 # -- EXEC -- 
-#exec --no-startup-id wal -R
-#exec --no-startup-id exec compton -bc --unredir-if-possible --xrender-sync-fence --xrender-sync --config ~/.config/compton/config
-exec --no-startup-id exec compton -bc --config ~/.config/compton/config
+exec --no-startup-id wal -R
+#exec --no-startup-id xrandr --dpi 144
+#exec --no-startup-id exec compton -c -bc --unredir-if-possible --xrender-sync-fence --xrender-sync --config ~/.config/compton/config
+exec --no-startup-id exec compton -bc --unredir-if-possible --xrender-sync-fence --xrender-sync --config ~/.config/compton/config
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #exec --no-startup-id exec feh --bg-scale ~/pictures/Mt_Fuji.jpg 
 exec konsole
@@ -214,4 +268,4 @@ exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec_always setxkbmap `cat .Xkbmap`
 exec --no-startup-id touchegg
-#exec --no-startup-id synergyc --daemon --no-restart 192.168.1.2
+exec --no-startup-id synergyc --daemon --no-restart 192.168.1.2

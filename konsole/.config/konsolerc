@@ -6,11 +6,13 @@ Favorites=default.profile
 
 [KonsoleWindow]
 SaveGeometryOnExit=false
+ShowAppNameOnTitleBar=false
 ShowMenuBarByDefault=false
+ShowWindowTitleOnTitleBar=true
 
 [MainWindow]
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAACnwAAAamAAAABAAAAAQAAAAIAAAACPwAAAAA
+State=AAAA/wAAAAD9AAAAAAAABQYAAAZKAAAABAAAAAQAAAAIAAAACPwAAAAA
 ToolBarsMovable=Disabled
 
 [TabBar]
