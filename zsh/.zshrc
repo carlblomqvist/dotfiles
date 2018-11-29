@@ -8,16 +8,33 @@ export EDITOR=emacsclient
 alias e=emacsclient
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 
-bindkey -v
-PS1+='${VIMODE}'
-#   '$' for normal insert mode
-#   a big red 'I' for command mode - to me this is 'NOT insert' because red
-function zle-line-init zle-keymap-select {
-    DOLLAR='%B%F{green}$%f%b '
-    GIANT_I='%B%F{red}I%f%b '
-    VIMODE="${${KEYMAP/vicmd/$GIANT_I}/(main|viins)/$DOLLAR}"
-    zle reset-prompt
+# Powerline
+powerline-daemon -q
+. /usr/lib/python3.7/site-packages/powerline/bindings/zsh/powerline.zsh
+
+# Set keyboard repeat rate
+xset r rate 180 30
+
+vicd()
+{
+    local dst="$(command vifm --choose-dir -)"
+    if [ -z "$dst" ]; then
+        echo 'Directory picking cancelled/failed'
+        return 1
+    fi
+    cd "$dst"
 }
+
+bindkey -v
+# PS1+='${VIMODE}'
+# #   '$' for normal insert mode
+# #   a big red 'I' for command mode - to me this is 'NOT insert' because red
+# function zle-line-init zle-keymap-select {
+#     DOLLAR='%B%F{green}$%f%b '
+#     GIANT_I='%B%F{red}I%f%b '
+#     VIMODE="${${KEYMAP/vicmd/$GIANT_I}/(main|viins)/$DOLLAR}"
+#     zle reset-prompt
+# }
 zle -N zle-line-init
 zle -N zle-keymap-select
 
@@ -26,7 +43,10 @@ eval $(thefuck --alias)
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+#ZSH_THEME="robbyrussell"
+export LANG="sv_SE.UTF-8"
+#echo 'source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme' >> ~/.zshrc
+ZSH_THEME="powerlevel9k/powerlevel9k"
 
 autoload zmv
 
@@ -124,3 +144,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias load="sudo md407 load debug/code.s19"
+alias go="sudo md407 go"
+alias icat="kitty +kitten icat"

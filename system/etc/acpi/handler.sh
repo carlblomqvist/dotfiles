@@ -8,7 +8,7 @@ case "$1" in
                 logger 'MuteButton pressed'
                 #/usr/bin/amixer set Speaker on
                 #/usr/bin/amixer set Headphone on
-                /usr/bin/amixer set Master on
+                #/usr/bin/sudo -u carlb amixer set Master toggle
                 ;;
             *)
                 logger "ACPI action undefined: $2"
@@ -19,7 +19,18 @@ case "$1" in
         case "$2" in
             VOLUP)
                 logger 'VolumeUp pressed'
-                /usr/bin/pulsemixer --change-volume +5
+                /usr/bin/sudo -u carlb amixer set Master 5+
+                ;;
+            *)
+                logger "ACPI action undefined: $2"
+                ;;
+        esac
+        ;;
+    button/volumedown)
+        case "$2" in
+            VOLDN)
+                logger 'VolumeDown pressed'
+                /usr/bin/sudo -u carlb amixer set Master 5-
                 ;;
             *)
                 logger "ACPI action undefined: $2"
