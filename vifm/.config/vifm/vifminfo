@@ -30,75 +30,6 @@ l11,2
 r11,2
 
 # Left window history (oldest to newest):
-d/home/carlb/eterm8
-	md407-templates-linux.zip
-4
-d/home/carlb
-	dev
-33
-d/home
-	carlb
-2
-d/
-	lib
-6
-d/lib
-	..
-0
-d/
-	usr
-18
-d/usr
-	share
-11
-d/usr/share
-	classes
-23
-d/home/carlb/Downloads
-	..
-0
-d/home/carlb
-	Downloads
-29
-d/home
-	carlb
-2
-d/home/carlb
-	Downloads
-29
-d/home/carlb/Downloads
-	workspacer
-28
-d/home/carlb/eterm8/kap1
-	..
-0
-d/home/carlb
-	..
-0
-d/home/carlb/Downloads
-	..
-0
-d/home/carlb
-	dev
-34
-d/home/carlb/dev
-	build
-2
-d/home/carlb/dev/build
-	..
-0
-d/home/carlb/dev
-	c
-4
-d/home/carlb/dev/c
-	..
-0
-d/home/carlb/dev
-	packettracer
-9
-d/home/carlb/dev/packettracer
-	packettracer.tar.gz
-1
 d/home/carlb/eda482
 	graphicsdisplay
 5
@@ -330,128 +261,77 @@ d/sdcard/DCIM/101CANON
 d/home/carlb/.config/darktable
 	..
 0
+d/home/carlb
+	pictures
+42
+d/home/carlb/pictures
+	wallpapers
+2
+d/home/carlb/pictures/wallpapers
+	maskros.jpg
+6
+d/home/carlb/projects/org-mode
+	..
+0
+d/home/carlb
+	Downloads
+36
+d/home/carlb/Downloads
+	Lab1.class
+26
+d/home/carlb
+	Downloads
+13
+d/home/carlb/Downloads
+	Förberedelse LAB2.pdf
+17
+d/home/carlb
+	Downloads
+36
+d/home/carlb/Downloads
+	Preparation LAB2.pdf
+39
+d/home/carlb
+	wireshark
+36
+d/home/carlb/wireshark
+	lab2
+2
+d/home/carlb/wireshark/lab2
+	preparation.org
+1
+d/home/carlb/wireshark
+	lab2
+2
+d/home/carlb
+	wireshark
+36
+d/home
+	carlb
+3
+d/home/carlb
+	Downloads
+34
+d/home/carlb/Downloads
+	SW3_6.0.1_M1D64T_v2.zip
+30
+d/home/carlb
+	..
+0
+d/sdcard
+	DCIM
+2
+d/sdcard/DCIM
+	101CANON
+2
+d/sdcard/DCIM/101CANON
+	IMG_9849.CR2
+27
+d/home/carlb
+	..
+0
 
 # Right window history (oldest to newest):
-D/home/carlb
-	..
-0
-D/home/carlb/Downloads
-	..
-0
-D/home/carlb
-	wireshark
-45
-D/home/carlb/wireshark
-	lab1
-1
-D/home/carlb/wireshark/lab1
-	..
-0
-D/home/carlb/eda482
-	lab5
-8
-D/home/carlb/eda482/lab5
-	startup.c
-10
-D/home/carlb
-	.local
-3
-D/home/carlb/.local
-	share
-1
-D/home/carlb/.local/share
-	icons
-1
-D/home/carlb/.local
-	share
-1
-D/home/carlb
-	.local
-3
-D/home/carlb/.local
-	share
-1
-D/home/carlb/.local/share
-	applications
-2
-D/home/carlb/.local/share/applications
-	..
-0
-D/home/carlb/.local/share
-	konsole
-7
-D/home/carlb/.local/share/konsole
-	..
-0
-D/home/carlb/.local/share
-	RecentDocuments
-11
-D/home/carlb/.local/share/RecentDocuments
-	..
-0
-D/home/carlb/.local/share
-	RecentDocuments
-11
-D/home/carlb/.local
-	share
-1
-D/home/carlb
-	.org.scenicview.ScenicView
-21
-D/home/carlb/eda482/lab5
-	ball.h
-1
-D/home/carlb/eda482
-	lab5
-8
-D/home/carlb
-	.local
-3
-D/home/carlb/.local
-	share
-1
-D/home/carlb/.local/share
-	nvim
-10
-D/home/carlb/.local/share/nvim
-	swap
-4
-D/home/carlb/.local/share/nvim/swap
-	..
-0
-D/home/carlb/.local/share/nvim
-	plugged
-2
-D/home/carlb/.local/share/nvim/plugged
-	wal.vim
-19
-D/home/carlb/.local/share/nvim/plugged/wal.vim
-	colors
-3
-D/home/carlb/.local/share/nvim/plugged/wal.vim/colors
-	wal.vim
-1
-D/home/carlb
-	Downloads
-16
-D/home/carlb/Downloads
-	Top_Down_Survivor
-1
-D/home/carlb/Downloads/Top_Down_Survivor
-	rifle
-3
-D/home/carlb/Downloads/Top_Down_Survivor/rifle
-	shoot
-5
-D/home/carlb/Downloads/Top_Down_Survivor/rifle/shoot
-	survivor-shoot_rifle_0.xbm
-4
-D/home/carlb/Downloads/Top_Down_Survivor/rifle/reload
-	..
-0
-D/home/carlb/Downloads/Top_Down_Survivor/rifle
-	reload
-3
 D/home/carlb/Downloads/Top_Down_Survivor
 	rifle
 3
@@ -632,9 +512,128 @@ D/home/carlb/DFoto/2017-05-06_spheldag
 D/home/carlb/DFoto/2017-05-06_spheldag/darktable_exported
 	IMG_9832.jpg
 11
+D/home/carlb
+	Downloads
+42
+D/home/carlb/Downloads
+	Inlämningsuppgift.pdf
+38
+D/home/carlb/projects/org-mode
+	..
+0
+D/home/carlb
+	..
+0
+D/home/carlb/Downloads
+	..
+0
+D/home/carlb
+	Downloads
+36
+D/home/carlb/Downloads
+	..
+0
+D/home/carlb
+	eda482
+36
+D/home/carlb/eda482
+	lab5
+8
+D/home/carlb/eda482/lab5
+	ball.h
+2
+D/home/carlb/eda482
+	lab5
+8
+D/home/carlb/eda482/lab5
+	ball.h
+2
+D/home/carlb/eda482
+	lab5
+8
+D/home/carlb
+	Downloads
+36
+D/home/carlb/Downloads
+	Top_Down_Survivor
+1
+D/home/carlb/Downloads/Top_Down_Survivor
+	flashlight
+6
+D/home/carlb/Downloads/Top_Down_Survivor/flashlight
+	..
+0
+D/home/carlb/Downloads/Top_Down_Survivor
+	shotgun
+4
+D/home/carlb/Downloads/Top_Down_Survivor/shotgun
+	..
+0
+D/home/carlb/Downloads/Top_Down_Survivor
+	feet
+1
+D/home/carlb/Downloads/Top_Down_Survivor/feet
+	idle
+1
+D/home/carlb/Downloads/Top_Down_Survivor/feet/idle
+	survivor-idle_0.png
+1
+D/home/carlb/Downloads/Top_Down_Survivor/feet
+	run
+2
+D/home/carlb/Downloads/Top_Down_Survivor/feet/run
+	survivor-run_3.png
+4
+D/home/carlb/Downloads/Top_Down_Survivor/feet
+	strafe_left
+3
+D/home/carlb/Downloads/Top_Down_Survivor/feet/strafe_left
+	survivor-strafe_left_0.png
+1
+D/home/carlb/Downloads/Top_Down_Survivor/feet
+	strafe_left
+3
+D/home/carlb/Downloads/Top_Down_Survivor
+	flashlight
+6
+D/home/carlb/Downloads
+	Top_Down_Survivor
+1
+D/sdcard
+	..
+0
+D/
+	home
+6
+D/home
+	carlb
+3
+D/home/carlb
+	DFoto
+29
+D/home/carlb/DFoto
+	2017-05-17_dns_modulfoto
+2
+D/home/carlb/DFoto/2017-05-17_dns_modulfoto
+	..
+0
+D/home/carlb
+	DFoto
+36
+D/home/carlb/DFoto
+	2017-05-17_dns_modulfoto
+2
+D/home/carlb/DFoto/2017-05-17_dns_modulfoto
+	darktable_exported
+1
+D/home/carlb/DFoto/2017-05-17_dns_modulfoto/darktable_exported
+	IMG_9851.jpg
+1
+D/home/carlb
+	yaourt
+2
 
 # Command line history (oldest to newest):
-:Q
 :mkdir system
 :mkdir etc
 :mkdir X11
@@ -679,7 +678,6 @@ D/home/carlb/DFoto/2017-05-06_spheldag/darktable_exported
 :mkdir 
 :mkdir eda482
 :mkdir övningar
-:wq
 :mkdir eterm8
 :vifm
 :settings
@@ -707,15 +705,21 @@ D/home/carlb/DFoto/2017-05-06_spheldag/darktable_exported
 :unzip
 :unzip %f
 :!unzip
-:sort
 :mkdir wallpapers
 :rename
 :mkdir DFoto
 :mkdir 2017-05-06 Spheldag
+:wq
+:mkdir lab2
+:touch preparation.org
+:sort
+:Tree
+:tree
+:mkdir 2017-05-17_dns_modulfoto
 :q
+:Q
 
 # Search history (oldest to newest):
-/pic
 /tetra
 /pix
 /D
@@ -733,7 +737,6 @@ D/home/carlb/DFoto/2017-05-06_spheldag/darktable_exported
 /Drive
 /drive
 /ed
-/eda
 /config
 /spacema
 /emacs
@@ -741,8 +744,14 @@ D/home/carlb/DFoto/2017-05-06_spheldag/darktable_exported
 /Fira
 /usr
 /font
-/down
 /pictu
+/pic
+/Downlo
+/down
+/Down
+/downloa
+/eda
+/download
 /dfoto
 
 # Prompt history (oldest to newest):
@@ -758,11 +767,28 @@ pgreen.jpg
 pdenmark.jpg
 ptrees.jpg
 p2017-05-06_spheldag
+pwindow.jpg
+pmaskros.jpg
+pchiliblomma.jpg
+pPreparation LAB2.pdf
 
 # Local filter history (oldest to newest):
 
 # Registers:
-""/home/carlb/.local/share/vifm/Trash/001_IMG_9817_01.jpg
+""/sdcard/DCIM/101CANON/IMG_9849.CR2
+""/sdcard/DCIM/101CANON/IMG_9850.CR2
+""/sdcard/DCIM/101CANON/IMG_9851.CR2
+""/sdcard/DCIM/101CANON/IMG_9852.CR2
+""/sdcard/DCIM/101CANON/IMG_9853.CR2
+""/sdcard/DCIM/101CANON/IMG_9854.CR2
+""/sdcard/DCIM/101CANON/IMG_9855.CR2
+""/sdcard/DCIM/101CANON/IMG_9856.CR2
+""/sdcard/DCIM/101CANON/IMG_9857.CR2
+""/sdcard/DCIM/101CANON/IMG_9858.CR2
+""/sdcard/DCIM/101CANON/IMG_9859.CR2
+""/sdcard/DCIM/101CANON/IMG_9860.CR2
+""/sdcard/DCIM/101CANON/IMG_9861.CR2
+""/sdcard/DCIM/101CANON/IMG_9862.CR2
 
 # Directory stack (oldest to newest):
 

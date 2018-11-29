@@ -101,7 +101,7 @@ set mouse=a
 
 " Enable syntax and use theme
 syntax on
-colorscheme wal
+colorscheme darkplus
 
 filetype plugin indent on
 " show existing tab with 2 spaces width

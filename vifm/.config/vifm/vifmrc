@@ -174,7 +174,11 @@ command! ln sudo ln -s %d/%f %D
 " program.
 
 " Pdf
-filextype *.pdf zathura %c %i &, apvlv %c, xpdf %c
+filextype *.pdf
+         \ {View in apvlv}
+         \ apvlv -c <(echo fullscreen=yes) %f,
+         \ {View in zathura}
+         \ zathura %c %i &, apvlv %c, xpdf %c
 fileviewer *.pdf pdftotext -nopgbrk %c -
 
 " PostScript
