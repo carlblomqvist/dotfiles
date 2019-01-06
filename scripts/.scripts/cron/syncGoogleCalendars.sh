@@ -1,10 +1,17 @@
 #!/bin/bash
 
+# This script is used to sync .ics files (for example from Google Calendar) with
+# your agenda calendar in org-mode. It uses a script written by Eric S Fraga
+# Read https://orgmode.org/worg/org-tutorials/org-google-sync.html for more info
+# Make sure to set your name, email and other settings in that script!
+
+# To get started, set CALENDARPATH and set variables in a file called
+# "calendars" which holds URLs to your remote .ics files.
+
 WGET=/bin/wget
 AWK=/bin/awk
 CALENDARPATH=/home/carlb/org/agenda/calendar
-SCRIPTSPATH=/home/carlb/.scripts/cron
-ICS2ORG=$SCRIPTSPATH/ical2org.awk
+ICS2ORG=/home/carlb/.scripts/cron/ical2org.awk
 ICSFILE=$CALENDARPATH/currentCalendar.ics
 
 #.org files
