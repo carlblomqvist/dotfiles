@@ -3,10 +3,12 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/carlb/.oh-my-zsh
-export VISUAL=emacsclient
-export EDITOR=emacsclient
+export VISUAL=nvim
+export EDITOR=nvim
 alias e=emacsclient
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export TERM="xterm-256color"
+# export LC_ALL="C"
 
 # Powerline
 powerline-daemon -q
@@ -44,7 +46,7 @@ eval $(thefuck --alias)
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
-export LANG="sv_SE.UTF-8"
+export LANG="en_US.utf8"
 #echo 'source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme' >> ~/.zshrc
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
@@ -146,4 +148,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias load="sudo md407 load debug/code.s19"
 alias go="sudo md407 go"
+# render images in terminal
 alias icat="kitty +kitten icat"
+# cd to current folder when exiting ranger
+alias ranger="source ranger"

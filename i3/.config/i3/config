@@ -37,6 +37,7 @@ set $float_maxwidth 2650
 set $float_maxheight 1620
 
 for_window [window_role="GtkFileChooserDialog"] floating enable 
+
 for_window [class="Simserver"] resize set $float_width $float_height
 for_window [class="Simserver"] move position center
 
@@ -44,6 +45,8 @@ for_window [class="Blueman-manager"] floating enable
 for_window [class="Blueman-manager"] resize set $float_width $float_height
 for_window [class="Blueman-manager"] border pixel 2
 for_window [class="Blueman-manager"] move position center
+for_window [class="Blueman-manager"] move position 0 px $top_bar_height px
+
 
 for_window [class="XTerm"] floating enable
 for_window [class="XTerm"] resize set 1 1
@@ -60,7 +63,6 @@ for_window [class="Apvlv" instance="apvlv"] move position center
 for_window [class="gimp" title="^Layers - Brushes$"] floating disable
 for_window [class="Gimp" title="^Layers - Brushes$"] border pixel 2
 for_window [class="Gimp" title="^Layers - Brushes$"] move position right
-
 for_window [class="Gimp" title="^Toolbox - Tool Options$"] move position right
 
 # Workspace rules
@@ -74,14 +76,14 @@ for_window [class="scratchpad"] floating enable
 for_window [class="scratchpad"] resize set 1800 1200 
 for_window [class="scratchpad"] move scratchpad
 for_window [class="scratchpad"] border pixel 5
-exec --no-startup-id kitty --class=scratchpad
+# exec --no-startup-id kitty --class=scratchpad
 
 # Yttrerymdden SSH Settings
 for_window [class="yttressh"] floating enable
 for_window [class="yttressh"] resize set 1800 1200 
 for_window [class="yttressh"] move scratchpad
 for_window [class="yttressh"] border pixel 5
-exec --no-startup-id kitty --class=yttressh ssh -p 50000 frihetskampen.ddns.net
+# exec --no-startup-id kitty --class=yttressh ssh -p 50000 frihetskampen.ddns.net
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -95,8 +97,8 @@ exec --no-startup-id kitty --class=yttressh ssh -p 50000 frihetskampen.ddns.net
 # from the generated scheme.
 # NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
 # it fails to get colors from Xresources.
-set_from_resource $fg i3wm.color7 #f0f0f0
-set_from_resource $bg i3wm.color2 #f0f0f0
+set_from_resource $fg i3wm.color0 #f0f0f0
+set_from_resource $bg i3wm.color6 #f0f0f0
 
 # class                 border  backgr. text indicator child_border
 client.focused          $fg     $bg     $fg  $bg       $fg
@@ -108,8 +110,10 @@ client.placeholder      $bg     $bg     $fg  $bg       $bg
 client.background       $bg
 
 # Set gaps
-gaps inner 5
-gaps outer 5
+set $inner_gaps 4
+set $outer_gaps -4
+gaps inner $inner_gaps
+gaps outer $outer_gaps
 
 # Window borders
 new_window pixel 0
@@ -144,10 +148,15 @@ bindsym $mod+Shift+q kill
 #bindsym $mod+m shit show;
 
 # scratchpad keybinds
-bindsym $mod+u [class="scratchpad"] scratchpad show; [class="scratchpad"] move position center
+# polybar/bar/topbar/height + bar/topbar/offset-y 0 + $inner_gaps + $outer_gaps
+set $top_bar_height 35
+# bindsym $mod+u [class="scratchpad"] scratchpad show; [class="scratchpad"] move position center
+bindsym $mod+u exec tdrop -n 1 -a -w 100% -y $top_bar_height --name scratchpad kitty
+bindsym $mod+y exec tdrop -n 2 -a -w 100% -y $top_bar_height --name yttressh -f 'ssh -p 50000 frihetskampen.ddns.net' kitty 
+bindsym $mod+shift+f exec tdrop -n 3 -a -w 100% -y $top_bar_height --name ranger -f 'ranger' kitty 
 
 # yttressh keybinds
-bindsym $mod+y [class="yttressh"] scratchpad show; [class="yttressh"] move position center
+# bindsym $mod+y [class="yttressh"] scratchpad show; [class="yttressh"] move position center
 # start dmenu (a program launcher)
 # bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -295,12 +304,13 @@ bindsym $mod+r mode "resize"
 #}
 
 # -- EXEC -- 
-exec --no-startup-id wal -R
+# exec --no-startup-id wal -R
 #exec --no-startup-id xrandr --dpi 144
 #exec --no-startup-id exec compton -c -bc --unredir-if-possible --xrender-sync-fence --xrender-sync --config ~/.config/compton/config
+exec dispwin /home/carlb/.color/icc/surface-srgb.icm
 exec --no-startup-id exec compton -bc --unredir-if-possible --xrender-sync-fence --xrender-sync --config ~/.config/compton/config
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-#exec --no-startup-id exec feh --bg-scale ~/pictures/Mt_Fuji.jpg 
+exec_always --no-startup-id exec feh --bg-scale ~/pictures/wallpapers/mountains.jpg 
 #exec konsole
 #exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id redshift-gtk
@@ -309,4 +319,4 @@ exec --no-startup-id blueman-applet
 exec_always setxkbmap `cat .Xkbmap`
 exec --no-startup-id touchegg
 # exec --no-startup-id synergyc --daemon --no-restart 192.168.1.2
-exec --no-startup-id synergy
+# exec --no-startup-id synergy

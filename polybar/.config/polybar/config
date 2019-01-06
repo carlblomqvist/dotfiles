@@ -1,163 +1,178 @@
 # vim: set filetype=dosini
-;=====================================================
-;
-;   To learn more about how to configure Polybar
-;   go to https://github.com/jaagr/polybar
-;
-;   The README contains alot of information
-;
-;=====================================================
 
 [colors]
 transparent = #00ffffff
 
-background = ${xrdb:color7:#222}
-foreground = ${xrdb:color0:#222}
+background = ${xrdb:color0:#222}
+foreground = ${xrdb:color7:#222}
 foreground-alt = ${xrdb:color7:#222}
 primary = ${xrdb:color1:#222}
 secondary = ${xrdb:color2:#222}
 alert = ${xrdb:color3:#222}
 
-[fonts]
-font-0 = Roboto:size=24;3
-font-1 = Material Design Icons:size=18;2
-font-2 = Weather Icons:size=24;2
-font-3 = FontAwesome:size=20;2
-
-[global/wm]
-margin-top = 0
-margin-bottom = 0
-
-[bar/topbar]
-inherit = fonts
-;monitor = ${env:MONITOR:HDMI-1}
+[bar/top]
+dpi = 192
 width = 100%
-height = 25
+height = 35 
 offset-x = 0
-offset-y = 8
-radius = 0.0
-fixed-center = true
-override-redirect = false
+offset-y = 4
+;bottom = true
 
-background = ${colors.transparent}
+; radius = 0.0
+; fixed-center = true
+; override-redirect = false
+
+background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 0
+underline-size = 2
+underline-color = #eee
 
-border-size = 0
-border-color = #00000000
+spacing = 1
+padding-left = 0
+padding-right = 0
+module-margin-left = 1
+module-margin-right = 1
 
-padding-left = 5
-padding-right = 5
+; font-0 = Roboto:size=24;3
+font-0 = Open Sans:pixelsize=10;4
+font-1 = FontAwesome:size=10;5
+font-2 = siji:pixelsize=10;0
 
-module-margin-left = 2
-module-margin-right = 2
-
-;modules-left = bitcoin
-;modules-center = mpd
-modules-right = openweathermap-simple
+modules-left =
+modules-center = i3
+modules-right = battery-simple backlight cpu memory volume mpd date powermenu
+; modules-right = backlight cpu memory volume mpd date powermenu
 
 tray-position = left
-tray-padding = 0
+tray-offset-x = 0
+tray-offset-y = -4
+tray-padding = 4
 tray-background = ${self.background}
 tray-detached = false
-tray-maxsize = 20
-tray-scale = 1
-#tray-background = #0063ff
+; maxsize must be 16, 22, 24, 32 or 48
+tray-maxsize = 24
 
 wm-restack = i3
 
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
-
-[bar/bottombar]
-inherit = fonts
-;monitor = ${env:MONITOR:HDMI-1}
-width = 100%
-height = 40
-offset-x = 0
-offset-y = 0
-radius = 0.0
-fixed-center = true
-bottom = true
-border-size = 10
-
-background = ${colors.transparent}
-foreground = ${colors.foreground}
-
-padding-left = 5
-padding-right = 5
-
-module-margin-left = 2
-module-margin-right = 2
-
-modules-center = i3
-
-;override-redirect = true
-wm-restack = i3
-
-[module/filesystem]
-type = internal/fs
-interval = 25
-
-mount-0 = /home
-
-label-mounted = %{F#ffffff}%mountpoint%%{F-}: %percentage_used%%
-label-unmounted = %mountpoint% not mounted
+; MODULES
 
 [module/i3]
 type = internal/i3
-format = <label-state> <label-mode>
-index-sort = false
+
+pin-workspaces = true
+strip-wsnumbers = true
 enable-scroll = false
-wrapping-scroll = false
 
-; Only show workspaces on the same output as the bar
-;pin-workspaces = true
-
-label-mode-padding = 2
-label-mode-foreground = ${bar/bottombar.foreground}
-label-mode-background = ${bar/bottombar.background}
-
-; focused = Active workspace on focused monitor
-label-focused = 
-label-focused-font = 3
-label-focused-background = ${colors.transparent}
-label-focused-foreground = ${colors.background}
-label-focused-underline = ${colors.primary}
-label-focused-padding = 1
-
-; unfocused = Inactive workspace on any monitor
-label-unfocused = 
-label-unfocused-foreground = ${self.label-focused-foreground}
-label-unfocused-font = 3
-label-unfocused-padding = 1
-
-; visible = Active workspace on unfocused monitor
-label-visible = %index%
-label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${self.label-focused-underline}
-label-visible-padding = ${self.label-focused-padding}
-;
-; urgent = Workspace with urgency hint set
-label-urgent = 
-label-urgent-font = 3
+; format = <label-state> <label-mode> 
+; label-mode-padding = 2
+label-unfocused-foreground = ${colors.foreground}
+label-focused-foreground = ${colors.primary}
 label-urgent-foreground = ${colors.alert}
-label-urgent-padding = 1
 
-ws-icon-datakomm = datakomm;
+; 
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = spotify;
+; ws-icon-default = 
 
-[module/backlight]
-type = internal/backlight
-card = intel_backlight
+[module/bspwm]
+type = internal/bspwm
 
-format = <ramp> <label> 
+ws-icon-0 = web;
+ws-icon-1 = term;
+ws-icon-2 = chat;
+ws-icon-3 = code;
+ws-icon-4 = music;
+ws-icon-default = 
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-font = 2
+format = <label-state> <label-mode>
 
+label-focused = %icon%
+label-focused-background = #88000000
+label-focused-underline= #ddd
+label-focused-padding = 4
+
+label-occupied = %icon%
+label-occupied-padding = 4
+
+label-urgent = %icon%
+label-urgent-padding = 4
+
+label-empty = %icon%
+label-empty-foreground = #44ffffff
+label-empty-padding = 4
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:120:...%
+label-padding = 4
+
+[module/date]
+type = internal/date
+
+; Seconds to sleep between updates
+interval = 1.0
+
+; See "man date" for details on how to format the date string
+; NOTE: if you want to use syntax tags here you need to use %%{...}
+date = %a %b %d, 
+
+; Optional time format
+time = %H:%M
+
+; if `date-alt` or `time-alt` is defined, clicking
+; the module will toggle between formats
+date-alt = %A, %d %B %Y
+time-alt = %H:%M:%S
+
+label = %date% %time%
+format =   <label>
+;format-background = #ddffffff
+; format-background = #88000000
+;format-foreground = #333
+format-padding = 3
+
+[module/padding]
+type = custom/text
+content = 	 
+content-foreground = #00000000
+content-background = #55000000
+
+[module/battery]
+type = internal/battery
+
+full-at = 99
+
+battery = BAT0
+adapter = AC0
+
+poll-interval = 5
+
+format-charging = <animation-charging>  <label-charging>
+format-discharging = <ramp-capacity>  <label-discharging>
+format-full = <ramp-capacity>  <label-full>
+label-charging = %percentage%
+label-discharging = %percentage%
+label-full = %percentage%
+format-charging-padding = 3
+format-discharging-padding = 3
+format-full-padding = 3
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 750
 
 [module/cpu]
 type = internal/cpu
@@ -172,135 +187,6 @@ interval = 2
 format-prefix = " "
 label = %percentage_used%%
 
-[module/wlan]
-type = internal/network
-interface = wlp1s0
-interval = 3.0
-
-format-connected = <ramp-signal> <label-connected>
-format-prefix = 1
-format-connected-underline = #9f78e1
-label-connected = %essid%
-label-connected-foreground = ${bar/topbar.foreground}
-
-;format-disconnected-prefix = " "
-;format-disconnected-prefix-font = 3
-;format-disconnected = no network
-format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${bar/topbar.foreground}
-
-label-disconnected = 
-label-disconnected-font = 3
-label-disconnected-foreground = ${bar/topbar.foreground}
-
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-font = 3
-ramp-signal-foreground = ${bar/topbar.foreground}
-
-[module/date]
-type = internal/date
-interval = 1
-
-date = " %a %e %b"
-date-alt = " %Y-%m-%d"
-
-time = " %H:%M"
-time-alt = "%H:%M:%S"
-
-format-prefix-foreground = ${colors.foreground}
-format-underline = ${bar/topbar.foreground}
-
-format = <label>
-label = %date% %time%
-label-font = 0
-
-[module/volume]
-type = internal/volume
-
-format-volume = <ramp-volume> <label-volume> 
-
-ramp-volume-0 = 
-ramp-volume-1 = 
-ramp-volume-2 = 
-
-format-muted =  --
-label-muted = "Muted"
-label-muted-font = 1
-
-[module/battery]
-type = internal/battery
-#battery = BAT1
-#adapter = ADP1
-poll-interval = 0
-format-discharging = <label-discharging>  <ramp-capacity>
-format-full = <label-full>  <ramp-capacity>
-format-charging = <label-charging>  <ramp-capacity>  
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
-
-[module/temperature]
-type = internal/temperature
-thermal-zone = 0
-warn-temperature = 70
-
-format = <ramp> <label>
-format-underline = #f50a4d
-format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
-
-label = %temperature%
-label-warn = %temperature%
-label-warn-foreground = #CA407E
-
-ramp-0 = 
-ramp-font = 3
-ramp-foreground = ${bar/bottombar.foreground}
-
-[module/powermenu]
-type = custom/menu
-
-format-spacing = 1
-
-label-open = 
-label-open-padding = 1
-label-open-foreground = ${bar/topbar.foreground}
-
-label-close = 
-label-close-padding = 1
-label-close-foreground = ${bar/topbar.foreground}
-
-label-separator = |
-label-separator-foreground = ${bar/topbar.foreground}
-
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = reboot
-
-menu-2-0 = power off
-menu-2-0-exec = poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
-
-[module/openweathermap-simple]
-type = custom/script
-exec = ~/.config/polybar/openweathermap-simple.sh
-interval = 600
-label-font = 3
-label-padding = 0
-
 [module/battery-simple]
 type = custom/script
 exec = ~/.config/polybar/battery-percentage.sh
@@ -308,63 +194,88 @@ interval = 60
 ; label-font = 3
 ; label-padding = 4
 
-[module/github]
-type = internal/github
+[module/backlight]
+type = internal/backlight
+card = intel_backlight
 
-format = <label>
-format-prefix = " "
-format-prefix-foreground = ${bar/bottombar.foreground}
+format = <ramp> <label>
+label = %percentage%
 
-label = %notifications%
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+; ramp-3 = 🌒
+; ramp-4 = 🌑
+ramp-font = 1
 
-token = ${file:/home/metamist/secret/github.token}
+[module/volume]
+type = internal/volume
 
-empty-notifications = true
+format-volume = <ramp-volume> <label-volume>
+format-muted = <label-muted>
+label-volume = %percentage%
+label-muted =  ----
+; label-muted-foreground = #aaa
+label-muted-font = 1
+format-volume-padding = 3
+format-muted-padding = 3
 
-[bar/bar]
-inherit = colors
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-headphones-0 = 
 
-height = 70
-width = 16%
-offset-x = 0%
-offset-y = 0
+[module/spotify]
+type = custom/script
 
-bottom = true
-fixed-center = true
-font-0 = Roboto:size=24;3
-font-1 = Font Awesome:size=30;5
-font-2 = NotoEmoji:size=100;
+exec = /home/gamehelp16/Documents/np
+interval = 1
 
-modules-center = date
-module-margin = 2
+format = <label>   
+;format-background = #dd00c6e0
+;format-foreground = #fff
+;format-padding = 4
 
-tray-position = none
-override-redirect = true
+label = %output%
 
-padding = 0
-radius = 6.0
-wm-name = bar
-wm-restack = i3
+[module/powermenu]
+type = custom/menu
 
-background = transparent
-foreground = ${colors.background}
+label-open =   
+;label-open-background = #dd0000
+;label-open-foreground = #fff
+label-close = cancel
+;label-close-background = #dd0000
+;label-close-foreground = #fff
+label-open-padding = 4 
+label-close-padding = 3 
 
-[bar/bar2]
-inherit = bar/bar
-modules-center = battery-simple backlight volume cpu memory wlan battery
-width = 35%
-offset-x = 69%
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+menu-0-0-padding = 3
+menu-0-1-padding = 3
+
+menu-1-0 = reboot?  
+menu-1-0-exec = reboot
+menu-1-0-padding = 3
+
+menu-2-0 = power off?  
+menu-2-0-exec = shutdown-now
+menu-2-0-padding = 3
 
 [module/mpd]
 type = internal/mpd
 
 host = 127.0.0.1
 port = 6600
-password = password
+password = 
 
 ; Seconds to sleep between progressbar/song timer sync
 ; Default: 1
 interval = 2
+
 ; Available tags:
 ;   <label-song> (default)
 ;   <label-time>
@@ -374,7 +285,6 @@ interval = 2
 ;   <icon-random>
 ;   <icon-repeat>
 ;   <icon-repeatone>
-;   <icon-consume>
 ;   <icon-prev>
 ;   <icon-stop>
 ;   <icon-play>
@@ -382,14 +292,7 @@ interval = 2
 ;   <icon-next>
 ;   <icon-seekb>
 ;   <icon-seekf>
-format-online = <icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next>  <icon-repeat> <icon-random>  <bar-progress> <label-time>  <label-song>
-;format-playing = ${self.format-online}
-;format-paused = ${self.format-online}
-;format-stopped = ${self.format-online}
-
-; Available tags:
-;   <label-offline>
-;format-offline = <label-offline>
+format-online =    <label-song>
 
 ; Available tokens:
 ;   %artist%
@@ -397,38 +300,5 @@ format-online = <icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon
 ;   %date%
 ;   %title%
 ; Default: %artist% - %title%
-label-song = 𝄞 %artist% - %title%
-
-; Available tokens:
-;   %elapsed%
-;   %total%
-; Default: %elapsed% / %total%
-;label-time = %elapsed% / %total%
-
-; Available tokens:
-;   None
-label-offline = 🎜 mpd is offline
-
-; Only applies if <icon-X> is used
-icon-play = ⏵
-icon-pause = ⏸
-icon-stop = ⏹
-icon-prev = ⏮
-icon-next = ⏭
-icon-seekb = ⏪
-icon-seekf = ⏩
-icon-random = 🔀
-icon-repeat = 🔁
-icon-repeatone = 🔂
-icon-consume = ✀
-
-; Used to display the state of random/repeat/repeatone
-; Only applies if <icon-[random|repeat|repeatone]> is used
-toggle-on-foreground = #ff
-toggle-off-foreground = #55
-
-; Only applies if <bar-progress> is used
-bar-progress-width = 45
-bar-progress-indicator = |
-bar-progress-fill = ─
-bar-progress-empty = ─
+label-song = %title%
+format-online-padding = 3
