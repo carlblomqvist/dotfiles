@@ -27,10 +27,12 @@ values."
    ;; If non-nil layers with lazy install support are lazy installed.
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
+
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     go
      haskell
      yaml
      php
@@ -58,7 +60,8 @@ values."
      java
      latex
      ;; markdown
-     org
+     (org :variables
+          org-hide-emphasis-markers t)
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
@@ -334,6 +337,19 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
+  ;; Run shortcuts scripts when editing bookmark-files
+  (defun shortcuts-after-save-hook ()
+    "After saving a tt file, run the language_update file"
+    (if buffer-file-name
+        (progn
+          (setq is-bookmark-file (or (numberp (string-match "\.bmdirs$" buffer-file-name)) (numberp (string-match "\.bmfiles$" buffer-file-name))))
+          (if is-bookmark-file
+              (progn
+                (setq cmd "~/.scripts/tools/shortcuts")
+                (shell-command cmd)
+                (message "Ran shortcuts-script"))))))
+  (add-hook 'after-save-hook 'shortcuts-after-save-hook)
+
   ;; Color-code HEX values
   (defvar hexcolour-keywords
     '(("#[abcdef[:digit:]]\\{6\\}"
@@ -349,6 +365,9 @@ you should place your code here."
 
   ;; Open neo-tree with dotfiles
   (spacemacs/set-leader-keys "fd" (lambda () (interactive) (neotree-dir "~/dotfiles/")))
+
+  ;; Org keybinds
+  (spacemacs/set-leader-keys "of" (lambda () (interactive) (neotree-dir "~/org/")))
 
   ;; Better compile-command
   (setq compile2-command-history "")
@@ -628,7 +647,7 @@ It will run M-x compile with:
     ("~/org/agenda/calendar/googleDtekCalendar.org" "~/org/agenda/calendar/googleMainCalendar.org" "~/org/agenda/calendar/googleTimeEditCalendar.org" "~/org/agenda/agenda.org")))
  '(package-selected-packages
    (quote
-    (company-ghc intero hlint-refactor hindent helm-hoogle haskell-snippets ghc flycheck-haskell company-ghci haskell-mode company-cabal cmm-mode yaml-mode drupal-mode phpunit phpcbf php-auto-yasnippets php-mode kotlin-mode flycheck-elm company-emacs-eclim eclim yasnippet-snippets elixir-yasnippets company-anaconda yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode anaconda-mode pythonic mmm-mode markdown-toc markdown-mode gh-md web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode elm-mode company-auctex auctex-latexmk auctex web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data xterm-color shell-pop multi-term helm-company helm-c-yasnippet git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck eshell-z eshell-prompt-extras esh-help disaster diff-hl company-statistics company-c-headers company cmake-mode clang-format auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete smeargle orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download magit-gitflow htmlize helm-gitignore gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-commit ghub let-alist with-editor ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
+    (company-go go-guru go-eldoc go-mode company-ghc intero hlint-refactor hindent helm-hoogle haskell-snippets ghc flycheck-haskell company-ghci haskell-mode company-cabal cmm-mode yaml-mode drupal-mode phpunit phpcbf php-auto-yasnippets php-mode kotlin-mode flycheck-elm company-emacs-eclim eclim yasnippet-snippets elixir-yasnippets company-anaconda yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode anaconda-mode pythonic mmm-mode markdown-toc markdown-mode gh-md web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode elm-mode company-auctex auctex-latexmk auctex web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data xterm-color shell-pop multi-term helm-company helm-c-yasnippet git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck eshell-z eshell-prompt-extras esh-help disaster diff-hl company-statistics company-c-headers company cmake-mode clang-format auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete smeargle orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download magit-gitflow htmlize helm-gitignore gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-commit ghub let-alist with-editor ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
  '(spacemacs-large-file-modes-list
    (quote
     (archive-mode tar-mode jka-compr git-commit-mode image-mode doc-view-mode doc-view-mode-maybe ebrowse-tree-mode pdf-view-mode tags-table-mode))))

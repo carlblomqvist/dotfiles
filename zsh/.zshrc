@@ -3,9 +3,9 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/carlb/.oh-my-zsh
-export VISUAL=nvim
-export EDITOR=nvim
-alias e=emacsclient
+export VISUAL="emacsclient -t"
+export EDITOR="emacsclient -t"
+alias e="emacsclient -t"
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export TERM="xterm-256color"
 # export LC_ALL="C"
@@ -147,8 +147,13 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias load="sudo md407 load debug/code.s19"
-alias go="sudo md407 go"
+alias mdgo="sudo md407 go"
 # render images in terminal
 alias icat="kitty +kitten icat"
 # cd to current folder when exiting ranger
 alias ranger="source ranger"
+
+# import automatically generated aliases for shortcuts
+source ~/.shortcuts
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
