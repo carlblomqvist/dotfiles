@@ -1,13 +1,18 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+#
+# Check if connecting from tramp, is so; ignore config
+[[ $TERM == "tramp" ]] && unsetopt zle && PS1='$ ' && return
 
+# Make emacs realize it can use 256 colors
+[[ $TERM == "eterm-color" ]] && export TERM=xterm-256color
 # Path to your oh-my-zsh installation.
 export ZSH=/home/carlb/.oh-my-zsh
 export VISUAL="emacsclient -t"
 export EDITOR="emacsclient -t"
 alias e="emacsclient -t"
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
-export TERM="xterm-256color"
+# export TERM="xterm-256color"
 # export LC_ALL="C"
 
 # Powerline
@@ -47,7 +52,7 @@ eval $(thefuck --alias)
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
 export LANG="en_US.utf8"
-#echo 'source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme' >> ~/.zshrc
+
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
 autoload zmv
@@ -108,12 +113,13 @@ export LC_CTYPE="en_US.UTF-8"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
-  fancy-ctrl-z
-  common-aliases
   command-not-found
-  zsh-autosuggestions
+  common-aliases
+  fancy-ctrl-z
+  git
   web-search
+  # zsh-256color
+  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -152,6 +158,7 @@ alias mdgo="sudo md407 go"
 alias icat="kitty +kitten icat"
 # cd to current folder when exiting ranger
 alias ranger="source ranger"
+# alias ix=ix_wrapper
 
 # import automatically generated aliases for shortcuts
 source ~/.shortcuts
