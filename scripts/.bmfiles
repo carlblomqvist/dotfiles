@@ -1,20 +1,20 @@
-bf	~/.bmfiles
-bd	~/.bmdirs
-cfb	~/.bashrc
-cfz	~/.zshrc
-cfv	~/.vimrc
-cfs	~/.spacemacs
-cfr	~/.config/ranger/rc.conf
-cfi	~/.config/i3/config
-# cfq	~/.config/qutebrowser/config.py
-# cfm	~/.config/mutt/muttrc
-cfk	~/.config/kitty/kitty.conf
-cv	~/Documents/LaTeX/cv.tex
-cfp	~/.config/polybar/config
-cfd	~/.Xdefaults
 # cfA	~/.asoundrc
+# cfM	~/.config/mpd/mpd.conf
+# cfm	~/.config/mutt/muttrc
 # cfmb	~/.config/ncmpcpp/bindings
 # cfmc	~/.config/ncmpcpp/config
 # cfmpd	~/.config/mpd/mpd.conf
-# cfM	~/.config/mpd/mpd.conf
+# cfq	~/.config/qutebrowser/config.py
 # er ~/.referbib
+bd	~/.bmdirs
+bf	~/.bmfiles
+cfb	~/.bashrc
+cfd	~/.Xdefaults
+cfi	~/.config/i3/config
+cfk	~/.config/kitty/kitty.conf
+cfp	~/.config/polybar/config
+cfr	~/.config/ranger/rc.conf
+cfs	~/.spacemacs
+cfv	~/.vimrc
+cfz	~/.zshrc
+cv	~/Documents/LaTeX/cv.tex

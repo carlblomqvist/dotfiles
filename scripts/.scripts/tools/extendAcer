@@ -1,0 +1,22 @@
+#!/bin/sh
+# extend non-HiDPI external display on DP* above HiDPI internal display eDP*
+# see also https://wiki.archlinux.org/index.php/HiDPI
+# you may run into https://bugs.freedesktop.org/show_bug.cgi?id=39949
+#                  https://bugs.launchpad.net/ubuntu/+source/xorg-server/+bug/883319
+
+# EXT=`xrandr --current | sed 's/^\(.*\) connected.*$/\1/p;d' | grep -v ^eDP | head -n 1`
+# INT=`xrandr --current | sed 's/^\(.*\) connected.*$/\1/p;d' | grep -v ^HDMI | head -n 1`
+
+# ext_w=`xrandr | sed 's/^'"${EXT}"' [^0-9]* \([0-9]\+\)x.*$/\1/p;d'`
+# ext_h=`xrandr | sed 's/^'"${EXT}"' [^0-9]* [0-9]\+x\([0-9]\+\).*$/\1/p;d'`
+# int_w=`xrandr | sed 's/^'"${INT}"' [^0-9]* \([0-9]\+\)x.*$/\1/p;d'`
+# off_w=`echo $(( ($int_w-$ext_w)/2 )) | sed 's/^-//'`
+
+# Scaling renders extremely slow :(
+# ext_scale=1.5
+# ext_h=`echo "$ext_h * $ext_scale / 1" | bc | sed 's/^-//'`
+# echo $ext_h
+
+xrandr --newmode "2560x1440_45.00"  227.75  2560 2720 2992 3424  1440 1443 1448 1480 -hsync +vsync
+xrandr --addmode HDMI1 2560x1440_45.00
+xrandr --output VIRTUAL1 --off --output eDP1 --primary --mode 2736x1824 --pos 0x1440 --rotate normal --output HDMI1 --mode 2560x1440_45.00 --pos 0x0 --rotate normal

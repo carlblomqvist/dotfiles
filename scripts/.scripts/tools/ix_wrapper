@@ -1,0 +1,3 @@
+#!/bin/bash
+
+cat - | curl -s -F 'f:1=<-' ix.io | xclip -sel clip
