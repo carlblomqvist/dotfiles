@@ -123,7 +123,7 @@ new_window pixel 0
 bindsym --release $mod+Shift+p exec /home/carlb/.config/i3/screenshot.sh
 bindsym --release Print exec ./screenshot.sh
 # take a screenshot of a whole window and copy it to a clipboard
-bindsym --release $mod+Print exec "scregcp /home/carlb/pictures/screenshots/"
+bindsym --release mod+Print exec "scregcp /home/carlb/pictures/screenshots/"
 
 # Lock screen
 bindsym $mod+Control+L exec /home/carlb/.config/i3/lockscreen.sh
@@ -237,29 +237,35 @@ bindsym $mod+a focus parent
 bindsym $mod+p workspace next
 bindsym $mod+o workspace prev
 
+# workspaces
+set $1 work
+set $2 web
+set $3 misc
+set $10 spotify
+
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
+bindsym $mod+1 workspace $1
+bindsym $mod+2 workspace $2
+bindsym $mod+3 workspace $3
 bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+0 workspace $10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+1 move container to workspace $1
+bindsym $mod+Shift+2 move container to workspace $2
+bindsym $mod+Shift+3 move container to workspace $3
 bindsym $mod+Shift+4 move container to workspace 4
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+0 move container to workspace $10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -310,7 +316,7 @@ bindsym $mod+r mode "resize"
 exec dispwin /home/carlb/.color/icc/surface-srgb.icm
 exec --no-startup-id exec compton -bc --unredir-if-possible --xrender-sync-fence --xrender-sync --config ~/.config/compton/config
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec_always --no-startup-id exec feh --bg-scale ~/pictures/wallpapers/mountains.jpg 
+exec_always --no-startup-id exec feh --bg-scale ~/pictures/wallpapers/butterfly.jpg
 #exec konsole
 #exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id redshift-gtk

@@ -1,2 +1,2 @@
 rofi.font: FiraCode Regular 20
-rofi.theme: .config/rofi/tungcena.rasi
+rofi.theme: /home/carlb/.config/rofi/tungcena.rasi

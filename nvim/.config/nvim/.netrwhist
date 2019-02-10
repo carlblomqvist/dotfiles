@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/home/carlb/git/mm_sony_tetra_3.14/NFC/tetra_nfc/META-INF/com/google/android'
-let g:netrw_dirhist_2='/home/carlb/.oh-my-zsh/plugins/web-search'
-let g:netrw_dirhist_3='/dev/usb'
-let g:netrw_dirhist_4='/etc/acpi/events'
-let g:netrw_dirhist_5='/home/carlb/dotfiles/polybar/.config/polybar'
-let g:netrw_dirhist_6='/home/carlb/dev/c/dat290/.git'
-let g:netrw_dirhist_7='/etc/systemd/system/docker.service'

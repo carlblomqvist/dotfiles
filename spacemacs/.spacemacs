@@ -33,7 +33,8 @@ values."
    dotspacemacs-configuration-layers
    '(
      go
-     haskell
+     (haskell :variables
+              haskell-stylish-on-save t)
      yaml
      php
      python
@@ -46,9 +47,8 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      helm
-     (auto-completion
-      :variables
-      auto-completion-enable-snippets-in-popup t)
+     (auto-completion :variables
+                      auto-completion-enable-snippets-in-popup t)
 
      ;; better-defaults
      c-c++
@@ -67,6 +67,7 @@ values."
             shell-default-position 'bottom)
      ;; spell-checking
      syntax-checking
+     themes-megapack
      version-control
      )
    ;; List of additional packages that will be installed without being
@@ -75,11 +76,12 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages
    '(
-     (kotlin-mode
-      :variables
-      kotlin-tab-width 4)
+     (kotlin-mode :variables
+                  kotlin-tab-width 4)
      yasnippet
      yasnippet-snippets
+     ix
+     grapnel
      )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -152,18 +154,25 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(xresources
+   dotspacemacs-themes '(zenburn
+                         xresources
                          spacemacs-dark
                          spacemacs-light)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Fira Code"
-                               :size 24
-                               :weight normal
-                               :width normal
-                               :powerline-scale 1.1)
+   dotspacemacs-default-font '(("Fira Code"
+                                :size 26
+                                :weight normal
+                                :width normal
+                                :powerline-scale 1.1)
+                               ("Fira Code Symbol"
+                                :size 26
+                                :weight normal
+                                :width normal
+                                :powerline-scale 1.1))
+
    ; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
@@ -188,7 +197,7 @@ values."
    ;; works in the GUI. (default nil)
    dotspacemacs-dastinguish-gui-tab nil
    ;; If non nil `Y' is remapped to `y$' in Evil states. (default nil)
-   dotspacemacs-remap-Y-to-y$ nil
+   dotspacemacs-remap-Y-to-y$ t
    ;; If non-nil, the shift mappings `<' and `>' retain visual state if used
    ;; there. (default t)
    dotspacemacs-retain-visual-state-on-shift t
@@ -337,6 +346,16 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
+  ;; I wish I could insert text in rectangles :'(
+  ;; (define-key evil-normal-state-map (kbd "M-i") (string-insert-rectangle))
+
+  ;; Function for reloading automatically generated shortcuts
+  (defun reload-shortcuts ()
+    "Reloads automatically generated shortcuts"
+    (interactive)
+    (load-file "~/.spacemacsshortcuts")
+    )
+
   ;; Run shortcuts scripts when editing bookmark-files
   (defun shortcuts-after-save-hook ()
     "After saving a tt file, run the language_update file"
@@ -347,7 +366,9 @@ you should place your code here."
               (progn
                 (setq cmd "~/.scripts/tools/shortcuts")
                 (shell-command cmd)
-                (message "Ran shortcuts-script"))))))
+                (message "Ran shortcuts-script")
+                (reload-shortcuts)
+                (message "Reloaded shortcuts"))))))
   (add-hook 'after-save-hook 'shortcuts-after-save-hook)
 
   ;; Color-code HEX values
@@ -363,11 +384,31 @@ you should place your code here."
 
   ;; (add-hook conf-mode-hook 'hexcolour-add-to-font-lock)
 
-  ;; Open neo-tree with dotfiles
-  (spacemacs/set-leader-keys "fd" (lambda () (interactive) (neotree-dir "~/dotfiles/")))
+  ;; VHDL
+
+
+  ;; ;; Open neo-tree with dotfiles
+  ;; (spacemacs/set-leader-keys "fd" (lambda () (interactive) (neotree-dir "~/dotfiles/")))
+  ;; (which-key-add-key-based-replacements "SPC fd" "~/dotfiles/")
 
   ;; Org keybinds
   (spacemacs/set-leader-keys "of" (lambda () (interactive) (neotree-dir "~/org/")))
+  (which-key-add-key-based-replacements "SPC of" "~/org/")
+
+  ;; ix.io
+  (spacemacs/set-leader-keys "ix" 'ix)
+  (spacemacs/set-leader-keys "ib" 'ix-browse)
+
+  ;; Load automatically generated shortcuts
+  (load "~/.spacemacsshortcuts")
+
+  ;; Label generated shortcuts
+  (which-key-add-key-based-replacements "SPC ," "open bookmarked folder")
+
+  (which-key-add-key-based-replacements "SPC ." "open bookmarked file")
+  (which-key-add-key-based-replacements "SPC .b" "bookmarks")
+  (which-key-add-key-based-replacements "SPC .c" "config")
+  (which-key-add-key-based-replacements "SPC .cf" "config file")
 
   ;; Better compile-command
   (setq compile2-command-history "")
@@ -425,7 +466,29 @@ It will run M-x compile with:
   ;; Set directories for eclim (java-layer)
   (setq eclim-eclipse-dirs '("/usr/bin/eclipse")
         eclim-executable "/usr/lib/eclipse/plugins/org.eclim_2.8.0/bin/eclim")
-  
+
+  ;; Fix 'o' in haskell-mode
+  (with-eval-after-load "haskell-mode"
+    ;; This changes the evil "O" and "o" keys for haskell-mode to make sure that
+    ;; indentation is done correctly. See
+    ;; https://github.com/haskell/haskell-mode/issues/1265#issuecomment-252492026.
+    (defun haskell-evil-open-above ()
+      (interactive)
+      (evil-digit-argument-or-evil-beginning-of-line)
+      (haskell-indentation-newline-and-indent)
+      (evil-previous-line)
+      (haskell-indentation-indent-line)
+      (evil-append-line nil))
+
+    (defun haskell-evil-open-below ()
+      (interactive)
+      (evil-append-line nil)
+      (haskell-indentation-newline-and-indent))
+
+    (evil-define-key 'normal haskell-mode-map
+      "o" 'haskell-evil-open-below
+      "O" 'haskell-evil-open-above)
+    )
 
   ;; Close xref after jumping
   (defun my/do-then-quit (&rest args)
@@ -494,6 +557,69 @@ It will run M-x compile with:
 
 ;;   "Fira Code"
 
+ (defun my-correct-symbol-bounds (pretty-alist)
+    "Prepend a TAB character to each symbol in this alist,
+this way compose-region called by prettify-symbols-mode
+will use the correct width of the symbols
+instead of the width measured by char-width."
+    (mapcar (lambda (el)
+              (setcdr el (string ?\t (cdr el)))
+              el)
+            pretty-alist))
+
+  (defun my-ligature-list (ligatures codepoint-start)
+    "Create an alist of strings to replace with
+codepoints starting from codepoint-start."
+    (let ((codepoints (-iterate '1+ codepoint-start (length ligatures))))
+      (-zip-pair ligatures codepoints)))
+
+  ; list can be found at https://github.com/i-tu/Hasklig/blob/master/GlyphOrderAndAliasDB#L1588
+  (setq my-hasklig-ligatures
+    (let* ((ligs '("&&" "***" "*>" "\\\\" "||" "|>" "::"
+                   "==" "===" "==>" "=>" "=<<" "!!" ">>"
+                   ">>=" ">>>" ">>-" ">-" "->" "-<" "-<<"
+                   "<*" "<*>" "<|" "<|>" "<$>" "<>" "<-"
+                   "<<" "<<<" "<+>" ".." "..." "++" "+++"
+                   "/=" ":::" ">=>" "->>" "<=>" "<=<" "<->")))
+      (my-correct-symbol-bounds (my-ligature-list ligs #Xe100))))
+
+  ;; nice glyphs for haskell with hasklig
+  (defun my-set-hasklig-ligatures ()
+    "Add hasklig ligatures for use with prettify-symbols-mode."
+    (setq prettify-symbols-alist
+          (append my-hasklig-ligatures prettify-symbols-alist))
+    (prettify-symbols-mode))
+
+  (setq my-fira-code-ligatures
+        (let* ((ligs '("www" "**" "***" "**/" "*>" "*/" "\\\\" "\\\\\\"
+                       "{-" "[]" "::" ":::" ":=" "!!" "!=" "!==" "-}"
+                       "--" "---" "-->" "->" "->>" "-<" "-<<" "-~"
+                       "#{" "#[" "##" "###" "####" "#(" "#?" "#_" "#_("
+                       ".-" ".=" ".." "..<" "..." "?=" "??" ";;" "/*"
+                       "/**" "/=" "/==" "/>" "//" "///" "&&" "||" "||="
+                       "|=" "|>" "^=" "$>" "++" "+++" "+>" "=:=" "=="
+                       "===" "==>" "=>" "=>>" "<=" "=<<" "=/=" ">-" ">="
+                       ">=>" ">>" ">>-" ">>=" ">>>" "<*" "<*>" "<|" "<|>"
+                       "<$" "<$>" "<!--" "<-" "<--" "<->" "<+" "<+>" "<="
+                       "<==" "<=>" "<=<" "<>" "<<" "<<-" "<<=" "<<<" "<~"
+                       "<~~" "</" "</>" "~@" "~-" "~=" "~>" "~~" "~~>" "%%"
+                       "x" ":" "+" "+" "*")))
+          (my-correct-symbol-bounds (my-ligature-list ligs #Xe100))))
+
+  (defun my-set-fira-code-ligatures ()
+    "Add hasklig ligatures for use with prettify-symbols-mode."
+    (setq prettify-symbols-alist
+          (append my-fira-code-ligatures prettify-symbols-alist))
+    (prettify-symbols-mode))
+
+  (add-hook 'haskell-mode-hook 'my-set-fira-code-ligatures)
+  (add-hook 'literate-haskell-mode-hook 'my-set-fira-code-ligatures)
+
+
+
+
+
+  ;;------------------ =[ OLD CODE ]= ---------------------------
 ;;; Fira code
 ;; This works when using emacs --daemon + emacsclient
 ;; (add-hook 'after-make-frame-functions (lambda (frame) (set-fontset-font t '(#Xe100 . #Xe16f) "Fira Code Symbol")))
@@ -640,20 +766,23 @@ It will run M-x compile with:
  '(custom-safe-themes
    (quote
     ("e0c66085db350558f90f676e5a51c825cb1e0622020eeda6c573b07cb8d44be5" default)))
- '(evil-want-Y-yank-to-eol nil)
+ '(evil-want-Y-yank-to-eol t)
+ '(executable-chmod 64)
+ '(haskell-stylish-on-save t t)
  '(kotlin-tab-width 4)
  '(org-agenda-files
    (quote
     ("~/org/agenda/calendar/googleDtekCalendar.org" "~/org/agenda/calendar/googleMainCalendar.org" "~/org/agenda/calendar/googleTimeEditCalendar.org" "~/org/agenda/agenda.org")))
  '(package-selected-packages
    (quote
-    (company-go go-guru go-eldoc go-mode company-ghc intero hlint-refactor hindent helm-hoogle haskell-snippets ghc flycheck-haskell company-ghci haskell-mode company-cabal cmm-mode yaml-mode drupal-mode phpunit phpcbf php-auto-yasnippets php-mode kotlin-mode flycheck-elm company-emacs-eclim eclim yasnippet-snippets elixir-yasnippets company-anaconda yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode anaconda-mode pythonic mmm-mode markdown-toc markdown-mode gh-md web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode elm-mode company-auctex auctex-latexmk auctex web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data xterm-color shell-pop multi-term helm-company helm-c-yasnippet git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck eshell-z eshell-prompt-extras esh-help disaster diff-hl company-statistics company-c-headers company cmake-mode clang-format auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete smeargle orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download magit-gitflow htmlize helm-gitignore gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-commit ghub let-alist with-editor ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
+    (ix grapnel darktooth-theme zenburn-theme zen-and-art-theme white-sand-theme underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme toxi-theme tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme seti-theme reverse-theme rebecca-theme railscasts-theme purple-haze-theme professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme organic-green-theme omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme naquadah-theme mustang-theme monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme material-theme majapahit-theme madhat2r-theme lush-theme light-soap-theme jbeans-theme jazz-theme ir-black-theme inkpot-theme heroku-theme hemisu-theme hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme gandalf-theme flatui-theme flatland-theme farmhouse-theme exotica-theme espresso-theme dracula-theme django-theme autothemer darkokai-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized clues-theme cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme company-go go-guru go-eldoc go-mode company-ghc intero hlint-refactor hindent helm-hoogle haskell-snippets ghc flycheck-haskell company-ghci haskell-mode company-cabal cmm-mode yaml-mode drupal-mode phpunit phpcbf php-auto-yasnippets php-mode kotlin-mode flycheck-elm company-emacs-eclim eclim yasnippet-snippets elixir-yasnippets company-anaconda yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode anaconda-mode pythonic mmm-mode markdown-toc markdown-mode gh-md web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode elm-mode company-auctex auctex-latexmk auctex web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data xterm-color shell-pop multi-term helm-company helm-c-yasnippet git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck eshell-z eshell-prompt-extras esh-help disaster diff-hl company-statistics company-c-headers company cmake-mode clang-format auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete smeargle orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download magit-gitflow htmlize helm-gitignore gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-commit ghub let-alist with-editor ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
  '(spacemacs-large-file-modes-list
    (quote
-    (archive-mode tar-mode jka-compr git-commit-mode image-mode doc-view-mode doc-view-mode-maybe ebrowse-tree-mode pdf-view-mode tags-table-mode))))
+    (archive-mode tar-mode jka-compr git-commit-mode image-mode doc-view-mode doc-view-mode-maybe ebrowse-tree-mode pdf-view-mode tags-table-mode)))
+ '(tramp-terminal-type "tramp" nil (tramp)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:background nil)))))

@@ -2,6 +2,20 @@
 # Default acpi script that takes an entry for all actions
 
 case "$1" in
+    cd/play)
+        case "$2" in
+            CDPLAY)
+                logger 'PlayPauseButton pressed'
+                # /usr/bin/sudo -u carlb playerctl play-pause
+                #/usr/bin/amixer set Speaker on
+                #/usr/bin/amixer set Headphone on
+                sudo -u carlb amixer set Master toggle
+                ;;
+            *)
+                logger "ACPI action undefined: $2"
+                ;;
+        esac
+        ;;
     button/mute)
         case "$2" in
             MUTE)
