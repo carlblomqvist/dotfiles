@@ -40,7 +40,7 @@ font-0 = Open Sans:pixelsize=10;4
 font-1 = FontAwesome:size=10;5
 font-2 = siji:pixelsize=10;0
 
-modules-left =
+modules-left = padding currentlyplaying 
 modules-center = i3
 modules-right = battery-simple backlight cpu memory volume mpd date powermenu
 ; modules-right = backlight cpu memory volume mpd date powermenu
@@ -52,7 +52,7 @@ tray-padding = 4
 tray-background = ${self.background}
 tray-detached = false
 ; maxsize must be 16, 22, 24, 32 or 48
-tray-maxsize = 24
+tray-maxsize = 32
 
 wm-restack = i3
 
@@ -65,18 +65,28 @@ pin-workspaces = true
 strip-wsnumbers = true
 enable-scroll = false
 
-; format = <label-state> <label-mode> 
-; label-mode-padding = 2
+format = <label-state> <label-mode> 
+label-mode-padding = 2
 label-unfocused-foreground = ${colors.foreground}
 label-focused-foreground = ${colors.primary}
 label-urgent-foreground = ${colors.alert}
 
+; label-focused-padding = 1
+; label-unfocused-padding = 1
+; label-visible-padding = 1
+; label-urgent-padding = 1
+
+; Separator in between workspaces
+label-separator = |
+label-separator-padding = 2
+; label-separator-foreground = #ffb52a
+
 ; 
-ws-icon-0 = 1;
-ws-icon-1 = 2;
-ws-icon-2 = 3;
-ws-icon-3 = 4;
-ws-icon-4 = spotify;
+ws-icon-0 = work; 
+ws-icon-1 = web; 
+ws-icon-2 = misc; 
+ws-icon-3 = 4; 
+ws-icon-4 = spotify; 
 ; ws-icon-default = 
 
 [module/bspwm]
@@ -226,10 +236,10 @@ ramp-volume-1 = 
 ramp-volume-2 = 
 ramp-headphones-0 = 
 
-[module/spotify]
+[module/currentlyplaying]
 type = custom/script
 
-exec = /home/gamehelp16/Documents/np
+exec = /home/carlb/.config/polybar/currentlyPlaying.sh
 interval = 1
 
 format = <label>   
