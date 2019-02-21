@@ -6,11 +6,21 @@
 
 # Make emacs realize it can use 256 colors
 [[ $TERM == "eterm-color" ]] && export TERM=xterm-256color
+
+# Colors in less
+export LESS_TERMCAP_mb=$'\e[1;32m'
+export LESS_TERMCAP_md=$'\e[1;32m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;33m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[1;4;31m'
+
 # Path to your oh-my-zsh installation.
 export ZSH=/home/carlb/.oh-my-zsh
-export VISUAL="emacsclient -t"
-export EDITOR="emacsclient -t"
-alias e="emacsclient -t"
+export VISUAL="emacsclient -t --socket-name spacemacs"
+export EDITOR="emacsclient -t --socket-name spacemacs"
+alias e="emacsclient -t --socket-name spacemacs"
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 # export TERM="xterm-256color"
 # export LC_ALL="C"
