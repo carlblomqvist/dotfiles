@@ -20,8 +20,8 @@ case "$1" in
         case "$2" in
             MUTE)
                 logger 'MuteButton pressed'
-                #/usr/bin/amixer set Speaker on
-                #/usr/bin/amixer set Headphone on
+                /usr/bin/amixer set Speaker on
+                /usr/bin/amixer set Headphone on
                 #/usr/bin/sudo -u carlb amixer set Master toggle
                 ;;
             *)
@@ -33,7 +33,7 @@ case "$1" in
         case "$2" in
             VOLUP)
                 logger 'VolumeUp pressed'
-                /usr/bin/sudo -u carlb amixer set Master 5+
+                # /usr/bin/sudo -u carlb amixer set Master 5+
                 ;;
             *)
                 logger "ACPI action undefined: $2"
@@ -44,7 +44,7 @@ case "$1" in
         case "$2" in
             VOLDN)
                 logger 'VolumeDown pressed'
-                /usr/bin/sudo -u carlb amixer set Master 5-
+                # /usr/bin/sudo -u carlb amixer set Master 5-
                 ;;
             *)
                 logger "ACPI action undefined: $2"
@@ -54,12 +54,12 @@ case "$1" in
     video/brightnessup|video/brightnessdown)
         case "$2" in
             BRTDN)
-		backlight -10%
+				#backlight -10%
                 logger 'BrightnessDownButton pressed'
                 ;;
             BRTUP)
                 logger 'BrightnessUpButton pressed'
-                backlight +10%
+                #backlight +10%
                 ;;
             *)
                 logger "ACPI action undefined: $2"
