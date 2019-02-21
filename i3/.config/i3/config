@@ -12,10 +12,14 @@
 set $mod Mod4
 
 # Media keys
-bindsym XF86AudioMute exec amixer set Master toggle
+#bindsym XF86AudioMute exec amixer set Master toggle
 #bindsym XF86AudioRaiseVolume exec amixer set Master 5+
 #bindsym XF86AudioLowerVolume exec amixer set Master 5-
 #bindsym XF86AudioPlay exec playerctl play
+
+# Screen brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -176,10 +180,10 @@ bindsym $mod+minus exec i3-msg border pixel 2
 bindsym --release $mod+minus exec i3-msg border pixel 0
 
 # change focus
-bindsym $mod+h exec i3-msg border pixel 2; focus left
-bindsym $mod+j exec i3-msg border pixel 2; focus down
-bindsym $mod+k exec i3-msg border pixel 2; focus up
-bindsym $mod+l exec i3-msg border pixel 2; focus right
+bindsym $mod+h exec i3-msg border pixel 2; focus left; exec --no-startup-id xdotool mousemove 10000 10000 
+bindsym $mod+j exec i3-msg border pixel 2; focus down; exec --no-startup-id xdotool mousemove 10000 10000 
+bindsym $mod+k exec i3-msg border pixel 2; focus up; exec --no-startup-id xdotool mousemove 10000 10000 
+bindsym $mod+l exec i3-msg border pixel 2; focus right; exec --no-startup-id xdotool mousemove 10000 10000 
 bindsym --release $mod+h exec i3-msg border pixel 0
 bindsym --release $mod+j exec i3-msg border pixel 0
 bindsym --release $mod+k exec i3-msg border pixel 0
