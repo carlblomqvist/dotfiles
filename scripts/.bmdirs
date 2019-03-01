@@ -1,14 +1,14 @@
 # You can add comments to these files with #
-D	~/Downloads
+D /home/carlb/Downloads
 cc ~/courses
-cf	~/.config
-dd	~/dotfiles
-di	~/courses/eda322_digital_design/EDA322-Labs
+cf ~/.config
+dd ~/dotfiles
+di ~/courses/eda322_digital_design/EDA322-Labs
 dsl ~/courses/dat326
 h	~/
 m	~/music
 M /mnt
 o ~/org
-pp	~/pictures
-sc	~/.scripts
-vv	~/videos
+pp ~/pictures
+sc ~/.scripts
+vv ~/videos

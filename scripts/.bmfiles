@@ -1,13 +1,13 @@
 # cfA	~/.asoundrc
 # cfM	~/.config/mpd/mpd.conf
 # cfm	~/.config/mutt/muttrc
-# cfmb	~/.config/ncmpcpp/bindings
-# cfmc	~/.config/ncmpcpp/config
+# cfmb ~/.config/ncmpcpp/bindings
+# cfmc ~/.config/ncmpcpp/config
 # cfmpd	~/.config/mpd/mpd.conf
 # cfq	~/.config/qutebrowser/config.py
 # er ~/.referbib
-bd	~/.bmdirs
-bf	~/.bmfiles
+bd ~/.bmdirs
+bf ~/.bmfiles
 cfb	~/.bashrc
 cfd	~/.Xdefaults
 cfi	~/.config/i3/config
@@ -17,4 +17,4 @@ cfr	~/.config/ranger/rc.conf
 cfs	~/.spacemacs
 cfv	~/.vimrc
 cfz	~/.zshrc
-cv	~/Documents/LaTeX/cv.tex
+cv ~/Documents/LaTeX/cv.tex
