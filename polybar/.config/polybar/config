@@ -42,7 +42,7 @@ font-2 = siji:pixelsize=10;0
 
 modules-left = padding currentlyplaying 
 modules-center = i3
-modules-right = battery-simple backlight cpu memory volume mpd date powermenu
+modules-right = battery backlight cpu memory volume mpd date powermenu
 ; modules-right = backlight cpu memory volume mpd date powermenu
 
 tray-position = left
@@ -157,8 +157,8 @@ type = internal/battery
 
 full-at = 99
 
-battery = BAT0
-adapter = AC0
+battery = BAT1
+adapter = ADP1
 
 poll-interval = 5
 
@@ -168,9 +168,9 @@ format-full = <ramp-capacity>  <label-full>
 label-charging = %percentage%
 label-discharging = %percentage%
 label-full = %percentage%
-format-charging-padding = 3
-format-discharging-padding = 3
-format-full-padding = 3
+format-charging-padding = 2
+format-discharging-padding = 2
+format-full-padding = 2
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
