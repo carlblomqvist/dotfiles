@@ -1,20 +1,14 @@
+# Uncomment this + the last line to debug ZSH
+# zmodload zsh/zprof
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-#
+
 # Check if connecting from tramp, is so; ignore config
 [[ $TERM == "tramp" ]] && unsetopt zle && PS1='$ ' && return
 
 # Make emacs realize it can use 256 colors
 [[ $TERM == "eterm-color" ]] && export TERM=xterm-256color
-
-# Colors in less
-export LESS_TERMCAP_mb=$'\e[1;32m'
-export LESS_TERMCAP_md=$'\e[1;32m'
-export LESS_TERMCAP_me=$'\e[0m'
-export LESS_TERMCAP_se=$'\e[0m'
-export LESS_TERMCAP_so=$'\e[01;33m'
-export LESS_TERMCAP_ue=$'\e[0m'
-export LESS_TERMCAP_us=$'\e[1;4;31m'
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/carlb/.oh-my-zsh
@@ -26,23 +20,32 @@ export QT_AUTO_SCREEN_SCALE_FACTOR=1
 # export LC_ALL="C"
 
 # Powerline
-powerline-daemon -q
-. /usr/lib/python3.7/site-packages/powerline/bindings/zsh/powerline.zsh
+# powerline-daemon -q
+# . /usr/lib/python3.7/site-packages/powerline/bindings/zsh/powerline.zsh
+# POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
+# POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history vi_mode)
+# export DEFAULT_USER=carlb
+# POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
+# POWERLEVEL9K_SHORTEN_DELIMITER=""
+# POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
+# POWERLEVEL9K_VI_INSERT_MODE_STRING="INS"
+# POWERLEVEL9K_VI_COMMAND_MODE_STRING="NOR"
 
 # Set keyboard repeat rate
 xset r rate 180 30
 
-vicd()
-{
-    local dst="$(command vifm --choose-dir -)"
-    if [ -z "$dst" ]; then
-        echo 'Directory picking cancelled/failed'
-        return 1
-    fi
-    cd "$dst"
-}
+# Change dir when leaving vifm
+# vicd()
+# {
+#     local dst="$(command vifm --choose-dir -)"
+#     if [ -z "$dst" ]; then
+#         echo 'Directory picking cancelled/failed'
+#         return 1
+#     fi
+#     cd "$dst"
+# }
 
-bindkey -v
+# Vi-mode incicator
 # PS1+='${VIMODE}'
 # #   '$' for normal insert mode
 # #   a big red 'I' for command mode - to me this is 'NOT insert' because red
@@ -52,63 +55,42 @@ bindkey -v
 #     VIMODE="${${KEYMAP/vicmd/$GIANT_I}/(main|viins)/$DOLLAR}"
 #     zle reset-prompt
 # }
-zle -N zle-line-init
-zle -N zle-keymap-select
+# zle -N zle-line-init
+# zle -N zle-keymap-select
 
 # Add thefuck alias
-eval $(thefuck --alias)
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
-export LANG="en_US.utf8"
+# eval $(thefuck --alias)
 
-ZSH_THEME="powerlevel9k/powerlevel9k"
+# powerline theme
+# ZSH_THEME="powerlevel9k/powerlevel9k"
 
+# geometry
+GEOMETRY_PROMPT_PLUGINS=(exec_time git hg +vi-mode)
+source ~/git/geometry/geometry.zsh
+
+# use zmv
 autoload zmv
+alias mv="zmv"
+
+# Reduce waittime when switching modes in vi-mode
+export KEYTIMEOUT=1
 
 # Fix ZSH vi mode backspace
 bindkey "^?" backward-delete-char
 
-# Set list of themes to load
-# Setting this variable when ZSH_THEME=random
-# cause zsh load theme from this variable instead of
-# looking in ~/.oh-my-zsh/themes/
-# An empty array have no effect
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
 #Export LC_CTYPE
+export LANG="en_US.utf8"
 export LC_CTYPE="en_US.UTF-8"
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -118,28 +100,22 @@ export LC_CTYPE="en_US.UTF-8"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  colored-man-pages
   command-not-found
   common-aliases
   fancy-ctrl-z
-  git
+  # git
+  history-substring-search
+  vi-mode
   web-search
-  # zsh-256color
   zsh-autosuggestions
+  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
 # export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -173,4 +149,8 @@ alias ranger="source ranger"
 # import automatically generated aliases for shortcuts
 source ~/.shortcuts
 
+# activate fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Uncomment this + the first line to debug ZSH
+# zprof
