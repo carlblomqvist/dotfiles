@@ -15,15 +15,14 @@ set $mod Mod4
 #bindsym XF86AudioMute exec amixer set Master toggle
 #bindsym XF86AudioRaiseVolume exec amixer set Master 5+
 #bindsym XF86AudioLowerVolume exec amixer set Master 5-
-#bindsym XF86AudioPlay exec playerctl play
-
+bindsym XF86AudioPlay exec playerctl toggle
 # Screen brightness
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Monaco 8
+font pango:Fira Code 9
 floating_minimum_size 800 x 800
 floating_maximum_size 2630 x 1620
 
@@ -123,11 +122,18 @@ gaps outer $outer_gaps
 new_window pixel 0
 #hide_edge_borders both
 
+# rofimoji
+bindsym $mod+m exec rofimoji
+
 # take a screenshot of a screen region and copy it to a clipboard
 bindsym --release $mod+Shift+p exec /home/carlb/.config/i3/screenshot.sh
 bindsym --release Print exec ./screenshot.sh
 # take a screenshot of a whole window and copy it to a clipboard
 bindsym --release mod+Print exec "scregcp /home/carlb/pictures/screenshots/"
+
+# this is from a python script. TODO:
+# command = "sleep 0.1 && scrot --exec 'xclip -selection c -t image/png < $f' %s " % file
+# proc = subprocess.Popen(command + " ".join(additionalArguments), shell=True)
 
 # Lock screen
 bindsym $mod+Control+L exec /home/carlb/.config/i3/lockscreen.sh
@@ -168,7 +174,8 @@ bindsym $mod+shift+f exec tdrop -n 3 -a -w 100% -y $top_bar_height --name ranger
 # installed.
 #bindsym $mod+d exec --no-startup-id i3-dmenu-desktop 
 #bindsym $mod+d exec dmenu_run -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg"
-bindsym $mod+d exec rofi -show run
+# bindsym $mod+d exec rofi -show run
+bindsym $mod+d exec albert toggle
 
 # switch to workspace
 bindsym $mod+section exec workspacer set 
@@ -328,5 +335,6 @@ exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec_always setxkbmap `cat .Xkbmap`
 exec --no-startup-id touchegg
+exec --no-startup-id albert # should make this into a service
 # exec --no-startup-id synergyc --daemon --no-restart 192.168.1.2
 # exec --no-startup-id synergy
