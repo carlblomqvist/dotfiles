@@ -1,42 +1,60 @@
-# vim: ft=cfg
 [global]
-    alignment = center
-    follow = none
-    format = "%s\n%b"
-    horizontal_padding = 8
-    indicate_hidden = yes
-    line_height = 5
-    markup = yes
-    notification_height = 30
-    padding = 25
-    plain_text = no
-    separator_height = 0
-    shrink = no
-    sort = yes
-    word_wrap = yes
-    corner_radius = 6
+    font                 = Fira Code 12
+    markup               = full
+    format               = "<b>%s</b>\n%b"
+    monitor              = 0
+    follow               = mouse
+    geometry             = "1000x50-30+50"
+    indicate_hidden      = yes
+    sort                 = yes
+    alignment            = left
+    shrink               = yes
+    separator_height     = 4
+    padding              = 16
+    horizontal_padding   = 16
+    separator_color      = auto
+    idle_threshold       = 120
+    show_age_threshold   = 60
+    word_wrap            = yes
+    ignore_newline       = no
+    stack_duplicates     = true
+    hide_duplicate_count = false
+    show_indicators      = no
+    ignore_newline       = no
+    history_length       = 20
+    sort                 = yes
+    title                = Dunst
+    class                = Dunst
+    browser              = /usr/bin/firefox --new-tab
+    startup_notification = false
+    always_run_script    = true
+    icon_position        = left
+    frame_color = "#000000"
+    frame_width = 1
+    max_icon_size = 200
     transparency = 0
+[shortcuts]
+    close = ctrl+space
+    close_all = ctrl+shift+space
+    context = ctrl+shift+p
+    history = ctrl+grave
 
 [urgency_low]
-    # IMPORTANT: colors have to be defined in quotation marks.
-    # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#222222"
-    foreground = "#888888"
-    timeout = 5
-    # Icon for notifications with low urgency, uncomment to enable
-    #icon = /path/to/icon
+    background = "#282A2E"
+    foreground = "#ffffff"
+    timeout = 4
 
 [urgency_normal]
-    background = "#285577"
-    foreground = "#ffffff"
-    timeout = 5
-    # Icon for notifications with normal urgency, uncomment to enable
-    #icon = /path/to/icon
+    background = "#ffffff"
+    foreground = "#000000"
+    timeout = 6
 
 [urgency_critical]
-    background = "#900000"
-    foreground = "#ffffff"
-    frame_color = "#ff0000"
-    timeout = 0
-    # Icon for notifications with critical urgency, uncomment to enable
-    #icon = /path/to/icon
+    background = "#282A2E"
+    foreground = "#aaafb2"
+    timeout = 10
+
+[Spotify]
+    appname = Spotify
+    # format = "%s\n%b"
+    timeout = 7
