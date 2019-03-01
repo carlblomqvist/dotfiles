@@ -17,10 +17,13 @@ main() {
         echo ""; exit
     fi
 
+    status=$(playerctl status);
+    [[ $status = "Playing" ]] && status=
+    [[ $status = "Paused" ]] && status=
     artist=$(playerctl metadata artist);
     title=$(playerctl metadata title);
 
-    echo "$artist - $title";
+    echo "$status $artist - $title";
 }
 
 main "$@"
