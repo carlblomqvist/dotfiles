@@ -9,31 +9,24 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod4
-
-# Media keys
-#bindsym XF86AudioMute exec amixer set Master toggle
-#bindsym XF86AudioRaiseVolume exec amixer set Master 5+
-#bindsym XF86AudioLowerVolume exec amixer set Master 5-
-bindsym XF86AudioPlay exec playerctl toggle
-# Screen brightness
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10
-
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:Fira Code 9
-floating_minimum_size 800 x 800
-floating_maximum_size 2630 x 1620
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
+
+# --- WINDOW RULES --- #
+
+
 # Float JavaFX
 #for_window [title="JavaFX"] floating enable resize set 800 600
 
-# Float rules
+floating_minimum_size 800 x 800
+floating_maximum_size 2630 x 1620
+
 set $float_width 800
 set $float_height 800
 set $float_maxwidth 2650
@@ -100,8 +93,8 @@ for_window [class="yttressh"] border pixel 5
 # from the generated scheme.
 # NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
 # it fails to get colors from Xresources.
-set_from_resource $fg i3wm.color0 #f0f0f0
-set_from_resource $bg i3wm.color6 #f0f0f0
+set_from_resource $fg i3wm.color7 #f0f0f0
+set_from_resource $bg i3wm.color8 #f0f0f0
 
 # class                 border  backgr. text indicator child_border
 client.focused          $fg     $bg     $fg  $bg       $fg
@@ -121,6 +114,25 @@ gaps outer $outer_gaps
 # Window borders
 new_window pixel 0
 #hide_edge_borders both
+
+
+# --- KEYBINDINGS --- #
+
+
+set $mod Mod4
+
+# Media keys
+#bindsym XF86AudioMute exec amixer set Master toggle
+#bindsym XF86AudioRaiseVolume exec amixer set Master 5+
+#bindsym XF86AudioLowerVolume exec amixer set Master 5-
+bindsym XF86AudioPlay exec playerctl toggle
+# Screen brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+
+# disable touchpad
+bindsym $mod+comma exec synclient TouchpadOff=1
+bindsym $mod+period exec synclient TouchpadOff=0
 
 # rofimoji
 bindsym $mod+m exec rofimoji
@@ -323,11 +335,11 @@ bindsym $mod+r mode "resize"
 # -- EXEC -- 
 # exec --no-startup-id wal -R
 #exec --no-startup-id xrandr --dpi 144
-#exec --no-startup-id exec compton -c -bc --unredir-if-possible --xrender-sync-fence --xrender-sync --config ~/.config/compton/config
+exec --no-startup-id albert # should make this into a service
+exec_always --no-startup-id exec feh --bg-scale ~/pictures/wallpapers/landscape-matterhorn.jpg
 exec dispwin /home/carlb/.color/icc/surface-srgb.icm
 exec --no-startup-id exec compton -bc --unredir-if-possible --xrender-sync-fence --xrender-sync --config ~/.config/compton/config
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec_always --no-startup-id exec feh --bg-scale ~/pictures/wallpapers/butterfly.jpg
 #exec konsole
 #exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id redshift-gtk
@@ -335,6 +347,5 @@ exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec_always setxkbmap `cat .Xkbmap`
 exec --no-startup-id touchegg
-exec --no-startup-id albert # should make this into a service
 # exec --no-startup-id synergyc --daemon --no-restart 192.168.1.2
 # exec --no-startup-id synergy

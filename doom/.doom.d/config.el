@@ -50,21 +50,21 @@
       (:prefix "f"
         :desc "Find file"              "f" #'find-file
         :desc "rgrep"                  "g" #'rgrep
-        :desc "Rename buffer filename" "R" #'rgrep
+        ;; :desc TODO "Rename buffer filename" "R" #'rgrep
         :desc "Sudo Edit this file"    "S" #'doom/sudo-this-file
-        :desc "Find file in dotfiles"  "t" #'+hlissner/find-in-dotfiles
-        :desc "Browse dotfiles"        "T" #'+hlissner/browse-dotfiles)
+        :desc "Find file in dotfiles"  "t" #'+hlissner/find-in-dotfiles)
+      ;; :desc "Browse dotfiles"        "T" #'+hlissner/browse-dotfiles)
       (:prefix "n"
         :desc "Open mode notes"        "m" #'+hlissner/find-notes-for-major-mode
         :desc "Open project notes"     "p" #'+hlissner/find-notes-for-project)
       (:prefix "o"
-        :desc "Open org-notes"         "f" #'+open-org-folder
-        :desc "Open org-notes"         "p" #'+neotree/find-this-file
-        :desc "Open org-notes"         "P" #'+neotree/open)
+        :desc "Open org-folder"        "f" #'+open-org-folder
+        :desc "Neotree open this file" "p" #'+neotree/find-this-file
+        :desc "Neotree open"           "P" #'+neotree/open)
       (:prefix "p"
-        :desc "Find file in project"   "f" #'projectile-find-file)
-      (:prefix "t"
-        :desc "Camel case motion"      "c" #'camel-case-motion)) ;; add this
+        :desc "Find file in project"   "f" #'projectile-find-file))
+      ;; (:prefix "t"
+        ;; :desc TODO "Camel case motion"      "c" #'camel-case-motion))
 
 
 ;; Lang
@@ -76,6 +76,13 @@
 ;;   (set-popup-rule! "^\\*twittering-edit"
 ;;     '((size . 15))
 ;;     '((transient) (quit) (select . t))))
+
+
+;; Intero Window
+(after! intero-mode
+  (set-popup-rule! "^\\*intero*"
+    '((size . 15))
+    '((transient) (quit) (select . t))))
 
 
 (after! elm
@@ -127,12 +134,13 @@
 (setq shell-command-switch "-ic")
 
 ;; Modules
+;; (load! "+exwm")     ;; EXWM is a nerdy thing
 (load! "+magit")     ;; Magit config
 (load! "+ui")        ;; My ui mods. Also contains ligature stuff.
 (load! "+ranger")    ;; File manager stuff
 (load! "+org")       ;; Org mode stuff like todos and rebindings
+;(load! "+org-looks") ;; Org mode beautification! (seems to fuck up Doom?)
 (load! "+shortcuts") ;; Automatically generated shortcuts from script
 ;; (load! "+music")   ;; Music stuff, visible through SPC-a-m. Not perfect.
-;; (load! "+reason")  ;; ReasonML stuff
 ;; (load! "+mail")    ;; Mail stuff
 ;; (load! "+irc") ;; Irc config
