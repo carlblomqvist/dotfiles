@@ -151,6 +151,7 @@ source ~/.shortcuts
 
 # activate fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source ~/.zsh/fzf
 
 # Uncomment this + the first line to debug ZSH
 # zprof
