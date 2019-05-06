@@ -42,7 +42,7 @@ font-2 = siji:pixelsize=10;0
 
 modules-left = padding currentlyplaying mpd
 modules-center = i3
-modules-right = battery backlight cpu memory volume date powermenu
+modules-right = battery-notify battery backlight cpu memory volume date powermenu
 ; modules-right = backlight cpu memory volume mpd date powermenu
 
 tray-position = left
@@ -81,11 +81,11 @@ label-separator = |
 label-separator-padding = 2
 ; label-separator-foreground = #ffb52a
 
-; 
+; 
 ws-icon-0 = work; 
-ws-icon-1 = web; 
+ws-icon-1 = web;
 ws-icon-2 = misc; 
-ws-icon-3 = 4; 
+ws-icon-3 = pdf;
 ws-icon-4 = spotify; 
 ; ws-icon-default = 
 
@@ -204,6 +204,11 @@ exec = ~/.config/polybar/battery-percentage.sh
 interval = 60
 ; label-font = 3
 ; label-padding = 4
+
+[module/battery-notify]
+type = custom/script
+exec = ~/.config/polybar/battery-notify.sh
+interval = 60
 
 [module/backlight]
 type = internal/backlight
