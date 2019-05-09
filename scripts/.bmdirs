@@ -2,7 +2,10 @@
 D /home/carlb/Downloads
 cc ~/courses
 cf ~/.config
+dc ~/dev/c
 dd ~/dotfiles
+de ~/dev/elm
+dp ~/dev/python
 di ~/courses/eda322_digital_design/EDA322-Labs
 dsl ~/courses/dat326
 h	~/
