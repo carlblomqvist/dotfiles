@@ -1,0 +1,7 @@
+has_ssh=$(i3-msg -t get_workspaces | grep ssh)
+if [ -n "$has_ssh" ]; then
+    i3-msg -q workspace ssh
+else
+    i3-msg -q workspace ssh
+    kitty --detach --class "yttressh" ssh -p 50000 carlb@rymden.space
+fi
