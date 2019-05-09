@@ -1,0 +1,42 @@
+fzf-bookmarks-widget() {
+  local cmd="${FZF_ALT_B_COMMAND:-"cat ~/.bmdirs ~/.bmfiles \
+      # | cut -d "/" -f2
+  "}"
+  local dir="$(eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_ALT_B_OPTS" $(__fzfcmd) +m)"
+    # local sell=( $(cat ~/.bmdirs ~/.bmfiles | 
+    #   FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} $FZF_DEFAULT_OPTS -n2..,.. --tiebreak=index --bind=ctrl-r:toggle-sort $FZF_CTRL_R_OPTS --query=${(qqq)LBUFFER} +m" $(__fzfcmd)))
+         # local sel =$(echo "$sell" | cut -d" " -f2)
+  local cut="$(echo "$dir" | awk '{print $2}' | sed "s|~|$HOME|")"
+    # echo "sell is $sell"
+    # echo "sel is $sel"
+    # echo "dir is $dir"
+    # echo "cut is $cut"
+    if [[ -z "$cut" ]]; then
+        zle redisplay
+        return 0
+    fi
+    if [[ -d "$cut" ]]; then
+        echo "$cut is a directory"
+        cd "$cut"
+        local ret=$?
+        zle fzf-redraw-prompt
+        return $ret
+    elif [[ -f "$cut" ]]; then
+        echo "$cut is a file"
+        export EDITOR=nvim
+        $EDITOR "$cut"
+        local ret=$?
+        zle fzf-redraw-prompt
+        return $ret
+    else
+        echo "$cut is not valid"
+        local ret=$?
+        zle fzf-redraw-prompt
+        return $ret
+    fi
+    local ret=$?
+    zle fzf-redraw-prompt
+    return $ret
+}
+zle     -N   fzf-bookmarks-widget
+bindkey '\eb' fzf-bookmarks-widget
