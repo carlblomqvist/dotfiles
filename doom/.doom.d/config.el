@@ -2,7 +2,7 @@
 
 ;; Place your private configuration here
 ;; (load "~/.spacemacsshortcuts")
-  ;; (which-key-add-key-based-replacements "SPC ," "open bookmarked folder")
+;; (which-key-add-key-based-replacements "SPC ," "open bookmarked folder")
 
 (setq-default doom-big-font (font-spec :family "Fira Code" :size 42))
 
@@ -40,31 +40,44 @@
       :leader
       :desc "Toggle last popup"      "§" #'+popup/toggle
       :desc "Ivy M-x "               "SPC" #'counsel-M-x
+      :desc "Describe keybindings"   "?" #'counsel-descbinds
       (:prefix "b"
         :desc "Home Buffer"            "h" #'+doom-dashboard/open)
       (:prefix "c"
         :desc "Comment line/region"    "l" #'evil-commentary-line)
+      (:prefix "e"
+        ;; :desc "Error list"        "l" #'flycheck-error-list
+        :desc "Flycheck clear"    "c" #'flycheck-clear
+        :desc "Explain error at point"    "e" #'flycheck-explain-error-at-point
+        :desc "Next error"        "n" #'next-error
+        :desc "Previous error"    "N" #'previous-error
+        :desc "Previous error"    "p" #'previous-error)
       (:prefix "i"
         :desc "Paste to ix.io"         "x" #'ix
         :desc "Curl from ix.io"        "b" #'ix-browse)
       (:prefix "f"
         :desc "Find file"              "f" #'find-file
         :desc "rgrep"                  "g" #'rgrep
-        :desc "Rename buffer filename" "R" #'rgrep
+        ;; :desc TODO "Rename buffer filename" "R" #'rgrep
         :desc "Sudo Edit this file"    "S" #'doom/sudo-this-file
-        :desc "Find file in dotfiles"  "t" #'+hlissner/find-in-dotfiles
-        :desc "Browse dotfiles"        "T" #'+hlissner/browse-dotfiles)
+        :desc "Find file in dotfiles"  "t" #'+hlissner/find-in-dotfiles)
+      ;; :desc "Browse dotfiles"        "T" #'+hlissner/browse-dotfiles)
       (:prefix "n"
         :desc "Open mode notes"        "m" #'+hlissner/find-notes-for-major-mode
         :desc "Open project notes"     "p" #'+hlissner/find-notes-for-project)
       (:prefix "o"
-        :desc "Open org-notes"         "f" #'+open-org-folder
-        :desc "Open org-notes"         "p" #'+neotree/find-this-file
-        :desc "Open org-notes"         "P" #'+neotree/open)
+        :desc "Open org-folder"        "f" #'+open-org-folder
+        :desc "Neotree open this file" "p" #'+neotree/find-this-file
+        :desc "Neotree open"           "P" #'+neotree/open)
       (:prefix "p"
-        :desc "Find file in project"   "f" #'projectile-find-file)
+        :desc "Find file in project"   "f" #'projectile-find-file
+        :desc "Regenerate tags"        "G" #'projectile-regenerate-tags
+        :desc "Regenerate tags"        "R" #'projectile-replace
+        :desc "Find tag"               "g" #'projectile-find-tag)
       (:prefix "t"
-        :desc "Camel case motion"      "c" #'camel-case-motion)) ;; add this
+        ;; :desc TODO "Camel case motion"      "c" #'camel-case-motion
+        :desc "Whitespace cleanup"      "W" #'whitespace-cleanup
+        :desc "Whitespace"      "w" #'whitespace-mode))
 
 
 ;; Lang
@@ -76,6 +89,13 @@
 ;;   (set-popup-rule! "^\\*twittering-edit"
 ;;     '((size . 15))
 ;;     '((transient) (quit) (select . t))))
+
+
+;; Intero Window
+(after! intero-mode
+  (set-popup-rule! "^\\*intero*"
+    '((size . 15))
+    '((transient) (quit) (select . t))))
 
 
 (after! elm
@@ -127,6 +147,7 @@
 (setq shell-command-switch "-ic")
 
 ;; Modules
+;; (load! "+exwm")     ;; EXWM is a nerdy thing
 (load! "+magit")     ;; Magit config
 (load! "+ui")        ;; My ui mods. Also contains ligature stuff.
 (load! "+ranger")    ;; File manager stuff

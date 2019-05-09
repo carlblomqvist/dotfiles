@@ -66,6 +66,9 @@ for_window [class="TelegramDesktop"] move container to workspace telegram
 for_window [class="Codelite"] move container to workspace codelite
 for_window [class="Simserver"] move container to workspace codelite
 for_window [title="^vimpc$"] move container to workspace vimpc
+for_window [class="Brave-browser"] move container to workspace web
+for_window [class="Emacs"] move container to workspace work
+for_window [class="Spotify"] move container to workspace spotify
 
 # Scratchpad Settings
 for_window [class="scratchpad"] floating enable
@@ -75,10 +78,10 @@ for_window [class="scratchpad"] border pixel 5
 # exec --no-startup-id kitty --class=scratchpad
 
 # Yttrerymdden SSH Settings
-for_window [class="yttressh"] floating enable
-for_window [class="yttressh"] resize set 1800 1200 
-for_window [class="yttressh"] move scratchpad
-for_window [class="yttressh"] border pixel 5
+# for_window [class="yttressh"] floating enable
+# for_window [class="yttressh"] resize set 1800 1200
+for_window [class="yttressh"] move to workspace ssh
+# for_window [class="yttressh"] border pixel 5
 # exec --no-startup-id kitty --class=yttressh ssh -p 50000 frihetskampen.ddns.net
 
 # Before i3 v4.8, we used to recommend this one as the default:
@@ -175,19 +178,9 @@ bindsym $mod+Shift+q kill
 set $top_bar_height 35
 # bindsym $mod+u [class="scratchpad"] scratchpad show; [class="scratchpad"] move position center
 bindsym $mod+u exec tdrop -n 1 -a -w 100% -y $top_bar_height --name scratchpad kitty
-bindsym $mod+y exec tdrop -n 2 -a -w 100% -y $top_bar_height --name yttressh -f 'ssh -p 50000 frihetskampen.ddns.net' kitty 
+bindsym $mod+y exec /home/carlb/.scripts/tools/yttressh
 bindsym $mod+shift+f exec tdrop -n 3 -a -w 100% -y $top_bar_height --name ranger -f 'ranger' kitty 
 
-# yttressh keybinds
-# bindsym $mod+y [class="yttressh"] scratchpad show; [class="yttressh"] move position center
-# start dmenu (a program launcher)
-# bindsym $mod+d exec dmenu_run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop 
-#bindsym $mod+d exec dmenu_run -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg"
-# bindsym $mod+d exec rofi -show run
 bindsym $mod+d exec albert toggle
 
 # switch to workspace
