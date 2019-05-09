@@ -152,8 +152,8 @@
 (load! "+ui")        ;; My ui mods. Also contains ligature stuff.
 (load! "+ranger")    ;; File manager stuff
 (load! "+org")       ;; Org mode stuff like todos and rebindings
+;(load! "+org-looks") ;; Org mode beautification! (seems to fuck up Doom?)
 (load! "+shortcuts") ;; Automatically generated shortcuts from script
 ;; (load! "+music")   ;; Music stuff, visible through SPC-a-m. Not perfect.
-;; (load! "+reason")  ;; ReasonML stuff
 ;; (load! "+mail")    ;; Mail stuff
 ;; (load! "+irc") ;; Irc config

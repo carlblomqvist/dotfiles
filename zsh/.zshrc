@@ -12,9 +12,9 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/carlb/.oh-my-zsh
-export VISUAL="emacsclient -t --socket-name spacemacs"
-export EDITOR="emacsclient -t --socket-name spacemacs"
-alias e="emacsclient -t --socket-name spacemacs"
+export VISUAL="emacsclient -c --socket-name doom"
+export EDITOR="emacsclient -c --socket-name doom"
+alias e="emacsclient -c --socket-name doom"
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 # export TERM="xterm-256color"
 # export LC_ALL="C"
