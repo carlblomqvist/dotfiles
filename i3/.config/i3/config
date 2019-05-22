@@ -67,6 +67,7 @@ for_window [class="Codelite"] move container to workspace codelite
 for_window [class="Simserver"] move container to workspace codelite
 for_window [title="^vimpc$"] move container to workspace vimpc
 for_window [class="Brave-browser"] move container to workspace web
+for_window [class="Brave-browser"] layout stacked
 for_window [class="Emacs"] move container to workspace work
 for_window [class="Spotify"] move container to workspace spotify
 
@@ -128,7 +129,7 @@ set $mod Mod4
 #bindsym XF86AudioMute exec amixer set Master toggle
 #bindsym XF86AudioRaiseVolume exec amixer set Master 5+
 #bindsym XF86AudioLowerVolume exec amixer set Master 5-
-bindsym XF86AudioPlay exec playerctl toggle
+bindsym XF86AudioPlay exec playerctl play-pause
 # Screen brightness
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
@@ -276,7 +277,7 @@ bindsym $mod+0 workspace $10
 bindsym $mod+Shift+1 move container to workspace $1
 bindsym $mod+Shift+2 move container to workspace $2
 bindsym $mod+Shift+3 move container to workspace $3
-bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+4 move container to workspace $4
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
