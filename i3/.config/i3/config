@@ -341,6 +341,7 @@ exec --no-startup-id redshift-gtk
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec_always setxkbmap `cat .Xkbmap`
+exec_always xset r rate 180 30
 exec --no-startup-id touchegg
 # exec --no-startup-id synergyc --daemon --no-restart 192.168.1.2
 # exec --no-startup-id synergy

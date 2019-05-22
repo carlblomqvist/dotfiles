@@ -19,53 +19,32 @@ export QT_AUTO_SCREEN_SCALE_FACTOR=1
 # export TERM="xterm-256color"
 # export LC_ALL="C"
 
-# Powerline
-# powerline-daemon -q
-# . /usr/lib/python3.7/site-packages/powerline/bindings/zsh/powerline.zsh
-# POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
-# POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history vi_mode)
-# export DEFAULT_USER=carlb
-# POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
-# POWERLEVEL9K_SHORTEN_DELIMITER=""
-# POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
-# POWERLEVEL9K_VI_INSERT_MODE_STRING="INS"
-# POWERLEVEL9K_VI_COMMAND_MODE_STRING="NOR"
+# emacs or emacsclient to use
+function _emacsfun
+{
+    # Replace with `emacs` to not run as server/client
+    emacsclient -c --socket-name doom $@
+}
 
-# Set keyboard repeat rate
-xset r rate 180 30
-
-# Change dir when leaving vifm
-# vicd()
-# {
-#     local dst="$(command vifm --choose-dir -)"
-#     if [ -z "$dst" ]; then
-#         echo 'Directory picking cancelled/failed'
-#         return 1
-#     fi
-#     cd "$dst"
-# }
-
-# Vi-mode incicator
-# PS1+='${VIMODE}'
-# #   '$' for normal insert mode
-# #   a big red 'I' for command mode - to me this is 'NOT insert' because red
-# function zle-line-init zle-keymap-select {
-#     DOLLAR='%B%F{green}$%f%b '
-#     GIANT_I='%B%F{red}I%f%b '
-#     VIMODE="${${KEYMAP/vicmd/$GIANT_I}/(main|viins)/$DOLLAR}"
-#     zle reset-prompt
-# }
-# zle -N zle-line-init
-# zle -N zle-keymap-select
-
-# Add thefuck alias
-# eval $(thefuck --alias)
-
-# powerline theme
-# ZSH_THEME="powerlevel9k/powerlevel9k"
+# An emacs 'alias' with the ability to read from stdin
+function em
+{
+    # If the argument is - then write stdin to a tempfile and open the
+    # tempfile.
+    if [[ $1 == - ]]; then
+        tempfile=$(mktemp emacs-stdin-$USER.XXXXXXX --tmpdir)
+        cat - > $tempfile
+        _emacsfun -e "(progn (find-file \"$tempfile\")
+                             (set-visited-file-name nil)
+                             (rename-buffer \"*stdin*\" t))
+                 " 2>&1 > /dev/null
+    else
+        _emacsfun "$@"
+    fi
+}
 
 # geometry
-GEOMETRY_PROMPT_PLUGINS=(exec_time git hg +vi-mode)
+GEOMETRY_PROMPT_PLUGINS=(virtualenv exec_time git hg +vi-mode)
 source ~/git/geometry/geometry.zsh
 
 # use zmv
@@ -145,6 +124,8 @@ alias icat="kitty +kitten icat"
 # cd to current folder when exiting ranger
 alias ranger="source ranger"
 # alias ix=ix_wrapper
+alias doomr="systemctl --user restart doom"
+alias kdiff="kitty +kitten diff"
 
 # import automatically generated aliases for shortcuts
 source ~/.shortcuts
