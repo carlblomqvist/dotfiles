@@ -59,7 +59,9 @@ for_window [class="Tsim" instance="tsim"] floating enable move absolute position
 for_window [class="Tsim" instance="tools"] floating enable move absolute position 1800 px 750 px
 
 for_window [class="Erlang" title="CCHAT"] floating enable move absolute position 1800 px 150 px
-# for_window [class="Tsim" instance="tools"] floating enable move absolute position 1800 px 750 px
+
+for_window [class="amazed-Main" title="A-mazed"] floating enable move absolute position 1800 px 150 px
+
 #Gimp
 for_window [class="gimp" title="^Layers - Brushes$"] floating disable
 for_window [class="Gimp" title="^Layers - Brushes$"] border pixel 2
