@@ -55,6 +55,11 @@ for_window [class="Apvlv" instance="apvlv"] resize set $float_maxwidth $float_ma
 for_window [class="Apvlv" instance="apvlv"] border pixel 2
 for_window [class="Apvlv" instance="apvlv"] move position center
 
+for_window [class="Tsim" instance="tsim"] floating enable move absolute position 1800 px 150 px
+for_window [class="Tsim" instance="tools"] floating enable move absolute position 1800 px 750 px
+
+for_window [class="Erlang" title="CCHAT"] floating enable move absolute position 1800 px 150 px
+# for_window [class="Tsim" instance="tools"] floating enable move absolute position 1800 px 750 px
 #Gimp
 for_window [class="gimp" title="^Layers - Brushes$"] floating disable
 for_window [class="Gimp" title="^Layers - Brushes$"] border pixel 2
