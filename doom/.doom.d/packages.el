@@ -10,3 +10,5 @@
 (package! grapnel)
 (package! xclip)
 (package! kotlin-mode) ;;   :variables kotlin-tab-width 4
+(package! exwm)
+;; (package! magit-popup)
