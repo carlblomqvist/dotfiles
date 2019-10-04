@@ -19,6 +19,7 @@ export QT_AUTO_SCREEN_SCALE_FACTOR=1
 # export TERM="xterm-256color"
 # export LC_ALL="C"
 
+setxkbmap `cat .Xkbmap`
 # emacs or emacsclient to use
 function _emacsfun
 {
@@ -126,6 +127,7 @@ alias ranger="source ranger"
 # alias ix=ix_wrapper
 alias doomr="systemctl --user restart doom"
 alias kdiff="kitty +kitten diff"
+alias dwmt="dm-tool add-nested-seat --fullscreen"
 
 # import automatically generated aliases for shortcuts
 source ~/.shortcuts
@@ -133,6 +135,8 @@ source ~/.shortcuts
 # activate fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source ~/.zsh/fzf
+
+export PATH=$PATH:/home/carlb/courses/tda384_concurrent_programming/tsim/world/bin
 
 # Uncomment this + the first line to debug ZSH
 # zprof
