@@ -1,0 +1,7 @@
+has_ssh=$(xwininfo -tree -root | grep \"yttressh\")
+if [ -n "$has_ssh" ]; then
+    xdotool key "super+7"
+else
+    xdotool key "super+7"
+    kitty --detach --class "yttressh" ssh -p 50000 carlb@rymden.space
+fi
