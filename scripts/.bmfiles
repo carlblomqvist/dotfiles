@@ -9,7 +9,7 @@
 bd ~/.bmdirs
 bf ~/.bmfiles
 cfb	~/.bashrc
-cfd	~/.Xdefaults
+cfd	~/git/dwm/config.h
 cfi	~/.config/i3/config
 cfk	~/.config/kitty/kitty.conf
 cfp	~/.config/polybar/config
