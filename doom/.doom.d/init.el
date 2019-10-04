@@ -51,8 +51,8 @@
 
        :emacs
        (dired            ; making dired pretty [functional]
-       +ranger         ; bringing the goodness of ranger to dired
-       ;;+icons          ; colorful icons for dired-mode
+        +ranger         ; bringing the goodness of ranger to dired
+        ;;+icons          ; colorful icons for dired-mode
         )
        ediff             ; comparing files in Emacs
        electric          ; smarter, keyword-based electric-indent
@@ -140,8 +140,8 @@
        ;;(rss +org)        ; emacs as an RSS reader
        ;;twitter           ; twitter client https://twitter.com/vnought
        (write            ; emacs as a word processor (latex + org + markdown)
-       +wordnut         ; wordnet (wn) search
-       +langtool)       ; a proofreader (grammar/style check) for Emacs
+        +wordnut         ; wordnet (wn) search
+        +langtool)       ; a proofreader (grammar/style check) for Emacs
 
        :collab
        ;; floobits          ; peer programming for a price
