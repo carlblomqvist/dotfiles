@@ -18,8 +18,8 @@ while pgrep -x polybar >/dev/null; do sleep 1; done
 # Launch one bar on every screen
 if type "xrandr"; then
     for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-        MONITOR=$m nohup polybar top > /dev/null 2>&1 &
+        MONITOR=$m nohup polybar -r top > /dev/null 2>&1 &
     done
 else
-    nohup polybar top > /dev/null 2>&1 &
+    nohup polybar -r top > /dev/null 2>&1 &
 fi
