@@ -247,7 +247,8 @@ type = custom/script
 exec = /home/carlb/.config/polybar/currentlyPlaying.sh
 interval = 1
 
-format = <label>   
+format = <label>
+click-left = playerctl play-pause
 ;format-background = #dd00c6e0
 ;format-foreground = #fff
 ;format-padding = 4
