@@ -132,8 +132,10 @@ new_window pixel 0
 
 set $mod Mod4
 
-# Media keys
-#bindsym XF86AudioMute exec amixer set Master toggle
+# Surface Pen
+bindsym $mod+XF86AudioMicMute exec write_stylus
+
+#bindsym XF86AudioMute exec amixer set Master togglewrite_stylus
 #bindsym XF86AudioRaiseVolume exec amixer set Master 5+
 #bindsym XF86AudioLowerVolume exec amixer set Master 5-
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -188,7 +190,9 @@ bindsym $mod+u exec tdrop -n 1 -a -w 100% -y $top_bar_height --name scratchpad k
 bindsym $mod+y exec /home/carlb/.scripts/tools/yttressh
 bindsym $mod+shift+f exec tdrop -n 3 -a -w 100% -y $top_bar_height --name ranger -f 'ranger' kitty 
 
-bindsym $mod+d exec albert toggle
+bindsym $mod+d exec /home/carlb/.config/i3/albert_dmenu_fallback.sh
+# bindsym $mod+d exec albert toggle
+# bindsym $mod+d exec dmenu_run
 
 # switch to workspace
 bindsym $mod+section exec workspacer set 
