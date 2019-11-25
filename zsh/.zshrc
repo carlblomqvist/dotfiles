@@ -137,6 +137,7 @@ source ~/.shortcuts
 source ~/.zsh/fzf
 
 export PATH=$PATH:/home/carlb/courses/tda384_concurrent_programming/tsim/world/bin
+export PATH=~/.npm-global/bin:$PATH
 
 # Uncomment this + the first line to debug ZSH
 # zprof
