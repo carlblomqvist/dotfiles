@@ -40,3 +40,24 @@ fzf-bookmarks-widget() {
 }
 zle     -N   fzf-bookmarks-widget
 bindkey '\eb' fzf-bookmarks-widget
+
+fzf-projectile-widget() {
+  local cmd="${FZF_ALT_P_COMMAND:-"grep -o '".*"' /home/carlb/.doom-emacs/.local/cache/projectile.projects | sed 's/\"//g' | sed 's/ /\n/g' \
+      "}"
+  setopt localoptions pipefail 2> /dev/null
+  local dir="$(eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_ALT_P_OPTS" $(__fzfcmd) +m)"
+  local dir="$(echo "$dir" | sed "s|~|$HOME|")"
+  if [[ -z "$dir" ]]; then
+    zle redisplay
+    return 0
+  fi
+  cd "$dir"
+  local ret=$?
+  zle fzf-redraw-prompt
+  return $ret
+}
+zle     -N   fzf-projectile-widget
+bindkey '\ep' fzf-projectile-widget
+
+
+# grep -o '".*"' /home/carlb/.doom-emacs/.local/cache/projectile.projects | sed 's/"//g' | sed 's/ /\n/g'
