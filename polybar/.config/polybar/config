@@ -81,12 +81,13 @@ label-separator = |
 label-separator-padding = 2
 ; label-separator-foreground = #ffb52a
 
-; 
+; 
 ws-icon-0 = work;
 ws-icon-1 = web;
 ws-icon-2 = misc;
 ws-icon-3 = pdf;
 ws-icon-4 = spotify;
+ws-icon-5 = messaging;
 ; ws-icon-default = 
 
 [module/bspwm]
