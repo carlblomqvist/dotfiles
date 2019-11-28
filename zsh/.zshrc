@@ -44,8 +44,33 @@ function em
     fi
 }
 
+# lf change-dir and remove mounted archives
+lfcd () {
+    tmp="$(mktemp)"
+    fid="$(mktemp)"
+    lf -command '$printf $id > '"$fid"'' -last-dir-path="$tmp" "$@"
+    id="$(cat "$fid")"
+    archivemount_dir="/tmp/__lf_archivemount_$id"
+    if [ -f "$archivemount_dir" ]; then
+        cat "$archivemount_dir" | \
+            while read -r line; do
+                sudo umount "$line"
+                rmdir "$line"
+            done
+        rm -f "$archivemount_dir"
+    fi
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp"
+        if [ -d "$dir" ]; then
+            if [ "$dir" != "$(pwd)" ]; then
+                cd "$dir"
+            fi
+        fi
+    fi
+}
 # geometry
-GEOMETRY_PROMPT_PLUGINS=(virtualenv exec_time git hg +vi-mode)
+# GEOMETRY_PROMPT_PLUGINS=(virtualenv exec_time git hg +vi-mode)
 source ~/git/geometry/geometry.zsh
 
 # use zmv
@@ -122,12 +147,15 @@ alias load="sudo md407 load debug/code.s19"
 alias mdgo="sudo md407 go"
 # render images in terminal
 alias icat="kitty +kitten icat"
-# cd to current folder when exiting ranger
+# cd to current folder when exiting file manager
+alias lf=lfcd
 alias ranger="source ranger"
 # alias ix=ix_wrapper
 alias doomr="systemctl --user restart doom"
 alias kdiff="kitty +kitten diff"
 alias dwmt="dm-tool add-nested-seat --fullscreen"
+alias java10="/usr/lib/jvm/java-10-openjdk/bin/java"
+alias javac10="/usr/lib/jvm/java-10-openjdk/bin/javac"
 
 # import automatically generated aliases for shortcuts
 source ~/.shortcuts

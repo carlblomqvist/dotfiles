@@ -2,6 +2,7 @@
 # Output locations. Unactivated progs should go to /dev/null.
 shell_shortcuts="$HOME/.shortcuts"
 ranger_shortcuts="$HOME/.config/ranger/shortcuts.conf"
+lf_shortcuts="$HOME/.config/lf/lfshortcuts"
 qute_shortcuts="/dev/null"
 fish_shortcuts="/dev/null"
 vifm_shortcuts="/dev/null"
@@ -9,7 +10,7 @@ spacemacs_shortcuts="$HOME/.spacemacsshortcuts"
 doom_shortcuts="$HOME/.doom.d/+shortcuts.el"
 
 # Remove, prepare files
-rm -f "$ranger_shortcuts" "$qute_shortcuts" "$spacemacs_shortcuts" 2>/dev/null
+rm -f "$ranger_shortcuts" "$lf_shortcuts" "$qute_shortcuts" "$spacemacs_shortcuts" 2>/dev/null
 printf "# vim: filetype=sh\\n" > "$fish_shortcuts"
 printf "# vim: filetype=sh\\nalias " > "$shell_shortcuts"
 printf "\" vim: filetype=vim\\n" > "$vifm_shortcuts"
@@ -23,6 +24,7 @@ sed "s/\s*#.*$//;/^\s*$/d" "$HOME/.bmdirs" | tee >(awk '{print $1"=\"cd "$2" && 
 	>(awk '{print ":desc \""$2"\" \""$1"\" (lambda! (neotree-dir \""$2"\"))"}' >> "$doom_shortcuts") \
 	>(awk '{print "map g" $1, ":cd", $2 "<CR>\nmap t" $1, "<tab>:cd", $2 "<CR><tab>\nmap M" $1, "<tab>:cd", $2 "<CR><tab>:mo<CR>\nmap Y" $1, "<tab>:cd", $2 "<CR><tab>:co<CR>" }' >> "$vifm_shortcuts") \
 	>(awk '{print "config.bind(\";"$1"\", \"set downloads.location.directory "$2" ;; hint links download\")"}' >> "$qute_shortcuts") \
+	>(awk '{print "map g"$1" cd "$2""}' >> "$lf_shortcuts") \
 	| awk '{print "map g"$1" cd "$2"\nmap t"$1" tab_new "$2"\nmap m"$1" shell mv -v %s "$2"\nmap Y"$1" shell cp -rv %s "$2}' >> "$ranger_shortcuts"
 
 # Print some more for doom
@@ -35,7 +37,8 @@ sed "s/\s*#.*$//;/^\s*$/d"  "$HOME/.bmfiles" | tee >(awk '{print $1"=\"$EDITOR "
 	>(awk '{print "(which-key-add-key-based-replacements \"SPC ."$1"\" \""$2"\")"}' >> "$spacemacs_shortcuts") \
 	>(awk '{print ":desc \""$2"\" \""$1"\" (lambda! (find-file \""$2"\"))"}' >> "$doom_shortcuts") \
 	>(awk '{print "map", $1, ":e", $2 "<CR>" }' >> "$vifm_shortcuts") \
-| awk '{print "map "$1" shell $EDITOR "$2}' >> "$ranger_shortcuts"
+	>(awk '{print "map "$1" $$EDITOR "$2}' >> "$lf_shortcuts") \
+	| awk '{print "map "$1" shell $EDITOR "$2}' >> "$ranger_shortcuts"
 
 # Print even more for doom
 printf "))" >> "$doom_shortcuts"
