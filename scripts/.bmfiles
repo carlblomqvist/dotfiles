@@ -12,6 +12,7 @@ cfb	~/.bashrc
 cfd	~/git/dwm/config.h
 cfi	~/.config/i3/config
 cfk	~/.config/kitty/kitty.conf
+cfl	~/.config/lf/lfrc
 cfp	~/.config/polybar/config
 cfr	~/.config/ranger/rc.conf
 cfs	~/.spacemacs
