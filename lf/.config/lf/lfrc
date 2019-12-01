@@ -58,21 +58,40 @@ cmd mkdir %mkdir -p "$@"
 map a push :mkdir<space>
 
 # remove
-cmd remove %rm -rI $fx
+cmd remove %{{
+    pwd=$(pwd | sed 's/\//\n/g' | awk 'NR==2{print $1}' | grep 'bin\|etc\|var\|usr\|opt')
+    if [[ "$pwd" == "" ]]; then
+        sudo=""
+    else
+        sudo="sudo"
+    fi
+    $sudo rm -rI $fx
+}}
 
 # paste with rsync for progressbar
-cmd paste &{{
+cmd paste !{{
     load=$(lf -remote 'load')
     mode=$(echo "$load" | sed -n '1p')
     list=$(echo "$load" | sed '1d')
+    pwd=$(pwd | sed 's/\//\n/g' | awk 'NR==2{print $1}' | grep 'bin\|etc\|var\|usr\|opt')
+    source=$(echo $list | sed 's/\//\n/g' | awk 'NR==2{print $1}' | grep 'bin\|etc\|var\|usr\|opt')
+
+    if [[ "$pwd" == "" || "$source" == "" ]]; then
+        sudo=""
+    else
+        sudo="sudo"
+    fi
+
     if [ $mode = 'copy' ]; then
-        rsync -av --ignore-existing --progress $list . \
+       echo "copy"
+        $sudo rsync -av --ignore-existing --progress $list . \
         | stdbuf -i0 -o0 -e0 tr '\r' '\n' \
         | while read line; do
             lf -remote "send $id echo $line"
         done
     elif [ $mode = 'move' ]; then
-        mv -n $list .
+         echo "move"
+        $sudo mv -v $list .
     fi
     lf -remote 'send load'
     lf -remote 'send clear'
