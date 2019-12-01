@@ -188,7 +188,8 @@ set $top_bar_height 35
 # bindsym $mod+u [class="scratchpad"] scratchpad show; [class="scratchpad"] move position center
 bindsym $mod+u exec tdrop -n 1 -a -w 100% -y $top_bar_height --name scratchpad kitty
 bindsym $mod+y exec /home/carlb/.scripts/tools/yttressh
-bindsym $mod+shift+f exec tdrop -n 3 -a -w 100% -y $top_bar_height --name ranger -f 'ranger' kitty 
+bindsym $mod+shift+f exec tdrop -n 3 -a -w 100% -y $top_bar_height --name ranger -f 'ranger' kitty
+bindsym $mod+shift+d exec tdrop -n 4 -a -w 100% -y $top_bar_height --name lf -f 'lf' kitty
 
 bindsym $mod+d exec /home/carlb/.config/i3/albert_dmenu_fallback.sh
 # bindsym $mod+d exec albert toggle
