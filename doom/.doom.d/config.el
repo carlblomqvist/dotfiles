@@ -4,10 +4,6 @@
 ;; (load "~/.spacemacsshortcuts")
 ;; (which-key-add-key-based-replacements "SPC ," "open bookmarked folder")
 
-(setq-default doom-big-font (font-spec :family "Fira Code" :size 42))
-
-(setq doom-font (font-spec :family "Fira Code" :size 26))
-
 (setq user-mail-address "carl.blomqvist@gmail.com"
       user-full-name "Carl Blomqvist")
 
