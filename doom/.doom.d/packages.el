@@ -6,6 +6,7 @@
 ;; (package! another-package :recipe (:fetcher github :repo "username/repo"))
 ;; (package! builtin-package :disable t)
 
+(package! arduino-mode)
 (package! ix)
 (package! grapnel)
 (package! xclip)

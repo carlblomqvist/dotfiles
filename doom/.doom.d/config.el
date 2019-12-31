@@ -40,7 +40,7 @@
       (:prefix "b"
         :desc "Home Buffer"            "h" #'+doom-dashboard/open)
       (:prefix "c"
-        :desc "Comment line/region"    "l" #'evil-commentary-line
+        :desc "Comment line/region"    "l" #'evilnc-comment-or-uncomment-lines
         :desc "Spell-correct word at point"    "s" #'flyspell-correct-at-point)
       (:prefix "e"
         ;; :desc "Error list"        "l" #'flycheck-error-list
