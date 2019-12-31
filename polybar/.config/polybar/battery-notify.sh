@@ -1,5 +1,5 @@
-bat=$(cat /sys/class/power_supply/BAT1/capacity)
-stat=$(cat /sys/class/power_supply/BAT1/status)
+bat=$(cat /sys/class/power_supply/BAT0/capacity)
+stat=$(cat /sys/class/power_supply/BAT0/status)
 if [ "$bat" -lt 10 ]; then
     if [ "$stat" != "Charging" ]; then
     notify-send -t 60000 -u critical -i ~/dotfiles/polybar/.config/polybar/lowbatterywhite.png "Battery Level Low: $bat%"
