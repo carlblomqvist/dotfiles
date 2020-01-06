@@ -1,9 +1,11 @@
-;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
+;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
 ;; Place your private configuration here
 ;; (load "~/.spacemacsshortcuts")
 ;; (which-key-add-key-based-replacements "SPC ," "open bookmarked folder")
 
+;; These are used for a number of things, particularly for GPG configuration,
+;; some email clients, file templates and snippets.
 (setq user-mail-address "carl.blomqvist@gmail.com"
       user-full-name "Carl Blomqvist")
 
@@ -27,12 +29,13 @@
 
 
       (:map evil-treemacs-state-map
-        "K"   'neotree-select-up-node
-        "J"   'neotree-select-down-node
-        "L"   'neotree-select-next-sibling-node
-        "H"   'neotree-select-previous-sibling-node
+        ;; "K"   'neotree-select-up-node
+        ;; "J"   'neotree-select-down-node
+        ;; "L"   'neotree-select-next-sibling-node
+        ;; "H"   'neotree-select-previous-sibling-node
         "C-h" 'evil-window-left
         "C-l" 'evil-window-right)
+
       :leader
       :desc "Toggle last popup"      "§" #'+popup/toggle
       :desc "Ivy M-x "               "SPC" #'counsel-M-x
@@ -64,6 +67,7 @@
         :desc "Open project notes"     "p" #'+hlissner/find-notes-for-project)
       (:prefix "o"
         :desc "Open org-folder"        "f" #'+open-org-folder
+        :desc "Treemacs toggle"        "o" #'+treemacs/toggle
         :desc "Neotree open this file" "p" #'+neotree/find-this-file
         :desc "Neotree open"           "P" #'+neotree/open)
       (:prefix "p"
