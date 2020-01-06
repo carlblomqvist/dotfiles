@@ -1,25 +1,18 @@
 #!/usr/bin/env sh
 
+## Add this to your wm startup file.
+
 # Terminate already running bar instances
 killall -q polybar
 
 # Wait until the processes have been shut down
-while pgrep -x polybar >/dev/null; do sleep 1; done
-
-# Launch bar1 and bar2
-# nohup polybar bar > /dev/null 2>&1 &
-# nohup polybar bar2 > /dev/null 2>&1 &
-# nohup polybar bottombar > /dev/null 2>&1 &
-# nohup polybar topbar > /dev/null 2>&1 &
-
-# Launch bar
-# nohup polybar top > /dev/null 2>&1 &
+while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Launch one bar on every screen
 if type "xrandr"; then
     for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-        MONITOR=$m nohup polybar -r top > /dev/null 2>&1 &
+        MONITOR=$m nohup polybar -r main -c ~/.config/polybar/config.ini > /dev/null 2>&1 &
     done
 else
-    nohup polybar -r top > /dev/null 2>&1 &
+    nohup polybar -r main -c ~/.config/polybar/config.ini > /dev/null 2>&1 &
 fi

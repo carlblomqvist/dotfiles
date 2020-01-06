@@ -42,7 +42,7 @@ font-2 = siji:pixelsize=10;0
 
 modules-left = padding currentlyplaying mpd
 modules-center = i3
-modules-right = battery-notify battery backlight cpu memory volume date powermenu
+modules-right = battery-notify battery wlan backlight cpu memory volume date powermenu
 ; modules-right = backlight cpu memory volume mpd date powermenu
 
 tray-position = left
@@ -93,7 +93,7 @@ ws-icon-6 = logs;
 ws-icon-7 = ssh;
 ws-label-1 = logs;tetest
 ; ws-icon-default = 
-
+;
 [module/bspwm]
 type = internal/bspwm
 
@@ -126,6 +126,11 @@ type = internal/xwindow
 label = %title:0:120:...%
 label-padding = 4
 
+; [module/xwindow]
+;type = internal/xwindow
+;label = %title%
+;label-maxlen = 30
+
 [module/date]
 type = internal/date
 
@@ -150,6 +155,7 @@ format =  <label>
 ;format-background = #ddffffff
 ; format-background = #88000000
 ;format-foreground = #333
+format-underline = ${colors.foreground}
 format-padding = 3
 
 [module/padding]
@@ -171,7 +177,7 @@ poll-interval = 5
 format-charging = <animation-charging>  <label-charging>
 format-discharging = <ramp-capacity>  <label-discharging>
 format-full = <ramp-capacity>  <label-full>
-label-charging = %percentage%%
+; label-charging = %percentage%%
 label-discharging = %percentage%%
 label-full = %percentage%%
 format-charging-padding = 0
@@ -192,17 +198,34 @@ animation-charging-4 = 
 animation-charging-framerate = 750
 
 [module/cpu]
+format-label = internal/cpu
+
+;format-prefix = " "
+format = <label>
+
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
+ramp-coreload-underline = ${colors.foreground}
+
 type = internal/cpu
 interval = 2
-format-prefix = " "
-format= <label>
-label = %percentage%%
+label = %{F${colors.foreground}  %percentage% %{F-}
+label-underline = ${colors.foreground}
+padding= 2
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
-label = %percentage_used%%
+; format-prefix = " "
+label = %{F${colors.foreground}  %percentage_used% %{F-}
+label-underline = ${colors.foreground}
+label-foreground = ${colors.foreground}
 
 [module/battery-simple]
 type = custom/script
@@ -210,6 +233,22 @@ exec = ~/.config/polybar/battery-percentage.sh
 interval = 60
 ; label-font = 3
 ; label-padding = 4
+
+[module/wlan]
+type = internal/network
+interface = wlp4s0
+interval = 3.0
+
+format-connected-padding = 1
+format-disconnected-padding = 1
+
+format-connected = <label-connected>
+format-connected-underline = ${colors.foreground}
+format-disconnected-underline = ${colors.foreground}
+
+label-connected =  %essid% %signal%%
+label-disconnected = 
+label-disconnected-foreground = ${colors.foreground}
 
 [module/battery-notify]
 type = custom/script
@@ -235,6 +274,8 @@ type = internal/volume
 
 format-volume = <ramp-volume> <label-volume>
 format-muted = <label-muted>
+format-volume-underline = ${colors.foreground}
+format-muted-underline = ${colors.foreground}
 label-volume = %percentage%
 label-muted =  ----
 ; label-muted-foreground = #aaa
