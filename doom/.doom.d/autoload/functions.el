@@ -27,5 +27,14 @@
   (interactive)
   (neotree-dir "~/org"))
 
+;;;###autoload
+;; improved interactive align-regexp for certain character
+(defun +align-single-equals ()
+  "Align on a single equals sign (with a space either side)."
+  (interactive)
+  (align-regexp
+   (region-beginning) (region-end)
+   "\\(\\s-*\\) = " 1 0 nil))
+
 (provide 'functions)
 ;;; functions.el ends here
