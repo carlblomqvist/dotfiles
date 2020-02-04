@@ -9,7 +9,6 @@
 (setq user-mail-address "carl.blomqvist@gmail.com"
       user-full-name "Carl Blomqvist")
 
-
 ;; Load snippets - Is this needed?
 ;; (after! yasnippet
 ;; (push (expand-file-name "snippets/" doom-private-dir) yas-snippet-dirs))
@@ -17,15 +16,10 @@
 ;; Load doom and restore on restart
 (setq restart-emacs--args (list "--restore --with-profile doom"))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;; KEYBINDS ;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
-
-;; hindent for Haskell
-(add-to-list 'load-path "~/.doom.d/elisp")
-(require 'hindent)
-(add-hook 'haskell-mode-hook #'hindent-mode)
-
-;; Custom keybinds
 (map! :m "M-j" '+default:multi-next-line
       :m "M-k" '+default:multi-previous-line
 
@@ -104,7 +98,6 @@
         :desc "Whitespace cleanup"              "W" #'whitespace-cleanup
         :desc "Whitespace"                      "w" #'whitespace-mode))
 
-
 ;; Lang
 ;; org-hide-emphasis-markers
 ;; kotlin-tab-width 4
@@ -115,13 +108,9 @@
 ;;     '((size . 15))
 ;;     '((transient) (quit) (select . t))))
 
-
-;; Intero Window
-(after! intero-mode
-  (set-popup-rule! "^\\*intero*"
-    '((size . 15))
-    '((transient) (quit) (select . t))))
-
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;   ELM   ;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (after! elm
   (setq elm-tags-on-save t
@@ -135,6 +124,10 @@
 ;;     (elm-mode-format-buffer)))
 
 ;; (add-hook 'before-save-hook 'elm-format-save-hook)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;; HASKELL ;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Fix 'o' in haskell-mode
 (with-eval-after-load "haskell-mode"
@@ -158,8 +151,20 @@
     "o" 'haskell-evil-open-below
     "O" 'haskell-evil-open-above))
 
+;; hindent
+(add-to-list 'load-path "~/.doom.d/elisp")
+(require 'hindent)
+(add-hook 'haskell-mode-hook #'hindent-mode)
 
-;; C++
+;; Intero Window
+(after! intero-mode
+  (set-popup-rule! "^\\*intero*"
+    '((size . 15))
+    '((transient) (quit) (select . t))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;   C++   ;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; rtags
 ;; (setq rtags-completions-enabled t)
@@ -178,7 +183,6 @@
 ;; Remove completion delay
 ;; (setq company-idle-delay 0)
 ;; (define-key cpp-mode-map [(tab)] 'company-complete)
-
 
 ;; lsp-mode for C++
 (use-package! lsp-mode
@@ -204,8 +208,9 @@
 (use-package! company-box
   :hook (company-mode . company-box-mode))
 
-
-
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;; "STUFF" ;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Automatically remove CRLF endings
 (defun no-junk-please-were-unixish ()
@@ -219,7 +224,10 @@
 (setq shell-file-name "zsh")
 (setq shell-command-switch "-ic")
 
-;; Modules
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;; MODULES ;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;; (load! "+exwm")     ;; EXWM is a nerdy thing
 (load! "+magit")     ;; Magit config
 (load! "+ui")        ;; My ui mods. Also contains ligature stuff.
