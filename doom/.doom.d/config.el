@@ -17,6 +17,14 @@
 ;; Load doom and restore on restart
 (setq restart-emacs--args (list "--restore --with-profile doom"))
 
+
+
+
+;; hindent for Haskell
+(add-to-list 'load-path "~/.doom.d/elisp")
+(require 'hindent)
+(add-hook 'haskell-mode-hook #'hindent-mode)
+
 ;; Custom keybinds
 (map! :m "M-j" '+default:multi-next-line
       :m "M-k" '+default:multi-previous-line
@@ -27,58 +35,74 @@
       :n "C-k" 'evil-window-up
       :n "C-l" 'evil-window-right
 
+      (:map cpp-mode-map
+        :leader
+        (:prefix "m"
+          :desc "Find definition" "g" #'lsp-find-definition
+          (:prefix "t"
+            :desc "Toggle symbol highlighting" "h" #'lsp-toggle-symbol-highlight)
+          )
+        )
 
       (:map evil-treemacs-state-map
         ;; "K"   'neotree-select-up-node
         ;; "J"   'neotree-select-down-node
         ;; "L"   'neotree-select-next-sibling-node
         ;; "H"   'neotree-select-previous-sibling-node
+        "|" 'treemacs-visit-node-vertical-split
+        "-" 'treemacs-visit-node-horizontal-split
         "C-h" 'evil-window-left
-        "C-l" 'evil-window-right)
+        "C-l" 'evil-window-right
+        :leader
+        (:prefix "o"
+          :desc "Toggle Treemacs"  "o" #'treemacs)
+        )
 
       :leader
-      :desc "Toggle last popup"      "§" #'+popup/toggle
-      :desc "Ivy M-x "               "SPC" #'counsel-M-x
-      :desc "Describe keybindings"   "?" #'counsel-descbinds
+      :desc "Toggle last popup"                 "§" #'+popup/toggle
+      :desc "Ivy M-x "                          "SPC" #'counsel-M-x
+      :desc "Describe keybindings"              "?" #'counsel-descbinds
       (:prefix "b"
-        :desc "Home Buffer"            "h" #'+doom-dashboard/open)
+        :desc "Home Buffer"                     "h" #'+doom-dashboard/open)
       (:prefix "c"
-        :desc "Comment line/region"    "l" #'evilnc-comment-or-uncomment-lines
-        :desc "Spell-correct word at point"    "s" #'flyspell-correct-at-point)
-      (:prefix "e"
-        ;; :desc "Error list"        "l" #'flycheck-error-list
-        :desc "Flycheck clear"    "c" #'flycheck-clear
-        :desc "Explain error at point"    "e" #'flycheck-explain-error-at-point
-        :desc "Next error"        "n" #'next-error
-        :desc "Previous error"    "N" #'previous-error
-        :desc "Previous error"    "p" #'previous-error)
+        :desc "Comment line/region"             "l" #'evilnc-comment-or-uncomment-lines
+        :desc "Spell-correct word at point"     "s" #'flyspell-correct-at-point
+        (:prefix ("a" . "alignment")
+          :desc "Align single equals"           "=" #'+my-align-single-equals))
+      (:prefix ("e" . "errors")
+        ;; :desc "Error list"                   "l" #'flycheck-error-list
+        :desc "Flycheck clear"                  "c" #'flycheck-clear
+        :desc "Explain error at point"          "e" #'flycheck-explain-error-at-point
+        :desc "Next error"                      "n" #'next-error
+        :desc "Previous error"                  "N" #'previous-error
+        :desc "Previous error"                  "p" #'previous-error)
       (:prefix "i"
-        :desc "Paste to ix.io"         "x" #'ix
-        :desc "Curl from ix.io"        "b" #'ix-browse)
+        :desc "Paste to ix.io"                  "x" #'ix
+        :desc "Curl from ix.io"                 "b" #'ix-browse)
       (:prefix "f"
-        :desc "Find file"              "f" #'find-file
-        :desc "rgrep"                  "g" #'rgrep
-        ;; :desc TODO "Rename buffer filename" "R" #'rgrep
-        :desc "Sudo Edit this file"    "S" #'doom/sudo-this-file
-        :desc "Find file in dotfiles"  "t" #'+hlissner/find-in-dotfiles)
-      ;; :desc "Browse dotfiles"        "T" #'+hlissner/browse-dotfiles)
+        :desc "Find file"                       "f" #'find-file
+        :desc "rgrep"                           "g" #'rgrep
+        ;; :desc TODO "Rename buffer filename"  "R" #'rgrep
+        :desc "Sudo Edit this file"             "S" #'doom/sudo-this-file
+        :desc "Find file in dotfiles"           "t" #'+hlissner/find-in-dotfiles)
+      ;; :desc "Browse dotfiles"                "T" #'+hlissner/browse-dotfiles)
       (:prefix "n"
-        :desc "Open mode notes"        "m" #'+hlissner/find-notes-for-major-mode
-        :desc "Open project notes"     "p" #'+hlissner/find-notes-for-project)
+        :desc "Open mode notes"                 "m" #'+hlissner/find-notes-for-major-mode
+        :desc "Open project notes"              "p" #'+hlissner/find-notes-for-project)
       (:prefix "o"
-        :desc "Open org-folder"        "f" #'+open-org-folder
-        :desc "Treemacs toggle"        "o" #'+treemacs/toggle
-        :desc "Neotree open this file" "p" #'+neotree/find-this-file
-        :desc "Neotree open"           "P" #'+neotree/open)
+        :desc "Open org-folder"                 "f" #'+open-org-folder
+        :desc "Treemacs find file"              "o" #'treemacs-find-file
+        :desc "Neotree open this file"          "p" #'+neotree/find-this-file
+        :desc "Neotree open"                    "P" #'+neotree/open)
       (:prefix "p"
-        :desc "Find file in project"   "f" #'projectile-find-file
-        :desc "Regenerate tags"        "G" #'projectile-regenerate-tags
-        :desc "Regenerate tags"        "R" #'projectile-replace
-        :desc "Find tag"               "g" #'projectile-find-tag)
+        :desc "Find file in project"            "f" #'projectile-find-file
+        :desc "Regenerate tags"                 "G" #'projectile-regenerate-tags
+        :desc "Regenerate tags"                 "R" #'projectile-replace
+        :desc "Find tag"                        "g" #'projectile-find-tag)
       (:prefix "t"
-        ;; :desc TODO "Camel case motion"      "c" #'camel-case-motion
-        :desc "Whitespace cleanup"      "W" #'whitespace-cleanup
-        :desc "Whitespace"      "w" #'whitespace-mode))
+        ;; :desc TODO "Camel case motion"       "c" #'camel-case-motion
+        :desc "Whitespace cleanup"              "W" #'whitespace-cleanup
+        :desc "Whitespace"                      "w" #'whitespace-mode))
 
 
 ;; Lang
@@ -132,8 +156,56 @@
 
   (evil-define-key 'normal haskell-mode-map
     "o" 'haskell-evil-open-below
-    "O" 'haskell-evil-open-above)
-  )
+    "O" 'haskell-evil-open-above))
+
+
+;; C++
+
+;; rtags
+;; (setq rtags-completions-enabled t)
+;; (eval-after-load 'company
+;;   '(add-to-list
+;;     'company-backends 'company-rtags))
+;; (setq rtags-autostart-diagnostics t)
+
+;; irony
+;; (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
+;; (setq company-backends (delete 'company-semantic company-backends))
+;; (eval-after-load 'company
+;;   '(add-to-list
+;;     'company-backends 'company-irony))
+
+;; Remove completion delay
+;; (setq company-idle-delay 0)
+;; (define-key cpp-mode-map [(tab)] 'company-complete)
+
+
+;; lsp-mode for C++
+(use-package! lsp-mode
+  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+  :init (setq lsp-keymap-prefix "M-l")
+  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+         (cpp-mode . lsp)
+         ;; if you want which-key integration
+         (lsp-mode . lsp-enable-which-key-integration))
+  :commands lsp)
+
+;; optionally
+;; (use-package lsp-ui :commands lsp-ui-mode)
+(use-package! company-lsp :commands company-lsp)
+(use-package! lsp-ivy :commands lsp-ivy-workspace-symbol)
+(use-package! lsp-treemacs :commands lsp-treemacs-errors-list)
+
+;; optionally if you want to use debugger
+;; (use-package dap-mode)
+;; (use-package dap-LANGUAGE) to load the dap adapter for your language
+
+;; Pretty icons for company
+(use-package! company-box
+  :hook (company-mode . company-box-mode))
+
+
+
 
 ;; Automatically remove CRLF endings
 (defun no-junk-please-were-unixish ()
