@@ -1,7 +1,9 @@
 # You can add comments to these files with #
+afp ~/courses/tda342_advanced_functional_programming
 D /home/carlb/Downloads
 cc ~/courses
 cf ~/.config
+ck ~/courses/datx02_kandidatarbete/Kandidatarbete-NES-Emulator
 dc ~/dev/c
 dd ~/dotfiles
 de ~/dev/elm
