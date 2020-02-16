@@ -42,7 +42,7 @@ zle     -N   fzf-bookmarks-widget
 bindkey '\eb' fzf-bookmarks-widget
 
 fzf-projectile-widget() {
-  local cmd="${FZF_ALT_P_COMMAND:-"grep -o '".*"' /home/carlb/.doom-emacs/.local/cache/projectile.projects | sed 's/\"//g' | sed 's/ /\n/g' \
+  local cmd="${FZF_ALT_P_COMMAND:-"grep -o '".*"' /home/carlb/.emacs.d/.local/cache/projectile.projects | sed 's/\"//g' | sed 's/ /\n/g' \
       | sed 's/^(//g' | sed 's/)$//g' \
       "}"
   setopt localoptions pipefail 2> /dev/null
