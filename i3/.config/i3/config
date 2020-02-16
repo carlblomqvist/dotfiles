@@ -19,8 +19,6 @@ font pango:Fira Code 9
 
 
 # --- WINDOW RULES --- #
-
-
 # Float JavaFX
 #for_window [title="JavaFX"] floating enable resize set 800 600
 
@@ -71,6 +69,8 @@ for_window [class="mounted-usb"] floating enable move absolute position 640 px 2
 for_window [class="wifi-menu"] floating enable move absolute position 640 px 200 px resize set 1600 800
 
 for_window [class="yay-update"] floating enable move absolute position 2080 px 50 px resize set 800 200
+
+for_window [title="Turtle!"] floating enable move position center resize set 800 800
 
 
 #Gimp
