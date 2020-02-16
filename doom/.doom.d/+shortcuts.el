@@ -2,9 +2,11 @@
 (map! :leader "." nil)
 (map! :leader
       (:prefix ("," . "open bookmarked folder")
+:desc "~/courses/tda342_advanced_functional_programming" "afp" (lambda! (neotree-dir "~/courses/tda342_advanced_functional_programming"))
 :desc "/home/carlb/Downloads" "D" (lambda! (neotree-dir "/home/carlb/Downloads"))
 :desc "~/courses" "cc" (lambda! (neotree-dir "~/courses"))
 :desc "~/.config" "cf" (lambda! (neotree-dir "~/.config"))
+:desc "~/courses/datx02_kandidatarbete/Kandidatarbete-NES-Emulator" "ck" (lambda! (neotree-dir "~/courses/datx02_kandidatarbete/Kandidatarbete-NES-Emulator"))
 :desc "~/dev/c" "dc" (lambda! (neotree-dir "~/dev/c"))
 :desc "~/dotfiles" "dd" (lambda! (neotree-dir "~/dotfiles"))
 :desc "~/dev/elm" "de" (lambda! (neotree-dir "~/dev/elm"))
