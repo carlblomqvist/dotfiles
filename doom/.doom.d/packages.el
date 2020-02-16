@@ -61,3 +61,4 @@
 (package! lsp-ivy)
 (package! lsp-treemacs)
 (package! company-box)
+(package! clang-format+)
