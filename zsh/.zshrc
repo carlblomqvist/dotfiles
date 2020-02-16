@@ -1,8 +1,6 @@
 # Uncomment this + the last line to debug ZSH
 # zmodload zsh/zprof
 
-xmodmap ~/.Xmodmap
-
 # Check if connecting from tramp, is so; ignore config
 [[ $TERM == "tramp" ]] && unsetopt zle && PS1='$ ' && return
 
@@ -63,8 +61,11 @@ lfcd () {
     fi
 }
 # geometry
-# GEOMETRY_PROMPT_PLUGINS=(virtualenv exec_time git hg +vi-mode)
+GEOMETRY_PROMPT_PLUGINS=(virtualenv exec_time git hg +vi-mode)
 source ~/git/geometry/geometry.zsh
+
+# use vi-mode
+bindkey -v
 
 # use zmv
 autoload zmv
@@ -74,9 +75,6 @@ alias mv="zmv"
 autoload -Uz compinit
 compinit
 setopt COMPLETE_ALIASES
-
-# Options
-setopt share_history # share command history data
 
 # Reduce waittime when switching modes in vi-mode
 export KEYTIMEOUT=1
@@ -106,18 +104,19 @@ export LC_CTYPE="en_US.UTF-8"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-plugins=(
-  colored-man-pages
-  command-not-found
-  common-aliases
-  fancy-ctrl-z
-  # git
-  history-substring-search
-  vi-mode
-  web-search
-  zsh-autosuggestions
-  zsh-syntax-highlighting
-)
+# oh-my-zsh plugins??
+# plugins=(
+#   colored-man-pages
+#   command-not-found
+#   common-aliases
+#   fancy-ctrl-z
+#   # git
+#   history-substring-search
+#   vi-mode
+#   web-search
+#   zsh-autosuggestions
+#   zsh-syntax-highlighting
+# )
 
 # source $ZSH/oh-my-zsh.sh
 
@@ -151,22 +150,26 @@ alias icat="kitty +kitten icat"
 # cd to current folder when exiting file manager
 alias lf=lfcd
 alias ranger="source ranger"
+#use ripgrep
+alias grep=rg
 # alias ix=ix_wrapper
 alias doomr="systemctl --user restart doom"
 alias kdiff="kitty +kitten diff"
 alias dwmt="dm-tool add-nested-seat --fullscreen"
 alias java10="/usr/lib/jvm/java-10-openjdk/bin/java"
 alias javac10="/usr/lib/jvm/java-10-openjdk/bin/javac"
+alias picom="picom -bc --unredir-if-possible --xrender-sync-fence --config ~/.config/compton/config"
 
 # import automatically generated aliases for shortcuts
 source ~/.shortcuts
+
+# import secrets
+source ~/.secrets/.secrets
 
 # activate fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source ~/.zsh/fzf
 
-# Uncomment this + the first line to debug ZSH
-# zprof
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
 typeset -g -A key
@@ -218,3 +221,18 @@ zle -N down-line-or-beginning-search
 
 [[ -n "${key[Up]}"   ]] && bindkey -- "${key[Up]}"   up-line-or-beginning-search
 [[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search
+
+## History command configuration
+SAVEHIST=5000
+HISTFILE=~/.zsh_history
+setopt extended_history       # record timestamp of command in HISTFILE
+setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt hist_ignore_dups       # ignore duplicated commands history list
+setopt hist_ignore_space      # ignore commands that start with space
+setopt hist_verify            # show command with history expansion to user before running it
+setopt inc_append_history     # add commands to HISTFILE in order of execution
+setopt share_history          # share command history data
+
+
+# Uncomment this + the first line to debug ZSH
+# zprof
