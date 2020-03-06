@@ -29,6 +29,13 @@
       :n "C-k" 'evil-window-up
       :n "C-l" 'evil-window-right
 
+      (:map intero-repl-mode-map
+        :n "C-h" 'evil-window-left
+        :n "C-j" 'evil-window-down
+        :n "C-k" 'evil-window-up
+        :n "C-l" 'evil-window-right
+        )
+
       (:map cpp-mode-map
         :leader
         (:prefix "m"
@@ -159,7 +166,7 @@
 ;; Intero Window
 (after! intero-mode
   (set-popup-rule! "^\\*intero*"
-    '((size . 15))
+    '((size . 25))
     '((transient) (quit) (select . t))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
