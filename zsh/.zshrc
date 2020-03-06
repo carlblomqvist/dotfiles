@@ -158,7 +158,9 @@ alias kdiff="kitty +kitten diff"
 alias dwmt="dm-tool add-nested-seat --fullscreen"
 alias java10="/usr/lib/jvm/java-10-openjdk/bin/java"
 alias javac10="/usr/lib/jvm/java-10-openjdk/bin/javac"
-alias picom="picom -bc --unredir-if-possible --xrender-sync-fence --config ~/.config/compton/config"
+alias picom="picom -bc --unredir-if-possible --config ~/.config/compton/config"
+# my favourite alias
+alias ..="cd .."
 
 # import automatically generated aliases for shortcuts
 source ~/.shortcuts
