@@ -136,7 +136,7 @@ gaps inner $inner_gaps
 gaps outer $outer_gaps
 
 # Window borders
-new_window pixel 1
+new_window pixel 0
 #hide_edge_borders both
 
 
@@ -227,14 +227,14 @@ bindsym $mod+minus exec i3-msg border pixel 2
 bindsym --release $mod+minus exec i3-msg border pixel 0
 
 # change focus
-bindsym $mod+h exec i3-msg border pixel 1; focus left; exec --no-startup-id xdotool mousemove 10000 10000 
-bindsym $mod+j exec i3-msg border pixel 1; focus down; exec --no-startup-id xdotool mousemove 10000 10000 
-bindsym $mod+k exec i3-msg border pixel 1; focus up; exec --no-startup-id xdotool mousemove 10000 10000 
-bindsym $mod+l exec i3-msg border pixel 1; focus right; exec --no-startup-id xdotool mousemove 10000 10000 
-bindsym --release $mod+h exec i3-msg border pixel 1
-bindsym --release $mod+j exec i3-msg border pixel 1
-bindsym --release $mod+k exec i3-msg border pixel 1
-bindsym --release $mod+l exec i3-msg border pixel 1
+bindsym $mod+h exec i3-msg border pixel 1; focus left; exec --no-startup-id xdotool mousemove 10000 10000
+bindsym $mod+j exec i3-msg border pixel 1; focus down; exec --no-startup-id xdotool mousemove 10000 10000
+bindsym $mod+k exec i3-msg border pixel 1; focus up; exec --no-startup-id xdotool mousemove 10000 10000
+bindsym $mod+l exec i3-msg border pixel 1; focus right; exec --no-startup-id xdotool mousemove 10000 10000
+bindsym --release $mod+h exec i3-msg border pixel 0
+bindsym --release $mod+j exec i3-msg border pixel 0
+bindsym --release $mod+k exec i3-msg border pixel 0
+bindsym --release $mod+l exec i3-msg border pixel 0
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -367,7 +367,7 @@ bindsym $mod+r mode "resize"
 # exec --no-startup-id wal -R
 #exec --no-startup-id xrandr --dpi 144
 exec --no-startup-id albert # should make this into a service
-exec_always --no-startup-id exec feh --bg-scale ~/pictures/wallpapers/landscape-matterhorn.jpg
+exec_always --no-startup-id exec feh --bg-scale ~/pictures/wallpapers/solid_black.jpg
 # exec dispwin /home/carlb/.color/icc/surface-srgb.icm
 exec --no-startup-id exec picom -bc --unredir-if-possible --xrender-sync-fence --config ~/.config/compton/config
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh

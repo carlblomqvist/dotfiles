@@ -19,49 +19,6 @@ XTerm*cursorColor:  #eeeac4
 UXTerm*cursorColor: #eeeac4
 URxvt*borderColor:  [100]#0E1004
 
-! special
-*.foreground:   #c5c8c6
-*.background:   #1d1f21
-*.cursorColor:  #c5c8c6
-
-! black
-*.color0:       #282a2e
-*.color8:       #373b41
-
-! red
-*.color1:       #a54242
-*.color9:       #cc6666
-
-! green
-*.color2:       #8c9440
-*.color10:      #b5bd68
-
-! yellow
-*.color3:       #de935f
-*.color11:      #f0c674
-
-! blue
-*.color4:       #5f819d
-*.color12:      #81a2be
-
-! magenta
-*.color5:       #85678f
-*.color13:      #b294bb
-
-! cyan
-*.color6:       #5e8d87
-*.color14:      #8abeb7
-
-! white
-! *.color7:       #707880
-! *.color15:      #c5c8c6
-*.color7:       #FFFFFF
-*.color15:      #FFFFFF
-
-! Black color that will not be affected by bold highlighting.
-*.color66: #0E1004
-*color66:  #0E1004
-
 ! Xclock colors.
 XClock*foreground: #eeeac4
 XClock*background: #0E1004
@@ -73,3 +30,45 @@ XClock*secondColor: rgba:ee/ea/c4/ff
 
 ! Set depth to make transparency work.
 URxvt*depth: 32
+
+! Nord-theme colors
+*.foreground:  #bbc2cf
+*.background:  #282c34
+*.cursorColor: #51afef
+!
+! Black
+*.color0:      #000000
+*.color8:      #000000
+!
+! Red
+*.color1:      #ff6c6b
+*.color9:      #ff6655
+!
+! Green
+*.color2:      #98be65
+*.color10:     #99bb66
+!
+! Yellow
+*.color3:      #ecbe7b
+*.color11:     #ecbe7b
+!
+! Blue
+*.color4:      #a9a1e1
+*.color12:     #a9a1e1
+!
+! Magenta
+*.color5:      #c678dd
+*.color13:     #c678dd
+!
+! Cyan
+*.color6:      #51afef
+*.color14:     #51afef
+!
+! White
+*.color7:      #bbc2cf
+*.color15:     #bfbfbf
+!
+! Bold, Italic, Underline
+*.colorBD:     #bbc2cf
+!*.colorIT:
+!*.colorUL:
