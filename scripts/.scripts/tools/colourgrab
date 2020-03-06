@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+X=1
+Y=1
+xdotool mousemove --sync $X $Y sleep 0.01 click 1 mousemove --sync restore & COL=$( grabc 2>/dev/null )
+notify-send "Colour is:" "$COL\nCopied to clipboard!"
+echo $COL | xclip -selection clipboard
