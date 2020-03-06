@@ -13,7 +13,7 @@
 # pulsemixer --id N --unmute
 
 main() {
-    if ! pgrep -x spotify >/dev/null; then
+    if ! pgrep -x spotpris2 >/dev/null; then
         echo ""; exit
     fi
 

@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+TMP_IMG=$(mktemp /tmp/spotify_XXXXX.jpeg)
+ART_URL=$(playerctl -p spotpris metadata mpris:artUrl)
+ARTIST=$(playerctl -p spotpris metadata xesam:artist)
+ALBUM=$(playerctl -p spotpris metadata xesam:album)
+TITLE=$(playerctl -p spotpris metadata xesam:title)
+curl --silent $ART_URL -o $TMP_IMG
+notify-send -c Spotify -i $TMP_IMG $TITLE "$ARTIST\n$ALBUM"
