@@ -212,9 +212,18 @@
 ;; (use-package dap-LANGUAGE) to load the dap adapter for your language
 
 ;; Pretty icons for company
-(use-package! company-box
-  :hook (company-mode . company-box-mode))
+;; (use-package! company-box
+;;   :hook (company-mode . company-box-mode))
 
+;; Format with clang-format on save
+(add-hook 'before-save-hook
+  (lambda ()
+    (when (member major-mode '(c-mode c++-mode glsl-mode))
+      (progn
+        (when (locate-dominating-file "." ".clang-format")
+          (clang-format-buffer))
+        ;; Return nil, to continue saving.
+        nil))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;; "STUFF" ;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
