@@ -17,11 +17,11 @@ main() {
         echo ""; exit
     fi
 
-    status=$(playerctl status);
+    status=$(playerctl -p spotpris status);
     [[ $status = "Playing" ]] && status=
     [[ $status = "Paused" ]] && status=
-    artist=$(playerctl metadata artist);
-    title=$(playerctl metadata title);
+    artist=$(playerctl -p spotpris metadata artist);
+    title=$(playerctl -p spotpris metadata title);
 
     echo "$status $artist - $title";
 }
