@@ -68,10 +68,12 @@ for_window [class="mounted-usb"] floating enable move absolute position 640 px 2
 
 for_window [class="wifi-menu"] floating enable move absolute position 640 px 200 px resize set 1600 800
 
-for_window [class="yay-update"] floating enable move absolute position 2080 px 50 px resize set 800 200
+for_window [class="yay-update"] floating enable move absolute position 2080 px 50 px resize set 800 200 sticky enable
 
 for_window [title="Turtle!"] floating enable move position center resize set 800 800
 
+for_window [class="floating-terminal"] floating enable move absolute position 640 px $top_bar_height px resize set 1600 800
+for_window [class="floating-ranger"] floating enable move absolute position 125 px $top_bar_height px resize set 2630 1000
 
 #Gimp
 for_window [class="gimp" title="^Layers - Brushes$"] floating disable
@@ -207,13 +209,16 @@ bindsym $mod+Shift+q kill
 # scratchpad keybinds
 # polybar/bar/topbar/height + bar/topbar/offset-y 0 + $inner_gaps + $outer_gaps
 set $top_bar_height 35
-# bindsym $mod+u [class="scratchpad"] scratchpad show; [class="scratchpad"] move position center
-bindsym $mod+u exec tdrop -n 1 -a -w 100% -y $top_bar_height --name scratchpad kitty
-bindsym $mod+y exec /home/carlb/.scripts/tools/yttressh
-bindsym $mod+shift+f exec tdrop -n 3 -a -w 100% -h 40% -y $top_bar_height --name ranger -f 'ranger' kitty
-bindsym $mod+shift+d exec tdrop -n 4 -a -w 100% -y $top_bar_height --name lf -f 'lf' kitty
+# bindsym $mod+u [class="floating-terminal"] scratchpad show
+bindsym $mod+u exec /home/carlb/.config/i3/floating-terminal.sh
+bindsym $mod+shift+f exec /home/carlb/.config/i3/floating-ranger.sh
 
-bindsym $mod+d exec /home/carlb/.config/i3/albert_dmenu_fallback.sh
+# bindsym $mod+u exec tdrop -n 1 -a -w 100% -y $top_bar_height --name scratchpad kitty
+bindsym $mod+y exec /home/carlb/.scripts/tools/yttressh
+# bindsym $mod+shift+f exec tdrop -n 3 -a -w 100% -h 40% -y $top_bar_height --name ranger -f 'ranger' kitty
+# bindsym $mod+shift+d exec tdrop -n 4 -a -w 100% -y $top_bar_height --name lf -f 'lf' kitty
+
+bindsym $mod+d exec albert toggle
 # bindsym $mod+d exec albert toggle
 # bindsym $mod+d exec dmenu_run
 
