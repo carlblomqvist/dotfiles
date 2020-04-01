@@ -150,15 +150,24 @@ set $mod Mod4
 # Surface Pen
 # bindsym $mod+XF86AudioMicMute exec write_stylus
 
+# Lemontify
+bindsym XF86AudioMute exec lemontify -p audio --toggle
+bindsym XF86AudioRaiseVolume exec lemontify -p audio --inc -r
+bindsym XF86AudioLowerVolume exec lemontify -p audio --dec -r
+bindsym XF86MonBrightnessUp exec lemontify -p bcklight --dec
+bindsym XF86MonBrightnessDown exec lemontify -p bcklight --dec
+bindsym XF86KbdBrightnessUp exec lemontify -p kbdlight --inc
+bindsym XF86KbdBrightnessDown exec lemontify -p kbdlight --dec
+
 # Sound
-bindsym XF86AudioMute exec amixer set Master toggle
-bindsym XF86AudioRaiseVolume exec amixer set Master 5+
-bindsym XF86AudioLowerVolume exec amixer set Master 5-
+# bindsym XF86AudioMute exec amixer set Master toggle
+# bindsym XF86AudioRaiseVolume exec amixer set Master 5+
+# bindsym XF86AudioLowerVolume exec amixer set Master 5-
 bindsym XF86AudioPlay exec playerctl play-pause
 
 # Screen brightness
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+# bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+# bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
 # Disable touchpad
 bindsym $mod+comma exec synclient TouchpadOff=1
@@ -366,12 +375,13 @@ bindsym $mod+r mode "resize"
 # exec --no-startup-id wal -R
 #exec --no-startup-id xrandr --dpi 144
 exec --no-startup-id albert # should make this into a service
-exec_always --no-startup-id exec feh --bg-scale ~/pictures/wallpapers/solid_black.jpg
+exec_always --no-startup-id exec feh --bg-scale ~/pictures/wallpapers/daniel-plan-2400x3000-unsplash.jpg
 # exec dispwin /home/carlb/.color/icc/surface-srgb.icm
 exec --no-startup-id exec picom -bc --unredir-if-possible --xrender-sync-fence --config ~/.config/compton/config
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id redshift-gtk
+exec --no-startup-id libinput-gestures
 exec_always $HOME/.config/i3/loadxmodmap.sh
 exec_always setxkbmap `cat .Xkbmap`
 exec_always $HOME/.config/i3/loadxmodmap.sh
