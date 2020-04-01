@@ -152,9 +152,9 @@ set $mod Mod4
 
 # Lemontify
 bindsym XF86AudioMute exec lemontify -p audio --toggle
-bindsym XF86AudioRaiseVolume exec lemontify -p audio --inc -r
-bindsym XF86AudioLowerVolume exec lemontify -p audio --dec -r
-bindsym XF86MonBrightnessUp exec lemontify -p bcklight --dec
+bindsym XF86AudioRaiseVolume exec lemontify -p audio -r
+bindsym XF86AudioLowerVolume exec lemontify -p audio -r
+bindsym XF86MonBrightnessUp exec lemontify -p bcklight --inc
 bindsym XF86MonBrightnessDown exec lemontify -p bcklight --dec
 bindsym XF86KbdBrightnessUp exec lemontify -p kbdlight --inc
 bindsym XF86KbdBrightnessDown exec lemontify -p kbdlight --dec
