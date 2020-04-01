@@ -18,12 +18,17 @@ main() {
     fi
 
     status=$(playerctl -p spotpris status);
-    [[ $status = "Playing" ]] && status=
-    [[ $status = "Paused" ]] && status=
-    artist=$(playerctl -p spotpris metadata artist);
-    title=$(playerctl -p spotpris metadata title);
+    if [ $status != "Stopped" ]; then
+        [[ $status = "Playing" ]] && status=
+        [[ $status = "Paused" ]] && status=
+        artist=$(playerctl -p spotpris metadata artist);
+        title=$(playerctl -p spotpris metadata title);
 
-    echo "$status $artist - $title";
+        echo "$status $artist - $title";
+    else
+        echo "";
+    fi
+
 }
 
 main "$@"
