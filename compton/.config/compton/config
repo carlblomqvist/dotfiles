@@ -3,20 +3,46 @@ glx-no-stencil = true;
 glx-copy-from-front = false;
 glx-swap-method = 1;
 glx-norebind-pixmap = true;
-blur-background = false;
-blur-kern = "7x7box";
+# blur-background = false;
+# blur-kern = "7x7box";
 # vsync = "opengl";
 
+
+###################
+## Fräcka forken ##
+###################
+blur: {
+  method = "kawase";
+  strength = 10;
+  background = false;
+  background-frame = false;
+  background-fixed = false;
+}
+experimental-backends = true;
+corner-radius = 25.0;
+rounded-corners-exclude = [
+  #"window_type = 'normal'",
+  "class_g = 'URxvt'",
+  "class_g = 'XTerm'",
+  "class_g = 'Polybar'",
+  "class_g = 'code-oss'",
+  #"class_g = 'TelegramDesktop'",
+  "class_g = 'firefox'",
+  "class_g = 'Emacs'",
+  "class_g = 'Thunderbird'",
+];
+
+# DEPRECATED OPTIONS
+# no-dock-shadow = true;  # Avoid drawing shadows on dock/panel windows.
+# no-dnd-shadow = true;   # Don't draw shadows on DND windows.
+# menu-opacity = 1;
+#
 # Shadow
 shadow = true;          # Enabled client-side shadows on windows.
-no-dock-shadow = true;  # Avoid drawing shadows on dock/panel windows.
-no-dnd-shadow = true;   # Don't draw shadows on DND windows.
-clear-shadow = true;    # Zero the part of the shadow's mask behind the window (experimental).
 shadow-radius = 20;     # The blur radius for shadows. (default 12)
 shadow-offset-x = 5;    # The left offset for shadows. (default -15)
 shadow-offset-y = 5;    # The top offset for shadows. (default -15)
 shadow-opacity = 0.4;
-menu-opacity = 1;
 shadow-exclude = [
  #"! name~=''",
  # "n:e:Notification",
@@ -34,6 +60,7 @@ shadow-exclude = [
  #"n:w:*Chromium*",
  "class_g ?= 'dzen'",
  "class_g ?= 'i3-frame'",
+ "class_g ?= 'polybar'",
  "class_g ?= 'gnome-screenshot'"
  #"class_g ?= 'Cairo-dock'",
  #"class_g ?= 'Xfce4-notifyd'",
@@ -45,13 +72,14 @@ blur-background-exclude = [
  "class_g ?= 'gnome-screenshot'"
 ];
 
-#opacity-rule = ["85:class_g = 'gnome-terminal'"];
 opacity-rule = [
-"90:class_g *?= 'Rofi'",
-# "90:class_g *?= 'kitty'",
-"90:class_g *?= 'yttressh'",
-# "95:class_g *?= 'Emacs'",
-"90:class_g = 'Dunst'"
+"80:class_g *?= 'Rofi'",
+"80:class_g *?= 'kitty'",
+"80:class_g *?= 'floating-ranger'",
+"80:class_g *?= 'floating-terminal'",
+"80:class_g *?= 'yttressh'",
+"90:class_g *?= 'Emacs'",
+"80:class_g = 'Dunst'"
 ];
 
 # The shadow exclude options are helpful if you have shadows enabled. Due to the way compton draws its shadows, certain applications will have visual glitches
