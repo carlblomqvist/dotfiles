@@ -133,7 +133,7 @@ client.background       $bg
 
 # Set gaps
 set $inner_gaps 20
-set $outer_gaps -20
+set $outer_gaps -0
 gaps inner $inner_gaps
 gaps outer $outer_gaps
 
@@ -227,9 +227,9 @@ bindsym $mod+y exec /home/carlb/.scripts/tools/yttressh
 # bindsym $mod+shift+f exec tdrop -n 3 -a -w 100% -h 40% -y $top_bar_height --name ranger -f 'ranger' kitty
 # bindsym $mod+shift+d exec tdrop -n 4 -a -w 100% -y $top_bar_height --name lf -f 'lf' kitty
 
-bindsym $mod+d exec albert toggle
 # bindsym $mod+d exec albert toggle
-# bindsym $mod+d exec dmenu_run
+# bindsym $mod+d exec albert toggle
+bindsym $mod+d exec dmenu_run
 
 # switch to workspace
 bindsym $mod+section exec workspacer set 
