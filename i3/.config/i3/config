@@ -296,6 +296,9 @@ bindsym $mod+a focus parent
 # bindsym $mod+p workspace next
 # bindsym $mod+o workspace prev
 
+# Sticky window
+bindsym $mod+Shift+s sticky toggle
+
 # workspaces
 set $1 work
 set $2 web
