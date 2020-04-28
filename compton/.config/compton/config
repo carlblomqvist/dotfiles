@@ -79,6 +79,7 @@ opacity-rule = [
 "80:class_g *?= 'floating-terminal'",
 "80:class_g *?= 'yttressh'",
 "90:class_g *?= 'Emacs'",
+ "0:_NET_WM_STATE@:32a *= '_NET_WM_STATE_HIDDEN'", # make flashfocus work for i3
 "80:class_g = 'Dunst'"
 ];
 
