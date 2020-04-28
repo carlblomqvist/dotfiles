@@ -5,7 +5,7 @@ ranger_shortcuts="$HOME/.config/ranger/shortcuts.conf"
 lf_shortcuts="$HOME/.config/lf/lfshortcuts"
 qute_shortcuts="/dev/null"
 fish_shortcuts="/dev/null"
-vifm_shortcuts="/dev/null"
+vifm_shortcuts="$HOME/.config/vifm/vifmshortcuts"
 spacemacs_shortcuts="$HOME/.spacemacsshortcuts"
 doom_shortcuts="$HOME/.doom.d/+shortcuts.el"
 

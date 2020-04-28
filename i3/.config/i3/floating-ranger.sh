@@ -10,5 +10,5 @@ if [ $RUNNING -gt 3 ]; then
         i3-msg [class="floating-ranger"] move container to workspace hidden-ranger
     fi
 else
-    kitty --class "floating-ranger" ranger
+    kitty --class "floating-ranger" vifmrun
 fi

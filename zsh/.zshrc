@@ -60,6 +60,18 @@ lfcd () {
         fi
     fi
 }
+
+# vifm change-dir
+function vicd()
+{
+    local dst="$(command vifmrun --choose-dir - "$@")"
+    if [ -z "$dst" ]; then
+        echo 'Directory picking cancelled/failed'
+        return 1
+    fi
+    cd "$dst"
+}
+
 # geometry
 GEOMETRY_PROMPT_PLUGINS=(virtualenv exec_time git hg +vi-mode)
 source ~/git/geometry/geometry.zsh
@@ -153,6 +165,7 @@ alias ranger="source ranger"
 #use ripgrep
 alias grep=rg
 alias ls="ls --color=auto"
+alias la="ls -lAh --color=auto"
 # alias ix=ix_wrapper
 alias doomr="systemctl --user restart doom"
 alias kdiff="kitty +kitten diff"
@@ -160,6 +173,10 @@ alias dwmt="dm-tool add-nested-seat --fullscreen"
 alias java10="/usr/lib/jvm/java-10-openjdk/bin/java"
 alias javac10="/usr/lib/jvm/java-10-openjdk/bin/javac"
 alias picom="picom -bc --unredir-if-possible --config ~/.config/compton/config"
+alias vifm=vicd
+alias midi="fluidsynth -a alsa -m alsa_seq -l -i /usr/share/soundfonts/FluidR3_GM.sf2"
+alias make="make -j10"
+vscode() { command emacs "$@" > /dev/null 2>&1 & }
 # my favourite alias
 alias ..="cd .."
 
