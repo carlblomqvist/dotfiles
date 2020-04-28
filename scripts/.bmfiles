@@ -11,6 +11,7 @@ bf ~/.bmfiles
 cfb	~/.bashrc
 cfc	~/.config/compton/config
 cfd	~/git/dwm/config.h
+cff	~/.config/flashfocus/flashfocus.yml
 cfi	~/.config/i3/config
 cfk	~/.config/kitty/kitty.conf
 cfl	~/.config/lf/lfrc

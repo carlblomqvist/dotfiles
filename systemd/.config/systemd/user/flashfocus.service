@@ -1,0 +1,11 @@
+[Unit]
+Description=Flashfocus - Flash windows when changing focus in window manager
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/flashfocus
+ExecStop=/usr/bin/killall flashfocus
+Restart=always
+
+[Install]
+WantedBy=default.target
