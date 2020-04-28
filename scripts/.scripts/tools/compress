@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+input="$(readlink -f "$*")"
+ffmpeg -i $input -c:v libx264 -preset slow -crf 22 -c:a copy output.mkv
