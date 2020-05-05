@@ -87,6 +87,8 @@ alias mv="zmv"
 autoload -Uz compinit
 compinit
 setopt COMPLETE_ALIASES
+# Completion for kitty
+kitty + complete setup zsh | source /dev/stdin
 
 # Reduce waittime when switching modes in vi-mode
 export KEYTIMEOUT=1
