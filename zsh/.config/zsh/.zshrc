@@ -19,7 +19,7 @@ function _emacsfun
 }
 
 # An emacs 'alias' with the ability to read from stdin
-function em
+function ema
 {
     # If the argument is - then write stdin to a tempfile and open the
     # tempfile.
@@ -80,8 +80,8 @@ source ~/git/geometry/geometry.zsh
 bindkey -v
 
 # use zmv
-autoload zmv
-alias mv="zmv"
+#autoload zmv
+#alias mv="zmv"
 
 # Auto completion
 autoload -Uz compinit
@@ -157,8 +157,8 @@ export LC_CTYPE="en_US.UTF-8"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias load="sudo md407 load debug/code.s19"
-alias mdgo="sudo md407 go"
+# alias load="sudo md407 load debug/code.s19"
+# alias mdgo="sudo md407 go"
 # render images in terminal
 alias icat="kitty +kitten icat"
 # cd to current folder when exiting file manager
@@ -172,13 +172,10 @@ alias la="exa -lah"
 alias doomr="systemctl --user restart doom"
 alias kdiff="kitty +kitten diff"
 alias dwmt="dm-tool add-nested-seat --fullscreen"
-alias java10="/usr/lib/jvm/java-10-openjdk/bin/java"
-alias javac10="/usr/lib/jvm/java-10-openjdk/bin/javac"
 alias picom="picom -bc --unredir-if-possible --config ~/.config/compton/config"
 alias vifm=vicd
 alias midi="fluidsynth -a alsa -m alsa_seq -l -i /usr/share/soundfonts/FluidR3_GM.sf2"
 alias make="make -j10"
-vscode() { command emacs "$@" > /dev/null 2>&1 & }
 # my favourite alias
 alias ..="cd .."
 
@@ -189,8 +186,9 @@ source ~/.shortcuts
 source ~/.secrets/.secrets
 
 # activate fuzzy finder
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source ~/.zsh/fzf
+[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
+[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+[ -f ~/.config/zsh/fzf ] && source ~/.config/zsh/fzf
 
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo

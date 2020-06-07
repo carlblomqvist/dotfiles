@@ -1,13 +1,13 @@
 # You can add comments to these files with #
 afp ~/courses/tda342_advanced_functional_programming
+dD ~/dotfiles
 D /home/carlb/Downloads
 cc ~/courses
 cf ~/.config
 ck ~/courses/datx02_kandidatarbete/Kandidatarbete-NES-Emulator
 dc ~/dev/c
-dd ~/dotfiles
 de ~/dev/elm
-do ~/Documents
+doc ~/Documents
 dp ~/dev/python
 di ~/courses/eda322_digital_design/EDA322-Labs
 dsl ~/courses/dat326
