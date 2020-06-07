@@ -6,3 +6,6 @@ vifm/.config/vifm/vifmshortcuts
 
 #
 vifm/.config/vifm/vifminfo
+polybar/.config/polybar/config.ini
+polybar/.config/polybar/launch.sh
+i3/.config/i3/config
