@@ -1,0 +1,25 @@
+config=$(lspci | sha256sum)
+
+# Desktop
+if [ "$config" == "5fe52ec62c439eea14d2539912a678ed2838f7e774f36d494c35840a11a6ceb0  -" ]; then
+   # i3
+   rm ~/.config/i3/config
+   ln -s ~/dotfiles/i3/.config/i3/desktopconfig ~/.config/i3/config
+   # polybar
+   rm ~/.config/polybar/launch.sh
+   rm ~/.config/polybar/config.ini
+   ln -s ~/dotfiles/polybar/.config/polybar/desktopconfig.ini ~/.config/polybar/config.ini
+   ln -s ~/dotfiles/polybar/.config/polybar/desktoplaunch.sh ~/.config/polybar/launch.sh
+fi
+
+# Macbook
+if [ "$config" == "AWHOAWDHOAWDOH" ]; then
+   # i3
+   rm ~/.config/i3/config
+   ln -s ~/dotfiles/i3/.config/i3/macbookconfig ~/.config/i3/config
+   # polybar
+   rm ~/.config/polybar/launch.sh
+   rm ~/.config/polybar/config.ini
+   ln -s ~/dotfiles/polybar/.config/polybar/macbookconfig.ini ~/.config/polybar/config.ini
+   ln -s ~/dotfiles/polybar/.config/polybar/macbooklaunch.sh ~/.config/polybar/launch.sh
+fi
