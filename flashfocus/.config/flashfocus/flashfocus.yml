@@ -45,7 +45,7 @@ flash-lone-windows: 'on_switch'
 
 rules:
   - window-class: firefox
-    default-opacity: 0.95
+    default-opacity: 1.0
   - window-class: kitty
     default-opacity: 1.0
   - window-class: Emacs
