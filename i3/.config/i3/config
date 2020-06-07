@@ -253,10 +253,10 @@ bindsym $mod+minus exec i3-msg border pixel 2
 bindsym --release $mod+minus exec i3-msg border pixel 0
 
 # change focus
-bindsym $mod+h exec i3-msg border pixel 1; focus left; exec --no-startup-id xdotool mousemove 10000 10000
-bindsym $mod+j exec i3-msg border pixel 1; focus down; exec --no-startup-id xdotool mousemove 10000 10000
-bindsym $mod+k exec i3-msg border pixel 1; focus up; exec --no-startup-id xdotool mousemove 10000 10000
-bindsym $mod+l exec i3-msg border pixel 1; focus right; exec --no-startup-id xdotool mousemove 10000 10000
+bindsym $mod+h exec i3-msg border pixel 0; focus left; exec --no-startup-id xdotool mousemove_relative 0 10000
+bindsym $mod+j exec i3-msg border pixel 0; focus down; exec --no-startup-id xdotool mousemove_relative 0 10000
+bindsym $mod+k exec i3-msg border pixel 0; focus up; exec --no-startup-id xdotool mousemove_relative 0 10000
+bindsym $mod+l exec i3-msg border pixel 0; focus right; exec --no-startup-id xdotool mousemove_relative 0 10000
 bindsym --release $mod+h exec i3-msg border pixel 0
 bindsym --release $mod+j exec i3-msg border pixel 0
 bindsym --release $mod+k exec i3-msg border pixel 0
