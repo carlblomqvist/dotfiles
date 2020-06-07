@@ -17,6 +17,8 @@ cfk	~/.config/kitty/kitty.conf
 cfl	~/.config/lf/lfrc
 cfp	~/.config/polybar/config.ini
 cfr	~/.config/ranger/rc.conf
+cft	~/.config/tridactyl/tridactylrc
+cfvf	~/.config/vifm/vifmrc
 cfs	~/.spacemacs
 cfv	~/.vimrc
 cfz	~/.zshrc
