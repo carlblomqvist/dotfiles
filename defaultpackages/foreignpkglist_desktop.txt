@@ -1,0 +1,9 @@
+jack-rack
+nerd-fonts-iosevka
+picom-ibhagwan-git
+polybar
+python-spotpris2
+python-ueberzug
+spotify-tui-bin
+spotifyd-full
+yay
