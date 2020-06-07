@@ -10,6 +10,10 @@ set vicmd=vim
 " solution, it's also much slower when processing large amounts of files and
 " doesn't support progress measuring.
 set syscalls
+" set vicmd=vim
+set vicmd=emacsclient\ -nw
+" set vicmd=elvis\ -G\ termcap
+" set vicmd=vile
 
 " Open with preview window
 view
@@ -45,6 +49,12 @@ colorscheme minimal
 " TIME_STAMP_FORMAT=%m/%d-%H:%M
 " See man date or man strftime for details.
 set timefmt=%m/%d\ %H:%M
+
+" Show name, time modified and size in filelist
+"set viewcolumns=*{name}..,16{mtime},7{}.
+
+" Show filename -> symbolic link, permissions, user:group, size and date
+set statusline="%t -> %T %= %A %2u:%-2g %10s %10d  "
 
 " Show list of matches on tab completion in command-line mode
 set wildmenu
@@ -103,6 +113,7 @@ command! make !!make %a
 command! mkcd :mkdir %a | cd %a
 command! vgrep vim "+grep %a"
 command! reload :write | restart
+command! link ln -s %d/%f %D
 " }}}
 
 
