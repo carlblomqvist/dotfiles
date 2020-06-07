@@ -269,10 +269,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+h exec i3-msg border pixel 2; move left
-bindsym $mod+Shift+j exec i3-msg border pixel 2; move down
-bindsym $mod+Shift+k exec i3-msg border pixel 2; move up
-bindsym $mod+Shift+l exec i3-msg border pixel 2; move right
+bindsym $mod+Shift+h exec i3-msg border pixel 0; move left
+bindsym $mod+Shift+j exec i3-msg border pixel 0; move down
+bindsym $mod+Shift+k exec i3-msg border pixel 0; move up
+bindsym $mod+Shift+l exec i3-msg border pixel 0; move right
 bindsym --release $mod+Shift+h exec i3-msg border pixel 0
 bindsym --release $mod+Shift+j exec i3-msg border pixel 0
 bindsym --release $mod+Shift+k exec i3-msg border pixel 0
@@ -413,7 +413,6 @@ bindsym $mod+r mode "resize"
 # -- EXEC -- 
 # exec --no-startup-id wal -R
 #exec --no-startup-id xrandr --dpi 144
-exec --no-startup-id albert # should make this into a service
 exec_always --no-startup-id exec feh --bg-scale ~/pictures/wallpapers/daniel-plan-2400x3000-unsplash.jpg
 # exec dispwin /home/carlb/.color/icc/surface-srgb.icm
 exec --no-startup-id exec picom -bc --unredir-if-possible --xrender-sync-fence --config ~/.config/compton/config

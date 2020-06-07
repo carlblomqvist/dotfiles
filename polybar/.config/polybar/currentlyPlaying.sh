@@ -17,12 +17,14 @@ main() {
         echo ""; exit
     fi
 
-    status=$(playerctl -p spotpris status);
+    player=$(playerctl -l | grep spotpris | tr '\n' ' ' | cut -d' ' -f 2)
+
+    status=$(playerctl -p "$player" status);
     if [ $status != "Stopped" ]; then
         [[ $status = "Playing" ]] && status=
         [[ $status = "Paused" ]] && status=
-        artist=$(playerctl -p spotpris metadata artist);
-        title=$(playerctl -p spotpris metadata title);
+        artist=$(playerctl -p "$player" metadata artist);
+        title=$(playerctl -p "$player" metadata title);
 
         echo "$status $artist - $title";
     else

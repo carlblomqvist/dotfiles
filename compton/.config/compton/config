@@ -18,7 +18,7 @@ blur: {
   background-frame = false;
   background-fixed = false;
 }
-experimental-backends = false;
+experimental-backends = true;
 corner-radius = 0.0;
 rounded-corners-exclude = [
   #"window_type = 'normal'",

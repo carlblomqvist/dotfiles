@@ -1,3 +1,8 @@
+# Ignore generated shortcuts
 ranger/.config/ranger/shortcuts.conf
 lf/.config/lf/lfshortcuts
 doom/.doom.d/+shortcuts.el
+vifm/.config/vifm/vifmshortcuts
+
+#
+vifm/.config/vifm/vifminfo

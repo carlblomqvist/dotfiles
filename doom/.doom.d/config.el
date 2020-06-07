@@ -68,8 +68,9 @@
       (:prefix "c"
         :desc "Comment line/region"             "l" #'evilnc-comment-or-uncomment-lines
         :desc "Spell-correct word at point"     "s" #'flyspell-correct-at-point
-        (:prefix ("a" . "alignment")
-          :desc "Align single equals"           "=" #'+my-align-single-equals))
+        ;; (:prefix ("a" . "alignment")
+        ;;   :desc "Align single equals"           "=" #'+my-align-single-equals)
+          )
       (:prefix ("e" . "errors")
         ;; :desc "Error list"                   "l" #'flycheck-error-list
         :desc "Flycheck clear"                  "c" #'flycheck-clear

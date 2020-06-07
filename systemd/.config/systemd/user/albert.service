@@ -1,0 +1,11 @@
+[Unit]
+Description=Albert service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/albert
+ExecStop=/usr/bin/killall albert
+Restart=always
+
+[Install]
+WantedBy=default.target

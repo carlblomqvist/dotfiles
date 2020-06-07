@@ -87,6 +87,8 @@ alias mv="zmv"
 autoload -Uz compinit
 compinit
 setopt COMPLETE_ALIASES
+# Completion for kitty
+kitty + complete setup zsh | source /dev/stdin
 
 # Reduce waittime when switching modes in vi-mode
 export KEYTIMEOUT=1
@@ -244,14 +246,15 @@ zle -N down-line-or-beginning-search
 
 ## History command configuration
 SAVEHIST=5000
+HISTSIZE=5000
 HISTFILE=~/.zsh_history
-setopt extended_history       # record timestamp of command in HISTFILE
-setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
-setopt hist_ignore_dups       # ignore duplicated commands history list
-setopt hist_ignore_space      # ignore commands that start with space
-setopt hist_verify            # show command with history expansion to user before running it
-setopt inc_append_history     # add commands to HISTFILE in order of execution
-setopt share_history          # share command history data
+setopt extended_history        # record timestamp of command in HISTFILE
+setopt hist_expire_dups_first  # delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt hist_ignore_dups        # ignore duplicated commands history list
+setopt hist_ignore_space       # ignore commands that start with space
+setopt hist_verify             # show command with history expansion to user before running it
+setopt inc_append_history_time # add commands to HISTFILE in order of execution
+setopt share_history           # share command history data
 
 
 # Uncomment this + the first line to debug ZSH
