@@ -3,7 +3,7 @@
     markup               = full
     format               = "<b>%s</b>\n%b"
     monitor              = 0
-    follow               = mouse
+    follow               = none
     geometry             = "1000x50-30+70"
     indicate_hidden      = yes
     sort                 = yes
