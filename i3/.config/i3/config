@@ -344,6 +344,30 @@ bindsym $mod+Shift+8 move container to workspace $8
 bindsym $mod+Shift+9 move container to workspace $9
 bindsym $mod+Shift+0 move container to workspace $10
 
+#Marker binders (Alt+Ctrl+#)
+#bindsym $mark+Ctrl+exclam mark markinw1
+#bindsym $mark+Ctrl+at mark markinw2
+#bindsym $mark+Ctrl+numbersign mark markinw3
+#bindsym $mark+Ctrl+dollar mark markinw4
+#bindsym $mark+Ctrl+percent mark markinw5
+#bindsym $mark+Ctrl+ampersand mark markinw6
+#bindsym $mark+Ctrl+slash mark markinw7
+#bindsym $mark+Ctrl+parenleft mark markinw8
+#bindsym $mark+Ctrl+parenright mark markinw9
+#bindsym $mark+Ctrl+equals mark markinw10
+
+#Marker binder bring to front (Alt+#)
+#bindsym $mark+1 [con_mark="markinw1"] focus
+#bindsym $mark+2 [con_mark="markinw2"] focus
+#bindsym $mark+3 [con_mark="markinw3"] focus
+#bindsym $mark+4 [con_mark="markinw4"] focus
+#bindsym $mark+5 [con_mark="markinw5"] focus
+#bindsym $mark+6 [con_mark="markinw6"] focus
+#bindsym $mark+7 [con_mark="markinw7"] focus
+#bindsym $mark+8 [con_mark="markinw8"] focus
+#bindsym $mark+9 [con_mark="markinw9"] focus
+#bindsym $mark+0 [con_mark="markinw10"] focus
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
