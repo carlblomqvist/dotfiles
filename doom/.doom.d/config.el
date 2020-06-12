@@ -207,6 +207,13 @@
 (use-package! company-lsp :commands company-lsp)
 (use-package! lsp-ivy :commands lsp-ivy-workspace-symbol)
 (use-package! lsp-treemacs :commands lsp-treemacs-errors-list)
+;; (use-package! company-tabnine)
+;; (add-to-list 'company-backends #'company-tabnine)
+;; Trigger completion immediately.
+(setq company-idle-delay 0)
+
+;; Number the candidates (use M-1, M-2 etc to select completions).
+(setq company-show-numbers t)
 
 ;; optionally if you want to use debugger
 ;; (use-package dap-mode)
@@ -218,13 +225,13 @@
 
 ;; Format with clang-format on save
 (add-hook 'before-save-hook
-  (lambda ()
-    (when (member major-mode '(c-mode c++-mode glsl-mode))
-      (progn
-        (when (locate-dominating-file "." ".clang-format")
-          (clang-format-buffer))
-        ;; Return nil, to continue saving.
-        nil))))
+          (lambda ()
+            (when (member major-mode '(c-mode c++-mode glsl-mode))
+              (progn
+                (when (locate-dominating-file "." ".clang-format")
+                  (clang-format-buffer))
+                ;; Return nil, to continue saving.
+                nil))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;; "STUFF" ;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
