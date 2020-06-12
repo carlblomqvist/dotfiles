@@ -384,7 +384,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id redshift-gtk
 exec --no-startup-id libinput-gestures
-exec_always $HOME/.config/i3/loadxmodmap.sh
-exec_always setxkbmap `cat .Xkbmap`
-exec_always $HOME/.config/i3/loadxmodmap.sh
+#exec_always $HOME/.config/i3/loadxmodmap.sh
+#exec_always setxkbmap `cat .Xkbmap`
+#exec_always $HOME/.config/i3/loadxmodmap.sh
 exec_always xset r rate 180 30
