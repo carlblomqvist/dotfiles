@@ -166,8 +166,9 @@ alias lf=lfcd
 alias ranger="source ranger"
 #use ripgrep
 alias grep=rg
-alias ls="ls --color=auto"
-alias la="ls -lAh --color=auto"
+alias ls="exa"
+alias la="exa -la"
+alias bat="bat --color always"
 # alias ix=ix_wrapper
 alias doomr="systemctl --user restart doom"
 alias kdiff="kitty +kitten diff"
