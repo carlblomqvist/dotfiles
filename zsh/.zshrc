@@ -7,8 +7,8 @@
 # Make emacs realize it can use 256 colors
 [[ $TERM == "eterm-color" ]] && export TERM=xterm-256color
 
-export VISUAL="emacs"
-export EDITOR="emacs"
+export VISUAL="emacs -nw"
+export EDITOR="emacs -nw"
 #alias e="emacsclient -c --socket-name doom"
 
 # emacs or emacsclient to use

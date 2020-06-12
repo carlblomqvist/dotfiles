@@ -87,11 +87,20 @@ for_window [class="Codelite"] move container to workspace codelite
 for_window [class="Simserver"] move container to workspace codelite
 for_window [title="^vimpc$"] move container to workspace vimpc
 for_window [class="Brave-browser"] move container to workspace web
+for_window [class="firefox" title="Picture-in-Picture"] move position center
+#for_window [class="firefox"] move container to workspace web
 for_window [class="Brave-browser"] layout stacked
 # for_window [class="Emacs"] move container to workspace work
 for_window [class="Spotify"] move container to workspace spotify
 for_window [class="Franz"] move container to workspace messaging
 for_window [class="Minecraft 1.15.1"] move container to workspace misc
+
+# JACK
+for_window [class="QjackCtl"] floating enable move absolute position 790 px 93 px resize set 900 100
+for_window [class="QjackCtl" title="Patchbay — QjackCtl"] floating enable move absolute position 1210 px 210 px resize set 1350 550
+for_window [class="QjackCtl" title="Graph — QjackCtl"] floating enable move absolute position 260 px 210 px resize set 950 1100
+for_window [class="QjackCtl" title="Messages / Status — QjackCtl"] floating enable move absolute position 790 px 210 px resize set 900 350
+for_window [class="ffado-mixer"] floating enable move absolute position 550 px 190 px resize set 1500 1000
 
 # Scratchpad Settings
 for_window [class="scratchpad"] floating enable
@@ -190,6 +199,9 @@ bindcode 124 exec /home/carlb/.config/i3/screenshot.sh -s -c
 # Lock screen
 bindsym $mod+Control+L exec /home/carlb/.config/i3/lockscreen.sh
 
+# Sleep screens
+bindsym $mod+shift+asterisk exec /home/carlb/.scripts/tools/sleepscreens.sh
+
 # Get windowinfo
 bindsym $mod+i exec /usr/bin/kitty --hold --class "windowinfo" /home/carlb/.config/i3/windowinfo
 
@@ -241,10 +253,10 @@ bindsym $mod+minus exec i3-msg border pixel 2
 bindsym --release $mod+minus exec i3-msg border pixel 0
 
 # change focus
-bindsym $mod+h exec i3-msg border pixel 0; focus left; exec --no-startup-id xdotool mousemove 10000 10000
-bindsym $mod+j exec i3-msg border pixel 0; focus down; exec --no-startup-id xdotool mousemove 10000 10000
-bindsym $mod+k exec i3-msg border pixel 0; focus up; exec --no-startup-id xdotool mousemove 10000 10000
-bindsym $mod+l exec i3-msg border pixel 0; focus right; exec --no-startup-id xdotool mousemove 10000 10000
+bindsym $mod+h exec i3-msg border pixel 0; focus left; exec --no-startup-id xdotool mousemove_relative 0 10000
+bindsym $mod+j exec i3-msg border pixel 0; focus down; exec --no-startup-id xdotool mousemove_relative 0 10000
+bindsym $mod+k exec i3-msg border pixel 0; focus up; exec --no-startup-id xdotool mousemove_relative 0 10000
+bindsym $mod+l exec i3-msg border pixel 0; focus right; exec --no-startup-id xdotool mousemove_relative 0 10000
 bindsym --release $mod+h exec i3-msg border pixel 0
 bindsym --release $mod+j exec i3-msg border pixel 0
 bindsym --release $mod+k exec i3-msg border pixel 0
@@ -331,6 +343,30 @@ bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace $8
 bindsym $mod+Shift+9 move container to workspace $9
 bindsym $mod+Shift+0 move container to workspace $10
+
+#Marker binders (Alt+Ctrl+#)
+#bindsym $mark+Ctrl+exclam mark markinw1
+#bindsym $mark+Ctrl+at mark markinw2
+#bindsym $mark+Ctrl+numbersign mark markinw3
+#bindsym $mark+Ctrl+dollar mark markinw4
+#bindsym $mark+Ctrl+percent mark markinw5
+#bindsym $mark+Ctrl+ampersand mark markinw6
+#bindsym $mark+Ctrl+slash mark markinw7
+#bindsym $mark+Ctrl+parenleft mark markinw8
+#bindsym $mark+Ctrl+parenright mark markinw9
+#bindsym $mark+Ctrl+equals mark markinw10
+
+#Marker binder bring to front (Alt+#)
+#bindsym $mark+1 [con_mark="markinw1"] focus
+#bindsym $mark+2 [con_mark="markinw2"] focus
+#bindsym $mark+3 [con_mark="markinw3"] focus
+#bindsym $mark+4 [con_mark="markinw4"] focus
+#bindsym $mark+5 [con_mark="markinw5"] focus
+#bindsym $mark+6 [con_mark="markinw6"] focus
+#bindsym $mark+7 [con_mark="markinw7"] focus
+#bindsym $mark+8 [con_mark="markinw8"] focus
+#bindsym $mark+9 [con_mark="markinw9"] focus
+#bindsym $mark+0 [con_mark="markinw10"] focus
 
 # reload the configuration file
 bindsym $mod+Shift+c reload

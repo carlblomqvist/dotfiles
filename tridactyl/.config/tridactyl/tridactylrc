@@ -157,6 +157,13 @@ autocmd DocStart ^http(s?)://www.amazon.co.uk js tri.excmds.urlmodify("-t", "www
 set theme dark
 
 "
-" Blacklist
+" Blacklisted sites
 "
-blacklistadd "overleaf.com"
+blacklistadd overleaf.com
+
+"
+" Settings
+"
+set smoothscroll true
+bind j scrollline 5
+bind k scrollline -5

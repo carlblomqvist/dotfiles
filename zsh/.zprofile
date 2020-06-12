@@ -3,6 +3,7 @@ export PATH=$PATH:/home/carlb/courses/tda384_concurrent_programming/tsim/world/b
 export PATH=$PATH:~/.npm-global/bin
 export PATH=$PATH:~/.emacs.d/bin
 export PATH=~/.scripts/tools:$PATH
+export PATH=~/.scripts/audio:$PATH
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:~/.emacs.d/.local/etc/rtags/rtags-2.37/bin/
 
