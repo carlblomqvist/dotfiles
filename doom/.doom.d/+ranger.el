@@ -1,9 +1,9 @@
 ;;; ~/.doom.d/+ranger.el -*- lexical-binding: t; -*-
 
-(def-package! ranger
-  :commands (ranger deer ranger-override-dired-fn)
-  :config
-  (set-popup-rule! "^\\*ranger" :ignore t))
+;; (def-package! ranger
+;;   :commands (ranger deer ranger-override-dired-fn)
+;;   :config
+  ;; (set-popup-rule! "^\\*ranger" :ignore t))
  ;; before (map! :desc "label" :prefix "a" ...) ;; now (map! :prefix ("a" . "label") ...)
 (map!
  (:leader

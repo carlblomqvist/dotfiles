@@ -30,81 +30,82 @@
       :n "C-l" 'evil-window-right
 
       (:map intero-repl-mode-map
-        :n "C-h" 'evil-window-left
-        :n "C-j" 'evil-window-down
-        :n "C-k" 'evil-window-up
-        :n "C-l" 'evil-window-right
-        )
+       :n "C-h" 'evil-window-left
+       :n "C-j" 'evil-window-down
+       :n "C-k" 'evil-window-up
+       :n "C-l" 'evil-window-right
+       )
 
       (:map cpp-mode-map
-        :leader
-        (:prefix "m"
-          :desc "Find definition" "g" #'lsp-find-definition
-          (:prefix "t"
-            :desc "Toggle symbol highlighting" "h" #'lsp-toggle-symbol-highlight)
-          )
+       :leader
+       (:prefix "m"
+        :desc "Find definition" "g" #'lsp-find-definition
+        (:prefix "t"
+         :desc "Toggle symbol highlighting" "h" #'lsp-toggle-symbol-highlight)
         )
+       )
 
       (:map evil-treemacs-state-map
-        ;; "K"   'neotree-select-up-node
-        ;; "J"   'neotree-select-down-node
-        ;; "L"   'neotree-select-next-sibling-node
-        ;; "H"   'neotree-select-previous-sibling-node
-        "|" 'treemacs-visit-node-vertical-split
-        "-" 'treemacs-visit-node-horizontal-split
-        "C-h" 'evil-window-left
-        "C-l" 'evil-window-right
-        :leader
-        (:prefix "o"
-          :desc "Toggle Treemacs"  "o" #'treemacs)
-        )
+       ;; "K"   'neotree-select-up-node
+       ;; "J"   'neotree-select-down-node
+       ;; "L"   'neotree-select-next-sibling-node
+       ;; "H"   'neotree-select-previous-sibling-node
+       "|" 'treemacs-visit-node-vertical-split
+       "-" 'treemacs-visit-node-horizontal-split
+       "C-h" 'evil-window-left
+       "C-l" 'evil-window-right
+       :leader
+       (:prefix "o"
+        :desc "Toggle Treemacs"  "o" #'treemacs)
+       )
 
       :leader
       :desc "Toggle last popup"                 "§" #'+popup/toggle
       :desc "Ivy M-x "                          "SPC" #'counsel-M-x
       :desc "Describe keybindings"              "?" #'counsel-descbinds
       (:prefix "b"
-        :desc "Home Buffer"                     "h" #'+doom-dashboard/open)
+       :desc "Home Buffer"                     "h" #'+doom-dashboard/open)
       (:prefix "c"
-        :desc "Comment line/region"             "l" #'evilnc-comment-or-uncomment-lines
-        :desc "Spell-correct word at point"     "s" #'flyspell-correct-at-point
-        ;; (:prefix ("a" . "alignment")
-        ;;   :desc "Align single equals"           "=" #'+my-align-single-equals)
-          )
+       :desc "Comment line/region"             "l" #'evilnc-comment-or-uncomment-lines
+       :desc "Spell-correct word at point"     "s" #'flyspell-correct-at-point
+       ;; (:prefix ("a" . "alignment")
+       ;;   :desc "Align single equals"           "=" #'+my-align-single-equals)
+       )
       (:prefix ("e" . "errors")
-        ;; :desc "Error list"                   "l" #'flycheck-error-list
-        :desc "Flycheck clear"                  "c" #'flycheck-clear
-        :desc "Explain error at point"          "e" #'flycheck-explain-error-at-point
-        :desc "Next error"                      "n" #'next-error
-        :desc "Previous error"                  "N" #'previous-error
-        :desc "Previous error"                  "p" #'previous-error)
+       ;; :desc "Error list"                   "l" #'flycheck-error-list
+       :desc "Flycheck clear"                  "c" #'flycheck-clear
+       :desc "Explain error at point"          "e" #'flycheck-explain-error-at-point
+       :desc "Next error"                      "n" #'next-error
+       :desc "Previous error"                  "N" #'previous-error
+       :desc "Previous error"                  "p" #'previous-error)
       (:prefix "i"
-        :desc "Paste to ix.io"                  "x" #'ix
-        :desc "Curl from ix.io"                 "b" #'ix-browse)
+       :desc "Paste to ix.io"                  "x" #'ix
+       :desc "Curl from ix.io"                 "b" #'ix-browse)
       (:prefix "f"
-        :desc "Find file"                       "f" #'find-file
-        :desc "rgrep"                           "g" #'rgrep
-        ;; :desc TODO "Rename buffer filename"  "R" #'rgrep
-        :desc "Sudo Edit this file"             "S" #'doom/sudo-this-file
-        :desc "Find file in dotfiles"           "t" #'+hlissner/find-in-dotfiles)
+       :desc "Find file"                       "f" #'find-file
+       :desc "rgrep"                           "g" #'rgrep
+       ;; :desc TODO "Rename buffer filename"  "R" #'rgrep
+       :desc "Sudo Edit this file"             "S" #'doom/sudo-this-file
+       :desc "Find file in dotfiles"           "t" #'+hlissner/find-in-dotfiles)
       ;; :desc "Browse dotfiles"                "T" #'+hlissner/browse-dotfiles)
       (:prefix "n"
-        :desc "Open mode notes"                 "m" #'+hlissner/find-notes-for-major-mode
-        :desc "Open project notes"              "p" #'+hlissner/find-notes-for-project)
+       :desc "Open mode notes"                 "m" #'+hlissner/find-notes-for-major-mode
+       :desc "Open project notes"              "p" #'+hlissner/find-notes-for-project)
       (:prefix "o"
-        :desc "Open org-folder"                 "f" #'+open-org-folder
-        :desc "Treemacs find file"              "o" #'treemacs-find-file
-        :desc "Neotree open this file"          "p" #'+neotree/find-this-file
-        :desc "Neotree open"                    "P" #'+neotree/open)
+       :desc "Open org-folder"                 "f" #'+open-org-folder
+       :desc "Treemacs find file"              "o" #'+treemacs/toggle
+       :desc "Treemacs toggle"                 "O" #'treemacs-find-file
+       :desc "Neotree open this file"          "p" #'+neotree/find-this-file
+       :desc "Neotree open"                    "P" #'+neotree/open)
       (:prefix "p"
-        :desc "Find file in project"            "f" #'projectile-find-file
-        :desc "Regenerate tags"                 "G" #'projectile-regenerate-tags
-        :desc "Regenerate tags"                 "R" #'projectile-replace
-        :desc "Find tag"                        "g" #'projectile-find-tag)
+       :desc "Find file in project"            "f" #'projectile-find-file
+       :desc "Regenerate tags"                 "G" #'projectile-regenerate-tags
+       :desc "Regenerate tags"                 "R" #'projectile-replace
+       :desc "Find tag"                        "g" #'projectile-find-tag)
       (:prefix "t"
-        ;; :desc TODO "Camel case motion"       "c" #'camel-case-motion
-        :desc "Whitespace cleanup"              "W" #'whitespace-cleanup
-        :desc "Whitespace"                      "w" #'whitespace-mode))
+       ;; :desc TODO "Camel case motion"       "c" #'camel-case-motion
+       :desc "Whitespace cleanup"              "W" #'whitespace-cleanup
+       :desc "Whitespace"                      "w" #'whitespace-mode))
 
 ;; Lang
 ;; org-hide-emphasis-markers
@@ -192,16 +193,57 @@
 ;; (setq company-idle-delay 0)
 ;; (define-key cpp-mode-map [(tab)] 'company-complete)
 
+;; ccls for C - uses lsp-mode
+(use-package! ccls
+  ;;:defer t
+                                        ;:if (not *sys/win32*)
+  :hook ((c-mode c++-mode objc-mode) .
+         (lambda () (require 'ccls) (lsp)))
+  :custom
+  (ccls-executable (executable-find "ccls")) ; Add ccls to path if you haven't done so
+  (ccls-sem-highlight-method 'font-lock)
+  (ccls-enable-skipped-ranges nil)
+  :config
+  (lsp-register-client
+   (make-lsp-client
+    :new-connection (lsp-tramp-connection (cons ccls-executable ccls-args))
+    :major-modes '(c-mode c++-mode cuda-mode objc-mode)
+    :server-id 'ccls
+    :multi-root nil
+    :remote? t
+    :notification-handlers
+    (lsp-ht ("$ccls/publishSkippedRanges" #'ccls--publish-skipped-ranges)
+            ("$ccls/publishSemanticHighlight" #'ccls--publish-semantic-highlight))
+    :initialization-options (lambda () ccls-initialization-options)
+    :library-folders-fn nil)))
+
 ;; lsp-mode for C++
 (use-package! lsp-mode
   ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
   :init (setq lsp-keymap-prefix "M-l")
   :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
-         (cpp-mode . lsp)
+         ((cpp-mode c-mode) . lsp)
          ;; if you want which-key integration
          (lsp-mode . lsp-enable-which-key-integration))
+  :custom
+  (lsp-auto-guess-root nil)
+  (lsp-prefer-flymake nil) ; Use flycheck instead of flymake
+  (lsp-file-watch-threshold 2000)
+  (read-process-output-max (* 1024 1024))
+  (lsp-eldoc-hook nil)
   :commands lsp)
 
+(after! lsp-mode
+  (lsp-register-client
+   (make-lsp-client :new-connection (lsp-tramp-connection "ccls")
+                    :major-modes '(c-mode)
+                    :remote? t
+                    :server-id 'ccls)))
+
+(after! tramp
+  (add-to-list 'tramp-remote-path "/home/eaclobr/bin")
+  (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+  (add-to-list 'tramp-remote-path "/proj/epg-tools/ccls/7.1.0-b74662d0b0-b7d9ced/Release"))
 ;; optionally
 ;; (use-package lsp-ui :commands lsp-ui-mode)
 (use-package! company-lsp :commands company-lsp)
@@ -259,6 +301,7 @@
 (load! "+org")       ;; Org mode stuff like todos and rebindings
 ;(load! "+org-looks") ;; Org mode beautification! (seems to fuck up Doom?)
 (load! "+shortcuts") ;; Automatically generated shortcuts from script
+(load! "+deploy")
 ;; (load! "+music")   ;; Music stuff, visible through SPC-a-m. Not perfect.
 ;; (load! "+mail")    ;; Mail stuff
 ;; (load! "+irc") ;; Irc config

@@ -26,7 +26,7 @@
        (popup            ; tame sudden yet inevitable temporary windows
         +all             ; catch all popups that start with an asterix
         +defaults)       ; default popup rules
-       ;; (pretty-code +fira) ; replace bits of code with pretty symbols
+       ;;(pretty-code +fira) ; replace bits of code with pretty symbols
        ;; tabs                ; Atom-like tabs
        treemacs          ; a project drawer, like neotree but cooler
        ;;unicode           ; extended unicode support for various languages
@@ -53,10 +53,14 @@
        :emacs
        (dired            ; making dired pretty [functional]
         +ranger)         ; bringing the goodness of ranger to dired
-       ;+icons          ; colorful icons for dired-mode
+                                        ;+icons          ; colorful icons for dired-mode
        electric          ; smarter, keyword-based electric-indent
        ibuffer           ; interactive buffer management
        vc                ; version-control and Emacs, sitting in a tree
+
+       :syntax
+       flycheck            ; tasing you for every semicolon you forget
+       flyspell            ; tasing you for misspelling mispelling
 
        :term
        eshell            ; a consistent, cross-platform shell (WIP)
@@ -72,8 +76,6 @@
        ;;editorconfig      ; let someone else argue about tabs vs spaces
        ;;ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)     ; run code, run (also, repls)
-       flycheck            ; tasing you for every semicolon you forget
-       flyspell            ; tasing you for misspelling mispelling
        ;;gist              ; interacting with github gists
        (lookup           ; helps you navigate your code and documentation
         +docsets)        ; ...or in Dash docsets locally

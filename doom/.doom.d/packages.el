@@ -54,11 +54,12 @@
 (package! ix)
 (package! grapnel)
 (package! xclip)
-(package! kotlin-mode) ;;   :variables kotlin-tab-width 4
-(package! llvm)
+;;(package! kotlin-mode) ;;   :variables kotlin-tab-width 4
+;;(package! llvm)
 (package! lsp-mode)
 (package! company-lsp)
 (package! lsp-ivy)
 (package! lsp-treemacs)
 (package! company-box)
 (package! clang-format+)
+(package! ccls)
