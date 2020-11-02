@@ -368,6 +368,8 @@ bindsym $mod+Shift+0 move container to workspace $10
 #bindsym $mark+9 [con_mark="markinw9"] focus
 #bindsym $mark+0 [con_mark="markinw10"] focus
 
+# reload single-screen config for xrandr
+bindsym $mod+Shift+b exec ~/.screenlayout/single-screen.sh
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
