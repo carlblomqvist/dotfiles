@@ -13,3 +13,4 @@ export GDK_SCALE=2
 export GDK_DPI_SCALE=0.5
 
 export PATH="$HOME/.cargo/bin:$PATH"
+export WINEARCH=win32 WINEPREFIX=~/win32
