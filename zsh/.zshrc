@@ -182,6 +182,9 @@ alias make="make -j10"
 vscode() { command emacs "$@" > /dev/null 2>&1 & }
 # my favourite alias
 alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
 
 # import automatically generated aliases for shortcuts
 source ~/.shortcuts
