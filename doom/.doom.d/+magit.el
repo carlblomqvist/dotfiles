@@ -11,3 +11,6 @@
         magit-rebase-arguments '("--autostash" "--gpg-sign=A1068EEF8AEC5895199D2D9A45816912C2542AC7")
         magit-pull-arguments '("--rebase" "--autostash" "--gpg-sign=A1068EEF8AEC5895199D2D9A45816912C2542AC7")
         magithub-preferred-remote-method 'ssh_url)) ;; HTTPS cloning is awful, i authenticate with ssh keys.
+
+(setq git-commit-summary-max-length 72)
+(setq git-commit-fill-column 100)

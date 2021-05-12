@@ -36,5 +36,41 @@
    (region-beginning) (region-end)
    "\\(\\s-*\\) = " 1 0 nil))
 
+;;;###autoload
+;; (defun +functions/toggle-camel-case-motion ()
+;;   "Toggle camel-case motions"
+  ;; (interactive))
+;; (global-subword-mode 1)                           ; Iterate through CamelCase words
+
+;;;###autoload
+(defun +functions/search-cwd-dwim (&optional arg)
+  "Conduct a text search in files under the current folder.
+If prefix ARG is set, prompt for a directory to search from."
+  (interactive "P")
+  (let ((default-directory
+          (if arg
+              (read-directory-name "Search directory: ")
+            default-directory)))
+    (call-interactively
+     (cond ((featurep! :completion ivy)  #'+ivy/project-search-from-cwd (symbol-at-point))
+           ((featurep! :completion helm) #'+helm/project-search-from-cwd)
+           (#'rgrep)))))
+
+;;;###autoload
+(defun +functions/ivy-with-thing-at-point (cmd)
+      (let ((ivy-initial-inputs-alist
+             (list
+              (cons cmd (thing-at-point 'symbol)))))
+        (funcall cmd)))
+
+;;;###autoload
+(defun +functions/project-search-from-cwd-thing-at-point ()
+      (interactive)
+      ('+functions/ivy-with-thing-at-point '+ivy/project-search-from-cwd))
+
+;;;###autoload
+(defun +functions/flush-redis ()
+  (shell-command "/repo/eaclobr/epg/staging/Linux_x86_64/usr/local/bin/redis-cli flushall"))
+
 (provide 'functions)
 ;;; functions.el ends here

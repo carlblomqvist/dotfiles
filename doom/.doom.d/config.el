@@ -16,9 +16,18 @@
 ;; Load doom and restore on restart
 (setq restart-emacs--args (list "--restore --with-profile doom"))
 
+;; Don't create a new workspace everytime we connect with emacsclient
+(after! persp-mode
+  (setq persp-emacsclient-init-frame-behaviour-override "main"))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;; KEYBINDS ;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;autoload
+(defun +functions/flush-redis ()
+  (interactive)
+  (shell-command "/repo/eaclobr/epg/staging/Linux_x86_64/usr/local/bin/redis-cli flushall"))
 
 (map! :m "M-j" '+default:multi-next-line
       :m "M-k" '+default:multi-previous-line
@@ -34,6 +43,18 @@
        :n "C-j" 'evil-window-down
        :n "C-k" 'evil-window-up
        :n "C-l" 'evil-window-right
+       )
+
+      (:map gud-mode-map
+       :ni "C-h" 'evil-window-left
+       :ni "C-j" 'evil-window-down
+       :ni "C-k" 'evil-window-up
+       :ni "C-l" 'evil-window-right
+       :ni "C-s" 'gud-step
+       :ni "C-n" 'gud-next
+       :ni "C-r" 'gud-run
+       :ni "C-f" 'gud-cont
+       :ni "C-b" 'gud-break
        )
 
       (:map cpp-mode-map
@@ -71,6 +92,8 @@
        ;; (:prefix ("a" . "alignment")
        ;;   :desc "Align single equals"           "=" #'+my-align-single-equals)
        )
+      (:prefix "d"
+       :desc "gud-gdb"                     "d" #'gud-gdb)
       (:prefix ("e" . "errors")
        ;; :desc "Error list"                   "l" #'flycheck-error-list
        :desc "Flycheck clear"                  "c" #'flycheck-clear
@@ -88,6 +111,8 @@
        :desc "Sudo Edit this file"             "S" #'doom/sudo-this-file
        :desc "Find file in dotfiles"           "t" #'+hlissner/find-in-dotfiles)
       ;; :desc "Browse dotfiles"                "T" #'+hlissner/browse-dotfiles)
+      (:prefix "m"
+       :desc "Redis flushall"                  "f" #'+functions/flush-redis)
       (:prefix "n"
        :desc "Open mode notes"                 "m" #'+hlissner/find-notes-for-major-mode
        :desc "Open project notes"              "p" #'+hlissner/find-notes-for-project)
@@ -102,10 +127,38 @@
        :desc "Regenerate tags"                 "G" #'projectile-regenerate-tags
        :desc "Regenerate tags"                 "R" #'projectile-replace
        :desc "Find tag"                        "g" #'projectile-find-tag)
+      (:prefix "s"
+       :desc "Seach cwd for word-at-point"     "a" #'+functions/project-search-from-cwd-thing-at-point)
       (:prefix "t"
        ;; :desc TODO "Camel case motion"       "c" #'camel-case-motion
        :desc "Whitespace cleanup"              "W" #'whitespace-cleanup
        :desc "Whitespace"                      "w" #'whitespace-mode))
+
+(map! :after ccls
+      :map (c-mode-map c++-mode-map)
+      :n "M-n" (cmd! (ccls-navigate "R"))
+      :n "M-p" (cmd! (ccls-navigate "L"))
+      :n "C-h" 'evil-window-left
+      :n "C-j" 'evil-window-down
+      :n "C-k" 'evil-window-up
+      :n "C-l" 'evil-window-right
+      )
+
+
+;; Make emacs shell recognize shell aliases
+(setq shell-file-name "/home/eaclobr/.linuxbrew/bin/zsh")
+(setq shell-command-switch "-ic")
+;; (setq shell-file-name "/usr/bin/bash")
+;; (setq shell-command-switch "")
+
+;; Don't show results until at least 3 characters are typed in Ivy grep/rg/search
+(after! ivy
+  (setq ivy-more-chars-alist '((counsel-grep . 3)
+                               (counsel-rg . 3)
+                               (counsel-search . 3)
+                               (t . 3))))
+
+(after! evil (setq evil-ex-substitute-global t)) ; I like my s/../.. to by global by default
 
 ;; Lang
 ;; org-hide-emphasis-markers
@@ -172,8 +225,44 @@
     '((transient) (quit) (select . t))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;   C++   ;;;;;;;;
+;;;;;;;;   C/C++   ;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; gud-gdb window
+(set-popup-rules!
+  '(("^\\*gud-" :size 1.35)))
+
+;; Add color to the current GUD line
+
+(defvar gud-overlay
+  (let* ((ov (make-overlay (point-min) (point-min))))
+    (overlay-put ov 'face 'secondary-selection)
+    ov)
+  "Overlay variable for GUD highlighting.")
+
+(defadvice gud-display-line (after my-gud-highlight act)
+"Highlight current line."
+(let* ((ov gud-overlay)
+(bf (gud-find-file true-file)))
+(save-excursion
+  (set-buffer bf)
+  (move-overlay ov (line-beginning-position) (line-end-position)
+  (current-buffer)))))
+
+(defun gud-kill-buffer ()
+(if (eq major-mode 'gud-mode)
+(delete-overlay gud-overlay)))
+
+(add-hook 'kill-buffer-hook 'gud-kill-buffer)
+
+;; (set-popup-rules!
+;;   '(("^ \\*" :slot -1) ; fallback rule for special buffers
+;;     ("^\\*" :select t)
+;;     ("^\\*Completions" :slot -1 :ttl 0)
+;;     ("^\\*\\(?:scratch\\|Messages\\)" :ttl t)
+;;     ("^\\*Help" :slot -1 :size 0.2 :select t)
+;;     ("^\\*doom:"
+;;      :size 0.35 :select t :modeline t :quit t :ttl t)))
 
 ;; rtags
 ;; (setq rtags-completions-enabled t)
@@ -193,62 +282,32 @@
 ;; (setq company-idle-delay 0)
 ;; (define-key cpp-mode-map [(tab)] 'company-complete)
 
-;; ccls for C - uses lsp-mode
-(use-package! ccls
-  ;;:defer t
-                                        ;:if (not *sys/win32*)
-  :hook ((c-mode c++-mode objc-mode) .
-         (lambda () (require 'ccls) (lsp)))
-  :custom
-  (ccls-executable (executable-find "ccls")) ; Add ccls to path if you haven't done so
-  (ccls-sem-highlight-method 'font-lock)
-  (ccls-enable-skipped-ranges nil)
-  :config
-  (lsp-register-client
-   (make-lsp-client
-    :new-connection (lsp-tramp-connection (cons ccls-executable ccls-args))
-    :major-modes '(c-mode c++-mode cuda-mode objc-mode)
-    :server-id 'ccls
-    :multi-root nil
-    :remote? t
-    :notification-handlers
-    (lsp-ht ("$ccls/publishSkippedRanges" #'ccls--publish-skipped-ranges)
-            ("$ccls/publishSemanticHighlight" #'ccls--publish-semantic-highlight))
-    :initialization-options (lambda () ccls-initialization-options)
-    :library-folders-fn nil)))
 
-;; lsp-mode for C++
-(use-package! lsp-mode
-  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
-  :init (setq lsp-keymap-prefix "M-l")
-  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
-         ((cpp-mode c-mode) . lsp)
-         ;; if you want which-key integration
-         (lsp-mode . lsp-enable-which-key-integration))
-  :custom
-  (lsp-auto-guess-root nil)
-  (lsp-prefer-flymake nil) ; Use flycheck instead of flymake
-  (lsp-file-watch-threshold 2000)
-  (read-process-output-max (* 1024 1024))
-  (lsp-eldoc-hook nil)
-  :commands lsp)
+;; (setq ccls-executable "/home/eaclobr/bin/ccls")
+;; (setq lsp-disabled-clients '(clangd))
+;; (after! lsp-mode
+;;   (lsp-register-client
+;;    (make-lsp-client :new-connection (lsp-tramp-connection "ccls")
+;;                     :major-modes '(c-mode)
+;;                     :remote? t
+;;                     :server-id 'ccls))
+;;   (lsp-register-client
+;;    (make-lsp-client
+;;     :new-connection (lsp-stdio-connection (lambda () (cons ccls-executable ccls-args)))
+;;     :major-modes '(c-mode)
+;;     :server-id 'ccls
+;;     :multi-root nil
+;;     :notification-handlers
+;;     (lsp-ht ("$ccls/publishSkippedRanges" #'ccls--publish-skipped-ranges)
+;;             ("$ccls/publishSemanticHighlight" #'ccls--publish-semantic-highlight))
+;;     :initialization-options (lambda () ccls-initialization-options)
+;;     :library-folders-fn nil)))
 
-(after! lsp-mode
-  (lsp-register-client
-   (make-lsp-client :new-connection (lsp-tramp-connection "ccls")
-                    :major-modes '(c-mode)
-                    :remote? t
-                    :server-id 'ccls)))
+(setq lsp-enable-file-watchers 'nil)
 
-(after! tramp
-  (add-to-list 'tramp-remote-path "/home/eaclobr/bin")
-  (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
-  (add-to-list 'tramp-remote-path "/proj/epg-tools/ccls/7.1.0-b74662d0b0-b7d9ced/Release"))
-;; optionally
-;; (use-package lsp-ui :commands lsp-ui-mode)
-(use-package! company-lsp :commands company-lsp)
-(use-package! lsp-ivy :commands lsp-ivy-workspace-symbol)
-(use-package! lsp-treemacs :commands lsp-treemacs-errors-list)
+;; (use-package! company-lsp :commands company-lsp)
+;; (use-package! lsp-ivy :commands lsp-ivy-workspace-symbol)
+;; (use-package! lsp-treemacs :commands lsp-treemacs-errors-list)
 ;; (use-package! company-tabnine)
 ;; (add-to-list 'company-backends #'company-tabnine)
 ;; Trigger completion immediately.
@@ -266,14 +325,14 @@
 ;;   :hook (company-mode . company-box-mode))
 
 ;; Format with clang-format on save
-(add-hook 'before-save-hook
-          (lambda ()
-            (when (member major-mode '(c-mode c++-mode glsl-mode))
-              (progn
-                (when (locate-dominating-file "." ".clang-format")
-                  (clang-format-buffer))
-                ;; Return nil, to continue saving.
-                nil))))
+;; (add-hook 'before-save-hook
+;;           (lambda ()
+;;             (when (member major-mode '(c-mode c++-mode glsl-mode))
+;;               (progn
+;;                 (when (locate-dominating-file "." ".clang-format")
+;;                   (clang-format-buffer))
+;;                 ;; Return nil, to continue saving.
+;;                 nil))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;; "STUFF" ;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -286,10 +345,6 @@
 
 (add-hook 'find-file-hooks 'no-junk-please-were-unixish)
 
-;; Make emacs shell recognize shell aliases
-(setq shell-file-name "zsh")
-(setq shell-command-switch "-ic")
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;; MODULES ;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -300,7 +355,7 @@
 (load! "+ranger")    ;; File manager stuff
 (load! "+org")       ;; Org mode stuff like todos and rebindings
 ;(load! "+org-looks") ;; Org mode beautification! (seems to fuck up Doom?)
-(load! "+shortcuts") ;; Automatically generated shortcuts from script
+;(load! "+shortcuts") ;; Automatically generated shortcuts from script
 (load! "+deploy")
 ;; (load! "+music")   ;; Music stuff, visible through SPC-a-m. Not perfect.
 ;; (load! "+mail")    ;; Mail stuff

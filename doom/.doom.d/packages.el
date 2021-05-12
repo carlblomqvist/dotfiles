@@ -56,10 +56,16 @@
 (package! xclip)
 ;;(package! kotlin-mode) ;;   :variables kotlin-tab-width 4
 ;;(package! llvm)
-(package! lsp-mode)
-(package! company-lsp)
-(package! lsp-ivy)
-(package! lsp-treemacs)
+;; (package! lsp-mode)
+;; (package! company-lsp)
+;; (package! lsp-ivy)
+;; (package! lsp-treemacs)
 (package! company-box)
 (package! clang-format+)
-(package! ccls)
+(package! lsp-treemacs)
+;(package! ccls)
+;; (use-package gdb-mi
+;;   :straight (:host github :repo "weirdNox/emacs-gdb" :files ("*.el" "*.c" "*.h" "Makefile"))
+;;   :init
+;;   (fmakunbound 'gdb)
+;;   (fmakunbound 'gdb-enable-debug))
