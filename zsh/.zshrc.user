@@ -7,8 +7,26 @@
 # Make emacs realize it can use 256 colors
 [[ $TERM == "eterm-color" ]] && export TERM=xterm-256color
 
-export VISUAL="emacs -nw"
-export EDITOR="emacs -nw"
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+source ~/.zprofile
+
+# Match VALGRIND_OPTS with that of Jenkins
+export VALGRIND_OPTS="--tool=memcheck --leak-check=full --leak-resolution=high --num-callers=20 --keep-debuginfo=yes --error-exitcode=99 --suppressions=/workspace/git/eaclobr/epg/tools/test/valgrind.supp"
+
+# RHEL systemd-fix?
+#export XDG_RUNTIME_DIR=/run/user/$(id -u)
+
+# This is requred or gdb wont work
+export SHELL=/home/eaclobr/.linuxbrew/bin/zsh
+
+export VISUAL="vim"
+export EDITOR="vim"
 #alias e="emacsclient -c --socket-name doom"
 
 # emacs or emacsclient to use
@@ -73,22 +91,42 @@ function vicd()
 }
 
 # geometry
-GEOMETRY_PROMPT_PLUGINS=(virtualenv exec_time git hg +vi-mode)
-source ~/git/geometry/geometry.zsh
+# GEOMETRY_PROMPT_PLUGINS=(virtualenv exec_time git hg +vi-mode)
+# source ~/git/geometry/geometry.zsh
+
+# powerlevel10k
+source ~/git/powerlevel10k/powerlevel10k.zsh-theme
 
 # use vi-mode
 bindkey -v
 
 # use zmv
-autoload zmv
-alias mv="zmv"
+#autoload zmv
+#alias mv="zmv"
+
+# activate fuzzy finder
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source ~/.zsh/fzf
 
 # Auto completion
+source ~/git/z/z.sh
+source ~/git/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 autoload -Uz compinit
-compinit
+compinit -i
 setopt COMPLETE_ALIASES
+
 # Completion for kitty
-kitty + complete setup zsh | source /dev/stdin
+#kitty + complete setup zsh | source /dev/stdin
+
+# zsh-autocomplete options
+zstyle ':autocomplete:tab:*' completion fzf
+#zstyle ':autocomplete:tab:*' completion insert
+bindkey -M viins '^[j' down-line-or-select
+bindkey -M viins '^[k' up-line-or-search
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
 
 # Reduce waittime when switching modes in vi-mode
 export KEYTIMEOUT=1
@@ -149,49 +187,44 @@ export LC_CTYPE="en_US.UTF-8"
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias load="sudo md407 load debug/code.s19"
-alias mdgo="sudo md407 go"
-# render images in terminal
-alias icat="kitty +kitten icat"
-# cd to current folder when exiting file manager
-alias lf=lfcd
+# Aliases
+alias bbb="make -C 3pp CONFIG=Linux_x86_64 TARGET=clean flatcc; make -C 3pp CONFIG=Linux_x86_64 V=0 flatcc; make -C 3pp CONFIG=Linux_x86_64 TARGET=clean flatcc; make -C 3pp CONFIG=Linux_x86_64 V=0 flatcc; build -c lin up-lep-ct"
 alias ranger="source ranger"
-#use ripgrep
+alias sb="eval $(/home/eaclobr/.linuxbrew/bin/brew shellenv)"
 alias grep=rg
 alias ls="exa"
 alias la="exa -la"
 alias bat="bat --color always"
-# alias ix=ix_wrapper
 alias doomr="systemctl --user restart doom"
 alias kdiff="kitty +kitten diff"
-alias dwmt="dm-tool add-nested-seat --fullscreen"
-alias java10="/usr/lib/jvm/java-10-openjdk/bin/java"
-alias javac10="/usr/lib/jvm/java-10-openjdk/bin/javac"
-alias picom="picom -bc --unredir-if-possible --config ~/.config/compton/config"
-alias vifm=vicd
-alias midi="fluidsynth -a alsa -m alsa_seq -l -i /usr/share/soundfonts/FluidR3_GM.sf2"
-alias make="make -j10"
-vscode() { command emacs "$@" > /dev/null 2>&1 & }
-# my favourite alias
+alias make="make -j72"
 alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias a="cd epg; sw"
+
+# Git
+alias gs="git status" # conflicts Ghostscript
+alias gc="git commit" # conflicts graphviz
+alias ga="git add"
+alias gau="git add -u"
+alias gca="git commit --amend"
+alias gr="git rebase"
+alias gro="git rebase origin/master"
+alias gp="git push origin HEAD:refs/for/master"
+alias gpd="git push origin HEAD:refs/for/master%draft"
+alias gpdekka="git push origin HEAD:refs/for/master%r=johan.kopman@ericsson.com,r=adi.hrustic@ericsson.com,r=jeya.shanmughan.sankarakumar@ericsson.com,r=lina.blomkvist@ericsson.com,r=mattias.eliasson@ericsson.com,r=simon.hagglund@ericsson.com"
+alias gl="git log"
+alias gf="git fetch"
+alias gri="git rebase -i"
+alias grc="git rebase --continue"
+alias gra="git rebase --abort"
 
 # import automatically generated aliases for shortcuts
 source ~/.shortcuts
 
 # import secrets
-source ~/.secrets/.secrets
-
-# activate fuzzy finder
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source ~/.zsh/fzf
+#source ~/.secrets/.secrets
 
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
@@ -226,17 +259,17 @@ key[ShiftTab]="${terminfo[kcbt]}"
 
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
-if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
-	autoload -Uz add-zle-hook-widget
-	function zle_application_mode_start {
-		echoti smkx
-	}
-	function zle_application_mode_stop {
-		echoti rmkx
-	}
-	add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
-	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
-fi
+#if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
+	#autoload -Uz add-zle-hook-widget
+	#function zle_application_mode_start {
+		#echoti smkx
+	#}
+	#function zle_application_mode_stop {
+		#echoti rmkx
+	#}
+	#add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
+	#add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
+#fi
 
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
 zle -N up-line-or-beginning-search
@@ -244,6 +277,11 @@ zle -N down-line-or-beginning-search
 
 [[ -n "${key[Up]}"   ]] && bindkey -- "${key[Up]}"   up-line-or-beginning-search
 [[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search
+[[ -n "${key[Up]}"   ]] && bindkey -- "${key[Up]}"   up-line-or-beginning-search
+[[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search
+
+bindkey -M viins "^[j" down-line-or-select
+bindkey -M viins "^[k" up-line-or-search
 
 ## History command configuration
 SAVEHIST=5000
@@ -254,9 +292,16 @@ setopt hist_expire_dups_first  # delete duplicates first when HISTFILE size exce
 setopt hist_ignore_dups        # ignore duplicated commands history list
 setopt hist_ignore_space       # ignore commands that start with space
 setopt hist_verify             # show command with history expansion to user before running it
-setopt inc_append_history_time # add commands to HISTFILE in order of execution
+#setopt inc_append_history_time # add commands to HISTFILE in order of execution
 setopt share_history           # share command history data
+setopt extendedglob            # allows use of ^ to exclude patterns in glob among other things
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
+    tmux attach-session -t eaclobr || tmux -f ~/.tmux.conf new-session -s eaclobr
+fi
 
 # Uncomment this + the first line to debug ZSH
 # zprof

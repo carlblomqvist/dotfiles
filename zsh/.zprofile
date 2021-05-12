@@ -1,11 +1,20 @@
 # PATH #
-export PATH=$PATH:/home/carlb/courses/tda384_concurrent_programming/tsim/world/bin
 export PATH=$PATH:~/.npm-global/bin
 export PATH=$PATH:~/.emacs.d/bin
 export PATH=~/.scripts/tools:$PATH
 export PATH=~/.scripts/audio:$PATH
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:~/.emacs.d/.local/etc/rtags/rtags-2.37/bin/
+export PATH=$PATH:/home/eaclobr/.local/kitty.app/bin
+
+# Homebrew #
+export HOMEBREW_PREFIX="/home/eaclobr/.linuxbrew";
+export HOMEBREW_CELLAR="/home/eaclobr/.linuxbrew/Cellar";
+export HOMEBREW_REPOSITORY="/home/eaclobr/.linuxbrew/Homebrew";
+export PATH="$PATH:/home/eaclobr/.linuxbrew/bin:/home/eaclobr/.linuxbrew/sbin";
+#export PATH="/home/eaclobr/.linuxbrew/bin:/home/eaclobr/.linuxbrew/sbin:$PATH";
+export MANPATH="$MANPATH:/home/eaclobr/.linuxbrew/share/man";
+export INFOPATH="$INFOPATH:/home/eaclobr/.linuxbrew/share/info";
 
 # UI #
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
