@@ -22,6 +22,7 @@ return require('packer').startup({function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
+    -- Faster loading of neovim
     use 'lewis6991/impatient.nvim'
 
     -- kill-ring behaviour TODO: replace with gbprod/yanky.nvim?
@@ -33,7 +34,7 @@ return require('packer').startup({function(use)
     }
 
     -- Code formatting
-    require('packer').use { 'mhartington/formatter.nvim',
+    use { 'mhartington/formatter.nvim',
         config = function()
             local util = require 'formatter.util'
             require("formatter").setup {
@@ -64,7 +65,15 @@ return require('packer').startup({function(use)
                     },
 
                     c = {
-                        require("formatter.filetypes.c").clangformat,
+                        -- require("formatter.filetypes.c").clangformat,
+                        function()
+                            return {
+                                exe = "clang-format",
+                                args = {"--assume-filename", vim.api.nvim_buf_get_name(0)},
+                                stdin = true,
+                                cwd = vim.fn.expand("/workspace/git/eaclobr/epg/up")
+                            }
+                        end
                     },
 
                     ["*"] = {
@@ -84,32 +93,75 @@ return require('packer').startup({function(use)
         end
     }
 
+    -- Highlight word under cursor
+   use  { "tzachar/local-highlight.nvim",
+        config = function()
+        require('local-highlight').setup({
+            file_types = {'c', 'python', 'cpp'},
+            hlgroup = 'TSDefinitionUsage',
+        })
+      end
+    }
+
+    -- colorcolumn but only shows when line-length > set value
+    use { "m4xshen/smartcolumn.nvim",
+        config = function()
+            require("smartcolumn").setup({
+                  colorcolumn = "121", -- show column @ this line length
+                  disabled_filetypes = { "help", "text", "markdown" },
+                  custom_colorcolumn = {},
+                  scope = "file",
+            })
+        end
+    }
+
     -- Fancy substitutions
     use { "gbprod/substitute.nvim",
         config = function()
             require("substitute").setup{}
+            -- TODO: play with different options to have dedicated keys for different motions (ex: motion1 = "iW")
             vim.keymap.set("n", "s",  "<cmd>lua require('substitute').operator()<cr>", { noremap = true })
             vim.keymap.set("n", "ss", "<cmd>lua require('substitute').line()<cr>", { noremap = true })
             vim.keymap.set("n", "S",  "<cmd>lua require('substitute').eol()<cr>", { noremap = true })
             vim.keymap.set("x", "s",  "<cmd>lua require('substitute').visual()<cr>", { noremap = true })
+            vim.keymap.set("n", "sx", require('substitute.exchange').operator, { noremap = true })
+            vim.keymap.set("n", "sxx", require('substitute.exchange').line, { noremap = true })
+            vim.keymap.set("x", "X", require('substitute.exchange').visual, { noremap = true })
+            -- by default: can also use ESC to cancel
+            vim.keymap.set("n", "sxc", require('substitute.exchange').cancel, { noremap = true })
         end
     }
 
-    -- yank with OSC52
+    -- Preview :norm and other things
+    use { "smjonas/live-command.nvim",
+    -- live-command supports semantic versioning via tags
+    -- tag = "1.*",
+    config = function()
+        require("live-command").setup {
+            commands = {
+                Norm = { cmd = "norm" },
+                D = { cmd = "d" },
+                G = { cmd = "g" },
+            },
+        }
+    end,
+    }
+
+    -- yank with OSC52 TODO: probably not needed in nvim >= 0.9.0
     use { 'ojroques/vim-oscyank',
         config = function()
             local af = require('autofunc')
             af('TextYankPost', '*', function()
-                                        if (vim.v.event.operator == 'y' and vim.v.event.regname == '' or vim.v.event.regname == '+') then
-                                            vim.api.nvim_command('OSCYankReg "')
-                                        end
-                                    end)
+                if (vim.v.event.operator == 'y' and vim.v.event.regname == '' or vim.v.event.regname == '+') then
+                    vim.api.nvim_command('OSCYankRegister +"')
+                end
+            end)
             -- vim.g.oscyank_term = 'default'
             vim.g.oscyank_silent = true
         end
     }
 
-    -- which-key!
+    -- Show possible key-combinations dynamically & more!
     use {
         "folke/which-key.nvim",
         config = function()
@@ -119,14 +171,16 @@ return require('packer').startup({function(use)
         end
     }
 
+    -- TODO: replace with mini.pairs?
     use { "windwp/nvim-autopairs",
         config = function()
             require("nvim-autopairs").setup{}
         end
     }
 
-    -- Progress information for LSP
+    -- Progress bar/information in bottom right corner for LSP
     use { 'j-hui/fidget.nvim',
+        tag = 'legacy',
         config = function()
             require('fidget').setup()
         end
@@ -154,6 +208,7 @@ return require('packer').startup({function(use)
 
     -- Start-up screen
     use { 'goolord/alpha-nvim',
+        disable = true,
         config = function ()
             -- :h alpha-example
             local alpha = require'alpha'
@@ -184,12 +239,12 @@ return require('packer').startup({function(use)
         end
     }
 
-    -- Buffers per tab
-    use { "tiagovla/scope.nvim",
-        config = function()
-            require'scope'.setup()
-        end
-    }
+    -- Buffers per tab FIXME: replaced by mini.tabline
+    -- use { "tiagovla/scope.nvim",
+        -- config = function()
+            -- require'scope'.setup()
+        -- end
+    -- }
 
 
     -- Focus ("zoom") window
@@ -227,15 +282,86 @@ return require('packer').startup({function(use)
             --TODO: make my own :)
             require('lualine').setup {
                 options = {
-                    theme = 'onedark'
+                    theme = 'onedark',
+                    globalstatus = false,
                     -- ... your lualine config
-                }
+                },
+                sections = {
+                    lualine_a = {'mode'},
+                    lualine_b = {'branch', 'diff', 'diagnostics'},
+                    lualine_c = {'filename'},
+                    lualine_x = {'encoding', 'fileformat', 'filetype'},
+                    lualine_y = {'progress'},
+                    lualine_z = {'location'}
+                  },
+                inactive_sections = {
+                    lualine_a = {},
+                    lualine_b = {},
+                    lualine_c = {
+                        {'filename',
+                            color = { fg = '#FFFFFF'},
+                        },
+                    },
+                    lualine_x = {
+                        {'location',
+                            color = { fg = '#FFFFFF'},
+                        },
+                    },
+                    lualine_y = {},
+                    lualine_z = {}
+                },
             }
             require'evil_lualine'
         end
     }
 
-    -- Persistant-mode
+    -- Easily add printing of variables
+    use {
+        'rareitems/printer.nvim',
+        config = function()
+            require('printer').setup({
+                keymap = "gp",
+                behavior = "insert_below", -- how operator should behave
+                -- "insert_below" will insert the text below the cursor
+                --  "yank" will not insert but instead put text into the default '"' register
+                formatters = {
+                  -- you can define your formatters for specific filetypes
+                  -- by assigning function that takes two strings
+                  -- one text modified by 'add_to_inside' function
+                  -- second the variable (thing) you want to print out
+                  -- see examples in lua/formatters.lua
+                  c = function(inside, variable)
+                    return string.format('logger_log(LOG_INFO, "[%%s:%%s] %s: %%s", __func__, __LINE__, %s);', inside, variable)
+                  end,
+                },
+                -- function which modifies the text inside string in the print statement, by default it adds the path and line number
+                add_to_inside = function(text)
+                    return string.format("%s", text)
+                end,
+                -- set to to indenity function to turn off the default behaviour
+                -- add_to_inside = function(text)
+                --     return text
+                -- end,
+              })
+        end
+    }
+
+    -- Because sometimes we need to have a bit of fun
+    use 'eandrju/cellular-automaton.nvim'
+
+    -- Dim everything except current function
+    use {
+      "folke/twilight.nvim",
+      config = function()
+        require("twilight").setup {
+          -- your configuration comes here
+          -- or leave it empty to use the default settings
+          -- refer to the configuration section below
+        }
+      end
+    }
+
+    -- Persistant-mode from emacs in neovim
     use { 'anuvyklack/hydra.nvim',
         config = function()
             local Hydra = require('hydra')
@@ -254,10 +380,6 @@ return require('packer').startup({function(use)
     --requires = 'anuvyklack/keymap-layer.nvim' -- needed only for pink hydras
     }
 
-    -- Closes brackets/parenthesis FIXME: doesnt seem to work...?
-    use { 'rstacruz/vim-closer',
-        disable = true,
-    }
     -- vim-easymotion replacement
     -- TODO add rhysd/clever-f.vim ?
     use { 'ggandor/lightspeed.nvim',
@@ -268,6 +390,9 @@ return require('packer').startup({function(use)
             --}
         end
     }
+
+    -- Allow dot-repeat with plugins
+    use { 'tpope/vim-repeat' }
 
     -- Stabilize buffers <3
     use { "luukvbaal/stabilize.nvim",
@@ -284,13 +409,13 @@ return require('packer').startup({function(use)
     -- Ranger in neovim TODO seems to work nicely, but needs some tinkering
     -- use 'kevinhwang91/rnvimr'
 
-    -- Surround text objects
+    -- Surround text objects TODO: possible to replace with mini.surround
     use 'tpope/vim-surround'
 
     -- Finish my sandwitches
     use 'tpope/vim-endwise'
 
-    -- Smart comments
+    -- Smart comments TODO: possible to replace with mini.comment
     use { 'numToStr/Comment.nvim',
     	config = function()
 	        require('Comment').setup {
@@ -321,8 +446,7 @@ return require('packer').startup({function(use)
     -- Git for vim TODO: TimUntersberger/neogit ???
     use 'tpope/vim-fugitive'
 
-    -- Gitgutter
-    --use 'airblade/vim-gitgutter'
+    -- Show git-hunks next to line numbers
     use { 'lewis6991/gitsigns.nvim',
         config = function()
             require('gitsigns').setup{
@@ -349,10 +473,20 @@ return require('packer').startup({function(use)
             true)
         end
     }
+
+    -- vim-functions for junegunn/fzf
     use { 'junegunn/fzf.vim',
         config = function()
         end
     }
+
+    -- Additions to junegunn/fzf
+    use { "linrongbin16/fzfx.nvim",
+        config = function()
+            require("fzfx").setup()
+        end
+    }
+
     use { 'ibhagwan/fzf-lua', -- allegedly better than regular fzf... Seems slow
         disable = true,
         --requires = { 'kyazdani42/nvim-web-devicons' }
@@ -366,16 +500,18 @@ return require('packer').startup({function(use)
         end
     }
 
-    -- Better syntax highlighting + token generator for other plugins
+    -- Better syntax highlighting + token generator for other plugins NOTE: included in neovim now a days?
     use { 'nvim-treesitter/nvim-treesitter', run = ":TSUpdate",
         config = function()
             require('nvim-treesitter.configs').setup {
-                ensure_installed = { "c", "cpp", "lua", "bash", "cmake", "comment", "dockerfile", "haskell", "json", "make", "nix", "org", "python", "rust", "yaml", "yang", "zig" },
+                ensure_installed = { "c", "cpp", "lua", "bash", "cmake", "comment", "dockerfile", "haskell",
+                                     "json", "make", "markdown", "markdown_inline", "nix", "org", "python",
+                                     "rust", "yaml", "yang", "zig" },
                 ignore_install = { "javascript" }, -- List of parsers to ignore installing
                 highlight = {
                     enable = true,              -- false will disable the whole extension
                     disable = { "rust", "zig", "haskell" },  -- list of language that will be disabled
-                    additional_vim_regex_highlighting = {'org'},
+                    additional_vim_regex_highlighting = false --{'org'},
                 },
                 matchup = {
                     enable = true,              -- mandatory, false will disable the whole extension
@@ -390,67 +526,15 @@ return require('packer').startup({function(use)
     -- Mustache syntax highlighting since treesitter doesn't have it
     use 'mustache/vim-mustache-handlebars'
 
-    -- Highlight TODO, NOTE, etc
-    use { 'folke/todo-comments.nvim',
-        requires = 'nvim-lua/plenary.nvim',
-        config = function()
-            require('todo-comments').setup()
-        end,
-    }
-            --require('todo-comments').setup() -- {
-            --    signs = true, -- show icons in the signs column
-            --    sign_priority = 8,
-            --    keywords = {
-            --        FIX = {
-            --            icon = " ", -- icon used for the sign, and in search results
-            --            color = "error", -- can be a hex color, or a named color (see below)
-            --            alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }, -- a set of other keywords that all map to this FIX keywords
-            --            -- signs = false, -- configure signs for some keywords individually
-            --        },
-            --        TODO = { icon = " ", color = "info" },
-            --        HACK = { icon = " ", color = "warning" },
-            --        WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
-            --        PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
-            --        NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
-            --    },
-            --    merge_keywords = true,
-            --    highlight = {
-            --        before = "", -- "fg" or "bg" or empty
-            --        keyword = "wide", -- "fg", "bg", "wide" or empty. (wide is the same as bg, but will also highlight surrounding characters)
-            --        after = "fg", -- "fg" or "bg" or empty
-            --        pattern = [[.*<(KEYWORDS)\s*:]], -- pattern or table of patterns, used for highlightng (vim regex)
-            --        comments_only = true, -- uses treesitter to match keywords in comments only
-            --        max_line_len = 400, -- ignore lines longer than this
-            --        exclude = {}, -- list of file types to exclude highlighting
-            --    },
-            --    -- list of named colors where we try to extract the guifg from the
-            --    -- list of hilight groups or use the hex color if hl not found as a fallback
-            --    colors = {
-            --        error = { "DiagnosticError", "ErrorMsg", "#DC2626" },
-            --        warning = { "DiagnosticWarning", "WarningMsg", "#FBBF24" },
-            --        info = { "DiagnosticInfo", "#2563EB" },
-            --        hint = { "DiagnosticHint", "#10B981" },
-            --        default = { "Identifier", "#7C3AED" },
-            --    },
-            --    search = {
-            --        command = "rg",
-            --        args = {
-            --            "--color=never",
-            --            "--no-heading",
-            --            "--with-filename",
-            --            "--line-number",
-            --            "--column",
-            --        },
-            --        -- regex that will be used to match keywords.
-            --        -- don't replace the (KEYWORDS) placeholder
-            --        pattern = [[\b(KEYWORDS):]], -- ripgrep regex
-            --        -- pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
-            --    },
-            --}
-        --end
-    --}
+    -- Highlight TODO, NOTE, etc NOTE: is pretty good, but makes some weird highlighting sometimes
+    -- use { 'folke/todo-comments.nvim',
+        -- requires = 'nvim-lua/plenary.nvim',
+        -- config = function()
+            -- require('todo-comments').setup()
+        -- end,
+    -- }
 
-    -- Better jumping with %
+    -- Better jumping between matching pairs with %
     use {'andymass/vim-matchup', event = 'VimEnter',
         config = function()
         end}
@@ -464,6 +548,7 @@ return require('packer').startup({function(use)
                     file_ignore_patterns = {"**NAMESPACE", "^.git"}
                 },
                 find_files = {
+                    find_command = {"fd", "-E", "epg/"},
                     additional_args = function()
                         return {"--hidden"}
                     end
@@ -499,6 +584,7 @@ return require('packer').startup({function(use)
             }
         end
     }
+
     -- Native FZF for telescope
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make',
         config = function()
@@ -517,7 +603,7 @@ return require('packer').startup({function(use)
         end
     }
 
-    -- File Browser
+    -- File Browser in telescope
     use { "nvim-telescope/telescope-file-browser.nvim", requires = {{'nvim-telescope/telescope.nvim'}},
     disable = true, -- NOTE: replaced with CHADTree?
     config = function()
@@ -542,7 +628,47 @@ return require('packer').startup({function(use)
     end
     }
 
-    -- Project management
+    -- Sort by frecency in telescope
+    use { "nvim-telescope/telescope-frecency.nvim",
+      config = function()
+        require"telescope".load_extension("frecency")
+      end,
+    }
+
+    -- Menu to toggle options in telescope
+    use { 'molecule-man/telescope-menufacture',
+        config = function()
+            require('telescope').load_extension('menufacture')
+            require('telescope').setup {
+              extensions = {
+                menufacture = {
+                  mappings = {
+                    main_menu = { [{ 'i', 'n' }] = '<C-s>' },
+                  },
+                },
+              },
+            }
+        end
+    }
+
+    -- Noice - pretty cmdline, notifcations etc
+    --use { "folke/noice.nvim", disable=true,
+        --config = function()
+            --require("noice").setup({
+                --cmdline = { enabled = false }
+            --})
+        --end,
+        --requires = {
+            ---- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+            --"MunifTanjim/nui.nvim",
+            ---- OPTIONAL:
+            ----   `nvim-notify` is only needed, if you want to use the notification view.
+            ----   If not available, we use `mini` as the fallback
+            --"rcarriga/nvim-notify",
+        --}
+    --}
+
+    -- Project management TODO: replace with mini.session?
     use { 'ahmedkhalf/project.nvim',
         config = function()
             require("project_nvim").setup {
@@ -555,6 +681,7 @@ return require('packer').startup({function(use)
             require('telescope').load_extension('projects')
         end
     }
+
     --[[
     use { "nvim-telescope/telescope-project.nvim",
     requires = {{'nvim-telescope/telescope.nvim'}, {'nvim-telescope/telescope-file-browser.nvim'}},
@@ -584,7 +711,9 @@ return require('packer').startup({function(use)
         requires = "nvim-treesitter/nvim-treesitter",
     }
 
-    use {'nvim-orgmode/orgmode', require = 'nvim-treesitter/nvim-treesitter',
+    -- Emacs org-mode in neovim
+    use {'nvim-orgmode/orgmode',
+        require = 'nvim-treesitter/nvim-treesitter',
         config = function()
             require('orgmode').setup({
                 org_agenda_files = {'~/org/*'},
@@ -595,68 +724,226 @@ return require('packer').startup({function(use)
 
     }
 
-    -- Auto-completion framework -- TODO: neoclide/coc.nvim ???
-    -- also check out ray-x/navigator.lua
-    use { 'ms-jpq/coq_nvim',
-        branch = 'coq',
+    -- Mini.nvim for lots of modular functionality!
+    use { 'echasnovski/mini.nvim',
         config = function()
-            vim.api.nvim_exec([[inoremap <silent><expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"]], true)
-            vim.api.nvim_exec([[inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"]], true)
-            vim.api.nvim_exec([[inoremap <silent><expr> <C-j>   pumvisible() ? "\<C-n>" : "\<C-j>"]], true)
-            vim.api.nvim_exec([[inoremap <silent><expr> <C-k>   pumvisible() ? "\<C-p>" : "\<C-k>"]], true)
-            vim.api.nvim_exec([[inoremap <silent><expr> <CR>    pumvisible() ? (complete_info().selected == -1 ? "\<C-e><CR>" : "\<C-y>") : "\<CR>"]], true)
-            --let g:coq_settings = { 'auto_start': v:true }
-            require("coq")
-        end
+            -- require("mini.ai").setup({}) 	      -- Extend and create a/i textobjects
+            require("mini.align").setup({})       -- Align text interactively
+            local animate = require('mini.animate')  -- Animate common Neovim actions
+            animate.setup({
+                scroll = {
+                  -- Animate for 200 milliseconds with linear easing
+                  timing = animate.gen_timing.linear({ duration = 100, unit = 'total' }),
+                  -- Animate equally but with at most 120 steps instead of default 60
+                  subscroll = animate.gen_subscroll.equal({ max_output_steps = 50 }),
+                },
+                cursor = {
+                  -- Animate for 200 milliseconds with linear easing
+                  timing = animate.gen_timing.linear({ duration = 100, unit = 'total' }),
+                  -- Animate equally but with at most 120 steps instead of default 60
+                  subscroll = animate.gen_subscroll.equal({ max_output_steps = 50 }),
+                },
+            })
+            -- require("mini.base16").setup({})      -- Base16 colorscheme creation
+            -- require("mini.basics").setup({})      -- Common configuration presets
+            -- require("mini.bracketed").setup({})   -- Go forward/backward with square brackets
+            -- require("mini.bufremove").setup({})   -- Remove buffers TODO: could be nice
+            -- require("mini.clue").setup({}) 	     -- Show next key clues TODO: "better" looking whichkey?
+            -- require("mini.colors").setup({})      -- Tweak and save any color scheme
+            -- require("mini.comment").setup({})     -- Comment lines TODO: switch to?
+            -- require("mini.completion").setup({})  -- Completion and signature help
+            -- require("mini.cursorword").setup({})  -- Autohighlight word under cursor
+            -- require("mini.doc").setup({})         -- Generate Neovim help files
+            -- require("mini.files").setup({})       -- Navigate and manipulate file system
+            -- require("mini.fuzzy").setup({})       -- Fuzzy matching
+            local hipatterns = require('mini.hipatterns') -- Highlight patterns in text
+                hipatterns.setup({
+                  highlighters = {
+                    -- Highlight standalone 'FIXME', 'HACK', 'TODO', 'NOTE'
+                    fixme = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
+                    hack  = { pattern = '%f[%w]()HACK()%f[%W]',  group = 'MiniHipatternsHack'  },
+                    todo  = { pattern = '%f[%w]()TODO()%f[%W]',  group = 'MiniHipatternsTodo'  },
+                    note  = { pattern = '%f[%w]()NOTE()%f[%W]',  group = 'MiniHipatternsNote'  },
+
+                    -- Highlight hex color strings (`#rrggbb`) using that color
+                    hex_color = hipatterns.gen_highlighter.hex_color(),
+                  },
+                })
+            -- require("mini.hues").setup({})        -- Generate configurable color scheme
+            local indentscope = require("mini.indentscope") -- Visualize and work with indent scope
+            indentscope.setup({
+                draw = {
+                    animation = indentscope.gen_animation.linear{ duration = 100, unit = 'total' }
+                }
+            })
+            -- require("mini.jump").setup({})        -- Jump to next/previous single character
+            -- require("mini.jump2d").setup({})      -- Jump within visible lines
+            -- require("mini.map").setup({})         -- Window with buffer text overview
+            -- require("mini.misc").setup({})        -- Miscellaneous functions
+            require("mini.move").setup({})        -- Move any selection in any direction
+            require("mini.operators").setup({})   -- Text edit operators
+            -- require("mini.pairs").setup({})       -- Autopairs TODO: replace current with this
+            -- require("mini.pick").setup({})        -- Pick anything
+            -- require("mini.sessions").setup({})    -- Session management TODO: maybe replace current?
+            require("mini.splitjoin").setup({})   -- Split and join arguments
+            -- require("mini.starter").setup({})     -- Start screen
+            -- require("mini.statusline").setup({})  -- Statusline
+            -- require("mini.surround").setup({})    -- Surround actions TODO: maybe replace current
+            require("mini.tabline").setup({})     -- Tabline TODO: probably replace current
+            -- require("mini.test").setup({})        -- Test Neovim plugins
+            -- require("mini.trailspace").setup({})  -- Trailspace (highlight and remove)
+        end,
     }
 
-    use { 'ms-jpq/coq.artifacts', -- artifacts for coq_nvim
-        branch = 'artifacts',
-    }
 
-    -- Like NERDtree but more chad
-    use { 'ms-jpq/chadtree',
-        branch = 'chad',
-        run = "python3 -m chadtree deps",
-        config = function()
-            --
-        end
-    }
-
-    -- DEPRECATED
-    --use { 'nvim-lua/completion-nvim',
-    --    config = function()
-    --        -- Use <Tab> and <S-Tab> to navigate through popup menu
-    --        vim.api.nvim_exec([[inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<C-j>"]], true)
-    --        vim.api.nvim_exec([[inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<C-k>"]], true)
-    --        -- Set completeopt to have a better completion experience
-    --        vim.o.completeopt= "menuone,noinsert,noselect"
-    --        -- Avoid showing message extra message when using completion
-    --        vim.o.shortmess = vim.o.shortmess .. "c"
-    --    end}
-    -- LSP
+    -- *** [[LSP stuff]] *** --
     use 'tjdevries/nlua.nvim'      -- config in lsp/init.lua
     use { 'neovim/nvim-lspconfig', -- config in lsp/init.lua
         config = function()
             -- config in lsp/init.lua
             -- TODO: move here?
         end}
+
+    use({
+        "glepnir/lspsaga.nvim",
+        branch = "main",
+        config = function()
+            require("lspsaga").setup({
+                lightbulb = {
+                enable = false,
+                enable_in_insert = false,
+                sign = true,
+                sign_priority = 40,
+                virtual_text = true,
+              },
+                beacon = {
+                    enable = true,
+                    frequency = 30,
+              },
+            })
+        end,
+        requires = { {"nvim-tree/nvim-web-devicons"} }
+    })
+
+    -- UI component library for NVIM, cool to use for my own plugins
+    use 'MunifTanjim/nui.nvim'
+
+    -- Window to navigate between LSP-symbols
+    use ({ "SmiteshP/nvim-navbuddy",
+        config = function()
+            require("nvim-navbuddy").setup({
+                lsp = { auto_attach = true }
+            })
+        end,
+        requires = {
+            "neovim/nvim-lspconfig",
+            "SmiteshP/nvim-navic",
+            "MunifTanjim/nui.nvim"
+        }
+    })
+
+    -- Auto Completion!
+    use ({
+        "hrsh7th/nvim-cmp",
+        requires = {
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-nvim-lua",
+            "hrsh7th/cmp-path",
+            "hrsh7th/cmp-calc"
+        },
+        config = function()
+            local cmp = require'cmp'
+            cmp.setup({
+                mapping = cmp.mapping.preset.insert({
+                  ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+                  ['<C-f>'] = cmp.mapping.scroll_docs(4),
+                  ['<C-Space>'] = cmp.mapping.complete(),
+                  ['<C-e>'] = cmp.mapping.abort(),
+                  -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+                  ['<CR>'] = cmp.mapping.confirm({ select = true }),
+                }),
+                sources = cmp.config.sources({
+                  { name = 'nvim_lsp' },
+                  -- { name = 'vsnip' }, -- For vsnip users.
+                  -- { name = 'luasnip' }, -- For luasnip users.
+                  -- { name = 'ultisnips' }, -- For ultisnips users.
+                  -- { name = 'snippy' }, -- For snippy users.
+                }, {
+                  { name = 'buffer' },
+                })
+            })
+
+        end
+    })
+
+    --[[ NOTE: alternative auto-completion plugin
+    use({
+        'ray-x/navigator.lua',
+        requires = {
+            { 'ray-x/guihua.lua', run = 'cd lua/fzy && make' },
+            { 'neovim/nvim-lspconfig' },
+        },
+        config = function()
+            require("navigator").setup({
+                icons = { icons = false },
+                lsp = {
+                    enable = true,
+                    code_action = {enable = true, sign = true, sign_priority = 40, virtual_text = true},
+                    code_lens_action = {enable = true, sign = true, sign_priority = 40, virtual_text = true},
+                    document_highlight = true, -- LSP reference highlight
+                    format_on_save = false,
+                    format_options = {async=false},
+                    disable_format_cap = {"sqls", "sumneko_lua", "gopls"},
+                    diagnostic = {
+                      underline = true,
+                      signs = false,
+                      virtual_text = true, -- show virtual for diagnostic message
+                      update_in_insert = false, -- update diagnostic message in insert mode
+                    }
+                }
+            })
+        end
+    })
+    --]]
+
+    -- Make hover windows prettier (better formatting)
+    use { "Fildo7525/pretty_hover",
+        config = function()
+            require("pretty_hover").setup({})
+        end
+    }
+
+    -- Modify files by manipulating text a neovim buffer
+    use { 'stevearc/oil.nvim',
+          config = function()
+              require('oil').setup()
+          end
+    }
+
     -- Theme
     use 'chriskempson/vim-tomorrow-theme'
-    use 'folke/tokyonight.nvim'
+    -- use 'folke/tokyonight.nvim'
     use({ "catppuccin/nvim", as = "catppuccin" })
     --use 'martinsione/darkplus.nvim' -- also kind of nice
     --use 'yong1le/darkplus.nvim' -- better than above I guess
-    use { 'navarasu/onedark.nvim',
+    use { 'navarasu/onedark.nvim', disable = true,
         config = function()
             require('onedark').setup {
                 style = 'warm', -- dark, darker, cool, deep, warm, warmer
                 toggle_style_key = '<leader>ts', -- Default keybinding to toggle
                 toggle_style_list = {'darker', 'deep', 'warm', 'warmer', 'light'}, -- List of styles to toggle between
             }
-            require('onedark').load()
+            -- require('onedark').load()
         end
     }
+    use({ 'rose-pine/neovim',
+        as = 'rose-pine',
+        config = function()
+            require("rose-pine").setup()
+            vim.cmd('colorscheme rose-pine')
+        end
+    })
     -- use 'arcticicestudio/nord-vim'
 
     -- Load on a combination of conditions: specific filetypes or commands
@@ -679,8 +966,8 @@ return require('packer').startup({function(use)
 
     -- Load configuration & make sure they can be reloaded with :source
     local load = function(mod)
-	package.loaded[mod] = nil
-	require(mod)
+        package.loaded[mod] = nil
+        require(mod)
     end
 
     load('options')
@@ -692,11 +979,13 @@ return require('packer').startup({function(use)
     load('epg')
     vim.cmd('source ~/.config/nvim/twf.nvim')
     vim.cmd('source ~/.config/nvim/rg.nvim')
+    -- vim.notify('Config reloaded!', vim.log.levels.INFO)
 
 end,
+
 config = {
     display = {
-        open_fn = require('packer.util').float,
+        open_fn = require('packer.util').float, -- run packer in a floating window
     }
 }
 })

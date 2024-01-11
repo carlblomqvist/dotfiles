@@ -15,15 +15,15 @@ local on_attach = function(client, bufnr)
     buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
     -- Mappings FIXME move to keys.lua?
-    local opts = { noremap=true, silent=true }
-    buf_set_keymap('n', '<leader>mG', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-    buf_set_keymap('n', '<leader>mg', '<Cmd>lue vim.lsp.buf.definition()<CR>', opts)
-    buf_set_keymap('n', '<leader>mk', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-    buf_set_keymap('n', '<leader>mi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-    buf_set_keymap('n', '<leader>mh', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-    buf_set_keymap('n', '<leader>mr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-    buf_set_keymap('n', '<leader>mp', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-    buf_set_keymap('n', '<leader>mn', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+    --local opts = { noremap=true, silent=true }
+    --buf_set_keymap('n', '<leader>mG', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+    --buf_set_keymap('n', '<leader>mg', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+    --buf_set_keymap('n', '<leader>mk', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+    --buf_set_keymap('n', '<leader>mi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+    --buf_set_keymap('n', '<leader>mh', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+    --buf_set_keymap('n', '<leader>mr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+    --buf_set_keymap('n', '<leader>mp', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+    --buf_set_keymap('n', '<leader>mn', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
 
 end
 
@@ -31,7 +31,7 @@ end
 -- NOTE: This replaces the calls where you would have before done `require('nvim_lsp').sumneko_lua.setup()`
 require('nlua.lsp.nvim').setup(require('lspconfig'), {
     -- FIXME ? complains about cmd, but it works
-    cmd = {
+    commands = {
         "/home/eaclobr/bin/lua-language-server/bin/lua-language-server",
         "-E",
         "/home/eaclobr/bin/lua-language-server/bin/main.lua"
@@ -64,5 +64,5 @@ require'lspconfig'.ccls.setup{
   on_attach = on_attach,
   -- flags = lsp_flags,
 }
-require'lspconfig'.ccls.setup{require'coq'.lsp_ensure_capabilities()}
+--require'lspconfig'.ccls.setup{require'coq'.lsp_ensure_capabilities()}
 

@@ -25,15 +25,37 @@ bind('t', '<leader><esc>', '<C-\\><C-n><esc>', 'noremap') -- Escape from Termina
 bind('n', 'p', 'p=`]`[', 'noremap')
 bind('n', 'P', 'P=`]`[', 'noremap')
 
+-- Goto next function also centers view
+bind('n', ']]', ']]zz', 'noremap')
+
+-- Paste whatever is yanked in visual mode with P
+bind('v', 'P', '"0p', 'noremap')
+
 -- Cycle paste-history (with vim-yankstack)
 --bind('n', '<M-y>', '<Plug>yankstack_substitute_older_paste')
-bind('n', 'p', '<Plug>yankstack_substitute_older_paste')
+--bind('n', 'p', '<Plug>yankstack_substitute_older_paste')
+
+-- Lightspeed Keybindings
+bind('n', 's', '<Plug>Lightspeed_s', 'noremap')
+bind('n', 'S', '<Plug>Lightspeed_S', 'noremap')
 
 ------------------ Leader bindings ------------------
 local opt = { expr = true, remap = true }
-vim.keymap.set('n', '<leader>cl', "v:count == 0 ? '<Plug>(comment_toggle_current_linewise)' : '<Plug>(comment_toggle_linewise_count)'", opt)
-vim.keymap.set('x', '<leader>cl', function() require("Comment.api").toggle_linewise_op(vim.fn.visualmode()) end)
-vim.keymap.set('n', '<leader>ce', function() require("Comment.api").insert_linewise_eol() end)
+local api = require('Comment.api')
+local esc = vim.api.nvim_replace_termcodes('<ESC>', true, false, true)
+--local config = require('Comment.config'):get()
+vim.keymap.set('n', '<leader>cl', api.toggle.linewise.current)
+vim.keymap.set('n', '<leader>cb', api.toggle.blockwise.current)
+-- Toggle selection (linewise)
+vim.keymap.set('x', '<leader>cl', function()
+    vim.api.nvim_feedkeys(esc, 'nx', false)
+    api.toggle.linewise(vim.fn.visualmode())
+end)
+-- Toggle selection (blockwise)
+vim.keymap.set('x', '<leader>cb', function()
+    vim.api.nvim_feedkeys(esc, 'nx', false)
+    api.toggle.blockwise(vim.fn.visualmode())
+end)
 
 wk.register({ -- Normal Mode Keybindings
     -- Buffers
@@ -42,8 +64,8 @@ wk.register({ -- Normal Mode Keybindings
         B = { "<cmd>CtrlPBuffer<cr>", "Switch Buffer" },
         b = { "<cmd>Buffers<cr>", "Switch Buffer" },
         c = { "<cmd>cd %:p:h<cr>", "cd %:p:h" },
-        k = { "<cmd>bd<cr>", "Unload (kill) Buffer" },
-        K = { "<cmd>bd!<cr>", "Unload (kill) Buffer" },
+        k = { "<cmd>bp<bar>bd#<cr>", "Unload (kill) buffer" },
+        K = { "<cmd>bp<bar>bd!#<cr>", "Force unload (kill) buffer" },
         n = { "<cmd>bn<cr>", "Next Buffer" },
         N = { "<cmd>enew<cr>", "New Buffer" },
         O = { "<cmd>%bd|e#|bd#<cr>", "Kill all other buffers" },
@@ -56,7 +78,9 @@ wk.register({ -- Normal Mode Keybindings
     c = {
         name = "Code",
         a = { "<cmd>Neogen<cr>", "Annotate function" },
+        b = { "Comment Line as Block" },
         c = { "<cmd>COQnow<cr>", "COQnow" },
+        f = { "[[V%:'<,'>Format<cr>", "Format function"},
         l = { "Comment Line" },
         L = { function() vim.fn.NERDComment('n', 'ToEOL') end, "Comment to EOL" },
     },
@@ -77,12 +101,26 @@ wk.register({ -- Normal Mode Keybindings
         b = { "<cmd>Telescope file_browser path=%:p:h<cr>", "File Browser" },
         --f = { "<cmd>CtrlP<cr>", "Find File in CWD (CtrlP)" },
         f = { "<cmd>Files %:p:h/..<cr>", "Find File in %:p:h (fzf)" },
-        F = { function() require("telescope.builtin").find_files({search_dirs={vim.fn.expand("%:p:h")}}) end, "Find File in Current Dir" },
+        F = { function() require("telescope").extensions.menufacture.find_files({search_dirs={vim.fn.expand("%:p:h")}}) end, "Find File in Current Dir" },
+        -- F = { function()
+        --         require('telescope').extensions.menufacture.add_menu_with_default_mapping(
+        --         require('telescope.builtin').find_files,
+        --         vim.tbl_extend('force', require('telescope').extensions.menufacture.find_files_menu, {
+        --             ['change cwd to parent'] = function(opts, callback)
+        --                 local cwd = opts.cwd and vim.fn.expand(opts.cwd) or vim.loop.cwd()
+        --                 opts.cwd = vim.fn.fnamemodify(cwd, ':p:h:h')
+        --                 callback(opts)
+        --             end
+        --             })
+        --         )
+        --     end, "Find File in Current Dir" },
         g = { "<cmd>GFiles %:p:h/..<cr>", "Find Files in Repo" }, -- create a binding with label
-        h = { "<cmd>Telescope find_files path=/home/eaclobr hidden=true follow=false<cr>", "Find Files in ~/" }, -- create a binding with label
+        h = { function() require("telescope").extensions.menufacture.find_files({search_dirs={"/home/eaclobr"}, find_command={"fd", "-E", "epg/", "--hidden"}}) end, "Find File in ~/" },
+        --h = { "<cmd>Telescope find_files path=/home/eaclobr hidden=true follow=false<cr>", "Find Files in ~/" }, -- create a binding with label
         p = { "<cmd>e $MYVIMRC<cr>", "Edit init.lua" },
         P = { "<cmd>Files ~/.config<cr>", "Edit .config" },
-        r = { "<cmd>History<cr>", "Open Recent File" },
+        r = { "<cmd>lua require('telescope').extensions.frecency.frecency()<cr>", "Open Frecent File" },
+        R = { "<cmd>History<cr>", "Open Recent File" },
         o = { "<cmd>CHADopen<cr>", "CHADtree" },
         R = { "<cmd>source $MYVIMRC<cr>", "Reload init.lua" },
         s = { "<cmd>w<cr>", "Save buffer" },
@@ -97,7 +135,7 @@ wk.register({ -- Normal Mode Keybindings
         g = { function() vim.cmd('Git') end, ":Git" },
         u = { function() vim.cmd('Gitsigns undo_stage_hunk') end, "Undo Hunk" },
         r = { function() vim.cmd('Gitsigns reset_hunk') end, "Reset Hunk" },
-        s = { function() vim.cmd('Gitsigns stage_hink') end, "Stage Hunk" },
+        s = { function() vim.cmd('Gitsigns stage_hunk') end, "Stage Hunk" },
         S = { function() vim.cmd('GFiles?') end, "Git Status (fzf)" },
         n = { function() vim.cmd('Gitsigns next_hunk') end, "Next Hunk" },
         p = { function() vim.cmd('Gitsigns previous_hunk') end, "Previous Hunk" },
@@ -108,9 +146,9 @@ wk.register({ -- Normal Mode Keybindings
         name = "Help",
         d = {
             name = "\"Doom\"",
-            i = { function() vim.cmd('source', '$MYVIMRC') vim.cmd('PackerInstall') end, "Install Plugins" },
-            r = { function() vim.cmd('source', '$MYVIMRC') vim.cmd('PackerCompile') end, "Sync Plugins" },
-            R = { function() vim.cmd('source', '$MYVIMRC') vim.cmd('PackerSync') end, "Deep Sync Plugins" },
+            i = { function() vim.cmd('source "$MYVIMRC"') vim.cmd('PackerInstall') end, "Install Plugins" },
+            r = { function() vim.cmd('source "$MYVIMRC"') vim.cmd('PackerCompile') end, "Sync Plugins" },
+            R = { function() vim.cmd('source "$MYVIMRC"') vim.cmd('PackerSync') end, "Deep Sync Plugins" },
             t = { "<cmd>Colors<cr>", "Pick Colorscheme" },
         },
         t = { "<cmd>Telescope help_tags<cr>", "Tags" },
@@ -123,22 +161,42 @@ wk.register({ -- Normal Mode Keybindings
         }
     },
 
+    -- Substitute
+    j = {
+        name = "Substitute",
+        s = { "<cmd>require('substitute.range').word<cr>", "Substitute word under cursor within <range>" }
+    },
+
+    k = {
+        name = "Ericsson",
+        b = {
+            name = "Build",
+            ["3"] = { "<cmd>Dispatch git clean -xdf -- staging/.bundle/Linux_x86_64 staging/Linux_x86_64 3pp/build/Linux_x86_64 && build -g -c Linux_x86_64.clang<cr>", "Rebuild 3pp as shared (EPG/PCG)" },
+            -- b = { "function() --read some variables to get build type end", "Build" },
+            e = { ":Dispatch build -c IPOS_ssc data-plane", "Build for EPG" },
+            p = { "<cmd>Dispatch bob build --cpp-target=data-plane", "Build for PCG" },
+        },
+
+    },
+
     -- Mode
     m = {
         name = "Mode",
         b = { "<cmd>luafile %<cr>", "Evaluate Lua-buffer" },
-        m = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "LSP: Goto Declaration" },
-        g = { "<cmd>lua vim.lsp.buf.definition()<cr>", "LSP: Goto Definition" },
-        k = { "<cmd>lua vim.lsp.buf.hover()<cr>", "LSP: Hover" },
-        i = { "<cmd>lua vim.lsp.buf.implementation()<cr>", "LSP: Goto Implementation" },
+        f = { "<cmd>Lspsaga lsp_finder<cr>", "LSP: Goto Definition" },
+        g = { "<cmd>Lspsaga goto_definition<cr>", "LSP: Goto Definition" },
         h = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "LSP: Signature Help" },
-        r = { "<cmd>lua vim.lsp.buf.references()<cr>", "LSP: References" },
-        p = { "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>", "LSP: Goto Prev" },
-        n = { "<cmd>lua vim.lsp.diagnostic.goto_next()<cr>", "LSP: Goto Next" },
+        i = { "<cmd>lua vim.lsp.buf.implementation()<cr>", "LSP: Goto Implementation" },
+        k = { "<cmd>Lspsaga hover_doc<cr>", "LSP: Hover" },
+        m = { "<cmd>Lspsaga peek_definition<cr>", "LSP: Goto Declaration" },
+        n = { "<cmd>Lspsaga diagnostics_jump_next<cr>", "LSP: Goto Next" },
+        p = { "<cmd>Lspsaga diagnostics_jump_prev<cr>", "LSP: Goto Prev" },
+        r = { "<cmd>Lspsaga rename<cr>", "LSP: Rename" },
     },
 
     -- Org
     O = { "<cmd>e ~/org/todo.org<cr>", "Open todo.org" },
+    P = { "<cmd>e ~/org/tips.org<cr>", "Open tips.org" },
     --o = {
     --
     --    name = "Org",
@@ -150,26 +208,35 @@ wk.register({ -- Normal Mode Keybindings
         name = "Project",
         g = { function() local current_word = vim.call('expand', '<cword>') vim.cmd("Tags " .. current_word) end, "Search in TAGS for word under cursor" },
         f = { "<cmd>GFiles<cr>", "Find Files in Project" }, -- create a binding with label
-        p = { "<cmd>Telescope projects<cr>", "Pick Project" },
+        s = { function() require("telescope").extensions.menufacture.live_grep() end, "Live Grep current project (CWD)" },
+        p = { function() require("telescope").extensions.projects.projects() end, "Pick Project" },
     },
 
     -- Search
     s = {
         name = "Search",
-        d = { function() require("telescope.builtin").live_grep({search_dirs={vim.fn.expand("%:p:h")}}) end, "grep Current Dir" },
+        d = { function() require("telescope").extensions.menufacture.live_grep({search_dirs={vim.fn.expand("%:p:h")}}) end, "grep Current Dir" },
         f = { "<cmd>HopChar1<cr>", "Hop to Char" },
-        g = { "<cmd>Telescope grep_string<cr>", "grep for what's under cursor" },
+        g = { function() require("telescope").extensions.menufacture.grep_string() end, "grep for what's under cursor" },
         F = { "<cmd>HopPattern<cr>", "Hop to Pattern" },
+        j = { "<cmd>Telescope lsp_document_symbols ignore_symbols=variable,field,unknown,enummember,struct,enum<cr>", "Search for function in buffer" },
+        n = { "<cmd>Navbuddy<cr>", "Navbuddy" },
         s = { "<cmd>Telescope current_buffer_fuzzy_find case_mode=ignore_case<cr>", "grep Current Buffer" },
+        p = { function() require("telescope").extensions.menufacture.live_grep() end, "Live Grep CWD" },
         --S = { "<cmd><cr>", "Evaluate Lua-buffer" },
     },
 
     -- Toggle
     t = {
-        name = "Toggle",
+        name = "Toggle / Tab",
+        N = { "<cmd>tabnew<cr>", "Tab New" },
+        d = { "<cmd>tabclose<cr>", "Tab Close" },
         f = { "<cmd>NeoZoomToggle<cr>", "Buffer Fullscreen" },
+        i = { "<cmd>set isk+=_<cr>", "Unset _ as word" },
+        n = { "<cmd>tabnext<cr>", "Tab Next" },
+        p = { "<cmd>tabprevious<cr>", "Tab Previous" },
+        t = { "<cmd>Twilight<cr>", "Twilight" },
         u = { "<cmd>set isk-=_<cr>", "Set _ as word" },
-        i = { "<cmd>set isk+=_<cr>", "Unset _ as word" }
     },
 
     -- Tabs
@@ -218,11 +285,20 @@ wk.register({ -- Normal Mode Keybindings
                 end
           end, "Toggle Quickfix :(" },
 
+    ä = { "<cmd>CellularAutomaton make_it_rain<cr>", "Make it rain" },
+
 }, { mode = "n", prefix = "<leader>" })
 
 wk.register({ -- Visual Mode Keybindings
     c = {
         name = "Code",
+        b = { "Comment Lines as Block" },
+        f = { "<cmd>'<,'>Format<cr>", "Format range"},
         l = { "Comment Lines" },
+    },
+
+    j = {
+        name = "Substitute",
+        s = { "<cmd>require('substitute.range').visual<cr>", "Substitute selection within <range>" },
     },
 }, { mode = "v", prefix = "<leader>" })

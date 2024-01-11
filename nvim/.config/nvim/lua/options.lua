@@ -10,15 +10,22 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 vim.wo.nu = true
 vim.wo.rnu = true
--- relative in normal mode, absolute in insert
-Af('BufEnter,FocusGained,InsertLeave', '*', function() vim.wo.relativenumber = true end)
-Af('BufLeave,FocusLost,InsertEnter',   '*', function() vim.wo.relativenumber = false end)
+vim.wo.numberwidth = 3
+vim.wo.statuscolumn = "%=%s%{v:virtnum < 1 ? (v:relnum ? v:relnum : v:lnum < 10 ? v:lnum . '  ' : v:lnum) : ''} "
+vim.wo.signcolumn = "yes:1"
+-- relative numbers in normal mode, absolute numbers in insert
+Af('BufEnter,FocusGained,InsertLeave', '*', function()
+    vim.wo.statuscolumn = "%=%s%{v:virtnum < 1 ? (v:relnum ? (v:relnum < 10 ? '  ' . v:relnum : v:relnum) : v:lnum < 10 ? v:lnum . '  ' : v:lnum) : ''} "
+                                            end)
+Af('BufLeave,FocusLost,InsertEnter',   '*', function()
+                                                vim.wo.statuscolumn = "%=%s%l "
+                                            end)
 
 -- Remove trailing whitespace on save
 Af('BufWritePre', '*', Tools.removeTrailingWhitespace())
 
 -- put numbers and signs in the same column
-vim.wo.signcolumn = 'number'
+--vim.wo.signcolumn = 'number'
 
 -->> editor <<--
 
@@ -40,7 +47,7 @@ vim.o.hlsearch = true
 -- copy-paste with system clipboard
 vim.o.clipboard = 'unnamedplus'
 -- background color for themes
-vim.o.background = 'dark'
+--vim.o.background = 'dark'
 -- we support termguicolors
 vim.o.termguicolors = true
 -- abandon buffer when unloading
@@ -49,7 +56,7 @@ vim.o.hidden = true
 vim.o.backup = false
 vim.o.writebackup = false
 -- more space for coc messages
-vim.o.cmdheight = 2
+vim.o.cmdheight = 3
 -- more responsiveness
 vim.o.updatetime = 300
 -- avoid some prompts?
@@ -92,6 +99,7 @@ vim.cmd('filetype plugin indent on')
 
 -- update plugins when saving plugins.lua
 vim.cmd([[autocmd BufWritePost plugins.lua source <afile> | PackerCompile]])
+vim.cmd([[autocmd BufWritePost init.lua source <afile> | PackerCompile]])
 
 -- Highlight when yanking
 vim.cmd('au TextYankPost * lua vim.highlight.on_yank {on_visual = false}')
