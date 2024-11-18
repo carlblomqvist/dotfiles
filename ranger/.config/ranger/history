@@ -1,0 +1,16 @@
+search pic
+search dot
+search albert
+search .config
+search systemd
+search .emacs.d
+search emacs.d
+search font
+search system
+search nvim
+search mic
+search SHA
+rename SHA256SUMS
+search elx
+rename elx5-latest-desktop-amd64.iso
+delete

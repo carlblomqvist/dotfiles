@@ -1,0 +1,34 @@
+[General]
+showTray=false
+telemetry=false
+
+[applications]
+enabled=true
+terminal=kitty
+
+[calculator_qalculate]
+enabled=true
+
+[path]
+enabled=true
+
+[python]
+enabled=true
+
+[python.python_eval]
+enabled=true
+
+[widgetsboxmodel]
+alwaysOnTop=true
+clearOnHide=true
+clientShadow=true
+darkTheme=Default Dark
+displayScrollbar=false
+followCursor=true
+hideOnFocusLoss=true
+historySearch=true
+itemCount=7
+lightTheme=Default Dark
+quitOnClose=false
+showCentered=true
+systemShadow=true

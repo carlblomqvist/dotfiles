@@ -1,0 +1,515 @@
+#!/bin/bash
+
+#TODO: select default config to restore when several configs exists for
+#      same signature
+
+
+WS_STORE=~/.i3/ws-store
+WS_LOG=~/.i3/.oi3.log
+CONFIG_VERSION=0
+PROGRAM_VERSION="1.12"
+
+function log {
+    echo -e "`date`: $@" >> $WS_LOG
+}
+
+function error {
+    echo -e "ERROR: "$@
+}
+
+function warning {
+    echo -e "WARNING: "$@
+}
+
+function error_exit {
+    local rc=$1 ; shift
+    error "$@"
+    exit $rc
+}
+
+function error_help {
+    error "$@"
+    echo "oi3 ${PROGRAM_VERSION} [options] [parameters]"
+    echo ""
+    echo "  oi3 is an addon for i3 which uses i3-cmd and xrandr to manage your monitor and workspace"
+    echo "  setups. Its primary use is for laptops which typically are moved around and are hooked up"
+    echo "  to various types of monitors, or outputs, but it can of course be used for all situations"
+    echo "  where you want to have a set of configurations which you can easily switch between. oi3"
+    echo "  can also automatically restore a certain configuration based on available outputs (and also"
+    echo "  docking and lid state)."
+    echo ""
+    echo "  The typical workflow is:"
+    echo "  - Configure your workspaces and outputs (which is left and which is right for instance) for a"
+    echo "    certain output scenario (e.g. your laptop docked, lid down, connected to two 24\" outputs)."
+    echo "  - Save this configuration with oi3"
+    echo "  - Bring your laptop to another output scenario (e.g. laptop + projector in a conference room)"
+    echo "    and again set things up."
+    echo "  - Save this configuration with oi3"
+    echo ""
+    echo "  Now you can simply state 'oi3 --auto-restore' or shorter 'oi3 -ar' to have oi3 set the correct"
+    echo "  configuraton according to output scenario. You can of course add as many configurations as"
+    echo "  you like. Binding 'oi3 -ar' to a key in .i3/config simplifies things even further."
+    echo ""
+    echo "  -s|--store config"
+    echo "    Store current configuration with name \"config\""
+    echo "  -r|--restore config"
+    echo "    Restore configuration with name \"config\""
+    echo "  -ar|--auto-restore"
+    echo "    Automatically restore configuration based on current hardware setup."
+    echo "  -d|--delete config"
+    echo "    Deletes configuration with name \"config\", NO CONFIRMATION NEEDED!"
+    echo "  -to|--toggle-outputs"
+    echo "    NOTE: this option is only valid in dual monitor setups"
+    echo "    Toggle outputs relative position, left output becomes right and vice versa."
+    echo "    Typically useful for projector configurations, where you sit either right or left of the"
+    echo "    projector"
+    echo "  -f|--force"
+    echo "    State before option -r or -ar to force restore even though hardware setup is incompatible"
+    echo "  -l|--list"
+    echo "    List all stored configurations"
+    echo "  -c|--cat config"
+    echo "    Show configuration with name \"config\""
+    echo "  -cc|--current-config"
+    echo "    Show name of current config (if any)"
+    echo "  -i|--info"
+    echo "    Show info about current hardware setup (what would be stored in a config)"
+    echo ""
+    echo "Example:"
+    echo "  oi3 -s at-work-laptop-24    -- saves a configuration including signature"
+    echo "  ...move around, when you get back..."
+    echo "  oi3 -ar               - restores the saved configuration matching current hardware setup"
+    echo ""
+    echo "Note: Configurations are stored both as a source:able bash script containing all settings"
+    echo "      required to restore and as an executable bash script which performs the actual restore."
+    exit 1
+}
+
+function get_dock_state {
+    local docked_file=/sys/devices/platform/dock.0/docked #yes, assume one dock
+    [ ! -f "$docked_file" ] && docked_file=/sys/devices/platform/hp-wmi/dock
+    [ ! -f "$docked_file" ] && echo undocked
+    case `cat $docked_file` in
+        1) echo docked ;;
+        *) echo undocked ;;
+    esac
+}
+
+function get_lid_state {
+    grep -q closed /proc/acpi/button/lid/LID/state
+    if [ $? = 0 ] ; then
+        echo closed
+    else
+        echo open
+    fi
+    return 0
+}
+
+#returns parsed result in global variable parsed_item and parsed_item_name
+declare -A parsed_item
+function parse_item {
+    local item="$1"
+    array=(${item//,/ })
+    local key_value=${array[0]}
+    parsed_item_name=${key_value#*=}
+    local i
+    for i in "${!array[@]}" ; do
+        local key_value=${array[i]}
+        local key=${key_value%=*}
+        local value=${key_value#*=}
+        parsed_item["$key"]="$value"
+    done
+}
+
+function get_signature_helper {
+    local current_output=""
+    local current_sigmtrl=""
+    xrandr | while read line ; do
+        line=`echo $line | sed -e 's/^ *//g' -e 's/ *$//g'`
+        if [ -z "$current_output" ] ; then
+            case $line in
+                *\ connected*)
+                    current_output=`echo $line| cut -d ' ' -f1`
+                    current_sigmtrl=""
+                    ;;
+            esac
+        else
+            case $line in
+                *\ connected*)
+                    [ ! -z "$current_sigmtrl" ] && echo "$current_output:$current_sigmtrl::"
+                    current_output=`echo $line| cut -d ' ' -f1`
+                    current_sigmtrl=""
+                    ;;
+                *\ disconnected*)
+                   [ ! -z "$current_sigmtrl" ] && echo "$current_output:$current_sigmtrl::"
+                    current_output=""
+                    current_sigmtrl=""
+                    ;;
+                *)
+                    local sigmtrl=`echo $line | tr -d '*+' | tr -s ' ' | tr ' ' ':'`
+                    if [ -z "$current_sigmtrl" ] ; then
+                        current_sigmtrl=$sigmtrl
+                    else
+                        current_sigmtrl="$current_sigmtrl/$sigmtrl"
+                    fi
+                    ;;
+            esac
+        fi
+    done
+}
+
+function get_outputs_signature {
+    local output
+    local outputs
+    for output in `xrandr | grep " connected" | cut -d ' ' -f1 | sed -e 's/^ *//g' -e 's/ *$//g'` ; do
+        if [ -z "$outputs" ] ; then
+            outputs=$output
+        else
+            outputs="${outputs}/$output"
+        fi
+    done
+    echo "$outputs"
+}
+
+function get_signature {
+    local outputs=`get_outputs_signature`
+    local lid_state=`get_lid_state`
+    local dock_state=`get_dock_state`
+    echo "lid_${lid_state}//dock_${dock_state}//active_outputs_${outputs}//`get_signature_helper|tr -d '\n'`"
+}
+
+function store {
+    local config="$1"
+    [ -z "$config" ] && error_help "store: no config stated "
+    local config_store="$WS_STORE/$config"
+    \rm -f "$config_store" > /dev/null 2>&1
+    touch "$config_store" || error_exit "Failed to create config $config in $WS_STORE"
+    echo "version=$CONFIG_VERSION" >> "$config_store"
+    echo "signature=`get_signature`" >> "$config_store"
+    local config_store_exe="$WS_STORE/${config}.sh"
+    \rm -f "$config_store_exe" > /dev/null 2>&1
+    echo "#!/bin/bash" > "$config_store_exe"
+    echo "version=$CONFIG_VERSION" >> "$config_store_exe"
+    local active_outputs=""
+    local inactive_outputs=""
+    local primary_output=""
+    declare -A outputs
+    declare -A workspaces
+    for output in `i3-msg -t get_outputs | tr -d '[]\"' | sed -e "s/},{/}\n{/g" -e "s/rect\://g" -e "s/\:/=/g" | tr -d '{}'`  ; do
+        parse_item "$output"
+        if [ "${parsed_item[active]}" = "true" ] ; then
+            active_outputs="$active_outputs $parsed_item_name"
+        else
+            inactive_outputs="$inactive_outputs $parsed_item_name"
+        fi
+        if [ "${parsed_item[primary]}" = "true" ] ; then
+            primary_output=$parsed_item_name
+        fi
+        outputs["${parsed_item_name}.x"]=${parsed_item["x"]}
+        outputs["${parsed_item_name}.y"]=${parsed_item["y"]}
+        outputs["${parsed_item_name}.width"]=${parsed_item["width"]}
+        outputs["${parsed_item_name}.height"]=${parsed_item["height"]}
+        outputs["${parsed_item_name}.current_workspace"]=${parsed_item["current_workspace"]}
+    done
+    local all_workspaces
+    for ws in `i3-msg -t get_workspaces | tr -d '[]\"' | sed -e "s/},{/}\n{/g" -e "s/rect\://g" -e "s/\:/=/g" | tr -d '{}'`  ; do
+        parse_item "$ws"
+        all_workspaces="$all_workspaces $parsed_item_name"
+        if [ "${parsed_item[focused]}" = "true" ] ; then
+            focused_workspace=$parsed_item_name
+        fi
+        workspaces["${parsed_item_name}.num"]=${parsed_item["num"]}
+        workspaces["${parsed_item_name}.visible"]=${parsed_item["visible"]}
+        workspaces["${parsed_item_name}.x"]=${parsed_item["x"]}
+        workspaces["${parsed_item_name}.y"]=${parsed_item["y"]}
+        workspaces["${parsed_item_name}.width"]=${parsed_item["width"]}
+        workspaces["${parsed_item_name}.height"]=${parsed_item["height"]}
+        local output=${parsed_item["output"]}
+        workspaces["${parsed_item_name}.output"]=$output
+        outputs["${output}.workspaces"]="${outputs[${output}.workspaces]} $parsed_item_name"
+        if [ "${parsed_item[visible]}" = "true" ] ; then
+            outputs["${output}.visible_workspace"]="$parsed_item_name"
+        fi
+    done
+    echo "active_outputs=\"`echo $active_outputs`\"" >> "$config_store"
+    echo "inactive_outputs=\"`echo $inactive_outputs`\"" >> "$config_store"
+    echo "primary_output=\"$primary_output\"" >> "$config_store"
+    echo "all_workspaces=\"`echo $all_workspaces`\"" >> "$config_store"
+    echo "focused_workspace=\"$focused_workspace\"" >> "$config_store"
+    echo "dock_state=\"`get_dock_state`\"" >> "$config_store"
+    echo "lid_state=\"`get_lid_state`\"" >> "$config_store"
+    echo "declare -A outputs"  >> "$config_store"
+    echo "declare -A workspaces"  >> "$config_store"
+    local xpos_sorted=`for i in $active_outputs ; do echo ${outputs[${i}.x]} ; done | tr ' ' '\n' | sort | tr '\n' ' '`
+    active_outputs_from_left=""
+    local xpos
+    local output
+    for xpos in $xpos_sorted ; do
+        for output in $active_outputs ; do
+            if [ "${outputs[${output}.x]}" = "$xpos" ] ; then
+                active_outputs_from_left="${active_outputs_from_left} $output"
+            fi
+        done
+    done
+    echo "active_outputs_from_left=\"`echo $active_outputs_from_left`\"" >> "$config_store"
+    local i
+    for i in $active_outputs ; do
+        echo "outputs[\"$i.x\"]=\"${outputs[${i}.x]}\"" >> "$config_store"
+        echo "outputs[\"$i.y\"]=\"${outputs[${i}.y]}\"" >> "$config_store"
+        echo "outputs[\"$i.width\"]=\"${outputs[${i}.width]}\"" >> "$config_store"
+        echo "outputs[\"$i.height\"]=\"${outputs[${i}.height]}\"" >> "$config_store"
+        echo "outputs[\"$i.workspaces\"]=\"`echo ${outputs[${i}.workspaces]}`\"" >> "$config_store"
+        echo "outputs[\"$i.visible_workspaces\"]=\"`echo ${outputs[${i}.visible_workspaces]}`\"" >> "$config_store"
+    done
+    for i in $all_workspaces ; do
+        echo "workspaces[\"$i.num\"]=\"${workspaces[${i}.num]}\"" >> "$config_store"
+        echo "workspaces[\"$i.visible\"]=\"${workspaces[${i}.visible]}\"" >> "$config_store"
+        echo "workspaces[\"$i.x\"]=\"${workspaces[${i}.x]}\"" >> "$config_store"
+        echo "workspaces[\"$i.y\"]=\"${workspaces[${i}.y]}\"" >> "$config_store"
+        echo "workspaces[\"$i.width\"]=\"${workspaces[${i}.width]}\"" >> "$config_store"
+        echo "workspaces[\"$i.height\"]=\"${workspaces[${i}.height]}\"" >> "$config_store"
+        echo "workspaces[\"$i.output\"]=\"${workspaces[${i}.output]}\"" >> "$config_store"
+    done
+
+    local line="xrandr "
+    for output in $inactive_outputs ; do
+        line="$line --output $output --off"
+    done
+    local prev_output=""
+    for output in $active_outputs_from_left ; do
+        local width=${outputs[${output}.width]}
+        local height=${outputs[${output}.height]}
+        if [ -z "$prev_output" ] ; then
+            line="$line --output $output --mode ${width}x${height}"
+        else
+            line="$line --output $output --mode ${width}x${height} --right-of $prev_output"
+        fi
+        prev_output=$output
+    done
+    line="$line --output $primary_output --primary"
+    echo $line >> "$config_store_exe"
+
+    line=""
+    for output in $active_outputs_from_left ; do
+        local workspaces=${outputs[${output}.workspaces]}
+        prev_workspace=""
+        for workspace in $workspaces ; do
+            if [ -z "$line" ] ; then
+                line="workspace $workspace; move workspace to output $output"
+            else
+                line="$line; workspace $workspace; move workspace to output $output"
+            fi
+            prev_workspace=$workspace
+        done
+        local current_workspace=${outputs[${output}.current_workspace]}
+        if [ "$current_workspace" != "$focused_workspace" ] ; then
+            if [ "$prev_workspace" != "$current_workspace" ] ; then
+                line="$line; workspace $current_workspace"
+            fi
+        fi
+        prev_output="$output"
+    done
+    line="$line; workspace $focused_workspace"
+    line="i3-msg \"$line\""
+    echo $line  >> "$config_store_exe"
+
+
+    # for output in $inactive_outputs ; do
+    #     echo "xrandr --output $output --off"  >> "$config_store_exe"
+    # done
+    # local prev_output=""
+    # for output in $active_outputs_from_left ; do
+    #     local width=${outputs[${output}.width]}
+    #     local height=${outputs[${output}.height]}
+    #     if [ -z "$prev_output" ] ; then
+    #         echo "xrandr --output $output --mode ${width}x${height}"  >> "$config_store_exe"
+    #     else
+    #         echo "xrandr --output $output --mode ${width}x${height} --right-of $prev_output"  >> "$config_store_exe"
+    #     fi
+    #     local workspaces=${outputs[${output}.workspaces]}
+    #     for workspace in $workspaces ; do
+    #         echo "i3-msg \"workspace $workspace; move workspace to output $output\""  >> "$config_store_exe"
+    #     done
+    #     local current_workspace=${outputs[${output}.current_workspace]}
+    #     echo "i3-msg \"workspace $current_workspace\"" >> "$config_store_exe"
+    #     prev_output="$output"
+    # done
+    # echo "xrandr --output $primary_output --primary"  >> "$config_store_exe"
+    # echo "i3-msg \"workspace $focused_workspace\""  >> "$config_store_exe"
+    chmod +x "$config_store_exe"
+    return 0
+}
+
+function find_config {
+    local signature=`get_signature`
+    local num_signatures=`grep -l "signature=$signature" $WS_STORE/* | wc -l`
+    case $num_signatures in
+        0) echo ; ;;
+        1) basename `grep -l "signature=$signature" $WS_STORE/*` ; ;;
+        *) basename `grep -l "signature=$signature" $WS_STORE/* | head -1` ; ;; #grabbing the first one
+    esac
+}
+
+function auto_restore {
+    local config=`find_config`
+    [ -z "$config" ] && error_exit 1 "Couldn't find a matching config for this hardware setup, try saving one first"
+    restore $config
+}
+
+function restore {
+    local config="$1"
+    [ -z "$config" ] && error_help "restore: no config stated "
+    local config_store="$WS_STORE/$config"
+    [ ! -f $config_store ] && error_exit 1 "Configuration $config does not exist"
+    local config_store_exe="$WS_STORE/${config}.sh"
+    local config_store_log="$WS_STORE/${config}.log"
+    . $config_store
+    local signature_now=`get_signature`
+    if [ "$signature" != "$signature_now" ] ; then
+        if [ "$option_force" = "true" ] ; then
+            warning "Restoring configuration to an incompatible hardware setup\n..Saved setup: $signature\nCurrent setup: $signature_now"
+        else
+            error_exit 1 "It seems you're trying to restore a saved configuration to an incompatible hardware setup\n..Saved setup: $signature\nCurrent setup: $signature_now\nCorrect setup or rerun with --force --restore"
+        fi
+    fi
+    [ ! -x "$config_store_exe" ] && error_exit 1 "No restore config $config available in $WS_STORE"
+    $config_store_exe > "$config_store_log" 2>&1
+    return 0
+}
+
+# function get_extra_output_info {
+#     local line
+#     local output
+#     local geometry
+#     local resolution
+#     local offset
+#     local frequency
+
+#     xrandr | grep -E " connected|\*" | while read line ; do
+#         if [ -z "$output" ] ; then
+#             output=`echo $line | cut -d ' ' -f 1`
+#             geometry=`echo $line | cut -d ' ' -f 3`
+#             offset=`echo $geometry | cut -d '+' -f 2`
+#         else
+#             echo $line | grep \* > /dev/null 2>&1
+#             if [ $? -eq 0 ] ; then
+#                 resolution=`echo $line | cut -d ' ' -f 1`
+#                 frequency=`echo $line | tr -s ' ' | tr -d '*+' | cut -d ' ' -f2`
+#                 echo "Output $output, offset $offset, resolution=$resolution, frequency=$frequency"
+#                 output=""
+#             else
+#                 output=`echo $line | cut -d ' ' -f 1`
+#                 geometry=`echo $line | cut -d ' ' -f 3`
+#                 offset=`echo $geometry | cut -d '+' -f 2`
+#             fi
+#         fi
+#     done
+# }
+
+function list {
+    echo "${WS_STORE}"
+    ls --hide="*.log" --hide="*.sh" $WS_STORE | tr ' ' '\n'
+}
+
+function cat_config {
+    local config="$1"
+    [ -z "$config" ] && error_help "cat: no config stated "
+    local config_store="$WS_STORE/$config"
+    [ ! -f $config_store ] && error_exit 1 "Configuration $config does not exist"
+    echo ">>Full config"
+    cat ${config_store}
+    echo ">>Restore script"
+    cat ${config_store}.sh
+    echo ">>Last restore script output"
+    if [ -f "${config_store}.log" ] ; then
+        cat ${config_store}.log
+    else
+        echo "No output available (never restored?)"
+    fi
+}
+
+function ensure_exe_in_path {
+    local i
+    for i in $@ ; do
+        local exef=`which $i`
+        [ ! -x "$exef" ] && error_exit 1 "Required executable $i not in path!"
+    done
+}
+
+function delete {
+    local config="$1"
+    [ -z "$config" ] && error_help "delete: no config stated "
+    local config_store="$WS_STORE/$config"
+    \rm -f ${config_store} > /dev/null 2>&1
+    \rm -f ${config_store}.* > /dev/null 2>&1
+}
+
+function info_ {
+    local config=`find_config`
+    if [ ! -z "$config" ] ; then
+        echo "Matching configuration \"$config\" exists, would be used to auto restore"
+        cat_config $config
+    else
+        echo "No matching configuration exists, this would be stored..."
+        local tmp_config="__very_unli_kely__co_nfig_name__"
+        store $tmp_config
+        cat_config $tmp_config
+        delete $tmp_config
+    fi
+}
+
+function current_config {
+    local config=`find_config`
+    if [ ! -z "$config" ] ; then
+        echo "Matching configuration is \"$config\""
+    else
+        echo "No matching configuration exists"
+    fi
+}
+
+function get_active_outputs {
+    echo `xrandr | grep " connected" | grep -E "[0-9]+x[0-9]+\+[0-9]+\+[0-9]+*" | cut -d ' ' -f1`
+}
+
+function get_active_output_x_coord {
+    local output="$1"
+    echo `xrandr | grep "$output connected" | cut -d ' ' -f3 | cut -d '+' -f2`
+}
+
+function toggle_outputs {
+    local active_outputs=`get_active_outputs`
+    [ "`echo $active_outputs | cut -d ' ' -f3`" != "" ] && error_exit 1 "Must have exactly two outputs connected, check xrandr output"
+    local output1=`echo $active_outputs | cut -d ' ' -f1`
+    local output2=`echo $active_outputs | cut -d ' ' -f2`
+    if [ "`get_active_output_x_coord $output1`" = "0" ] ; then
+        #output1 to the left of output2
+        xrandr --output $output1 --right-of $output2
+    else
+        #output1 to the right of output2
+        xrandr --output $output1 --left-of $output2
+    fi
+}
+
+#main
+
+ensure_exe_in_path i3-msg xrandr
+
+mkdir -p $WS_STORE || error_exit 1 "Failed to create $WS_STORE, needed to store workspace states"
+
+option_force=false
+while : ; do
+    case "$1" in
+        -f|--force) shift ; option_force=true ; ;;
+        -s|--store) shift ; store "$1" ; exit $? ;;
+        -d|--delete) shift ; delete "$1" ; exit $? ;;
+        -as|--auto-store) shift ; auto_store ; exit $? ;;
+        -ar|--auto-restore) shift ; auto_restore ; exit $? ;;
+        -r|--restore) shift ; restore "$1" ; exit $? ;;
+        -l|--list) shift ; list ; exit $? ;;
+        -c|--cat) shift ; cat_config "$1" ; exit $? ;;
+        -i|--info) shift ; info_ ; exit $? ;;
+        -cc|--current-config) shift ; current_config ; exit $? ;;
+        -to|--toggle-outputs) shift ; toggle_outputs ; exit $? ;;
+        -x) get_signature ; exit $? ;;
+        *) error_help "Unknown argument $1"
+    esac
+done

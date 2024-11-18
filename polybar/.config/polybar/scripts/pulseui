@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# need to change this status to ip link show up? check for tun0. test with gpoc status if this is correct
+status=$(ip link show up | grep gpd | wc -l)
+network=$(nmcli | cut -d' ' -f 4 | head -n 1)
+
+if [ "$status" -eq 1 ] || [ "$network" = "EWA@ECN" ]; then
+    printf '%%{F#A3BE8C}ﯱ%%{F-}' 
+else
+    printf '%%{F#BF616A}%%{F-}' 
+fi
+    
+    
+        

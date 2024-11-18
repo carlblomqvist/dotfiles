@@ -1,0 +1,11 @@
+[Unit]
+Description=Flashfocus service
+
+[Service]
+Type=simple
+ExecStart=/home/eaclobr/.local/bin/flashfocus
+ExecStop=/usr/bin/killall flashfocus
+Restart=always
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,26 @@
+#! /bin/sh
+#
+: ${USER?}
+PORTAL="gp-portal-elx.ra.ericsson.net"
+GP="/opt/paloaltonetworks/globalprotect/globalprotect"
+GUI="/opt/paloaltonetworks/globalprotect/PanGPUI"
+ 
+case ":$1" in
+    :c)
+        shift
+        while /usr/bin/pkill -f "$GUI"; do /usr/bin/sleep 1; done
+        exec "$GP" connect --portal "$PORTAL" --user "$USER" "$@"
+        ;;
+    :d)
+        COMMAND=disconnect;;
+    :r)
+        COMMAND=rediscover-network;;
+    :s)
+        COMMAND="show --status";;
+    :--)
+        shift; exec "$GP" "$@";;
+    :*)
+        exec "$GP" "$@";;
+esac
+shift
+exec "$GP" $COMMAND "$@"

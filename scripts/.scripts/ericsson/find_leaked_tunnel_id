@@ -1,0 +1,27 @@
+#!/usr/bin/zsh
+
+start=$1
+end=$2
+ip=$3
+filename=$4
+print=$5
+
+for i in $(seq $start $end); do
+    if [ -n "$print" ]
+    then
+        echo "$i" >> $filename;
+        rg "L2TP_IDGEN_FREE|L2TP_IDGEN_ALLOCATED" loggd_persistent.log | rg "$ip" | grep "/$i\$" >> $filename;
+    fi
+
+    num_lines=$(rg "L2TP_IDGEN_FREE|L2TP_IDGEN_ALLOCATED" loggd_persistent.log | rg "$ip" | grep "/$i\$" | wc -l);
+    even=$(bc <<< "$num_lines % 2");
+    if [ $even -eq 1 ]
+    then
+        echo "Tunnel ID $i has leaked!";
+    fi
+
+    if [ -n "$print" ]
+    then
+        echo "***" >> $filename;
+    fi
+done
