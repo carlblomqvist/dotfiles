@@ -1,3 +1,8 @@
 #!/usr/bin/env sh
-time=$(acpi | cut -d' ' -f 5 | cut -d':' -f 1,2)
+status=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | sed '12q;d' | cut -d' ' -f 20)
+if [ "$status" = "charging" ]; then
+	time=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | sed '20q;d' | cut -d' ' -f 15-16)
+else
+	time=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | sed '20q;d' | cut -d' ' -f 14-16)
+fi
 echo "(""$time"")"

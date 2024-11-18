@@ -5,9 +5,9 @@ cc ~/courses
 cf ~/.config
 ck ~/courses/datx02_kandidatarbete/Kandidatarbete-NES-Emulator
 dc ~/dev/c
-dd ~/dotfiles
+dD ~/dotfiles
 de ~/dev/elm
-do ~/Documents
+dO ~/Documents
 dp ~/dev/python
 di ~/courses/eda322_digital_design/EDA322-Labs
 dsl ~/courses/dat326

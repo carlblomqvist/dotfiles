@@ -42,8 +42,8 @@
        :n "C-h" 'evil-window-left
        :n "C-j" 'evil-window-down
        :n "C-k" 'evil-window-up
-       :n "C-l" 'evil-window-right
-       )
+       :n "C-l" 'evil-window-right)
+       
 
       (:map gud-mode-map
        :ni "C-h" 'evil-window-left
@@ -62,9 +62,9 @@
        (:prefix "m"
         :desc "Find definition" "g" #'lsp-find-definition
         (:prefix "t"
-         :desc "Toggle symbol highlighting" "h" #'lsp-toggle-symbol-highlight)
-        )
-       )
+         :desc "Toggle symbol highlighting" "h" #'lsp-toggle-symbol-highlight)))
+        
+       
 
       (:map evil-treemacs-state-map
        ;; "K"   'neotree-select-up-node
@@ -77,8 +77,8 @@
        "C-l" 'evil-window-right
        :leader
        (:prefix "o"
-        :desc "Toggle Treemacs"  "o" #'treemacs)
-       )
+        :desc "Toggle Treemacs"  "o" #'treemacs))
+       
 
       :leader
       :desc "Toggle last popup"                 "§" #'+popup/toggle
@@ -88,7 +88,7 @@
        :desc "Home Buffer"                     "h" #'+doom-dashboard/open)
       (:prefix "c"
        :desc "Comment line/region"             "l" #'evilnc-comment-or-uncomment-lines
-       :desc "Spell-correct word at point"     "s" #'flyspell-correct-at-point
+       :desc "Spell-correct word at point"     "s" #'flyspell-correct-at-point)
        ;; (:prefix ("a" . "alignment")
        ;;   :desc "Align single equals"           "=" #'+my-align-single-equals)
        )

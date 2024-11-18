@@ -2,5 +2,7 @@
 
 scrot -o /tmp/lockscreen.png
 #convert /tmp/lockscreen.png -blur 0x8 lockscreen_blur.png
-convert /tmp/lockscreen.png -paint 8 /tmp/lockscreen_blur.png
+convert /tmp/lockscreen.png -paint 8 -write /tmp/lockscreen_blur.png
+killall -SIGUSR1 dunst # pause notifications
 i3lock -i /tmp/lockscreen_blur.png
+killall -SIGUSR2 dunst # pause notifications

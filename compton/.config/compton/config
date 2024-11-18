@@ -1,5 +1,4 @@
 backend = "glx";
-glx-no-stencil = true;
 glx-copy-from-front = false;
 glx-swap-method = 1;
 glx-norebind-pixmap = true;
@@ -7,29 +6,43 @@ glx-norebind-pixmap = true;
 # blur-kern = "7x7box";
 # vsync = "opengl";
 
+experimental-backends = false;
 
 ###################
 ## Fräcka forken ##
 ###################
 blur: {
-  method = "kawase";
+  method = "dual_kawase";
   strength = 10;
   background = false;
   background-frame = false;
   background-fixed = false;
 }
-experimental-backends = true;
-corner-radius = 0.0;
+
+blur-background-exclude = [
+ "name = 'gnome-screenshot'",
+ "class_g = 'Polybar'",
+ "class_g ?= 'gnome-screenshot'"
+];
+
+#corner-radius = 35.0;
 rounded-corners-exclude = [
   #"window_type = 'normal'",
+  "class_g = 'awesome'",
   "class_g = 'URxvt'",
   "class_g = 'XTerm'",
+  # "class_g = 'kitty'",
+  "class_g = 'Alacritty'",
   "class_g = 'Polybar'",
-  "class_g = 'code-oss'",
+  "class_g ?= 'i3-frame'",
+  "class_g ?= 'polybar'",
+  #"class_g = 'Emacs'",
+  # "class_g = 'firefox'",
+  "class_g = 'Thunderbird'"
+];
+round-borders = 1;
+round-borders-exclude = [
   #"class_g = 'TelegramDesktop'",
-  "class_g = 'firefox'",
-  "class_g = 'Emacs'",
-  "class_g = 'Thunderbird'",
 ];
 
 # DEPRECATED OPTIONS
@@ -39,10 +52,10 @@ rounded-corners-exclude = [
 #
 # Shadow
 shadow = true;          # Enabled client-side shadows on windows.
-shadow-radius = 35;     # The blur radius for shadows. (default 12)
-shadow-offset-x = -5;    # The left offset for shadows. (default -15)
-shadow-offset-y = -5;    # The top offset for shadows. (default -15)
-shadow-opacity = 0.50;
+shadow-radius = 30;     # The blur radius for shadows. (default 12)
+shadow-offset-x = -10;    # The left offset for shadows. (default -15)
+shadow-offset-y = -10;    # The top offset for shadows. (default -15)
+shadow-opacity = 0.40;
 shadow-exclude = [
  #"! name~=''",
  # "n:e:Notification",
@@ -65,11 +78,6 @@ shadow-exclude = [
  #"class_g ?= 'Cairo-dock'",
  #"class_g ?= 'Xfce4-notifyd'",
  #"class_g ?= 'Xfce4-power-manager'"
-];
-
-blur-background-exclude = [
- "name = 'gnome-screenshot'",
- "class_g ?= 'gnome-screenshot'"
 ];
 
 opacity-rule = [

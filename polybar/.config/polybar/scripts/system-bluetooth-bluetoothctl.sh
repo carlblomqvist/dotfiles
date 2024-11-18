@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 
 bluetooth_print() {
     bluetoothctl | while read -r; do
-        # if [ "$(systemctl is-active "bluetooth.service")" = "active" ]; then
+        #if [ "$(systemctl is-active "bluetooth.service")" = "active" ]; then
         if bluetoothctl show | grep -q "Powered: yes"; then
             printf '%%{F#039be5}%%{F-}'
 
@@ -22,9 +22,9 @@ bluetooth_print() {
                     fi
 
                     counter=$((counter + 1))
+                    printf '\n'
                 fi
 
-                printf '\n'
             done
         else
             echo ""
@@ -35,10 +35,12 @@ bluetooth_print() {
 bluetooth_toggle() {
     if bluetoothctl show | grep -q "Powered: no"; then
         bluetoothctl power on >> /dev/null
+        #echo '%%{F#039be5}%%{F-}'
         sleep 1
 
         devices_paired=$(bluetoothctl paired-devices | grep Device | cut -d ' ' -f 2)
         echo "$devices_paired" | while read -r line; do
+            #echo '%%{F#039be5}%%{F-} Connecting too "$line"'
             bluetoothctl connect "$line" >> /dev/null
         done
     else
