@@ -27,7 +27,27 @@ export SHELL=/home/eaclobr/.linuxbrew/bin/zsh
 
 export VISUAL="vim"
 export EDITOR="vim"
+
+# antigen
+source ~/antigen.zsh
+
+antigen bundle zdharma/fast-syntax-highlighting@main
+antigen bundle marlonrichert/zsh-autocomplete@main
+antigen bundle unixorn/fzf-zsh-plugin@main
+
+antigen theme romkatv/powerlevel10k
+
+antigen apply
+
+export VISUAL="nvim"
+export EDITOR="nvim"
 #alias e="emacsclient -c --socket-name doom"
+
+# nohup
+# function nohup()
+# {
+#     nohup "$1" >/dev/null 2>&1 &
+# }
 
 # emacs or emacsclient to use
 function _emacsfun
@@ -95,7 +115,7 @@ function vicd()
 # source ~/git/geometry/geometry.zsh
 
 # powerlevel10k
-source ~/git/powerlevel10k/powerlevel10k.zsh-theme
+#source ~/git/powerlevel10k/powerlevel10k.zsh-theme
 
 # use vi-mode
 bindkey -v
@@ -110,7 +130,7 @@ source ~/.zsh/fzf
 
 # Auto completion
 source ~/git/z/z.sh
-source ~/git/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+#source ~/git/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 autoload -Uz compinit
 compinit -i
 setopt COMPLETE_ALIASES
@@ -219,6 +239,12 @@ alias gf="git fetch"
 alias gri="git rebase -i"
 alias grc="git rebase --continue"
 alias gra="git rebase --abort"
+# ericsson
+alias esshfs_old="sshfs -o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3 -o Ciphers=aes128-cbc eaclobr@eselnts1487.mo.sw.ericsson.se:/repo/eaclobr/epg/up ~/mnt/epg"
+alias esshfs="sshfs -o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3 -o Ciphers=aes128-cbc eaclobr@seroiuts01606.sero.gic.ericsson.se:/repo/eaclobr/epg/up ~/mnt/epg"
+alias essh_old="ssh eaclobr@eselnts1487.mo.sw.ericsson.se"
+alias essh="ssh eaclobr@seroiuts01606.sero.gic.ericsson.se"
+alias sshemacs="ssh -XC eaclobr@seroiuts01606.sero.gic.ericsson.se -f emacs"
 
 # import automatically generated aliases for shortcuts
 source ~/.shortcuts
@@ -305,3 +331,4 @@ fi
 
 # Uncomment this + the first line to debug ZSH
 # zprof
+
