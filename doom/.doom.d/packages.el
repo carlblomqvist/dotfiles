@@ -62,7 +62,9 @@
 ;; (package! lsp-treemacs)
 (package! company-box)
 (package! clang-format+)
-(package! lsp-treemacs)
+;;(package! lsp-treemacs)
+(package! lsp-ui :disable t)
+(package! lsp-lens :disable t)
 ;(package! ccls)
 ;; (use-package gdb-mi
 ;;   :straight (:host github :repo "weirdNox/emacs-gdb" :files ("*.el" "*.c" "*.h" "Makefile"))

@@ -304,6 +304,10 @@
 ;;     :library-folders-fn nil)))
 
 (setq lsp-enable-file-watchers 'nil)
+(setq read-process-output-max (* 1024 1024)) ;; 1mb
+(setq lsp-idle-delay 0.500)
+(setq lsp-log-io nil)
+(setq lsp-lens-enable nil)
 
 ;; (use-package! company-lsp :commands company-lsp)
 ;; (use-package! lsp-ivy :commands lsp-ivy-workspace-symbol)
