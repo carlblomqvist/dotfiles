@@ -16,98 +16,47 @@ fi
 
 source ~/.zprofile
 
-# Match VALGRIND_OPTS with that of Jenkins
-export VALGRIND_OPTS="--tool=memcheck --leak-check=full --leak-resolution=high --num-callers=20 --keep-debuginfo=yes --error-exitcode=99 --suppressions=/workspace/git/eaclobr/epg/tools/test/valgrind.supp"
+# Secrets
+source ~/.secrets
 
 # RHEL systemd-fix?
 #export XDG_RUNTIME_DIR=/run/user/$(id -u)
 
 # This is requred or gdb wont work
-export SHELL=/home/eaclobr/.linuxbrew/bin/zsh
-
-export VISUAL="vim"
-export EDITOR="vim"
-
-# antigen
-source ~/antigen.zsh
-
-antigen bundle zdharma/fast-syntax-highlighting@main
-antigen bundle marlonrichert/zsh-autocomplete@main
-antigen bundle unixorn/fzf-zsh-plugin@main
-
-antigen theme romkatv/powerlevel10k
-
-antigen apply
+export SHELL="$(which zsh)"
 
 export VISUAL="nvim"
 export EDITOR="nvim"
+alias vim=nvim
 #alias e="emacsclient -c --socket-name doom"
 
-# nohup
-# function nohup()
-# {
-#     nohup "$1" >/dev/null 2>&1 &
-# }
+# Go
+export GOPATH="$HOME/.go"
+export PATH="$PATH:$GOPATH/bin"
 
-# emacs or emacsclient to use
-function _emacsfun
+twf-widget() {
+  local selected=$(twf --height=0.5)
+  BUFFER="$BUFFER$selected"
+  zle reset-prompt
+  zle end-of-line
+  return $ret
+}
+zle -N twf-widget
+bindkey '^F' twf-widget
+
+# list authors of code
+function git-authors()
 {
-    # Replace with `emacs` to not run as server/client
-    emacsclient -c --socket-name doom $@
+    git ls-files $@ -z | xargs -0n1 git blame -w | ruby -n -e '$_ =~ /^.*\((.*?)\s[\d]{4}/; puts $1.strip' | sort -f | uniq -c | sort -n
 }
 
-# An emacs 'alias' with the ability to read from stdin
-function em
-{
-    # If the argument is - then write stdin to a tempfile and open the
-    # tempfile.
-    if [[ $1 == - ]]; then
-        tempfile=$(mktemp emacs-stdin-$USER.XXXXXXX --tmpdir)
-        cat - > $tempfile
-        _emacsfun -e "(progn (find-file \"$tempfile\")
-                             (set-visited-file-name nil)
-                             (rename-buffer \"*stdin*\" t))
-                 " 2>&1 > /dev/null
-    else
-        _emacsfun "$@"
-    fi
-}
 
-# lf change-dir and remove mounted archives
-lfcd () {
-    tmp="$(mktemp)"
-    fid="$(mktemp)"
-    lf -command '$printf $id > '"$fid"'' -last-dir-path="$tmp" "$@"
-    id="$(cat "$fid")"
-    archivemount_dir="/tmp/__lf_archivemount_$id"
-    if [ -f "$archivemount_dir" ]; then
-        cat "$archivemount_dir" | \
-            while read -r line; do
-                sudo umount "$line"
-                rmdir "$line"
-            done
-        rm -f "$archivemount_dir"
-    fi
-    if [ -f "$tmp" ]; then
-        dir="$(cat "$tmp")"
-        rm -f "$tmp"
-        if [ -d "$dir" ]; then
-            if [ "$dir" != "$(pwd)" ]; then
-                cd "$dir"
-            fi
-        fi
-    fi
-}
-
-# vifm change-dir
-function vicd()
+# run pcg testsuite
+function run-pcg-testsuite()
 {
-    local dst="$(command vifmrun --choose-dir - "$@")"
-    if [ -z "$dst" ]; then
-        echo 'Directory picking cancelled/failed'
-        return 1
-    fi
-    cd "$dst"
+    docker run --rm -it --init --user $(id -u):$(id -g) --cap-add=SYS_PTRACE --security-opt \
+    seccomp=unconfined --volume ${PWD}:${PWD} --workdir ${PWD} \
+    $(grep cpp-builder: up/ruleset/images.yaml | awk '{print $3}') up/build-clang/bin/$1
 }
 
 # geometry
@@ -128,9 +77,14 @@ bindkey -v
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source ~/.zsh/fzf
 
-# Auto completion
+# z - improved cd
 source ~/git/z/z.sh
-#source ~/git/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+
+# Auto completion
+source ~/git/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
+fpath=(~/.zsh $fpath)
+CASE_SENSITIVE="true"
 autoload -Uz compinit
 compinit -i
 setopt COMPLETE_ALIASES
@@ -207,10 +161,14 @@ export LC_CTYPE="en_US.UTF-8"
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
+function tldr()
+{
+    curl -s "cheat.sh/$1" | sed '/tldr:/,$!d'
+}
+
 # Aliases
-alias bbb="make -C 3pp CONFIG=Linux_x86_64 TARGET=clean flatcc; make -C 3pp CONFIG=Linux_x86_64 V=0 flatcc; make -C 3pp CONFIG=Linux_x86_64 TARGET=clean flatcc; make -C 3pp CONFIG=Linux_x86_64 V=0 flatcc; build -c lin up-lep-ct"
+#alias bbb="make -C 3pp CONFIG=Linux_x86_64 TARGET=clean flatcc; make -C 3pp CONFIG=Linux_x86_64 V=0 flatcc; make -C 3pp CONFIG=Linux_x86_64 TARGET=clean flatcc; make -C 3pp CONFIG=Linux_x86_64 V=0 flatcc; build -c lin up-lep-ct"
 alias ranger="source ranger"
-alias sb="eval $(/home/eaclobr/.linuxbrew/bin/brew shellenv)"
 alias grep=rg
 alias ls="exa"
 alias la="exa -la"
@@ -221,36 +179,40 @@ alias make="make -j72"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
-alias a="cd epg; sw"
+alias a="cd epg; sw -d"
+alias athesis="cd epg; sw -d"
 
 # Git
+alias gd="git diff"
 alias gs="git status" # conflicts Ghostscript
 alias gc="git commit" # conflicts graphviz
+alias gca="git commit --amend"
+alias gcan="git commit --amend --no-edit"
 alias ga="git add"
 alias gau="git add -u"
-alias gca="git commit --amend"
-alias gr="git rebase"
-alias gro="git rebase origin/master"
+alias gaup="git add -u up"
 alias gp="git push origin HEAD:refs/for/master"
 alias gpd="git push origin HEAD:refs/for/master%draft"
-alias gpdekka="git push origin HEAD:refs/for/master%r=johan.kopman@ericsson.com,r=adi.hrustic@ericsson.com,r=jeya.shanmughan.sankarakumar@ericsson.com,r=lina.blomkvist@ericsson.com,r=mattias.eliasson@ericsson.com,r=simon.hagglund@ericsson.com"
 alias gl="git log"
+alias glo="git log origin/master"
 alias gf="git fetch"
+alias gr="git rebase"
+alias gro="git rebase origin/master"
+alias grio="git rebase -i origin/master"
 alias gri="git rebase -i"
 alias grc="git rebase --continue"
 alias gra="git rebase --abort"
-# ericsson
-alias esshfs_old="sshfs -o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3 -o Ciphers=aes128-cbc eaclobr@eselnts1487.mo.sw.ericsson.se:/repo/eaclobr/epg/up ~/mnt/epg"
-alias esshfs="sshfs -o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3 -o Ciphers=aes128-cbc eaclobr@seroiuts01606.sero.gic.ericsson.se:/repo/eaclobr/epg/up ~/mnt/epg"
-alias essh_old="ssh eaclobr@eselnts1487.mo.sw.ericsson.se"
-alias essh="ssh eaclobr@seroiuts01606.sero.gic.ericsson.se"
-alias sshemacs="ssh -XC eaclobr@seroiuts01606.sero.gic.ericsson.se -f emacs"
+alias gall="gau && gcan && gf && gro && gp"
+
+# Bob
+alias bub="bob/bob init && bob/bob pull:staging && bob/bob upbra.pull && bob/bob generate && bob/bob build -p cpp-target=replicator && bob/bob image:prepare && bob/bob kvdb-rd-replicator.image && bob/bob protest.image && bob/bob protest.run"
+alias bubb="bob/bob build -p cpp-target=replicator && bob/bob image:prepare && bob/bob kvdb-rd-replicator.image && bob/bob protest.image && bob/bob protest.run"
+
+# docker
+alias dr="builder_image_and_tag=`grep cpp-builder: ~/epg/up/ruleset/images.yaml | awk '{print $3}'`; docker run -e ASAN_OPTIONS=detect_odr_violation=0 --rm -it --init --user $(id -u):$(id -g) --cap-add=SYS_PTRACE --security-opt seccomp=unconfined --volume ${PWD}:${PWD} --workdir ${PWD} ${builder_image_and_tag}"
 
 # import automatically generated aliases for shortcuts
 source ~/.shortcuts
-
-# import secrets
-#source ~/.secrets/.secrets
 
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
