@@ -33,6 +33,151 @@ return require('packer').startup({function(use)
         end
     }
 
+    use {'awslabs/amazonq.nvim',
+        disabled = true,
+        config = function()
+            require('amazonq').setup({
+              ssoStartUrl = 'https://d-9367077c28.awsapps.com/start',
+              ssoRegion = "eu-west-1",
+              inline_suggest = false,
+            })
+        end
+    }
+
+    use { 'esmuellert/codediff.nvim',
+        requires = {"unifTanjim/nui.nvim"},
+        cmd = "CodeDiff",
+        config = function()
+            require("codediff").setup({
+              -- Highlight configuration
+              highlights = {
+                -- Line-level: accepts highlight group names or hex colors (e.g., "#2ea043")
+                line_insert = "DiffAdd",      -- Line-level insertions
+                line_delete = "DiffDelete",   -- Line-level deletions
+
+                -- Character-level: accepts highlight group names or hex colors
+                -- If specified, these override char_brightness calculation
+                char_insert = nil,            -- Character-level insertions (nil = auto-derive)
+                char_delete = nil,            -- Character-level deletions (nil = auto-derive)
+
+                -- Brightness multiplier (only used when char_insert/char_delete are nil)
+                -- nil = auto-detect based on background (1.4 for dark, 0.92 for light)
+                char_brightness = nil,        -- Auto-adjust based on your colorscheme
+
+                -- Conflict sign highlights (for merge conflict views)
+                -- Accepts highlight group names or hex colors (e.g., "#f0883e")
+                -- nil = use default fallback chain
+                conflict_sign = nil,          -- Unresolved: DiagnosticSignWarn -> #f0883e
+                conflict_sign_resolved = nil, -- Resolved: Comment -> #6e7681
+                conflict_sign_accepted = nil, -- Accepted: GitSignsAdd -> DiagnosticSignOk -> #3fb950
+                conflict_sign_rejected = nil, -- Rejected: GitSignsDelete -> DiagnosticSignError -> #f85149
+              },
+
+              -- Diff view behavior
+              diff = {
+                disable_inlay_hints = true,         -- Disable inlay hints in diff windows for cleaner view
+                max_computation_time_ms = 5000,     -- Maximum time for diff computation (VSCode default)
+                hide_merge_artifacts = false,       -- Hide merge tool temp files (*.orig, *.BACKUP.*, *.BASE.*, *.LOCAL.*, *.REMOTE.*)
+              },
+
+              -- Explorer panel configuration
+              explorer = {
+                position = "left",  -- "left" or "bottom"
+                width = 40,         -- Width when position is "left" (columns)
+                height = 15,        -- Height when position is "bottom" (lines)
+                indent_markers = true,  -- Show indent markers in tree view (│, ├, └)
+                icons = {
+                  folder_closed = "",  -- Nerd Font folder icon (customize as needed)
+                  folder_open = "",    -- Nerd Font folder-open icon
+                },
+                view_mode = "list",    -- "list" or "tree"
+                file_filter = {
+                  ignore = {},  -- Glob patterns to hide (e.g., {"*.lock", "dist/*"})
+                },
+              },
+
+              -- Keymaps in diff view
+              keymaps = {
+                view = {
+                  quit = "q",                    -- Close diff tab
+                  toggle_explorer = "<leader>b",  -- Toggle explorer visibility (explorer mode only)
+                  next_hunk = "]c",   -- Jump to next change
+                  prev_hunk = "[c",   -- Jump to previous change
+                  next_file = "]f",   -- Next file in explorer mode
+                  prev_file = "[f",   -- Previous file in explorer mode
+                  diff_get = "do",    -- Get change from other buffer (like vimdiff)
+                  diff_put = "dp",    -- Put change to other buffer (like vimdiff)
+                },
+                explorer = {
+                  select = "<CR>",    -- Open diff for selected file
+                  hover = "K",        -- Show file diff preview
+                  refresh = "R",      -- Refresh git status
+                  toggle_view_mode = "i",  -- Toggle between 'list' and 'tree' views
+                },
+                conflict = {
+                  accept_incoming = "<leader>ct",  -- Accept incoming (theirs/left) change
+                  accept_current = "<leader>co",   -- Accept current (ours/right) change
+                  accept_both = "<leader>cb",      -- Accept both changes (incoming first)
+                  discard = "<leader>cx",          -- Discard both, keep base
+                  next_conflict = "]x",            -- Jump to next conflict
+                  prev_conflict = "[x",            -- Jump to previous conflict
+                  diffget_incoming = "2do",        -- Get hunk from incoming (left/theirs) buffer
+                  diffget_current = "3do",         -- Get hunk from current (right/ours) buffer
+                },
+              },
+            })
+        end,
+    }
+
+    use { 'mfussenegger/nvim-dap',
+    }
+
+    use { "rcarriga/nvim-dap-ui",
+        requires = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"},
+        config = function()
+            require("dapui").setup()
+        end
+    }
+
+    use { 'theHamsta/nvim-dap-virtual-text',
+        config = function()
+            require("nvim-dap-virtual-text").setup {
+                enabled = true,                        -- enable this plugin (the default)
+                enabled_commands = true,               -- create commands DapVirtualTextEnable, DapVirtualTextDisable, DapVirtualTextToggle, (DapVirtualTextForceRefresh for refreshing when debug adapter did not notify its termination)
+                highlight_changed_variables = true,    -- highlight changed values with NvimDapVirtualTextChanged, else always NvimDapVirtualText
+                highlight_new_as_changed = false,      -- highlight new variables in the same way as changed variables (if highlight_changed_variables)
+                show_stop_reason = true,               -- show stop reason when stopped for exceptions
+                commented = false,                     -- prefix virtual text with comment string
+                only_first_definition = true,          -- only show virtual text at first definition (if there are multiple)
+                all_references = false,                -- show virtual text on all all references of the variable (not only definitions)
+                clear_on_continue = false,             -- clear virtual text on "continue" (might cause flickering when stepping)
+                --- A callback that determines how a variable is displayed or whether it should be omitted
+                --- @param variable Variable https://microsoft.github.io/debug-adapter-protocol/specification#Types_Variable
+                --- @param buf number
+                --- @param stackframe dap.StackFrame https://microsoft.github.io/debug-adapter-protocol/specification#Types_StackFrame
+                --- @param node userdata tree-sitter node identified as variable definition of reference (see `:h tsnode`)
+                --- @param options nvim_dap_virtual_text_options Current options for nvim-dap-virtual-text
+                --- @return string|nil A text how the virtual text should be displayed or nil, if this variable shouldn't be displayed
+                display_callback = function(variable, buf, stackframe, node, options)
+                    if options.virt_text_pos == 'inline' then
+                        return ' = ' .. variable.value
+                    else
+                        return variable.name .. ' = ' .. variable.value
+                    end
+                end,
+                -- position of virtual text, see `:h nvim_buf_set_extmark()`, default tries to inline the virtual text. Use 'eol' to set to end of line
+                virt_text_pos = vim.fn.has 'nvim-0.10' == 1 and 'inline' or 'eol',
+
+                -- experimental features:
+                all_frames = false,                    -- show virtual text for all stack frames not only current. Only works for debugpy on my machine.
+                virt_lines = false,                    -- show virtual lines instead of virtual text (will flicker!)
+                virt_text_win_col = nil                -- position the virtual text at a fixed window column (starting from the first text column) ,
+                -- e.g. 80 to position at column 80, see `:h nvim_buf_set_extmark()`
+            }
+
+        end
+    }
+
     -- Code formatting
     use { 'mhartington/formatter.nvim',
         config = function()
@@ -82,6 +227,58 @@ return require('packer').startup({function(use)
                     }
                 },
             }
+        end
+    }
+
+    use {"smartpde/neoscopes",
+        requires = { 'nvim-telescope/telescope.nvim' },
+        config = function()
+            require("neoscopes").setup({
+                scopes = {
+                    {
+                        name = "epg",
+                        dirs = {
+                            "/workspace/git/eaclobr/epg",
+                        },
+                        on_select = function()
+                            -- Change the current dir in neovim.
+                            -- Run `git pull`, etc.
+                        end
+                    },
+                    {
+                        name = "common",
+                        dirs = {
+                            "up/common",
+                        }
+                    },
+                    {
+                        name = "3pp",
+                        dirs = {
+                            "3pp",
+                        },
+                    },
+                    {
+                        name = "dp",
+                        dirs = {
+                            "up/dp",
+                        },
+                    },
+                    {
+                        name = "lep",
+                        dirs = {
+                            "up/lep",
+                        }
+                    },
+                }
+            })
+        end
+    }
+
+    -- Markdown renderer --
+    use { "lukas-reineke/headlines.nvim",
+        after = "nvim-treesitter",
+        config = function()
+            require("headlines").setup()
         end
     }
 
@@ -180,6 +377,7 @@ return require('packer').startup({function(use)
 
     -- Progress bar/information in bottom right corner for LSP
     use { 'j-hui/fidget.nvim',
+        disable = true,
         tag = 'legacy',
         config = function()
             require('fidget').setup()
@@ -188,6 +386,7 @@ return require('packer').startup({function(use)
 
     -- Session Management -- TODO: setup properly
     use { 'Shatur/neovim-session-manager', require = 'nvim-lua/plenary.nvim',
+        disable = true,
         config = function()
             local Path = require('plenary.path')
             require('session_manager').setup({
@@ -238,14 +437,6 @@ return require('packer').startup({function(use)
             alpha.setup(dashboard.config)
         end
     }
-
-    -- Buffers per tab FIXME: replaced by mini.tabline
-    -- use { "tiagovla/scope.nvim",
-        -- config = function()
-            -- require'scope'.setup()
-        -- end
-    -- }
-
 
     -- Focus ("zoom") window
     use { 'nyngwang/NeoZoom.lua',
@@ -336,7 +527,8 @@ return require('packer').startup({function(use)
                 },
                 -- function which modifies the text inside string in the print statement, by default it adds the path and line number
                 add_to_inside = function(text)
-                    return string.format("%s", text)
+                    return text
+                    -- return string.format("%s", text)
                 end,
                 -- set to to indenity function to turn off the default behaviour
                 -- add_to_inside = function(text)
@@ -435,6 +627,26 @@ return require('packer').startup({function(use)
         end
 	}
 
+    -- AI
+    use { 'olimorris/codecompanion.nvim',
+        requires = "kyazdani42/nvim-web-devicons",
+        config = function()
+            require("codecompanion").setup({
+              opts = {
+                log_level = "DEBUG", -- or "TRACE"
+              },
+              adapters = {
+                http = {
+                  opts = {
+                    allow_insecure = true,
+                    proxy = "http://127.0.0.1:7999",
+                  },
+                },
+              },
+            })
+        end
+    }
+
     -- Fuzzy file/buffer navigation
     use { 'ctrlpvim/ctrlp.vim',
         config = function()
@@ -482,6 +694,7 @@ return require('packer').startup({function(use)
 
     -- Additions to junegunn/fzf
     use { "linrongbin16/fzfx.nvim",
+        disable = true,
         config = function()
             require("fzfx").setup()
         end
@@ -505,12 +718,12 @@ return require('packer').startup({function(use)
         config = function()
             require('nvim-treesitter.configs').setup {
                 ensure_installed = { "c", "cpp", "lua", "bash", "cmake", "comment", "dockerfile", "haskell",
-                                     "json", "make", "markdown", "markdown_inline", "nix", "org", "python",
+                                     "json", "make", "markdown", "markdown_inline", "nix", "python",
                                      "rust", "yaml", "yang", "zig" },
                 ignore_install = { "javascript" }, -- List of parsers to ignore installing
                 highlight = {
                     enable = true,              -- false will disable the whole extension
-                    disable = { "rust", "zig", "haskell" },  -- list of language that will be disabled
+                    disable = { "zig", "haskell" },  -- list of language that will be disabled
                     additional_vim_regex_highlighting = false --{'org'},
                 },
                 matchup = {
@@ -535,8 +748,9 @@ return require('packer').startup({function(use)
     -- }
 
     -- Better jumping between matching pairs with %
-    use {'andymass/vim-matchup', event = 'VimEnter',
+    use {'andymass/vim-matchup',
         config = function()
+            vim.g.matchup_matchparen_offscreen = { method = "popup" }
         end}
 
     -- Fancy floating buffer/file navigation with preview
@@ -670,6 +884,7 @@ return require('packer').startup({function(use)
 
     -- Project management TODO: replace with mini.session?
     use { 'ahmedkhalf/project.nvim',
+        disable = true;
         config = function()
             require("project_nvim").setup {
                 detection_methods = { ">sources", ">up", "lsp", "pattern" },
@@ -712,14 +927,13 @@ return require('packer').startup({function(use)
     }
 
     -- Emacs org-mode in neovim
-    use {'nvim-orgmode/orgmode',
+    use {'nvim-orgmode/orgmode', disable = true,
         require = 'nvim-treesitter/nvim-treesitter',
         config = function()
             require('orgmode').setup({
                 org_agenda_files = {'~/org/*'},
                 org_default_notes_file = '~/org/todo.org',
             })
-            require('orgmode').setup_ts_grammar()
         end
 
     }
@@ -729,21 +943,21 @@ return require('packer').startup({function(use)
         config = function()
             -- require("mini.ai").setup({}) 	      -- Extend and create a/i textobjects
             require("mini.align").setup({})       -- Align text interactively
-            local animate = require('mini.animate')  -- Animate common Neovim actions
-            animate.setup({
-                scroll = {
+            -- local animate = require('mini.animate')  -- Animate common Neovim actions
+            -- animate.setup({
+                -- scroll = {
                   -- Animate for 200 milliseconds with linear easing
-                  timing = animate.gen_timing.linear({ duration = 100, unit = 'total' }),
+                  -- timing = animate.gen_timing.linear({ duration = 100, unit = 'total' }),
                   -- Animate equally but with at most 120 steps instead of default 60
-                  subscroll = animate.gen_subscroll.equal({ max_output_steps = 50 }),
-                },
-                cursor = {
+                  -- subscroll = animate.gen_subscroll.equal({ max_output_steps = 50 }),
+                -- },
+                -- cursor = {
                   -- Animate for 200 milliseconds with linear easing
-                  timing = animate.gen_timing.linear({ duration = 100, unit = 'total' }),
+                  -- timing = animate.gen_timing.linear({ duration = 100, unit = 'total' }),
                   -- Animate equally but with at most 120 steps instead of default 60
-                  subscroll = animate.gen_subscroll.equal({ max_output_steps = 50 }),
-                },
-            })
+                  -- subscroll = animate.gen_subscroll.equal({ max_output_steps = 50 }),
+                -- },
+            -- })
             -- require("mini.base16").setup({})      -- Base16 colorscheme creation
             -- require("mini.basics").setup({})      -- Common configuration presets
             -- require("mini.bracketed").setup({})   -- Go forward/backward with square brackets
@@ -773,18 +987,49 @@ return require('packer').startup({function(use)
             local indentscope = require("mini.indentscope") -- Visualize and work with indent scope
             indentscope.setup({
                 draw = {
+                    delay = 100,
+                    priority = 2,
+                    -- animation = function(s, n)
+                    --     return s/n*200
+                    -- end,
                     animation = indentscope.gen_animation.linear{ duration = 100, unit = 'total' }
                 }
             })
             -- require("mini.jump").setup({})        -- Jump to next/previous single character
             -- require("mini.jump2d").setup({})      -- Jump within visible lines
+            require("mini.notify").setup()         -- Window with buffer text overview
             -- require("mini.map").setup({})         -- Window with buffer text overview
             -- require("mini.misc").setup({})        -- Miscellaneous functions
             require("mini.move").setup({})        -- Move any selection in any direction
             require("mini.operators").setup({})   -- Text edit operators
             -- require("mini.pairs").setup({})       -- Autopairs TODO: replace current with this
             -- require("mini.pick").setup({})        -- Pick anything
-            -- require("mini.sessions").setup({})    -- Session management TODO: maybe replace current?
+            require("mini.sessions").setup({         -- Session management TODO: some config
+                -- Whether to read latest session if Neovim opened without file arguments
+                autoread = true,
+                -- Whether to write current session before quitting Neovim
+                autowrite = true,
+                -- Directory where global sessions are stored (use `''` to disable)
+                directory = '',  --<"session" subdir of user data directory from |stdpath()|>,
+
+                -- File for local session (use `''` to disable)
+                file = 'Session.vim',
+
+                -- Whether to force possibly harmful actions (meaning depends on function)
+                force = { read = false, write = true, delete = false },
+
+                -- Hook functions for actions. Default `nil` means 'do nothing'.
+                hooks = {
+                    -- Before successful action
+                    pre = { read = nil, write = nil, delete = nil },
+                    -- After successful action
+                    post = { read = nil, write = nil, delete = nil },
+                },
+
+                -- Whether to print session path after action
+                verbose = { read = false, write = true, delete = true },
+            })
+            vim.notify = require('mini.notify').make_notify() -- Make nvim.notify the default notifier
             require("mini.splitjoin").setup({})   -- Split and join arguments
             -- require("mini.starter").setup({})     -- Start screen
             -- require("mini.statusline").setup({})  -- Statusline
@@ -797,7 +1042,14 @@ return require('packer').startup({function(use)
 
 
     -- *** [[LSP stuff]] *** --
-    use 'tjdevries/nlua.nvim'      -- config in lsp/init.lua
+    -- use 'tjdevries/nlua.nvim'      -- config in lsp/init.lua
+    use { "folke/neodev.nvim",
+        config = function()
+            require("neodev").setup({
+                -- add any options here, or leave empty to use the default settings
+            })
+        end
+    }
     use { 'neovim/nvim-lspconfig', -- config in lsp/init.lua
         config = function()
             -- config in lsp/init.lua
@@ -832,7 +1084,7 @@ return require('packer').startup({function(use)
     use ({ "SmiteshP/nvim-navbuddy",
         config = function()
             require("nvim-navbuddy").setup({
-                lsp = { auto_attach = true }
+                lsp = { auto_attach = false }
             })
         end,
         requires = {
@@ -865,12 +1117,12 @@ return require('packer').startup({function(use)
                 }),
                 sources = cmp.config.sources({
                   { name = 'nvim_lsp' },
+                  -- { name = 'codeium' },
+                  { name = 'buffer' },
                   -- { name = 'vsnip' }, -- For vsnip users.
                   -- { name = 'luasnip' }, -- For luasnip users.
                   -- { name = 'ultisnips' }, -- For ultisnips users.
                   -- { name = 'snippy' }, -- For snippy users.
-                }, {
-                  { name = 'buffer' },
                 })
             })
 
@@ -921,6 +1173,23 @@ return require('packer').startup({function(use)
           end
     }
 
+    use { "alexghergh/nvim-tmux-navigation",
+        config = function()
+            local nvim_tmux_nav = require('nvim-tmux-navigation')
+
+            nvim_tmux_nav.setup {
+                disable_when_zoomed = true -- defaults to false
+            }
+
+            vim.keymap.set('n', "<C-h>", nvim_tmux_nav.NvimTmuxNavigateLeft)
+            vim.keymap.set('n', "<C-j>", nvim_tmux_nav.NvimTmuxNavigateDown)
+            vim.keymap.set('n', "<C-k>", nvim_tmux_nav.NvimTmuxNavigateUp)
+            vim.keymap.set('n', "<C-l>", nvim_tmux_nav.NvimTmuxNavigateRight)
+            vim.keymap.set('n', "<C-\\>", nvim_tmux_nav.NvimTmuxNavigateLastActive)
+            vim.keymap.set('n', "<C-Space>", nvim_tmux_nav.NvimTmuxNavigateNext)
+        end
+    }
+
     -- Theme
     use 'chriskempson/vim-tomorrow-theme'
     -- use 'folke/tokyonight.nvim'
@@ -941,7 +1210,7 @@ return require('packer').startup({function(use)
         as = 'rose-pine',
         config = function()
             require("rose-pine").setup()
-            vim.cmd('colorscheme rose-pine')
+            -- vim.cmd('colorscheme rose-pine')
         end
     })
     -- use 'arcticicestudio/nord-vim'
@@ -972,6 +1241,7 @@ return require('packer').startup({function(use)
 
     load('options')
     load('lsp')
+    load('adapters')
     load('keys')
     load('style')
     --load('tools')
@@ -979,7 +1249,7 @@ return require('packer').startup({function(use)
     load('epg')
     vim.cmd('source ~/.config/nvim/twf.nvim')
     vim.cmd('source ~/.config/nvim/rg.nvim')
-    -- vim.notify('Config reloaded!', vim.log.levels.INFO)
+    vim.notify('Config reloaded!', vim.log.levels.INFO)
 
 end,
 

@@ -12,7 +12,8 @@ let current_compiler = "bob"
 "otherwise quickfix won't be able to display error path (file:line)
 "general format of a ansi code: \x1b[XXXY where XXX is 1;2;3 (numbers ; separated) Y is a letter
 "the sed filter to remove these: sed 's/\x1b\[[0-9;]*[a-zA-Z]//g'
-set makeprg=/workspace/git/$USER/epg/bob/bob\ build:cpp\ -p\ cpp-target=$*\ \\\|\&\ sed\ 's/\\\x1b\\\[[0-9;]*[a-zA-Z]//g'
+"set makeprg=/workspace/git/$USER/up-common/bob/bob\ --presets=clang-asan-ubsan\ build:cpp\ -p\ cpp-target=$*\ \\\|\&\ sed\ 's/\\\x1b\\\[[0-9;]*[a-zA-Z]//g'
+set makeprg=/workspace/git/$USER/data-plane/bob/bob\ build:cpp\ \\\|\&\ sed\ 's/\\\x1b\\\[[0-9;]*[a-zA-Z]//g'
 "get rid of bob chatter
 set errorformat^=%-G%.%#[bob]%.%#WARNING%.%#
 set errorformat^=%-G%.%#[bob]%.%#INFO%.%#

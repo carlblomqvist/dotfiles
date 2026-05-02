@@ -56,11 +56,11 @@ vim.o.hidden = true
 vim.o.backup = false
 vim.o.writebackup = false
 -- more space for coc messages
-vim.o.cmdheight = 3
+vim.o.cmdheight = 4
 -- more responsiveness
 vim.o.updatetime = 300
 -- avoid some prompts?
-vim.o.shortmess = vim.o.shortmess .. 'c'
+vim.o.shortmess = vim.o.shortmess .. 'cat'
 -- scrolling "bounding"
 vim.o.scrolloff = 5
 vim.o.sidescrolloff = 5

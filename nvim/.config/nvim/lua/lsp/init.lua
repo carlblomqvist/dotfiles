@@ -27,42 +27,66 @@ local on_attach = function(client, bufnr)
 
 end
 
--- To get builtin LSP running, do something like:
--- NOTE: This replaces the calls where you would have before done `require('nvim_lsp').sumneko_lua.setup()`
-require('nlua.lsp.nvim').setup(require('lspconfig'), {
-    -- FIXME ? complains about cmd, but it works
-    commands = {
-        "/home/eaclobr/bin/lua-language-server/bin/lua-language-server",
-        "-E",
-        "/home/eaclobr/bin/lua-language-server/bin/main.lua"
-    },
+vim.lsp.enable('lus_ls', {
+-- require'lspconfig'.lua_ls.setup({
+    cmd = { "/home/eaclobr/bin/lua-language-server/bin/lua-language-server" },
     settings = {
         Lua = {
             completion = {
-                keywordSnippet = "Disable",
-            },
-            diagnostics = {
-                globals = {"vim", "use"},
-                disable = {"lowercase-global"}
-            },
-            runtime = {
-                version = "LuaJIT",
-                path = vim.split(package.path, ";"),
-            },
-            workspace = {
-                library = {
-                    [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                    [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-                },
-            },
-        },
-    },
-  on_attach = on_attach,
+                callSnippet = "Replace"
+            }
+        }
+    }
 })
 
-require'lspconfig'.ccls.setup{
-  on_attach = on_attach,
+-- CONFIG FOR NLUA (deprecated by folke/neodev)
+-- To get builtin LSP running, do something like:
+-- NOTE: This replaces the calls where you would have before done `require('nvim_lsp').sumneko_lua.setup()`
+-- require('nlua.lsp.nvim').setup(require('lspconfig'), {
+--     -- FIXME ? complains about cmd, but it works
+--     commands = {
+--         "/home/eaclobr/bin/lua-language-server/bin/lua-language-server",
+--         "-E",
+--         "/home/eaclobr/bin/lua-language-server/bin/main.lua"
+--     },
+--     settings = {
+--         Lua = {
+--             completion = {
+--                 keywordSnippet = "Disable",
+--             },
+--             diagnostics = {
+--                 globals = {"vim", "use"},
+--                 disable = {"lowercase-global"}
+--             },
+--             runtime = {
+--                 version = "LuaJIT",
+--                 path = vim.split(package.path, ";"),
+--             },
+--             workspace = {
+--                 library = {
+--                     [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+--                     [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+--                 },
+--             },
+--         },
+--     },
+--   on_attach = on_attach,
+-- })
+--
+--
+
+vim.lsp.enable('clangd', {
+  cmd = { "clangd", "--background-index", "-j", "32" },
+})
+-- require'lspconfig'.clangd.setup{
+  -- on_attach = on_attach,
+  -- TODO: remove --background-index
+  -- cmd = { "clangd", "--background-index", "-j", "32" }
   -- flags = lsp_flags,
-}
+-- }
+-- require'lspconfig'.ccls.setup{
+--   on_attach = on_attach,
+--   -- flags = lsp_flags,
+-- }
 --require'lspconfig'.ccls.setup{require'coq'.lsp_ensure_capabilities()}
 
